@@ -16,14 +16,15 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet"> 
 	<!-- PT Sans Font -->
 	<link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet"> 
-
+	<!-- Oxygen Mono Font -->
+	<link href="https://fonts.googleapis.com/css?family=Oxygen+Mono&display=swap" rel="stylesheet">
+	<!-- Overpass Mono Font -->
+	<link href="https://fonts.googleapis.com/css?family=Overpass+Mono&display=swap" rel="stylesheet">
 </head>
 
 <body>
-
-	<div class="section-blue">
-		<!-- NAVBAR -->
-		<nav class="navbar navbar-expand-lg navbar-bg-custom">
+<!-- NAVBAR -->
+		<nav class="navbar navbar-expand-lg navbar-bg-custom sticky-top">
 		  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
 		    <ul class="navbar-nav navbar-custom">
 		      <li class="nav-item nav-item-link">
@@ -42,11 +43,34 @@
 		  </div>
 		</nav>		
 
+	<div class="section-blue">
 		<!-- JUMBOTRON -->
 		<div class="jumbotron jumbotron-fluid">
-			<div class="container">
+			<div class="container-fluid">
 				<div class="row">
-					<div class="col-6"></div>
+					<div class="col-6" style="padding-left: 62px;">
+						<h1 id="hackathonTitle">AI HACKATHON</h1>
+						<h4 id="hackathonTag">#AIforAutomotive</h4>
+
+						<div>
+							<div id="cohost">
+								CO-HOSTED BY
+							</div>
+							<div style="display: flex;">
+								<div style="margin-right: 20px; margin-top: 0px;">
+									<img src="../../static/app/imgs/logo-3.png" height="100px">
+								</div>
+								<div style="margin-top: 0px;">
+									<img src="../../static/app/imgs/TataLogoWhite.png" style="margin-right: 25px;">
+								</div>
+								<div style="margin-top: 15px;">
+									<img src="../../static/app/imgs/TataMotorsLogoWhite.png" style="margin-right: 25px;">
+								</div>
+							</div>	
+							<a href="" class="registerBtn">Register Now</a>
+						</div>
+
+					</div>
 					<div class="col-6 img-div">
 						<img src="../../static/app/imgs/LaptopLanding.svg">
 					</div>
@@ -110,7 +134,7 @@
 					<div class="col-4" style="padding-right: 20px; padding-left: 20px">
 						<div class="card custom-card" style="height: 400px">
 						  <div class="card-body">
-						    <img src="../../static/app/imgs/idea.svg" id="participateImage">
+						    <img src="../../static/app/imgs/symbiosislogo.png" id="participateImage">
 						    <p class="card-text" id="card-text-info">Symbiosis Institute of Technology, a constituent of Symbiosis International University was established in the year, 2008 and currently offers B. Tech programmes in Civil Engineering, Computer Science and Engineering, Electronics & Telecommunication Engineering and Mechanical Engineering.</p>
 						  </div>
 						</div>
@@ -142,8 +166,8 @@
 		</div>
 		<div class="page-info">
 			<div class="container" style="margin-top: 15px;">
-				<div class="row text-center">
-					<div class="col-5">
+				<div class="row text-center justify-content-center">
+					<div class="col-4">
 						<h4 id="participateTitle">Individuals</h4>
 						<p id="participateInfo" style="justify-content: center;">University students specializing in AI</p>
 						<p id="participateInfo" style="justify-content: center;">Team Size: 2 to 4 members</p>
@@ -151,7 +175,7 @@
 					<div class="col-2" style="margin-top: 56px">
 						<img src="../../static/app/imgs/Line.svg" style="height: 240px;">
 					</div>
-					<div class="col-5">
+					<div class="col-4">
 						<h4 id="participateTitle">Startups</h4>
 						<p id="participateInfo" style="justify-content: center;">Startups less than 2 years old</p>
 					</div>
@@ -168,14 +192,34 @@
 			<div class="container">
 				<div class="row text-center">
 					<div class="col-4" style="padding-right: 20px; padding-left: 20px">
-						<!-- <div style=" background-image: url('DrKetan.png');"></div> -->
-						<img src="../../static/app/imgs/DrKetan.png">
+						<div class="judgesImage" style="position: relative;">
+							<div class="judgeGradient">
+								<div class="judgeInfoBox">
+									<p class="judgeInfo">Dr Ketan Kotecha</p>
+									<p class="judgeInfoDesignation">Director, SIT</p>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div class="col-4" style="padding-right: 20px; padding-left: 20px">
-						<img src="../../static/app/imgs/DrKetan.png">
+						<div class="judgesImage" style="position: relative;">
+							<div class="judgeGradient">
+								<div class="judgeInfoBox">
+									<p class="judgeInfo">Arati Desai</p>
+									<p class="judgeInfoDesignation">Director, SIT</p>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div class="col-4" style="padding-right: 20px; padding-left: 20px">
-						<img src="../../static/app/imgs/DrKetan.png">
+						<div class="judgesImage" style="position: relative;">
+							<div class="judgeGradient">
+								<div class="judgeInfoBox">
+									<p class="judgeInfo">Dr Chatterjee</p>
+									<p class="judgeInfoDesignation">Director, SIT</p>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -204,6 +248,16 @@
 });
 </script>
 
+<script>
+		$(function(){
+			$(document).scroll(function(){
+				var $nav = $(".navbar");
+				var $link = $(".nav-link");
+				$nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+				$link.toggleClass("colorChange", $(this).scrollTop() > $nav.height());
+			})
+		})
+</script>
 
 </body>
 </html>

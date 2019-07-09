@@ -4,8 +4,8 @@
 }
 
 .navbar-bg-custom{
-	background: transparent;
-	height: 100px;
+	background: linear-gradient(304.06deg, #06054B 0%, #3301B7 100.66%);
+	height: 80px;
 }
 
 .navbar-custom{
@@ -16,11 +16,29 @@
 	margin-right: 20px;	
 }
 
+#link-color:hover{
+	color: white;
+	opacity: 1;
+}
+
 #link-color{
 	color: white;
 	opacity: 0.65;
 	font-family: 'Noto Sans',sans-serif;
 	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.scrolled{
+	background: none;
+	background-color: white !important;
+	transition: background 500ms;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.colorChange{
+	color: #3301B7 !important;
+	transition: color 500ms;
 }
 
 .jumbotron{
@@ -31,6 +49,71 @@
 .img-div img{
 	/*width: 100%;*/
 	height: 475px;
+}
+
+#hackathonTitle{
+	font-family: 'PT Mono', monospace;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 70px;
+	line-height: 78px;
+	display: flex;
+	align-items: center;
+	text-align: justify;
+	color: #FFFFFF;
+}
+
+#hackathonTag{
+	font-family: 'Oxygen Mono', monospace;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 39px;
+	display: flex;
+	align-items: center;
+	text-align: justify;
+	color: rgba(255, 255, 255, 0.74);
+}
+
+#cohost{
+	font-family: 'Overpass Mono', monospace;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	line-height: 46px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: #FFFFFF;
+	margin-top: 50px;
+}
+
+.registerBtn{
+	background-color: #E73001;
+  	border: none;
+  	color: white;
+  	padding: 15px 32px;
+  	text-decoration: none;
+  	margin-top: 50px;
+  	cursor: pointer;
+  	width: 471px;
+	height: 88px;
+	font-family: Oxygen Mono;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 28px;
+	line-height: 37px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+	text-transform: uppercase;
+}
+
+.registerBtn:hover{
+	text-decoration: none;
+	color: #FFF;
+	background-color: #FF3400
 }
 
 .registration-box{
@@ -167,4 +250,38 @@
 	line-height: 25px;
 	text-align: justify;
 	color: #000000;
+ }
+
+ .judgesImage{
+ 	background-image: url("../../static/app/imgs/DrKetan.png");
+ 	height: 360px;
+ 	background-repeat: no-repeat;
+ 	background-size: contain;
+ }
+
+ .judgeGradient{
+ 	background: linear-gradient(180deg, rgba(196, 196, 196, 0) 0%, #000000 140%);
+ 	height: 360px;
+ }
+
+.judgeInfoBox{
+	position: absolute;
+	bottom: 0;
+	padding-left: 20px;
+	padding-bottom: 10px;
+}
+
+ .judgeInfo{
+ 	color: #FFF;
+ 	justify-content: start;
+ 	margin-bottom: 0;
+ 	line-height: 30px !important;
+ }
+ 
+.judgeInfoDesignation{
+ 	color: #FFF;
+ 	justify-content: start;
+ 	margin-bottom: 0;
+ 	line-height: 30px !important;
+ 	font-size: 20px !important;
  }

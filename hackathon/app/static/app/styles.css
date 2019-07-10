@@ -43,7 +43,7 @@
 
 .jumbotron{
 	background: transparent;
-	margin-bottom: 0px;
+	margin-bottom: 70px;
 }
 
 .img-div img{
@@ -63,7 +63,19 @@
 	color: #FFFFFF;
 }
 
-#hackathonTag{
+/*#hackathonTag{
+	font-family: 'Oxygen Mono', monospace;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 39px;
+	display: flex;
+	align-items: center;
+	text-align: justify;
+	color: rgba(255, 255, 255, 0.74);
+}*/
+
+#app{
 	font-family: 'Oxygen Mono', monospace;
 	font-style: normal;
 	font-weight: normal;
@@ -237,6 +249,11 @@
 }
 
 #organizerImage{
+	height: 80px;
+	margin-bottom: 12px;
+}
+
+#eligibilityImage{
 	height: 80px;
 	margin-bottom: 12px;
 }

@@ -23,9 +23,9 @@
 </head>
 
 <body>
-<!-- NAVBAR -->
-		<nav class="navbar navbar-expand-lg navbar-bg-custom sticky-top">
-		  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+	<!-- NAVBAR -->
+	<nav class="navbar navbar-expand-lg navbar-bg-custom sticky-top">
+		<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
 		    <ul class="navbar-nav navbar-custom">
 		      <li class="nav-item nav-item-link">
 		        <a class="nav-link" id="link-color" href="#">Home</a>
@@ -40,8 +40,8 @@
 		        <a class="nav-link" id="link-color" href="#">Know More</a>
 		      </li>
 		    </ul>
-		  </div>
-		</nav>		
+		</div>
+	</nav>		
 
 	<div class="section-blue">
 		<!-- JUMBOTRON -->
@@ -50,7 +50,9 @@
 				<div class="row">
 					<div class="col-6" style="padding-left: 62px;">
 						<h1 id="hackathonTitle">AI HACKATHON</h1>
-						<h4 id="hackathonTag">#AIforAutomotive</h4>
+						<div id="app">
+							<!-- <h4 id="hackathonTag">#AIforAutomotive</h4>							 -->
+						</div>
 
 						<div>
 							<div id="cohost">
@@ -81,8 +83,7 @@
 		<!-- COUNTDOWN TIMER -->
 		<div class="registration-box">
 			<h1 id="registration-title">Registrations close</h1>
-			<div id="clock">
-			</div>
+			<div id="clock"></div>
 		</div>
 	</div>
 
@@ -168,6 +169,7 @@
 			<div class="container" style="margin-top: 15px;">
 				<div class="row text-center justify-content-center">
 					<div class="col-4">
+						<img src="../../static/app/imgs/teamwork.svg" id="eligibilityImage">
 						<h4 id="participateTitle">Individuals</h4>
 						<p id="participateInfo" style="justify-content: center;">University students specializing in AI</p>
 						<p id="participateInfo" style="justify-content: center;">Team Size: 2 to 4 members</p>
@@ -176,6 +178,7 @@
 						<img src="../../static/app/imgs/Line.svg" style="height: 240px;">
 					</div>
 					<div class="col-4">
+						<img src="../../static/app/imgs/flat.svg" id="eligibilityImage">
 						<h4 id="participateTitle">Startups</h4>
 						<p id="participateInfo" style="justify-content: center;">Startups less than 2 years old</p>
 					</div>
@@ -237,7 +240,7 @@
 		crossorigin="anonymous"></script>
 
 <!-- COUNTDOWN JS -->
-<script type="text/javascript" src="js/countdown.js"></script>
+<script type="text/javascript" src="../../static/app/js/countdown.js"></script>
 <script type="text/javascript">
 	$('#clock').countdown('2019/8/15', function(event) {
   	var $this = $(this).html(event.strftime(''
@@ -248,7 +251,8 @@
 });
 </script>
 
-<script>
+<!-- NAVBAR SCROLL SCRIPT -->
+<script type="text/javascript">
 		$(function(){
 			$(document).scroll(function(){
 				var $nav = $(".navbar");
@@ -257,6 +261,20 @@
 				$link.toggleClass("colorChange", $(this).scrollTop() > $nav.height());
 			})
 		})
+</script>
+
+<!-- TYPEWRITER JS -->
+<script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+<script type="text/javascript">
+	var app = document.getElementById('app');
+	var typewriter = new Typewriter(app, {
+	    loop: true
+	});
+
+	typewriter.typeString('#AIforAutomotive')
+	    .pauseFor(2500)
+	    .deleteAll()
+	    .start();
 </script>
 
 </body>

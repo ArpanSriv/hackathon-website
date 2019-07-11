@@ -1,3 +1,7 @@
+a:hover{
+	text-decoration: none;
+}
+
 .section-blue{
 	background: linear-gradient(304.06deg, #06054B 0%, #3301B7 100.66%);
 	padding-bottom: 60px;
@@ -16,6 +20,12 @@
 	margin-right: 20px;	
 }
 
+.navbar-registration{
+	background: #FFF;
+	height: 80px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
 #link-color:hover{
 	color: white;
 	opacity: 1;
@@ -27,6 +37,19 @@
 	font-family: 'Noto Sans',sans-serif;
 	text-transform: uppercase;
 	font-weight: bold;
+}
+
+#link-registration{
+	color: #000;
+	opacity: 0.65;
+	font-family: 'Noto Sans',sans-serif;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+#link-registration:hover{
+	color: #000;
+	opacity: 1;
 }
 
 .scrolled{
@@ -302,3 +325,164 @@
  	line-height: 30px !important;
  	font-size: 20px !important;
  }
+
+ #event-registration-title{
+ 	font-family: 'Open Sans', sans-serif;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 54px;
+	line-height: 74px;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	letter-spacing: 0.055em;
+	text-transform: uppercase;
+	font-variant: small-caps;
+	color: #000000;
+	margin-bottom: 0;
+}
+
+#registerAs-title{
+	font-family: 'Open Sans',sans-serif;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 50px;
+	line-height: 68px;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	text-transform: uppercase;
+	font-variant: small-caps;
+	color: #000000;
+}
+
+#individualTitle{
+	font-family: 'Open Sans', sans-serif;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 40px;
+	line-height: 54px;
+	text-align: center;
+	font-variant: small-caps;
+	color: #000000;	
+}
+
+#startupTitle{
+	font-family: 'Open Sans', sans-serif;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 40px;
+	line-height: 54px;
+	text-align: center;
+	font-variant: small-caps;
+	color: #000000;	
+}
+
+#startupRegistrationTitle{
+	font-family: 'PT Sans', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 39px;
+	text-align: center;
+	text-transform: uppercase;
+	font-variant: small-caps;
+	color: #000000;
+}
+
+.form-title{
+	font-family: 'PT Sans', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 26px;
+	text-transform: uppercase;
+	font-variant: small-caps;
+	color: #000000;
+	margin-bottom: 20px;
+}
+
+.form-custom{
+	background: rgba(230, 230, 232, 0.5);
+	padding: 16px;
+	width: 480px;
+}
+
+.teamBtn{
+	display: block;
+	text-align: center;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
+
+.submitBtn{
+	margin: 0 auto;
+	margin-top: 20px;
+	display: block;
+	width: 200px;
+}
+
+*{
+	border-radius: 0 !important;
+}
+
+textarea{
+	resize: none;
+}
+
+.footer{
+	/*height: 100px;*/
+	background: #212121;
+	color: #FFF;
+}
+
+.footer-link{
+	padding: 10px;
+	margin-bottom: 0;
+	margin-top: 10px;
+}
+
+.footer-link li{
+	list-style: none;
+	margin-bottom: 10px;
+}
+
+.footer-link a{
+	color: #FFF;
+	opacity: 0.65;
+	font-family: 'Noto Sans', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	/*line-height: 33px;*/
+	font-variant: small-caps;
+}
+
+.footer-link a:hover{
+	color: #FFF;
+	opacity: 1;
+}
+
+.follow{
+	padding: 10px;
+	color: #FFF;
+}
+
+.follow p{
+	margin-top: 10px;
+	font-family: 'Noto Sans', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 33px;
+	font-variant: small-caps;
+}
+
+hr{
+	background: #FFF;
+}
+
+#footer-note{
+	justify-content: center;
+	margin-top: 30px;
+}

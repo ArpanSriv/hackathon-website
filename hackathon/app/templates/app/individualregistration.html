@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AIHackathon</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Bootstrap CSS-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<!-- Custom CSS -->
+	<link rel="stylesheet" type="text/css" href="../../static/app/styles.css">
+	<!-- Noto Sans Font -->
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet"> 
+	<!-- PT Mono Font -->
+	<link href="https://fonts.googleapis.com/css?family=PT+Mono&display=swap" rel="stylesheet"> 
+	<!-- Open Sans Font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet"> 
+	<!-- PT Sans Font -->
+	<link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet"> 
+	<!-- Oxygen Mono Font -->
+	<link href="https://fonts.googleapis.com/css?family=Oxygen+Mono&display=swap" rel="stylesheet">
+	<!-- Overpass Mono Font -->
+	<link href="https://fonts.googleapis.com/css?family=Overpass+Mono&display=swap" rel="stylesheet">
+
+	<!-- Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<!-- NAVBAR -->
+	<nav class="navbar navbar-expand-lg sticky-top navbar-registration">
+		<div class="collapse navbar-collapse justify-content-start" style="margin-left: 20px;">
+			<img src="../../static/app/imgs/logo-3.png" style="height: 50px; margin-right: 20px;">
+			<img src="../../static/app/imgs/TataLogo.png" style="height: 50px; margin-right: 20px;">
+			<img src="../../static/app/imgs/TataMotorsLogo.png" style="height: 50px; margin-right: 20px;">		
+		</div>
+		<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+		    <ul class="navbar-nav navbar-custom">
+		      <li class="nav-item nav-item-link">
+		        <a class="nav-link" id="link-registration" href="#">Home</a>
+		      </li>
+		      <li class="nav-item nav-item-link">
+		        <a class="nav-link" id="link-registration" href="#">About Us</a>
+		      </li>
+		      <li class="nav-item nav-item-link">
+		        <a class="nav-link" id="link-registration" href="#">Contact Us</a>
+		      </li>
+		      <li class="nav-item nav-item-link">
+		        <a class="nav-link" id="link-registration" href="#">Know More</a>
+		      </li>
+		    </ul>
+		</div>
+	</nav>	
+
+	<div class="registration-box">
+		<h1 id="startupRegistrationTitle">Individual Registration</h1>
+	</div>
+
+	<div class="container form-custom">
+		<form>
+			<h4 class="form-title">Team Details</h3>
+
+			<div class="form-group">
+				<input type="text" class="form-control" id="teamName" placeholder="Team Name">
+			</div>
+
+			<button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)" data-member="1" id="modal1" class="modal">
+				Team Member 1
+			</button>
+			<button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)" data-member="2" id="modal2" class="modal">
+			  	Team Member 2
+			</button>
+			<button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)" data-member="3" id="modal3" class="modal">
+			  	Team Member 3
+			</button>
+			<button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)" data-member="4" id="modal4" class="modal">
+			  	Team Member 4
+			</button>
+
+			<!-- Modal -->
+			<div class="modal fade" id="modalLong" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="modalTitle">Team Member 1</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			      	<div class="container form-custom">
+						<form>
+							<h4 class="form-title">Personal Details</h4>
+							<div class="form-group">
+							    <input type="text" class="form-control" id="firstName" placeholder="First Name">
+							</div>
+							<div class="form-group">
+							    <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+							</div>
+							<div class="form-group">
+						    	<input type="date" class="form-control" id="dateOfBirth" placeholder="Date of Birth">
+						 	</div>
+							<div class="form-group">
+							    <input type="email" class="form-control" id="personalEmail" placeholder="Personal Email">
+							</div>
+							<div class="form-group">
+							    <input type="text" class="form-control" id="personalPhone" placeholder="Mobile Number">
+							</div>
+							<div class="form-group">
+							    <input type="text" class="form-control" id="university" placeholder="University">
+							</div>
+							<div class="form-group">
+							    <input type="text" class="form-control" id="specialization" placeholder="Specialization">
+							</div>
+							
+							<div class="form-group">
+								<select class="custom-select" id="citySelect">
+								  <option selected>City</option>
+								  <option value="1">One</option>
+								  <option value="2">Two</option>
+								  <option value="3">Three</option>
+							</select>
+							</div>
+
+							<div class="form-group">
+								<select class="custom-select" id="stateSelect">
+								  <option selected>State</option>
+								  <option value="1">One</option>
+								  <option value="2">Two</option>
+								  <option value="3">Three</option>
+								</select>
+							</div>	
+
+						 	<div class="form-group">
+						    	<textarea class="form-control" id="projectsDescription" placeholder="Projects(If Any)"></textarea>
+						  	</div>
+						</form>
+					</div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			        <button type="button" class="btn btn-primary">Save changes</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
+			<button type="submit" class="btn btn-primary submitBtn">Submit</button>
+		</form>
+	</div>
+
+	<div class="registration-box">
+		<h1 id="registration-title" style="color: #000">Registrations close</h1>
+		<div id="clock" style="color: #000"></div>
+	</div>
+
+<!-- COUNTDOWN JS -->
+<script type="text/javascript" src="../../static/app/js/countdown.js"></script>
+<script type="text/javascript">
+	$('#clock').countdown('2019/8/15', function(event) {
+  	var $this = $(this).html(event.strftime(''
+    + '<span>%D</span> days '
+    + '<span>%H</span> hr '
+    + '<span>%M</span> min '
+    + '<span>%S</span> sec'));
+});
+</script>
+
+<script type="text/javascript">
+	function openModal(id){
+		$('input').val('');
+		$('select').val();
+		$('textarea').val('');
+
+		// console.log(id);
+		let x = $("#" + id).data("member");
+		// console.log(x);
+		
+		if(x == 1){
+			$("#modalTitle").text("Team Member " + x + " (Mentor)");
+		}else{
+			$("#modalTitle").text("Team Member " + x);
+		}
+		$("#modalLong").modal();
+	}
+</script>
+
+</body>
+</html>

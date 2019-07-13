@@ -8,6 +8,9 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<!-- Custom CSS -->
 	<link rel="stylesheet" type="text/css" href="../../static/app/styles.css">
+	<script>document.getElementsByTagName("html")[0].className += " js";</script>
+	<!-- Timeline CSS -->
+	<!-- <link rel="stylesheet" type="text/css" href="../../static/app/timeline.css"> -->
 	<!-- Noto Sans Font -->
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet"> 
 	<!-- PT Mono Font -->
@@ -20,9 +23,17 @@
 	<link href="https://fonts.googleapis.com/css?family=Oxygen+Mono&display=swap" rel="stylesheet">
 	<!-- Overpass Mono Font -->
 	<link href="https://fonts.googleapis.com/css?family=Overpass+Mono&display=swap" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+		crossorigin="anonymous"></script>
+	<script src="../../static/app/js/jquery.scoped.js"></script>
+	<link href="https://cdn.lineicons.com/1.0.1/LineIcons.min.css" rel="stylesheet">
 </head>
 
 <body>
+	<script type="text/javascript">
+		$.scoped();	
+	</script>
+
 	<!-- NAVBAR -->
 	<nav class="navbar navbar-expand-lg navbar-bg-custom sticky-top">
 		<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
@@ -45,7 +56,7 @@
 
 	<div class="section-blue">
 		<!-- JUMBOTRON -->
-		<div class="jumbotron jumbotron-fluid">
+		<div class="jumbotron jumbotron-fluid" style="padding-top: 30px;">
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-6" style="padding-left: 62px;">
@@ -56,20 +67,37 @@
 
 						<div>
 							<div id="cohost">
-								CO-HOSTED BY
+								Organized Jointly By
 							</div>
-							<div style="display: flex;">
-								<div style="margin-right: 20px; margin-top: 0px;">
-									<img src="../../static/app/imgs/logo-3.png" height="100px">
+							<div style="display: flex; margin-top: 10px;">
+								<div style="margin-top: 15px;">
+									<a href="https://www.tatamotors.com/">
+										<img src="../../static/app/imgs/TataMotorsLogoWhite.png" style="margin-right: 25px;">
+									</a>
 								</div>
 								<div style="margin-top: 0px;">
-									<img src="../../static/app/imgs/TataLogoWhite.png" style="margin-right: 25px;">
+									<a href="https://www.tata.com/">
+										<img src="../../static/app/imgs/Tata_Logo2white.svg" style="margin-right: 25px; height: 60px;
+										margin-top: 18px;">
+									</a>
 								</div>
+							</div>
+							<div style="display: flex;">
 								<div style="margin-top: 15px;">
-									<img src="../../static/app/imgs/TataMotorsLogoWhite.png" style="margin-right: 25px;">
+									<a href="http://www.scei.org.in/">
+										<img src="../../static/app/imgs/SCEI_4.png" style="margin-right: 25px; height: 90px;">
+									</a>
 								</div>
-							</div>	
-							<a href="registration.html" class="registerBtn">Register Now</a>
+							</div>
+							<div style="display: flex; margin-left: 90px;">
+								<div style="margin-top: 15px;">
+									<a href="https://www.sitpune.edu.in/">
+										<img src="../../static/app/imgs/SIT_Logo_new.png" style="margin-right: 25px; height: 100px;">
+									</a>
+								</div>
+							</div>
+
+							<a href="registration.html" class="registerBtn">Register Now (It's Free)</a>
 						</div>
 
 					</div>
@@ -93,7 +121,8 @@
 		</div>
 		<div class="page-info">
 			<div class="container">
-				<p>AI Hackathon is a joint collaboration between Tata Motors Global Deliver Centre and Symbiosis Institute of Technology to nurture young minds in industry applications. First of its kind in the industry where we are looking for innovation in AI and NLP ( sentiment analysis) in English and Hindi.</p>
+				<p>AI Hackathon is a joint collaboration between Tata Motors Global Delivery Centre and Symbiosis Institute of Technology to nurture young minds in industry applications. First of its kind in the industry where we are looking for innovation in AI and NLP ( Voice sentiment analysis) in English and Hindi.</p>
+				<p>AI Hackathon will be held in two rounds. The first round will be an online round where the problem statement will be shared over email the day Round 01 begins around mid August. Post evaluation, once shortlisted for Round 02, selected teams are requested to come over to SIT Pune campus for a 72 hour hackathon scheduled during the end of September. Details will be shared over email. So hurry up and register now !</p>
 			</div>
 		</div>
 	</div>
@@ -105,20 +134,30 @@
 		<div class="page-info">
 			<div class="container" style="margin-top: 15px;">
 				<div class="row text-center">
-					<div class="col-4">
+					<div class="col-3">
 						<img src="../../static/app/imgs/idea.svg" id="participateImage">
 						<h4 id="participateTitle">Get Inspired</h4>
 						<p id="participateInfo">Code with the best 450+ developers and designers from all around the country.</p>
 					</div>
-					<div class="col-4">
+					<div class="col-3">
 						<img src="../../static/app/imgs/boss.svg" id="participateImage">
 						<h4 id="participateTitle">Meet New Faces</h4>
 						<p id="participateInfo">Interact with super creative minds and increase your network.</p>
 					</div>
-					<div class="col-4">
+					<div class="col-3">
 						<img src="../../static/app/imgs/data.svg" id="participateImage">
 						<h4 id="participateTitle">Latest Tech</h4>
 						<p id="participateInfo">Get priceless insights from eminent speakers and mentors from one of the leading companies and startups in the space.</p>
+					</div>
+					<div class="col-3">
+						<img src="../../static/app/imgs/gold-medal.svg" id="participateImage">
+						<h4 id="participateTitle">Prizes To Be Won</h4>
+						<p id="participateInfo">Amazing cash prizes upto Rs 1,50,000* to be won and a lifetime opportunity to incubate your startup with SCEI ( Symbiosis Centre for Entrepreneurship & Innovation).</p>
+					</div>
+				</div>
+				<div class="row justify-content-center" style="margin-top: 10px;">
+					<div class="col-3">
+						<p style="color: #FFF; font-family: 'Open Sans', sans-serif; font-size: 12px; margin-bottom: 0; justify-content: center;">* TDS applicable at Source </p>					
 					</div>
 				</div>
 			</div>
@@ -133,28 +172,35 @@
 			<div class="container">
 				<div class="row text-center">
 					<div class="col-4" style="padding-right: 20px; padding-left: 20px">
-						<div class="card custom-card" style="height: 400px">
-						  <div class="card-body">
-						    <img src="../../static/app/imgs/symbiosislogo.png" id="participateImage">
-						    <p class="card-text" id="card-text-info">Symbiosis Institute of Technology, a constituent of Symbiosis International University was established in the year, 2008 and currently offers B. Tech programmes in Civil Engineering, Computer Science and Engineering, Electronics & Telecommunication Engineering and Mechanical Engineering.</p>
-						  </div>
-						</div>
+						<a href="https://www.tata.com/">
+							<div class="card custom-card" style="height: 400px">
+							  <div class="card-body">
+							  	<img src="../../static/app/imgs/Tata_Logo2.svg" id="organizerImage">
+							    <p class="card-text" id="card-text-info"> Founded by Jamsetji Tata, the Tata group is a global enterprise, headquartered in India, comprising 30 companies across 10 verticals. With  706,511 employees, we are India's only value based corporation — a visionary, a pioneer, a leader, since 1868.</p>
+							  </div>
+							</div>
+						</a>
 					</div>
 					<div class="col-4" style="padding-right: 20px; padding-left: 20px">
+						<a href="https://www.tatamotors.com/">
 						<div class="card custom-card" style="height: 400px">
-						  <div class="card-body">
-						  	<img src="../../static/app/imgs/TataLogo.png" id="organizerImage">
-						    <p class="card-text" id="card-text-info">India's only value based corporation — a visionary, a pioneer, a leader, since 1868. Scroll below to learn more about us.</p>
-						  </div>
-						</div>
+							  <div class="card-body">
+							  	<img src="../../static/app/imgs/TataMotorsLogo.png" id="organizerImage">
+							    <p class="card-text" id="card-text-info">Tata Motors Limited, a USD 45 billion organisation, is a leading global automobile manufacturer with a portfolio that covers a wide range of cars, SUVs, buses, trucks, pickups and defence vehicles. </p>
+							    <img src="../../static/app/imgs/digital_exp.png" style="height: 80px; position: absolute; bottom: 0; right: 0;">
+							  </div>
+							</div>
+						</a>
 					</div>
 					<div class="col-4" style="padding-right: 20px; padding-left: 20px">
-						<div class="card custom-card" style="height: 400px">
-						  <div class="card-body">
-						  	<img src="../../static/app/imgs/TataMotorsLogo.png" id="organizerImage">
-						    <p class="card-text" id="card-text-info">Tata Motors Limited, a USD 45 billion organisation, is a leading global automobile manufacturer with a portfolio that covers a wide range of cars, SUVs, buses, trucks, pickups and defence vehicles. </p>
-						  </div>
-						</div>
+						<a href="https://www.sitpune.edu.in/">
+							<div class="card custom-card" style="height: 400px">
+							  <div class="card-body">
+							    <img src="../../static/app/imgs/symbiosislogo.png" id="participateImage">
+							    <p class="card-text" id="card-text-info">Symbiosis Institute of Technology, a constituent of Symbiosis International University was established in the year, 2008 and currently offers B. Tech programmes in Civil Engineering, Computer Science and Engineering, Electronics & Telecommunication Engineering and Mechanical Engineering.</p>
+							  </div>
+							</div>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -194,33 +240,43 @@
 		</div>
 		<div class="page-info">
 			<div class="container">
-				<div class="row text-center">
-					<div class="col-4" style="padding-right: 20px; padding-left: 20px">
-						<div class="judgesImage" style="position: relative;">
+				<div class="row text-center justify-content-between">
+					<div class="col-3" style="padding-right: 20px; padding-left: 20px">
+						<div id="ketanImage" style="position: relative;">
 							<div class="judgeGradient">
 								<div class="judgeInfoBox">
 									<p class="judgeInfo">Dr Ketan Kotecha</p>
-									<p class="judgeInfoDesignation">Director, SIT</p>
+									<p class="judgeInfoDesignation">Director, Symbiosis Institute of Technology</p>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-4" style="padding-right: 20px; padding-left: 20px">
-						<div class="judgesImage" style="position: relative;">
+					<div class="col-3" style="padding-right: 20px; padding-left: 20px">
+						<div id="pradeepImage" style="position: relative;">
 							<div class="judgeGradient">
 								<div class="judgeInfoBox">
-									<p class="judgeInfo">Arati Desai</p>
-									<p class="judgeInfoDesignation">Director, SIT</p>
+									<p class="judgeInfo">Dr Pradeep Chatterjee</p>
+									<p class="judgeInfoDesignation">Head , Digital Transformation, Change Management and Customer Experience</p>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-4" style="padding-right: 20px; padding-left: 20px">
-						<div class="judgesImage" style="position: relative;">
+					<div class="col-3" style="padding-right: 20px; padding-left: 20px">
+						<div id="sureshImage" style="position: relative;">
 							<div class="judgeGradient">
 								<div class="judgeInfoBox">
-									<p class="judgeInfo">Dr Chatterjee</p>
-									<p class="judgeInfoDesignation">Director, SIT</p>
+									<p class="judgeInfo">Dr Suresh P</p>
+									<p class="judgeInfoDesignation">Technology Leader, Process Transformation, Digital Tower</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-3" style="padding-right: 20px; padding-left: 20px">
+						<div id="sureshImage" style="position: relative;">
+							<div class="judgeGradient">
+								<div class="judgeInfoBox">
+									<p class="judgeInfo">Dr Rahee Walambe</p>
+									<p class="judgeInfoDesignation">Faculty (Research and Teaching), Symbiosis Institute of Technology</p>
 								</div>
 							</div>
 						</div>
@@ -230,21 +286,306 @@
 		</div>
 	</div>
 
+	<div class="blue-box">
+		<div class="page-titles">
+			<h3>Patrons</h3>
+		</div>
+		<div class="page-info">
+			<div class="container">
+				<div class="row text-center justify-content-between">
+					<div class="col-3" style="padding-right: 20px; padding-left: 20px">
+						<div id="balajiImage" style="position: relative;">
+							<div class="judgeGradient">
+								<div class="judgeInfoBox">
+									<p class="judgeInfo">P B Balaji</p>
+									<p class="judgeInfoDesignation">Chief Financial Officer, Tata Motors Limited</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-3" style="padding-right: 20px; padding-left: 20px">
+						<div id="aasifImage" style="position: relative;">
+							<div class="judgeGradient">
+								<div class="judgeInfoBox">
+									<p class="judgeInfo">Aasif Malbari</p>
+									<p class="judgeInfoDesignation">Vice President, Financial Controller, Tata Motors Limited</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-3" style="padding-right: 20px; padding-left: 20px">
+						<div id="aratiImage" style="position: relative;">
+							<div class="judgeGradient">
+								<div class="judgeInfoBox">
+									<p class="judgeInfo">Arati Desai</p>
+									<p class="judgeInfoDesignation">Head, Global Delivery Centre, Tata Motors Limited</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="white-box">
+		<div class="page-titles">
+			<h3>Schedule</h3>
+		</div>
+		<style scoped>
+        	@import "../../static/app/timeline.css";
+    	</style>
+    	<div class="page-info">
+			<div class="container">
+				<div class="row text-center justify-content-center">
+					<section class="cd-h-timeline js-cd-h-timeline margin-bottom-md">
+					    <div class="cd-h-timeline__container container-fluid">
+					      <div class="cd-h-timeline__dates">
+					        <div class="cd-h-timeline__line">
+					          <ol>
+					            <li><a href="#0" data-date="15/07/2019" style="left: 100px;" class="cd-h-timeline__date cd-h-timeline__date--selected">16 Jul</a></li>
+					            <li><a href="#0" data-date="15/08/2019" style="left: 280px;" class="cd-h-timeline__date">15 Aug</a></li>
+					            <li><a href="#0" data-date="16/08/2019" style="left: 460px;" class="cd-h-timeline__date">16 Aug</a></li>
+					            <li><a href="#0" data-date="17/08/2019" style="left: 640px;" class="cd-h-timeline__date">17 Aug</a></li>
+					            <li><a href="#0" data-date="31/08/2019" style="left: 820px;" class="cd-h-timeline__date">30 Aug</a></li>
+					            <li><a href="#0" data-date="27/09/2019" style="left: 1000px;" class="cd-h-timeline__date">27 Sep</a></li>
+					            <li><a href="#0" data-date="30/09/2019" style="left: 1180px;" class="cd-h-timeline__date">30 Sep</a></li>
+					          </ol>
+
+					          <span class="cd-h-timeline__filling-line" aria-hidden="true"></span>
+					        </div> <!-- .cd-h-timeline__line -->
+					      </div> <!-- .cd-h-timeline__dates -->
+					        
+					      <ul>
+					        <li style="display: none;"><a href="#0" class="text-replace cd-h-timeline__navigation cd-h-timeline__navigation--prev cd-h-timeline__navigation--inactive">Prev</a></li>
+					        <li style="display: none;"><a href="#0" class="text-replace cd-h-timeline__navigation cd-h-timeline__navigation--next">Next</a></li>
+					      </ul>
+					    </div> <!-- .cd-h-timeline__container -->
+
+					    <div class="cd-h-timeline__events">
+					      <ol>
+					        <li class="cd-h-timeline__event cd-h-timeline__event--selected text-component">
+					          <div class="cd-h-timeline__event-content container">
+					            <h2 class="cd-h-timeline__event-title">Registration opens</h2>
+					            <em class="cd-h-timeline__event-date">July 15th, 2019</em>
+					            <p class="cd-h-timeline__event-description color-contrast-medium" id="timeline-content"> 
+					            </p>
+					          </div>
+					        </li>
+
+					        <li class="cd-h-timeline__event text-component">
+					          <div class="cd-h-timeline__event-content container">
+					            <h2 class="cd-h-timeline__event-title">Registration closes</h2>
+					            <em class="cd-h-timeline__event-date">August 15th, 2019</em>
+					            <p class="cd-h-timeline__event-description color-contrast-medium" id="timeline-content"> 
+					            </p>
+					          </div>
+					        </li>
+
+					        <li class="cd-h-timeline__event text-component">
+					          <div class="cd-h-timeline__event-content container">
+					            <h2 class="cd-h-timeline__event-title">Shortlisting of teams</h2>
+					            <em class="cd-h-timeline__event-date">August 16th, 2019</em>
+					            <p class="cd-h-timeline__event-description color-contrast-medium" id="timeline-content"> 
+					            </p>
+					          </div>
+					        </li>
+
+					        <li class="cd-h-timeline__event text-component">
+					          <div class="cd-h-timeline__event-content container">
+					            <h2 class="cd-h-timeline__event-title">Round 1 (Start)</h2>
+					            <em class="cd-h-timeline__event-date">August 17th, 2019</em>
+					            <p class="cd-h-timeline__event-description color-contrast-medium" id="timeline-content"> 
+					            </p>
+					          </div>
+					        </li>
+
+					        <li class="cd-h-timeline__event text-component">
+					          <div class="cd-h-timeline__event-content container">
+					            <h2 class="cd-h-timeline__event-title">Round 1 (End)</h2>
+					            <em class="cd-h-timeline__event-date">August 30th, 2019</em>
+					            <p class="cd-h-timeline__event-description color-contrast-medium" id="timeline-content"> 
+					            </p>
+					          </div>
+					        </li>
+
+					        <li class="cd-h-timeline__event text-component">
+					          <div class="cd-h-timeline__event-content container">
+					            <h2 class="cd-h-timeline__event-title">Round 2 commences</h2>
+					            <em class="cd-h-timeline__event-date">September 27th - 30th, 2019</em>
+					            <p class="cd-h-timeline__event-description color-contrast-medium" id="timeline-content"> 
+					            </p>
+					          </div>
+					        </li>
+
+					        <li class="cd-h-timeline__event text-component">
+					          <div class="cd-h-timeline__event-content container">
+					            <h2 class="cd-h-timeline__event-title">Evaluation & Award Ceremony</h2>
+					            <em class="cd-h-timeline__event-date">September 30th, 2019</em>
+					            <p class="cd-h-timeline__event-description color-contrast-medium" id="timeline-content"> 
+					            </p>
+					          </div>
+					        </li>
+					      </ol>
+					    </div> <!-- .cd-h-timeline__events -->
+					</section>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="blue-box">
+		<section id="faq" class="section-padding">
+	      <div class="container" style="padding-bottom: 30px;">
+	      	<div class="page-titles">
+				<h3>FAQ</h3>
+			</div>
+	        <!-- <div class="row"> -->
+	          <!-- <div class="col-12">
+	            <div class="section-title-header text-center" style="margin-top: 20px; margin-bottom: 20px;">
+	              <h1 class="section-title wow fadeInUp animated" data-wow-delay="0.2s" style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s; color: #FFF;">FAQ</h1>
+	              <p class="wow fadeInDown animated" data-wow-delay="0.2s" style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;"></p>
+	            </div>
+	          </div> -->
+	        <!-- </div> -->
+	        <div class="page-info">
+				<div class="container">
+			        <div class="row">
+			          <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+			            <div class="accordion">
+			              <div class="card">
+			                <div class="card-header card-header-bg" id="headingOne">
+			                  <div class="header-title collapsed" data-toggle="collapse" data-target="#questionOne" aria-expanded="false" aria-controls="collapseOne">
+			                    <i class="lni-pencil"></i> Who can attend?
+			                  <div></div><div></div></div>
+			                </div>
+			                <div id="questionOne" class="collapse" aria-labelledby="headingOne" data-parent="#question" style="">
+			                  <div class="card-body">
+			                   Current students of any college of India as well as working professionals.
+			                  </div>
+			                </div>
+			              </div>
+			              <div class="card">
+			                <div class="card-header card-header-bg" id="headingTwo">
+			                    <div class="header-title collapsed" data-toggle="collapse" data-target="#questionTwo" aria-expanded="false" aria-controls="questionTwo">
+			                      <i class="lni-pencil"></i>  How big the teams can be?
+			                    </div>
+			                </div>
+			                <div id="questionTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#question" style="">
+			                  <div class="card-body">
+			                    A team should contain 3-4 members. Individuals can also register in the hackathon but however they won’t be allowed to participate individually. Selected individuals would be invited to the Round 2 at SIT (Symbiosis Institute of Technology), Pune.
+			                  </div>
+			                </div>
+			              </div>
+			              <div class="card">
+			                <div class="card-header card-header-bg" id="headingThree">
+			                  <div class="header-title" data-toggle="collapse" data-target="#questionThree" aria-expanded="false" aria-controls="questionThree">
+			                    <i class="lni-pencil"></i>  
+									Are you providing travel reimbursements?
+			                  </div>
+			                </div>
+			                <div id="questionThree" class="collapse" aria-labelledby="headingThree" data-parent="#question">
+			                  <div class="card-body">
+			                    Unfortunately, we are not able to provide travel reimbursements.
+			                  </div>
+			                </div>
+			              </div>
+			            </div>
+			          </div>
+			          <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+			            <div class="accordion">
+			              <div class="card">
+			                <div class="card-header card-header-bg" id="headingFour">
+			                  <div class="header-title" data-toggle="collapse" data-target="#questionFour" aria-expanded="true" aria-controls="questionFour">
+			                   <i class="lni-pencil"></i> How much does it cost?
+			                  </div>
+			                </div>
+			                <div id="questionFour" class="collapse show" aria-labelledby="headingFour" data-parent="#question" style="">
+			                  <div class="card-body">
+			                    This event is completely free.
+			                  </div>
+			                </div>
+			              </div>
+			              <div class="card">
+			                <div class="card-header card-header-bg" id="headingOne2">
+			                  <div class="header-title" data-toggle="collapse" data-target="#questionOne2" aria-expanded="true" aria-controls="collapseOne">
+			                    <i class="lni-pencil"></i> What should I bring to the venue?
+
+			                  </div>
+			                </div>
+			                <div id="questionOne2" class="collapse show" aria-labelledby="headingOne2" data-parent="#question" style="">
+			                  <div class="card-body">
+			                    You need to carry your College/Company ID Card, laptop, phone, chargers and any other necessary equipment.
+			                  </div>
+			                </div>
+			              </div>
+			              <div class="card">
+			                <div class="card-header card-header-bg" id="headingTwo2">
+			                  <div class="header-title" data-toggle="collapse" data-target="#questionTwo2" aria-expanded="true" aria-controls="collapseOne">
+			                    <i class="lni-pencil"></i> When will the applications close?
+
+			                  </div>
+			                </div>
+			                <div id="questionTwo2" class="collapse show" aria-labelledby="headingTwo2" data-parent="#question" style="">
+			                  <div class="card-body">
+			                    The applications will close on 11:59 pm on 15th August 2019. We will select the applications after the registration closes and acceptance will be sent accordingly. 
+			                  </div>
+			                </div>
+			              </div>
+			              <!-- <div class="card">
+			                <div class="card-header" id="headingThree2">
+			                  <div class="header-title" data-toggle="collapse" data-target="#questionThree2" aria-expanded="true" aria-controls="collapseOne">
+			                    <i class="lni-pencil"></i> Will snacks/food be provided at the Hackathon?
+
+			                  </div>
+			                </div>
+			                <div id="questionThree2" class="collapse show" aria-labelledby="headingThree2" data-parent="#question" style="">
+			                  <div class="card-body">
+			                    Although we won't provide food at the Hackathon, but there will be stalls around the venue where you could have a sumptuous meal!  
+			                  </div>
+			                </div>
+			              </div>               -->
+			            </div>
+			          </div>
+			        </div>
+			    </div>
+			</div>
+	    </section>
+	</div>
+
 	<div class="footer">
 		<div class="container">
 			<div class="row">
-				<div class="col-6">
-					<ul class="footer-link">
-						<li><a href="">Home</a></li>
-						<li><a href="">About Us</a></li>
-						<li><a href="">Contact Us</a></li>
-						<li><a href="">Know More</a></li>
-					</ul>
-				</div>
-				<div class="col-6">
+				<div class="col-4">
 					<div class="follow">
-						<p>Follow Us On</p>
+						<p>Code of conduct</p>
+						<p id="code">Still got some queries? Mail us at <a href="mailto:someone@example.com?Subject=Hello%20again" target="_top">aihackathon@sitpune.edu.in</a></p>						
 					</div>
+				</div>
+				<div class="col-4">
+					<div class="follow text-center">
+						<p>Follow Us On</p>
+						<img src="../../static/app/imgs/facebook.svg" style="height: 40px; margin-right: 10px;">
+						<img src="../../static/app/imgs/instagram.svg" style="height: 40px; margin-right: 10px;">
+						<img src="../../static/app/imgs/linkedin.svg" style="height: 40px; margin-right: 10px;">
+						<img src="../../static/app/imgs/google-plus.svg" style="height: 40px; margin-right: 10px;">
+					</div>
+				</div>
+				<div class="col-4">
+					<div class="follow text-center">
+						<p>Quick Links</p>
+						<ul class="footer-link">
+							<li><a href="">Home</a></li>
+							<li><a href="">About Us</a></li>
+							<li><a href="">Contact Us</a></li>
+							<li><a href="">Know More</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-2">
+					<p style="margin-bottom: 0;"><a href="privacy.html" id="privacy">Privacy policy</a></p>
 				</div>
 			</div>
 			<hr>
@@ -255,13 +596,13 @@
 	</div>
 
 <!-- Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <!-- JQUERY -->
-<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-		crossorigin="anonymous"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+		crossorigin="anonymous"></script> -->
 
 <!-- COUNTDOWN JS -->
 <script type="text/javascript" src="../../static/app/js/countdown.js"></script>
@@ -300,6 +641,12 @@
 	    .deleteAll()
 	    .start();
 </script>
+
+<!-- TIMELINE JS -->
+<script src="../../static/app/js/util.js"></script> <!-- util functions included in the CodyHouse framework -->
+<script src="../../static/app/js/swipe-content.js"></script> <!-- A Vanilla JavaScript plugin to detect touch interactions -->
+<script src="../../static/app/js/main.js"></script>
+<!-- <script src="../../static/app/js/jquery.scoped.js"></script> -->
 
 </body>
 </html>

@@ -4,10 +4,12 @@
 	<title>AIHackathon</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	{% load static %}
 	<!-- Bootstrap CSS-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<!-- Custom CSS -->
-	<link rel="stylesheet" type="text/css" href="../../static/app/styles.css">
+	<link rel="stylesheet" type="text/css" href="{% static "webapp/styles.css" %}">
 	<!-- Noto Sans Font -->
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet"> 
 	<!-- PT Mono Font -->
@@ -60,21 +62,21 @@
 							</div>
 							<div style="display: flex;">
 								<div style="margin-right: 20px; margin-top: 0px;">
-									<img src="../../static/app/imgs/logo-3.png" height="100px">
+									<img src="{% static "webapp\imgs\logo-3.png" %}" height="100px">
 								</div>
 								<div style="margin-top: 0px;">
-									<img src="../../static/app/imgs/TataLogoWhite.png" style="margin-right: 25px;">
+									<img src="{% static "webapp\imgs\TataMotorsLogoWhite.png" %}" style="margin-right: 25px;">
 								</div>
 								<div style="margin-top: 15px;">
-									<img src="../../static/app/imgs/TataMotorsLogoWhite.png" style="margin-right: 25px;">
+									<img src="../../static/webapp/imgs/TataLogoWhite.png" style="margin-right: 25px;">
 								</div>
 							</div>	
-							<a href="registration.html" class="registerBtn">Register Now</a>
+							<a href="{% url 'registration' %}" class="registerBtn">Register Now</a>
 						</div>
 
 					</div>
 					<div class="col-6 img-div">
-						<img src="../../static/app/imgs/LaptopLanding.svg">
+						<img src="../../static/webapp/imgs/LaptopLanding.svg">
 					</div>
 				</div>
 			</div>
@@ -106,17 +108,17 @@
 			<div class="container" style="margin-top: 15px;">
 				<div class="row text-center">
 					<div class="col-4">
-						<img src="../../static/app/imgs/idea.svg" id="participateImage">
+						<img src="../../static/webapp/imgs/idea.svg" id="participateImage">
 						<h4 id="participateTitle">Get Inspired</h4>
 						<p id="participateInfo">Code with the best 450+ developers and designers from all around the country.</p>
 					</div>
 					<div class="col-4">
-						<img src="../../static/app/imgs/boss.svg" id="participateImage">
+						<img src="../../static/webapp/imgs/boss.svg" id="participateImage">
 						<h4 id="participateTitle">Meet New Faces</h4>
 						<p id="participateInfo">Interact with super creative minds and increase your network.</p>
 					</div>
 					<div class="col-4">
-						<img src="../../static/app/imgs/data.svg" id="participateImage">
+						<img src="../../static/webapp/imgs/data.svg" id="participateImage">
 						<h4 id="participateTitle">Latest Tech</h4>
 						<p id="participateInfo">Get priceless insights from eminent speakers and mentors from one of the leading companies and startups in the space.</p>
 					</div>
@@ -135,7 +137,7 @@
 					<div class="col-4" style="padding-right: 20px; padding-left: 20px">
 						<div class="card custom-card" style="height: 400px">
 						  <div class="card-body">
-						    <img src="../../static/app/imgs/symbiosislogo.png" id="participateImage">
+						    <img src="../../static/webapp/imgs/symbiosislogo.PNG" id="participateImage">
 						    <p class="card-text" id="card-text-info">Symbiosis Institute of Technology, a constituent of Symbiosis International University was established in the year, 2008 and currently offers B. Tech programmes in Civil Engineering, Computer Science and Engineering, Electronics & Telecommunication Engineering and Mechanical Engineering.</p>
 						  </div>
 						</div>
@@ -143,7 +145,7 @@
 					<div class="col-4" style="padding-right: 20px; padding-left: 20px">
 						<div class="card custom-card" style="height: 400px">
 						  <div class="card-body">
-						  	<img src="../../static/app/imgs/TataLogo.png" id="organizerImage">
+						  	<img src="../../static/webapp/imgs/TataLogo.png" id="organizerImage">
 						    <p class="card-text" id="card-text-info">India's only value based corporation — a visionary, a pioneer, a leader, since 1868. Scroll below to learn more about us.</p>
 						  </div>
 						</div>
@@ -151,7 +153,7 @@
 					<div class="col-4" style="padding-right: 20px; padding-left: 20px">
 						<div class="card custom-card" style="height: 400px">
 						  <div class="card-body">
-						  	<img src="../../static/app/imgs/TataMotorsLogo.png" id="organizerImage">
+						  	<img src="../../static/webapp/imgs/TataMotorsLogo.png" id="organizerImage">
 						    <p class="card-text" id="card-text-info">Tata Motors Limited, a USD 45 billion organisation, is a leading global automobile manufacturer with a portfolio that covers a wide range of cars, SUVs, buses, trucks, pickups and defence vehicles. </p>
 						  </div>
 						</div>
@@ -169,16 +171,16 @@
 			<div class="container" style="margin-top: 15px;">
 				<div class="row text-center justify-content-center">
 					<div class="col-4">
-						<img src="../../static/app/imgs/teamwork.svg" id="eligibilityImage">
+						<img src="../../static/webapp/imgs/teamwork.svg" id="eligibilityImage">
 						<h4 id="participateTitle">Individuals</h4>
 						<p id="participateInfo" style="justify-content: center;">University students specializing in AI</p>
 						<p id="participateInfo" style="justify-content: center;">Team Size: 2 to 4 members (Including Mentor)</p>
 					</div>
 					<div class="col-2" style="margin-top: 56px">
-						<img src="../../static/app/imgs/Line.svg" style="height: 240px;">
+						<img src="../../static/webapp/imgs/Line.svg" style="height: 240px;">
 					</div>
 					<div class="col-4">
-						<img src="../../static/app/imgs/flat.svg" id="eligibilityImage">
+						<img src="../../static/webapp/imgs/flat.svg" id="eligibilityImage">
 						<h4 id="participateTitle">Startups</h4>
 						<p id="participateInfo" style="justify-content: center;">Startups less than 2 years old</p>
 						<p id="participateInfo" style="justify-content: center;">Team Size: 2 to 4 members (Including Mentor)</p>
@@ -264,7 +266,7 @@
 		crossorigin="anonymous"></script>
 
 <!-- COUNTDOWN JS -->
-<script type="text/javascript" src="../../static/app/js/countdown.js"></script>
+<script type="text/javascript" src="../../static/webapp/js/countdown.js"></script>
 <script type="text/javascript">
 	$('#clock').countdown('2019/8/15', function(event) {
   	var $this = $(this).html(event.strftime(''

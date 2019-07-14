@@ -17,7 +17,6 @@ let memberFields = {
 };
 
 
-
 function openModal(id) {
     console.log("Open Modal called: ID : " + id);
 
@@ -37,6 +36,9 @@ function openModal(id) {
 
             // $('').val...
 
+            for (let field in memberFields) {
+                $(`[name=${field}]`).val(memberDetails[postDot][field]);
+            }
         }
     } else {
 
@@ -62,8 +64,8 @@ function extractDataFromModal() {
 
     let memberFieldValues = {};
 
-    for (let field in Object.keys(memberFields)) {
-        memberFieldValues.field = getInputValue(field);
+    for (let field in memberFields) {
+        memberFieldValues[field] = getInputValue(field);
     }
 
     console.log(memberFieldValues);
@@ -76,15 +78,27 @@ function handleFormSave() {
     let member = extractDataFromModal();
 
     // Check if none of them is null
-    for (let field in Object.keys(memberFields)) {
+    for (let field in memberFields) {
+        console.log("Checking: " + memberFields[field]);
 
-        if (member.field === '') {
+        if (member[field] === '') {
+            console.log("Empty detected.");
+
             $.toast({
                 heading: 'Error',
-                text: memberFields[field] + ' is required. Please try again.',
+                text: `<div style="padding: 5px;">
+                            <b>"${memberFields[field]}"</b> is required. Please try again.
+                       </div>`,
                 showHideTransition: 'fade',
-                icon: 'error'
+                icon: 'error',
+                hideAfter: 10000,
             });
+
+            return;
+        }
+
+        else {
+            console.log(member[field])
         }
     }
 
@@ -99,30 +113,45 @@ function handleFormSave() {
 
 function submitForm() {
     // If members 1 and 2 are valid
-    // if (memberDetails[1].firstName != null)
+    // if (memberDetails['member1'].firstName === undefined || memberDetails['member2'].firstName === undefined) {
+    //     $.toast({
+    //             heading: 'Error',
+    //             text: `A minimum of two members is required for registration.`,
+    //             showHideTransition: 'fade',
+    //             icon: 'error',
+    //             hideAfter: 10000,
+    //         });
+    // }
 
-    // make a post request with the data = memberDetails
-    // $('#individualForm').attr("action", "http://192.168.0.105:8000/app/register/individual");
-
-    // $.ajax("http://192.168.0.105:8000/app/register/individual", memberDetails, )
-
-    console.log("Submitting stringified....");
+    let progressToast = $.toast({
+        heading: "Info",
+        text: "Please wait while we validate your data...",
+        icon: 'information',
+        hideAfter: 300000,
+    });
 
     $.ajax({
         url: 'http://localhost:8000/app/register/individual',
         type: 'post',
         dataType: 'json',
         contentType: 'application/json',
+        headers: {'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value},
         success: function (data) {
-            alert("Application Successful");
+            if (data.status === 'SUCCESSFUL') {
+                progressToast.text("Successfull........")
+            }
+
+            else {
+                alert(data)
+            }
         },
-        failure: function (data) {
-            alert("Error Occured: " + data);
-        },
+        // error: function (data) {
+        //     alert("Error Occured: " + data);
+        // },
         data: JSON.stringify(memberDetails)
     });
 }
 
 function getInputValue(name) {
-    return $("input[name=" + name + "]").val();
+    return $("[name=" + name + "]").val();
 }

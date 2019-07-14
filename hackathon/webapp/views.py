@@ -148,8 +148,8 @@ def about_us(request):
     return render(request, 'webapp/aboutus.html')
 
 
-
-
+def contact_us(request):
+    return render(request, 'webapp/contactus.html')
 
 
 

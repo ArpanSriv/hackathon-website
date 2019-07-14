@@ -55,27 +55,28 @@
 		<div class="logoBar">
 			<div class="container-fluid">
 				<div class="row" style="justify-content: space-around; padding-top: 10px;">
-					<div class="col-3" style="text-align: start;">
+					<div class="col-4" style="text-align: start;">
 						<img src="../../static/webapp/imgs/TataMotorsLogo.png" style="height: 50px; margin-right: 20px;">
 					</div>
-					<div class="col-3" style="text-align: center;">
+					<div class="col-4" style="text-align: center;">
 						<img src="../../static/webapp/imgs/logo-3.png" style="height: 50px;">
+						<img src="../../static/webapp/imgs/SIT_Logo_new.png" style="height: 50px;">
 					</div>
-					<div class="col-3" style="text-align: end;">
+					<div class="col-4" style="text-align: end;">
 						<img src="../../static/webapp/imgs/TataLogo.png" style="height: 50px; margin-right: 20px;">
 					</div>
 				</div>
-				<div class="row">
+				<div class="row" style="margin-top: 5px;">
 					<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
 					    <ul class="navbar-nav navbar-custom">
 					      <li class="nav-item nav-item-link">
-					        <a class="nav-link" id="link-color" href="landing.html">Home</a>
+					        <a class="nav-link" id="link-color" href="{% url 'index' %}">Home</a>
 					      </li>
 					      <li class="nav-item nav-item-link">
-					        <a class="nav-link" id="link-color" href="aboutus.html">About Us</a>
+					        <a class="nav-link" id="link-color" href="{% url 'about_us' %}">About Us</a>
 					      </li>
 					      <li class="nav-item nav-item-link">
-					        <a class="nav-link" id="link-color" href="contactus.html">Contact Us</a>
+					        <a class="nav-link" id="link-color" href="">Contact Us</a>
 					      </li>
 					    </ul>
 					</div>	
@@ -225,7 +226,7 @@
 					</div>
 					<div class="col-3" style="padding-right: 20px; padding-left: 20px">
 						<a href="https://www.tatamotors.com/">
-						<div class="card custom-card" style="height: 440px">
+							<div class="card custom-card" style="height: 440px">
 							  <div class="card-body">
 							  	<img src="../../static/webapp/imgs/TataMotorsLogo.png" id="organizerImage" style="margin-left: 25px;">
 							    <p class="card-text" id="card-text-info">Tata Motors Limited, a USD 45 billion organisation, is a leading global automobile manufacturer with a portfolio that covers a wide range of cars, SUVs, buses, trucks, pickups and defence vehicles. Global Delivery Centre is the captive shared services centre for TML Group Companies focused on bringing digital transformation.</p>
@@ -396,12 +397,13 @@
 					        <div class="cd-h-timeline__line">
 					          <ol>
 					            <li><a href="#0" data-date="15/07/2019" style="left: 100px;" class="cd-h-timeline__date cd-h-timeline__date--selected">15 Jul</a></li>
-					            <li><a href="#0" data-date="15/08/2019" style="left: 280px;" class="cd-h-timeline__date">10 Aug</a></li>
-					            <li><a href="#0" data-date="16/08/2019" style="left: 460px;" class="cd-h-timeline__date">16 Aug</a></li>
-					            <li><a href="#0" data-date="17/08/2019" style="left: 640px;" class="cd-h-timeline__date">17 Aug</a></li>
-					            <li><a href="#0" data-date="31/08/2019" style="left: 820px;" class="cd-h-timeline__date">31 Aug</a></li>
-					            <li><a href="#0" data-date="27/09/2019" style="left: 1000px;" class="cd-h-timeline__date">27 Sep</a></li>
-					            <li><a href="#0" data-date="30/09/2019" style="left: 1180px;" class="cd-h-timeline__date">30 Sep</a></li>
+					            <li><a href="#0" data-date="15/08/2019" style="left: 240px;" class="cd-h-timeline__date">10 Aug</a></li>
+					            <li><a href="#0" data-date="16/08/2019" style="left: 380px;" class="cd-h-timeline__date">16 Aug</a></li>
+					            <li><a href="#0" data-date="17/08/2019" style="left: 520px;" class="cd-h-timeline__date">17 Aug</a></li>
+					            <li><a href="#0" data-date="31/08/2019" style="left: 660px;" class="cd-h-timeline__date">31 Aug</a></li>
+					            <li><a href="#0" data-date="27/09/2019" style="left: 800px;" class="cd-h-timeline__date">26 Sep</a></li>
+					            <li><a href="#0" data-date="27/09/2019" style="left: 940px;" class="cd-h-timeline__date">27 Sep</a></li>
+					            <li><a href="#0" data-date="30/09/2019" style="left: 1080px;" class="cd-h-timeline__date">30 Sep</a></li>
 					          </ol>
 
 					          <span class="cd-h-timeline__filling-line" aria-hidden="true"></span>
@@ -420,7 +422,11 @@
 					          <div class="cd-h-timeline__event-content container">
 					            <h2 class="cd-h-timeline__event-title">Registration opens</h2>
 					            <em class="cd-h-timeline__event-date">July 15th, 2019</em>
-					            <p class="cd-h-timeline__event-description color-contrast-medium" id="timeline-content"> 
+					            <p class="cd-h-timeline__event-description color-contrast-medium timeline-custom"  id="timeline-content"> 
+					            	Registrations open for the AI Hackathon. Come and register to win amazing prizes! 
+					            </p>
+					            <p class="cd-h-timeline__event-description color-contrast-medium timeline-custom"  id="timeline-content"> 
+					            	COME AND REGISTER TO WIN AMAZING PRIZES!! 
 					            </p>
 					          </div>
 					        </li>
@@ -429,43 +435,58 @@
 					          <div class="cd-h-timeline__event-content container">
 					            <h2 class="cd-h-timeline__event-title">Registration closes</h2>
 					            <em class="cd-h-timeline__event-date">August 10th, 2019</em>
-					            <p class="cd-h-timeline__event-description color-contrast-medium" id="timeline-content"> 
+					            <p class="cd-h-timeline__event-description color-contrast-medium timeline-custom"  id="timeline-content"> 
+					            	Registrations close for the AI Hackathon.
 					            </p>
 					          </div>
 					        </li>
 
 					        <li class="cd-h-timeline__event text-component">
 					          <div class="cd-h-timeline__event-content container">
-					            <h2 class="cd-h-timeline__event-title">Shortlisting of teams</h2>
+					            <h2 class="cd-h-timeline__event-title">Shortlisting of Teams</h2>
 					            <em class="cd-h-timeline__event-date">August 16th, 2019</em>
-					            <p class="cd-h-timeline__event-description color-contrast-medium" id="timeline-content"> 
+					            <p class="cd-h-timeline__event-description color-contrast-medium timeline-custom"  id="timeline-content"> 
+					            	Shortlisting of registered teams will take place. Selected teams shall be notified via an email.
 					            </p>
 					          </div>
 					        </li>
 
 					        <li class="cd-h-timeline__event text-component">
 					          <div class="cd-h-timeline__event-content container">
-					            <h2 class="cd-h-timeline__event-title">Round 1 (Start)</h2>
+					            <h2 class="cd-h-timeline__event-title">E-Hackathon (Round 1)</h2>
 					            <em class="cd-h-timeline__event-date">August 17th, 2019</em>
-					            <p class="cd-h-timeline__event-description color-contrast-medium" id="timeline-content"> 
+					            <p class="cd-h-timeline__event-description color-contrast-medium timeline-custom"  id="timeline-content"> 
+					            	Selected teams will receive a problem statement via an email. They will have two weeks of time to think, deliberate and develop.
 					            </p>
 					          </div>
 					        </li>
 
 					        <li class="cd-h-timeline__event text-component">
 					          <div class="cd-h-timeline__event-content container">
-					            <h2 class="cd-h-timeline__event-title">Round 1 (End)</h2>
+					            <h2 class="cd-h-timeline__event-title">E-Hackathon (End)</h2>
 					            <em class="cd-h-timeline__event-date">August 31st, 2019</em>
-					            <p class="cd-h-timeline__event-description color-contrast-medium" id="timeline-content"> 
+					            <p class="cd-h-timeline__event-description color-contrast-medium timeline-custom"  id="timeline-content"> 
+					            	Last date to submit your solutions of the problem statement.
 					            </p>
 					          </div>
 					        </li>
 
 					        <li class="cd-h-timeline__event text-component">
 					          <div class="cd-h-timeline__event-content container">
-					            <h2 class="cd-h-timeline__event-title">Round 2 commences</h2>
+					            <h2 class="cd-h-timeline__event-title"></h2>
+					            <em class="cd-h-timeline__event-date">September 26th, 2019</em>
+					            <p class="cd-h-timeline__event-description color-contrast-medium timeline-custom"  id="timeline-content">
+					            	Selected teams are required to visit Symbiosis Institute of Technology, Lavale, Pune - 412115.
+					            </p>
+					          </div>
+					        </li>
+
+					        <li class="cd-h-timeline__event text-component">
+					          <div class="cd-h-timeline__event-content container">
+					            <h2 class="cd-h-timeline__event-title">On premise Hackathon</h2>
 					            <em class="cd-h-timeline__event-date">September 27th - 30th, 2019</em>
-					            <p class="cd-h-timeline__event-description color-contrast-medium" id="timeline-content"> 
+					            <p class="cd-h-timeline__event-description color-contrast-medium timeline-custom"  id="timeline-content"> 
+					           		Round 2 of the hackathon commences. Teams will be required to participate in a 72 hour long "On premise hackathon".
 					            </p>
 					          </div>
 					        </li>
@@ -474,7 +495,11 @@
 					          <div class="cd-h-timeline__event-content container">
 					            <h2 class="cd-h-timeline__event-title">Evaluation & Award Ceremony</h2>
 					            <em class="cd-h-timeline__event-date">September 30th, 2019</em>
-					            <p class="cd-h-timeline__event-description color-contrast-medium" id="timeline-content"> 
+					            <p class="cd-h-timeline__event-description color-contrast-medium timeline-custom"  id="timeline-content">
+					           		Evaluation of submitted solutions will take place.   
+					            </p>
+					            <p class="cd-h-timeline__event-description color-contrast-medium timeline-custom"  id="timeline-content"> 
+					            	WINNERS WILL BE AWARDED!!
 					            </p>
 					          </div>
 					        </li>
@@ -631,16 +656,16 @@
 					<div class="follow text-center">
 						<p>Quick Links</p>
 						<ul class="footer-link">
-							<li><a href="landing.html">Home</a></li>
-							<li><a href="aboutus.html">About Us</a></li>
-							<li><a href="contactus.html">Contact Us</a></li>
+							<li><a href="{% url 'index' %}">Home</a></li>
+							<li><a href="{% url 'about_us' %}">About Us</a></li>
+							<li><a href="">Contact Us</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-2">
-					<p style="margin-bottom: 0;"><a href="privacy.html" id="privacy">Privacy policy</a></p>
+					<p style="margin-bottom: 0;"><a href="{% url 'privacy_policy' %}" id="privacy">Privacy policy</a></p>
 				</div>
 			</div>
 			<hr>

@@ -8,18 +8,21 @@ a:hover{
 }
 
 .logoBar{
-	background: #FFF;
+	/*background: #FFF;*/
+	background: transparent;
+	width: 100%;
+
 }
 
 .navbar-bg-custom{
 	/*background: linear-gradient(304.06deg, #06054B 0%, #3301B7 100.66%);*/
 	background: #FFF;
-	height: 80px;
+	/*height: 80px;*/
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .navbar-custom{
-	margin-right: 20px;
+	/*margin-right: 20px;*/
 }
 
 .nav-item-link{
@@ -617,7 +620,7 @@ hr{
 	cursor: pointer;
 }
 
-#privacy-title{
+#privacy-title, #aboutus-title{
  	font-family: 'Open Sans', sans-serif;
 	font-style: normal;
 	font-weight: 600;
@@ -636,4 +639,17 @@ hr{
 .aboutus-div{
 	margin-bottom: 30px;
 	/*box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25); */
+}
+
+.aboutus-img{
+	text-align: center;
+}
+
+.aboutus-content{
+	text-align: justify;
+}
+
+.timeline-custom{
+	font-size: 16px !important;
+	justify-content: center;
 }

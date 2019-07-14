@@ -620,7 +620,7 @@ hr{
 	cursor: pointer;
 }
 
-#privacy-title, #aboutus-title{
+#privacy-title, #aboutus-title, #contactus-title{
  	font-family: 'Open Sans', sans-serif;
 	font-style: normal;
 	font-weight: 600;
@@ -652,4 +652,20 @@ hr{
 .timeline-custom{
 	font-size: 16px !important;
 	justify-content: center;
+}
+
+#map_container{
+  position: relative;
+}
+
+#map{
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 22.25%;
+    padding-top: 30px;
+    position: relative;
+}
+
+.v-center{
+	margin-top: 80px;
 }

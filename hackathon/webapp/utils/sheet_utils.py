@@ -6,44 +6,57 @@ from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 
+from .constants import INDIVIDUAL
+
 spreadsheet_id = "1Moej841MoASt-hqLi_CkumLj2-eQ6x0xrMm19tc9g2k"
 
 credentials = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'credentials.json')
 
 
-def update_google_sheets(team_name, persons):
+def convert_member_json_to_array(reg_no, team_name, member):
+    member_array = [reg_no, team_name]
+
+    for member_field in member:
+        member_array.append(member[member_field])
+
+    return member_array
+
+
+def update_google_sheets(type, reg_no, team_name, members):
     service = get_spreadsheet_service()
 
     # Call the Sheets API
     sheet = service.spreadsheets()
 
-    values = [
-        [
-            { 'values': persons[0] }
-        ]
-    ]
+    if type == INDIVIDUAL:
 
-    body = {
-        'values': [persons[0], persons[1], persons[2], persons[3]]
-    }
-    result = sheet.values().append(
-        spreadsheetId=spreadsheet_id, range="Individuals", body=body, valueInputOption="RAW").execute()
-    print('{0} cells appended.'.format(result \
-                                        .get('updates').get('updatedRange')))
+        body = {
+            'values': []
+        }
 
-    team_name_range = result.get('updates').get('updatedRange')
+        for member_no in members:
+            member_converted = convert_member_json_to_array(reg_no, team_name, members[member_no])
+            print(member_converted)
+            body['values'].append(member_converted)
 
-    # Replace with team name column name
-    team_name_range = re.sub(r'([A-Z])(\d)', repl='K\\2', string=team_name_range)
+        result = sheet.values().append(
+            spreadsheetId=spreadsheet_id, range="Individuals", body=body, valueInputOption="RAW").execute()
 
-    print("Range to put team in : {0}".format(team_name_range))
+        # print('{0} cells appended.'.format(result.get('updates').get('updatedRange')))
 
-    team_name_body = {
-        'values': [[team_name], [team_name], [team_name], [team_name]]
-    }
+        # Merge the cells v1
+        updated_range = result.get('updates').get('updatedRange')
 
-    team_name_update_result = sheet.values().append(spreadsheetId=spreadsheet_id, range=team_name_range, body=team_name_body, valueInputOption="RAW").execute()
-    # merge_columns(team_name_update_result.get('updates').get('updatedRange')) # TODO
+        # Replace with team name column name (A -> reg_no)
+        reg_no_range = re.sub(r'([A-Z])(\d)', repl='A\\2', string=updated_range)
+        team_name_no_range = re.sub(r'([A-Z])(\d)', repl='B\\2', string=updated_range)
+
+        # print("Range to put reg_no in : {0}".format(reg_no_range))
+
+        merge_columns(reg_no_range)
+        merge_columns(team_name_no_range)
+
+
 
 
 def get_spreadsheet_service():
@@ -72,24 +85,47 @@ def get_spreadsheet_service():
     return service
 
 
-def merge_columns(range): # TODO
+def get_sheet_index_from_name(sheet_name) -> int:
+    return ["Individuals", "Startups"].index(sheet_name)
+
+
+def merge_columns(range_to_merge):  # TODO
     service = get_spreadsheet_service()
 
+    # Range Example: Individuals!A4:A5
+    print("Range got: " + range_to_merge)
+
+    range_data = re.match(u'(^.+)!(.+):(.+$)', range_to_merge)
+
+    co1 = re.match(r"(\D+)(\d+)", range_data[2])
+    co2 = re.match(r"(\D+)(\d+)", range_data[3])
+
+    grid_range = {
+        'sheetId': get_sheet_index_from_name(range_data[1]),
+        'startRowIndex': int(co1[2]) - 1,
+        'endRowIndex': str(co2[2]),
+        'startColumnIndex': alpha2num(co1[1]),
+        'endColumnIndex': str(int(alpha2num((co2[1])) + 1))
+    }
+
+    print(grid_range)
+
     results = service.spreadsheets().batchUpdate(
-        spreadsheetId = spreadsheet_id,
-        body = {
+        spreadsheetId=spreadsheet_id,
+        body={
             "requests": [
                 {
                     "mergeCells": {
-                        "mergeType": "MERGE_ROWS",
-                        "range": {
-                            "sheetId": 0,
-                            "startRowIndex": 0,
-                            "endRowIndex": 2,
-                            "startColumnIndex": 0,
-                            "endColumnIndex": 1
-                        }
+                        "mergeType": "MERGE_COLUMNS",
+                        "range": grid_range
                     }
                 },
             ]
-    }).execute() 
+        }).execute()
+
+    print("Merge done.")
+
+
+def alpha2num(alpha):
+    print("Alpha got: " + alpha)
+    return ord(alpha) - ord('A')

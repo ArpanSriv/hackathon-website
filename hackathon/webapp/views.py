@@ -1,6 +1,7 @@
 # from google.cloud import firestore
 import json
 import os
+import re
 
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.shortcuts import render
@@ -9,6 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .utils.firebase_utils import upload_on_firebase
 from .utils.sheet_utils import update_google_sheets
 
+from .utils.constants import *
 
 # Landing Page
 def index(request):
@@ -74,6 +76,22 @@ def registration_individual(request):
 
         print(json_data)
 
+        resp = {
+            'correct': '0',
+            'message': 'Internal Server Error.'
+        }
+
+        # Team Name Empty
+        if json_data['teamName'] == '':
+            resp['message'] = 'A valid team name is required.'
+            return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
+
+        # Team Email Empty
+        if json_data['teamEmail'] == '':
+            resp['message'] = 'A valid team email is required.'
+            return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
+
+        # Team Members Validation
         if 'member1' not in json_data['memberDetails'] and 'member2' not in json_data['memberDetails']:
             print('member 1 and member 2 not found.')
 
@@ -85,16 +103,31 @@ def registration_individual(request):
             return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
 
         elif 'member1' in json_data['memberDetails'] and 'member2' in json_data['memberDetails']:
-            print('member 1 and member 2 found.')
+            if json_data['memberDetails']['member1']['firstName'] == '' or json_data['memberDetails']['member2']['firstName'] == '':
+                print('member 1 and member 2 found empty')
 
+                resp['message'] = 'Members found but empty. Are you sure you entered all details correctly?'
+
+                return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
+
+            # Found members 1 and 2 and also found some data there.
             resp = {
                 'correct': '1',
-                'message': 'Validation OK'
+                'message': 'Data found sufficient.'
             }
 
-            return HttpResponse(json.dumps(resp), content_type='application/json')
-        # return received_json_data
+            reg_no = 'xxxxx'
 
+            print("Uploading to sheets...")
+
+            # Upload the Data on Spreadsheet and Firebase :p
+            update_google_sheets(INDIVIDUAL, reg_no, json_data['teamName'], json_data['memberDetails'])
+
+            print("Updated Sheets.")
+
+            return HttpResponse(json.dumps(resp), content_type='application/json')
+
+    # Normal GET Request.
     return render(request, 'webapp/individualregistration.html')
 
 

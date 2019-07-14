@@ -1,5 +1,22 @@
 let currentMember = 1;
 let memberDetails = {};
+let memberFields = {
+    'firstName': 'First Name',
+    'lastName': 'Last Name',
+    'dob': 'Date of Birth',
+    'personalEmail': 'Personal Email',
+    'mobileNo': 'Phone No.',
+    'university': 'University',
+    'specialization': 'Specialization',
+    'addressLine1': 'Address Line 1',
+    'addressLine2': 'Address Line 2',
+    'pincode': 'Pincode',
+    'city': 'City',
+    'state': 'State',
+    'projects': 'Projects',
+};
+
+
 
 function openModal(id) {
     console.log("Open Modal called: ID : " + id);
@@ -42,35 +59,16 @@ function openModal(id) {
 }
 
 function extractDataFromModal() {
-    let teamName = getInputValue("teamName").val();
-    let firstName = getInputValue("fName").val();
-    let lastName = getInputValue("lName").val();
-    let dob = getInputValue("dob").val();
-    let email = getInputValue("email").val();
-    let mobno = getInputValue("mobno").val();
-    let uni = getInputValue("uni").val();
-    let specialization = getInputValue("specialization").val();
-    let address1 = getInputValue("address1").val();
-    let address2 = getInputValue("address2").val();
-    let pincode = getInputValue("pincode").val();
-    let city = getInputValue("city").val();
 
-    return {
-        'teamName': teamName,
-        'firstName': firstName,
-        'lastName': lastName,
-        'dob': dob,
-        'email': email,
-        'mobno': mobno,
-        'uni': uni,
-        'specialization': specialization,
-        'address1': address1,
-        'address2': address2,
-        'pincode': pincode,
-        'city': city,
-        // 'state': state,
-        // 'projects': projects
-    };
+    let memberFieldValues = {};
+
+    for (let field in Object.keys(memberFields)) {
+        memberFieldValues.field = getInputValue(field);
+    }
+
+    console.log(memberFieldValues);
+
+    return memberFieldValues;
 }
 
 function handleFormSave() {
@@ -78,6 +76,17 @@ function handleFormSave() {
     let member = extractDataFromModal();
 
     // Check if none of them is null
+    for (let field in Object.keys(memberFields)) {
+
+        if (member.field === '') {
+            $.toast({
+                heading: 'Error',
+                text: memberFields[field] + ' is required. Please try again.',
+                showHideTransition: 'fade',
+                icon: 'error'
+            });
+        }
+    }
 
 
     // Save member details

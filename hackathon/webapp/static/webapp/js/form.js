@@ -1,18 +1,23 @@
 let currentMember = 1;
-var memberDetails = {};
+let memberDetails = {};
 
 function openModal(id){
-	$('input').val('');
-	$('select').val();
-	$('textarea').val(''); 
+	console.log("Open Modal called: ID : " + id);
 
-	let index = id - 1;
+	// $('input').val('');
+	// $('select').val();
+	// $('textarea').val('');
 
-	let postdot = "member" + currentMember;
+	// $('.modal-member-form').trigger('reset');
+	document.getElementById("modal-member-form").reset();
 
-	if (memberDetails[postdot] != undefined) {
+	let $buttonClicked = $("#" + id);
 
-		if (memberDetails[postdot].firstName != undefined) {
+	let postdot = "member" + $buttonClicked.data("member");
+
+	if (memberDetails[postdot] !== undefined) {
+
+		if (memberDetails[postdot].firstName !== undefined) {
 
 		// let firstName = memberDetails.postdot.firstName;
 		// let lastName...
@@ -25,14 +30,14 @@ function openModal(id){
 	else {
 
 		// console.log(id);
-		let x = $("#" + id).data("member");
+		let x = $buttonClicked.data("member");
 
 		console.log("id " + x);
 		// console.log(x);
 
 		currentMember = x;
 		
-		if(x == 1){
+		if (x === 1){
 			$("#modalTitle").text("Team Member " + x + " (Mentor)");
 		}else{
 			$("#modalTitle").text("Team Member " + x);
@@ -46,20 +51,20 @@ function handleFormSave(event) {
 
 	// alert("OKJ");
 
-	var teamName = document.getElementsByName("teamName")[0].value;
-	var firstName = document.getElementsByName("fName")[0].value;
-	var lastName = document.getElementsByName("lName")[0].value;
-	var dob = document.getElementsByName("dob")[0].value;
-	var email = document.getElementsByName("email")[0].value;
-	var mobno = document.getElementsByName("mobno")[0].value;
-	var uni = document.getElementsByName("uni")[0].value;
-	var specialization = document.getElementsByName("specialization")[0].value;
-	var address1 = document.getElementsByName("address1")[0].value;
-	var address2 = document.getElementsByName("address2")[0].value;
-	var pincode = document.getElementsByName("pincode")[0].value;
-	var city = document.getElementsByName("city")[0].value;
-	// var state = document.getElementsByName("state")[0].value;
-	// var projects = document.getElementsByName("projects")[0].value;
+	let teamName = document.getElementsByName("teamName")[0].value;
+	let firstName = document.getElementsByName("fName")[0].value;
+	let lastName = document.getElementsByName("lName")[0].value;
+	let dob = document.getElementsByName("dob")[0].value;
+	let email = document.getElementsByName("email")[0].value;
+	let mobno = document.getElementsByName("mobno")[0].value;
+	let uni = document.getElementsByName("uni")[0].value;
+	let specialization = document.getElementsByName("specialization")[0].value;
+	let address1 = document.getElementsByName("address1")[0].value;
+	let address2 = document.getElementsByName("address2")[0].value;
+	let pincode = document.getElementsByName("pincode")[0].value;
+	let city = document.getElementsByName("city")[0].value;
+	// let state = document.getElementsByName("state")[0].value;
+	// let projects = document.getElementsByName("projects")[0].value;
 
 	let member = {
 		'teamName': teamName,
@@ -96,8 +101,10 @@ function submitForm() {
 
 	// $.ajax("http://192.168.0.105:8000/app/register/individual", memberDetails, )
 
+	console.log("Submitting stringified....");
+
 	$.ajax({
-        url: 'http://192.168.0.105:8000/app/register/individual',
+        url: 'http://localhost:8000/app/register/individual',
         type: 'post',
         dataType: 'json',
         contentType: 'application/json',
@@ -107,6 +114,6 @@ function submitForm() {
         failure: function(data) {
         	alert("Error Occured: " + data);
         },
-        data: memberDetails
+        data: JSON.stringify(memberDetails)
     });
 }

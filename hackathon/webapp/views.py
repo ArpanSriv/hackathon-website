@@ -72,7 +72,9 @@ def registration_individual(request):
     if request.method == 'POST':
         received_json_data = json.loads(request.body.decode("utf-8"))
 
-        print("Recieved::: " + received_json_data)
+        print("Recieved::: " + str(received_json_data))
+
+        # return received_json_data
 
     return render(request, 'webapp/individualregistration.html')
 

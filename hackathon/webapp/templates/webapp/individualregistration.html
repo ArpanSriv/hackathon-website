@@ -59,25 +59,33 @@
 	</div>
 
 	<div class="container form-custom">
-		<form>
-			<h4 class="form-title">Team Details</h3>
+		<form method="POST" id="individualForm">
+			<h4 class="form-title">Team Details</h4>
 
 			<div class="form-group">
-				<input type="text" class="form-control" id="teamName" placeholder="Team Name">
+				<input type="text" class="form-control" id="teamName" placeholder="Team Name" required="false" name="teamName">
 			</div>
 
-			<button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)" data-member="1" id="modal1" class="modal">
-				Team Member 1
-			</button>
-			<button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)" data-member="2" id="modal2" class="modal">
-			  	Team Member 2
-			</button>
-			<button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)" data-member="3" id="modal3" class="modal">
-			  	Team Member 3
-			</button>
-			<button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)" data-member="4" id="modal4" class="modal">
-			  	Team Member 4
-			</button>
+            <div class="form-group">
+                <input type="text" class="form-control" id="Team Email-Address" placeholder="Email for correspondence" required="false" name="teamEmail">
+			</div>
+
+            <div class="form-group">
+
+                <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)" data-member="1" id="modal1" class="modal">
+                    Team Member 1 (Mentor)
+                </button>
+                <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)" data-member="2" id="modal2" class="modal">
+                    Team Member 2
+                </button>
+                <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)" data-member="3" id="modal3" class="modal">
+                    Team Member 3
+                </button>
+                <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)" data-member="4" id="modal4" class="modal">
+                    Team Member 4
+                </button>
+
+            </div>
 
 			<!-- Modal -->
 			<div class="modal fade" id="modalLong" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
@@ -91,63 +99,105 @@
 			      </div>
 			      <div class="modal-body">
 			      	<div class="container form-custom">
-						<form>
+						<form id="modal-member-form">
 							<h4 class="form-title">Personal Details</h4>
 							<div class="form-group">
-							    <input type="text" class="form-control" id="firstName" placeholder="First Name">
+							    <input type="text" class="form-control" id="firstName" placeholder="First Name" required="false" name="fName">
 							</div>
 							<div class="form-group">
-							    <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+							    <input type="text" class="form-control" id="lastName" placeholder="Last Name" required="false" name="lName">
 							</div>
-							<div class="form-group">
-						    	<input type="date" class="form-control" id="dateOfBirth" placeholder="Date of Birth">
+							<div class="input-group mb-3">
+							  <div class="input-group-prepend">
+							    <span class="input-group-text" id="basic-addon1">Date Of Birth</span>
+							  </div>
+						    	<input type="date" class="form-control" id="dateOfBirth" placeholder="Date of Birth" required="false" name="dob">
 						 	</div>
+							<!-- </div> -->
 							<div class="form-group">
-							    <input type="email" class="form-control" id="personalEmail" placeholder="Personal Email">
+							    <input type="email" class="form-control" id="personalEmail" placeholder="Personal Email" required="false" name="email">
 							</div>
 							<div class="form-group">
-							    <input type="text" class="form-control" id="personalPhone" placeholder="Mobile Number">
+							    <input type="text" class="form-control" id="personalPhone" placeholder="Mobile Number" required="false" name="mobno">
 							</div>
 							<div class="form-group">
-							    <input type="text" class="form-control" id="university" placeholder="University">
+							    <input type="text" class="form-control" id="university" placeholder="University" required="false" name="uni">
 							</div>
 							<div class="form-group">
-							    <input type="text" class="form-control" id="specialization" placeholder="Specialization">
+							    <input type="text" class="form-control" id="specialization" placeholder="Specialization" required="false" name="specialization">
+							</div>
+							<div class="form-group">
+							    <input type="text" class="form-control" id="address1" placeholder="Address Line 1" required="false" name="address1">
+							</div>
+							<div class="form-group">
+							    <input type="text" class="form-control" id="address2" placeholder="Address Line 2" required="false" name="address2">
+							</div>
+
+							<div class="form-row">
+								<div class="form-group">
+							    	<input type="text" class="form-control" id="pincode" placeholder="Pincode" required="false" name="pincode">
+								</div>
+								<div class="form-group">
+							    	<input type="text" class="form-control" id="city" placeholder="City" required="false" name="city">
+								</div>	
 							</div>
 							
 							<div class="form-group">
-								<select class="custom-select" id="citySelect">
-								  <option selected>City</option>
-								  <option value="1">One</option>
-								  <option value="2">Two</option>
-								  <option value="3">Three</option>
-							</select>
-							</div>
-
-							<div class="form-group">
-								<select class="custom-select" id="stateSelect">
-								  <option selected>State</option>
-								  <option value="1">One</option>
-								  <option value="2">Two</option>
-								  <option value="3">Three</option>
+								<select name="stateslist" class="custom-select" id="statesList" name="state">
+								    <option value="">Select State</option>
+								    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+								    <option value="Andhra Pradesh">Andhra Pradesh</option>
+								    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+								    <option value="Assam">Assam</option>
+								    <option value="Bihar">Bihar</option>
+								    <option value="Chandigarh">Chandigarh</option>
+								    <option value="Chhattisgarh">Chhattisgarh</option>
+								    <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+								    <option value="Daman and Diu">Daman and Diu</option>
+								    <option value="Delhi">Delhi</option>
+								    <option value="Goa">Goa</option>
+								    <option value="Gujarat">Gujarat</option>
+								    <option value="Haryana">Haryana</option>
+								    <option value="Himachal Pradesh">Himachal Pradesh</option>
+								    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+								    <option value="Jharkhand">Jharkhand</option>
+								    <option value="Karnataka">Karnataka</option>
+								    <option value="Kerala">Kerala</option>
+								    <option value="Lakshadweep">Lakshadweep</option>
+								    <option value="Madhya Pradesh">Madhya Pradesh</option>
+								    <option value="Maharashtra">Maharashtra</option>
+								    <option value="Manipur">Manipur</option>
+								    <option value="Meghalaya">Meghalaya</option>
+								    <option value="Mizoram">Mizoram</option>
+								    <option value="Nagaland">Nagaland</option>
+								    <option value="Orissa">Orissa</option>
+								    <option value="Pondicherry">Pondicherry</option>
+								    <option value="Punjab">Punjab</option>
+								    <option value="Rajasthan">Rajasthan</option>
+								    <option value="Sikkim">Sikkim</option>
+								    <option value="Tamil Nadu">Tamil Nadu</option>
+								    <option value="Tripura">Tripura</option>
+								    <option value="Uttaranchal">Uttaranchal</option>
+								    <option value="Uttar Pradesh">Uttar Pradesh</option>
+								    <option value="West Bengal">West Bengal</option>
 								</select>
 							</div>	
 
 						 	<div class="form-group">
-						    	<textarea class="form-control" id="projectsDescription" placeholder="Projects(If Any)"></textarea>
+						    	<textarea class="form-control" id="projectsDescription" placeholder="Projects(If Any)" name="projects"></textarea>
 						  	</div>
 						</form>
 					</div>
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary">Save changes</button>
+			        <button type="button" class="btn btn-primary" onclick="handleFormSave()">Save changes</button> <!-- data-dismiss="modal" -->
 			      </div>
 			    </div>
 			  </div>
 			</div>
 
-			<button type="submit" class="btn btn-primary submitBtn">Submit</button>
+			<button type="submit" class="btn btn-primary submitBtn" onclick="submitForm()">Submit</button>
 		</form>
 	</div>
 
@@ -159,7 +209,7 @@
 <!-- COUNTDOWN JS -->
 <script type="text/javascript" src="../../static/webapp/js/countdown.js"></script>
 <script type="text/javascript">
-	$('#clock').countdown('2019/8/15', function(event) {
+	$('#clock').countdown('2019/8/10', function(event) {
   	var $this = $(this).html(event.strftime(''
     + '<span>%D</span> days '
     + '<span>%H</span> hr '
@@ -168,23 +218,8 @@
 });
 </script>
 
-<script type="text/javascript">
-	function openModal(id){
-		$('input').val('');
-		$('select').val();
-		$('textarea').val('');
+<script type="text/javascript" src="../../static/webapp/js/form.js">
 
-		// console.log(id);
-		let x = $("#" + id).data("member");
-		// console.log(x);
-		
-		if(x == 1){
-			$("#modalTitle").text("Team Member " + x + " (Mentor)");
-		}else{
-			$("#modalTitle").text("Team Member " + x);
-		}
-		$("#modalLong").modal();
-	}
 </script>
 
 </body>

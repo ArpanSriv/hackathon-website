@@ -7,7 +7,7 @@
 	<!-- Bootstrap CSS-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<!-- Custom CSS -->
-	<link rel="stylesheet" type="text/css" href="../../static/webapp/styles.css">
+	<link rel="stylesheet" type="text/css" href="../../static/app/styles.css">
 	<!-- Noto Sans Font -->
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet"> 
 	<!-- PT Mono Font -->
@@ -32,9 +32,9 @@
 	<!-- NAVBAR -->
 	<nav class="navbar navbar-expand-lg sticky-top navbar-registration">
 		<div class="collapse navbar-collapse justify-content-start" style="margin-left: 20px;">
-			<img src="../../static/webapp/imgs/logo-3.png" style="height: 50px; margin-right: 20px;">
-			<img src="../../static/webapp/imgs/TataLogo.png" style="height: 50px; margin-right: 20px;">
-			<img src="../../static/webapp/imgs/TataMotorsLogo.png" style="height: 50px; margin-right: 20px;">		
+			<img src="../../static/app/imgs/logo-3.png" style="height: 50px; margin-right: 20px;">
+			<img src="../../static/app/imgs/TataLogo.png" style="height: 50px; margin-right: 20px;">
+			<img src="../../static/app/imgs/TataMotorsLogo.png" style="height: 50px; margin-right: 20px;">		
 		</div>
 		<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
 		    <ul class="navbar-nav navbar-custom">
@@ -62,19 +62,19 @@
 		<form>
 			<h4 class="form-title">Startup Details</h3>
 			<div class="form-group">
-			    <input type="text" class="form-control" id="startupName" placeholder="Startup Name">
+			    <input type="text" class="form-control" id="startupName" placeholder="Startup Name" required="true">
 			</div>
 			<div class="form-group">
-			    <input type="email" class="form-control" id="startupEmail" placeholder="Startup Email">
+			    <input type="email" class="form-control" id="startupEmail" placeholder="Startup Email" required="true">
 			</div>
 			<div class="form-group">
-		    	<input type="date" class="form-control" id="startupDate" placeholder="Date of Startup Registration">
+		    	<input type="date" class="form-control" id="startupDate" placeholder="Date of Startup Registration" required="true">
 		 	</div>
 		 	<div class="form-group">
-		    	<input type="text" class="form-control" id="startupProduct" placeholder="Technology Domain">
+		    	<input type="text" class="form-control" id="startupProduct" placeholder="Technology Domain" required="true">
 		  	</div>
 			<div class="form-group">
-			    <textarea class="form-control" id="startupDescription" placeholder="Startup Description"></textarea>
+			    <textarea class="form-control" id="startupDescription" placeholder="Startup Description" required="true"></textarea>
 			</div>
 		
 			<h4 class="form-title">Team Details</h3>
@@ -107,23 +107,23 @@
 						<form>
 							<h4 class="form-title">Personal Details</h4>
 							<div class="form-group">
-							    <input type="text" class="form-control" id="firstName" placeholder="First Name">
+							    <input type="text" class="form-control" id="firstName" placeholder="First Name" required="true">
 							</div>
 							<div class="form-group">
-							    <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+							    <input type="text" class="form-control" id="lastName" placeholder="Last Name" required="true">
 							</div>
 							<div class="form-group">
-						    	<input type="date" class="form-control" id="dateOfBirth" placeholder="Date of Birth">
+						    	<input type="date" class="form-control" id="dateOfBirth" placeholder="Date of Birth" required="true">
 						 	</div>
 							<div class="form-group">
-							    <input type="email" class="form-control" id="personalEmail" placeholder="Personal Email">
+							    <input type="email" class="form-control" id="personalEmail" placeholder="Personal Email" required="true">
 							</div>
 							<div class="form-group">
-							    <input type="text" class="form-control" id="personalPhone" placeholder="Mobile Number">
+							    <input type="text" class="form-control" id="personalPhone" placeholder="Mobile Number" required="true">
 							</div>
 							
 							<div class="form-group">
-								<select class="custom-select" id="citySelect">
+								<select class="custom-select" id="citySelect" required="true">
 								  <option selected>City</option>
 								  <option value="1">One</option>
 								  <option value="2">Two</option>
@@ -132,7 +132,7 @@
 							</div>
 
 							<div class="form-group">
-								<select class="custom-select" id="stateSelect">
+								<select class="custom-select" id="stateSelect" required="true">
 								  <option selected>State</option>
 								  <option value="1">One</option>
 								  <option value="2">Two</option>
@@ -165,9 +165,9 @@
 	</div>
 
 <!-- COUNTDOWN JS -->
-<script type="text/javascript" src="../../static/webapp/js/countdown.js"></script>
+<script type="text/javascript" src="../../static/app/js/countdown.js"></script>
 <script type="text/javascript">
-	$('#clock').countdown('2019/8/15', function(event) {
+	$('#clock').countdown('2019/8/10', function(event) {
   	var $this = $(this).html(event.strftime(''
     + '<span>%D</span> days '
     + '<span>%H</span> hr '

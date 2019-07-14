@@ -16,12 +16,22 @@ let memberFields = {
     'projects': 'Projects',
 };
 
+let teamName;
+let teamEmail;
+
 
 function openModal(id) {
     console.log("Open Modal called: ID : " + id);
 
+    // Before clearing the form, make sure teamName and teamEmail remain there if filled already.
+    teamName = getInputValue('teamName');
+    teamEmail = getInputValue('teamEmail');
+
     // Clear the form before opening
     $('#hidden-reset').trigger('click');
+
+    $("input[name='teamName']").val(teamName);
+    $("input[name='teamEmail']").val(teamEmail);
 
     let $buttonClicked = $("#" + id);
 
@@ -31,22 +41,13 @@ function openModal(id) {
 
         if (memberDetails[postDot].firstName !== undefined) {
 
-            // let firstName = memberDetails.postDot.firstName;
-            // let lastName...
-
-            // $('').val...
-
+            // Fill up with data
             for (let field in memberFields) {
                 $(`[name=${field}]`).val(memberDetails[postDot][field]);
             }
         }
     } else {
-
-        // console.log(id);
         let x = $buttonClicked.data("member");
-
-        console.log("id " + x);
-        // console.log(x);
 
         currentMember = x;
 
@@ -112,23 +113,19 @@ function handleFormSave() {
 }
 
 function submitForm() {
-    // If members 1 and 2 are valid
-    // if (memberDetails['member1'].firstName === undefined || memberDetails['member2'].firstName === undefined) {
-    //     $.toast({
-    //             heading: 'Error',
-    //             text: `A minimum of two members is required for registration.`,
-    //             showHideTransition: 'fade',
-    //             icon: 'error',
-    //             hideAfter: 10000,
-    //         });
-    // }
 
     let progressToast = $.toast({
         heading: "Info",
-        text: "Please wait while we validate your data...",
+        text: "<strong>Please wait while we validate your data...</strong>",
         icon: 'information',
         hideAfter: 300000,
     });
+
+    let json_to_send = {
+        'teamName': teamName,
+        'teamEmail': teamEmail,
+        'memberDetails': memberDetails
+    };
 
     $.ajax({
         url: 'http://localhost:8000/app/register/individual',
@@ -137,18 +134,30 @@ function submitForm() {
         contentType: 'application/json',
         headers: {'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value},
         success: function (data) {
-            if (data.status === 'SUCCESSFUL') {
-                progressToast.text("Successfull........")
-            }
+            console.log("DATA: " + data);
 
-            else {
-                alert(data)
+            // Precautionary.
+            if (data['correct'] === '1') {
+                // progressToast.text(data['message'])
+                progressToast.update({
+                    heading: 'Success',
+                    text: data['message'],
+                    icon: 'information',
+                    hideAfter: false
+                });
             }
         },
-        // error: function (data) {
-        //     alert("Error Occured: " + data);
-        // },
-        data: JSON.stringify(memberDetails)
+        error: function (data) {
+            if (data['correct'] === '0') {
+                progressToast.update({
+                    heading: 'Success',
+                    text: data['message'],
+                    icon: 'information',
+                    hideAfter: false
+                });
+            }
+        },
+        data: JSON.stringify(json_to_send)
     });
 }
 

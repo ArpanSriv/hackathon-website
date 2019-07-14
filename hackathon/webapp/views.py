@@ -2,7 +2,7 @@
 import json
 import os
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseBadRequest
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
@@ -72,10 +72,27 @@ def registration_individual(request):
     if request.method == 'POST':
         json_data = json.loads(request.body.decode("utf-8"))
 
-        if json_data.member1 is None and json_data.member2 is None:
-            return {
-                'status': 'fail'
+        print(json_data)
+
+        if 'member1' not in json_data['memberDetails'] and 'member2' not in json_data['memberDetails']:
+            print('member 1 and member 2 not found.')
+
+            resp = {
+                'correct': '0',
+                'message': 'Member 1 and Member 2 are required.'
             }
+
+            return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
+
+        elif 'member1' in json_data['memberDetails'] and 'member2' in json_data['memberDetails']:
+            print('member 1 and member 2 found.')
+
+            resp = {
+                'correct': '1',
+                'message': 'Validation OK'
+            }
+
+            return HttpResponse(json.dumps(resp), content_type='application/json')
         # return received_json_data
 
     return render(request, 'webapp/individualregistration.html')

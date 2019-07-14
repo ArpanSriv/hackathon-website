@@ -67,13 +67,15 @@ def registration(request):
         return render(request, 'webapp/registration.html')
     # return render(request, 'webapp/registration.html')
 
-@csrf_exempt
+
 def registration_individual(request):
     if request.method == 'POST':
-        received_json_data = json.loads(request.body.decode("utf-8"))
+        json_data = json.loads(request.body.decode("utf-8"))
 
-        print("Recieved::: " + str(received_json_data))
-
+        if json_data.member1 is None and json_data.member2 is None:
+            return {
+                'status': 'fail'
+            }
         # return received_json_data
 
     return render(request, 'webapp/individualregistration.html')
@@ -88,9 +90,9 @@ def registration_startup(request):
     return render(request, 'webapp/startupregistration.html')
 
 
-
 def privacy_policy(request):
     return render(request, 'webapp/privacy.html')
+
 
 def about_us(request):
     return render(request, 'webapp/aboutus.html')

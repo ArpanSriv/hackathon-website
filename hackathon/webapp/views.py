@@ -60,9 +60,9 @@ def registration(request):
         persons.append(person)
         persons.append(person)
 
-        update_google_sheets(team_name, persons)
+        # update_google_sheets(team_name, persons)
 
-        upload_on_firebase('individuals', team_name, persons)
+        # upload_on_firebase('individuals', team_name, persons)
 
         return render(request, 'webapp/registration.html')
     # return render(request, 'webapp/registration.html')

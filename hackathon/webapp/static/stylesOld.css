@@ -309,7 +309,7 @@ a:hover{
  	background-image: url("../../static/app/imgs/DrKetan.png");
  	height: 360px;
  	background-repeat: no-repeat;
- 	background-size: ;
+ 	background-size: contain;
  }
 
  #pradeepImage{

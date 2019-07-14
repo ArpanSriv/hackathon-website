@@ -7,9 +7,15 @@ a:hover{
 	padding-bottom: 60px;
 }
 
+.logoBar{
+	background: #FFF;
+}
+
 .navbar-bg-custom{
-	background: linear-gradient(304.06deg, #06054B 0%, #3301B7 100.66%);
+	/*background: linear-gradient(304.06deg, #06054B 0%, #3301B7 100.66%);*/
+	background: #FFF;
 	height: 80px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .navbar-custom{
@@ -27,12 +33,12 @@ a:hover{
 }
 
 #link-color:hover{
-	color: white;
+	color: #000;
 	opacity: 1;
 }
 
 #link-color{
-	color: white;
+	color: #000;
 	opacity: 0.65;
 	font-family: 'Noto Sans',sans-serif;
 	text-transform: uppercase;
@@ -66,7 +72,8 @@ a:hover{
 
 .jumbotron{
 	background: transparent;
-	margin-bottom: 70px;
+	margin-bottom: 20px;
+	padding-top: 50px;
 }
 
 .img-div img{
@@ -111,16 +118,18 @@ a:hover{
 }
 
 #cohost{
-	font-family: 'Overpass Mono', monospace;
+	font-family: 'Open Sans', sans-serif;
 	font-style: normal;
-	font-weight: bold;
-	font-size: 30px;
-	line-height: 46px;
+	/*font-weight: bold;*/
+	font-size: 24px;
+	line-height: 30px;
 	display: flex;
 	align-items: center;
-	text-align: center;
+	/*text-align: center;*/
 	color: #FFFFFF;
 	margin-top: 50px;
+	margin-bottom: 50px;
+	/*text-transform: uppercase;*/
 }
 
 .registerBtn{
@@ -131,24 +140,27 @@ a:hover{
   	text-decoration: none;
   	margin-top: 50px;
   	cursor: pointer;
-  	width: 471px;
-	height: 88px;
+  	width: 400px;
+	height: 70px;
 	font-family: Oxygen Mono;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 28px;
+	font-size: 19px;
 	line-height: 37px;
 	display: flex;
 	align-items: center;
 	text-align: center;
 	justify-content: center;
 	text-transform: uppercase;
+    box-shadow: 16px 16px 4px 0px #0b024d;
 }
 
 .registerBtn:hover{
 	text-decoration: none;
 	color: #FFF;
-	background-color: #FF3400
+	background-color: #FF3400;
+	transform: translate(8px, 8px);
+	box-shadow: 8px 8px 4px 0px #0b024d;
 }
 
 .registration-box{
@@ -220,7 +232,7 @@ a:hover{
 	line-height: 40px;
 	display: flex;
 	align-items: center;
-	text-align: justify;
+	text-align: start;
 }
 
 .blue-box{
@@ -250,8 +262,9 @@ a:hover{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 38px;
-	line-height: 74px;
+	line-height: 50px;
 	text-align: center;
+	height: 100px;
  }
 
 #participateInfo{
@@ -292,6 +305,55 @@ a:hover{
 	color: #000000;
  }
 
+  #ketanImage{
+ 	background-image: url("../../static/app/imgs/DrKetan.png");
+ 	height: 360px;
+ 	background-repeat: no-repeat;
+ 	background-size: contain;
+ }
+
+ #pradeepImage{
+ 	background-image: url("../../static/app/imgs/Pradeep2.jpg");
+ 	height: 400px;
+ 	background-repeat: no-repeat;
+ 	background-size: contain;
+ }
+
+ #sureshImage{
+ 	background-image: url("../../static/app/imgs/psuresh.jpg");
+ 	height: 360px;
+ 	background-repeat: no-repeat;
+ 	background-size: contain;
+ }
+
+ #balajiImage{
+ 	background-image: url("../../static/app/imgs/pBbalaji.jpg");
+ 	height: 360px;
+ 	background-repeat: no-repeat;
+ 	background-size: contain;
+ }
+
+ #aasifImage{
+ 	background-image: url("../../static/app/imgs/DrKetan.jpg");
+ 	height: 360px;
+ 	background-repeat: no-repeat;
+ 	background-size: contain;
+ }
+
+ #aratiImage{
+ 	background-image: url("../../static/app/imgs/arati.jpg");
+ 	height: 360px;
+ 	background-repeat: no-repeat;
+ 	background-size: contain;
+ }
+
+ #raheeImage{
+ 	background-image: url("../../static/app/imgs/rahee.jpg");
+ 	height: 360px;
+ 	background-repeat: no-repeat;
+ 	background-size: contain;
+ }
+
  .judgesImage{
  	background-image: url("../../static/app/imgs/DrKetan.png");
  	height: 360px;
@@ -307,7 +369,7 @@ a:hover{
 .judgeInfoBox{
 	position: absolute;
 	bottom: 0;
-	padding-left: 20px;
+	padding-left: 12px;
 	padding-bottom: 10px;
 }
 
@@ -316,14 +378,16 @@ a:hover{
  	justify-content: start;
  	margin-bottom: 0;
  	line-height: 30px !important;
+ 	font-size: 20px !important;
  }
  
 .judgeInfoDesignation{
  	color: #FFF;
  	justify-content: start;
  	margin-bottom: 0;
+ 	margin-right: 10px;
  	line-height: 30px !important;
- 	font-size: 20px !important;
+ 	font-size: 16px !important;
  }
 
  #event-registration-title{
@@ -440,6 +504,7 @@ textarea{
 	padding: 10px;
 	margin-bottom: 0;
 	margin-top: 10px;
+	padding-left: 0;
 }
 
 .footer-link li{
@@ -485,4 +550,85 @@ hr{
 #footer-note{
 	justify-content: center;
 	margin-top: 30px;
+}
+
+.support{
+	padding: 10px;
+	color: #FFF;
+}
+
+/*.support p{
+	margin-top: 10px;
+	margin-bottom: 0px;
+	font-family: 'Noto Sans', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	line-height: 33px;
+	font-variant: small-caps;
+}*/
+
+#code{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+	font-variant: none;
+	color: #FFF;
+}
+
+#code a{
+	color: #FFF;
+	opacity: 0.65;
+}
+
+#code a:hover{
+	opacity: 1;
+}
+
+.links{
+	padding: 10px;
+	color: #FFF;
+}
+
+.links p{
+	margin-top: 10px;
+	margin-bottom: 0px;
+	font-family: 'Noto Sans', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	line-height: 33px;
+	font-variant: small-caps;
+}
+
+#privacy{
+	color: #FFF;
+	opacity: 0.65;
+}
+
+#privacy:hover{
+	opacity: 1;
+}
+
+.accordion i{
+	margin-right: 10px;
+}
+
+.card-header{
+	cursor: pointer;
+}
+
+#privacy-title{
+ 	font-family: 'Open Sans', sans-serif;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 40px;
+	line-height: 74px;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	letter-spacing: 0.055em;
+	text-transform: uppercase;
+	font-variant: small-caps;
+	color: #000000;
+	margin-bottom: 0;
 }

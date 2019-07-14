@@ -61,7 +61,7 @@ def registration(request):
         persons.append(person)
 
         # update_google_sheets(team_name, persons)
-
+        #
         # upload_on_firebase('individuals', team_name, persons)
 
         return render(request, 'webapp/registration.html')
@@ -89,7 +89,11 @@ def registration_startup(request):
 
 
 
+def privacy_policy(request):
+    return render(request, 'webapp/privacy.html')
 
+def about_us(request):
+    return render(request, 'webapp/aboutus.html')
 
 
 

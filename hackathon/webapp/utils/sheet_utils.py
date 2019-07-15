@@ -22,8 +22,8 @@ def convert_member_json_to_array_individual(reg_no, team_name, team_email, membe
     return member_array
 
 
-def convert_member_json_to_array_startup(reg_no, startup_name, startup_email, startup_dor, startup_domain, startup_desc, member):
-    member_array = [reg_no, startup_name, startup_email, startup_dor, startup_domain, startup_desc]
+def convert_member_json_to_array_startup(reg_no, team_name, startup_name, startup_email, startup_dor, startup_domain, startup_desc, member):
+    member_array = [reg_no, team_name, startup_name, startup_email, startup_dor, startup_domain, startup_desc]
 
     for member_field in member:
         member_array.append(member[member_field])
@@ -69,6 +69,7 @@ def update_google_sheets(type, reg_no, team_data):
 
     elif type == STARTUP:
 
+        team_name = team_data['teamName']
         startup_name = team_data['startupName']
         startup_email = team_data['startupEmail']
         startup_dor = team_data['startupDOR']
@@ -82,7 +83,7 @@ def update_google_sheets(type, reg_no, team_data):
         }
 
         for member_no in members:
-            member_converted = convert_member_json_to_array_startup(reg_no, startup_name, startup_email, startup_dor, startup_domain, startup_desc, members[member_no])
+            member_converted = convert_member_json_to_array_startup(reg_no, team_name, startup_name, startup_email, startup_dor, startup_domain, startup_desc, members[member_no])
             print(member_converted)
             body['values'].append(member_converted)
 
@@ -92,7 +93,7 @@ def update_google_sheets(type, reg_no, team_data):
         # Merge the cells v1
         updated_range = result.get('updates').get('updatedRange')
 
-        for char in 'ABCDEF':
+        for char in 'ABCDEFG':
             range_to_merge = re.sub(r'([A-Z])(\d)', repl=f'{char}\\2', string=updated_range)
             merge_columns(range_to_merge)
 

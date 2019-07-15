@@ -9,6 +9,7 @@ from django.template import loader
 from .utils.constants import *
 from .utils.firebase_utils import upload_on_firebase
 from .utils.sheet_utils import update_google_sheets
+from .utils.progress_util import *
 
 
 # Landing Page
@@ -83,12 +84,25 @@ def registration_individual(request):
     return render(request, 'webapp/individualregistration.html')
 
 
+def poll_state(request):
+    """ A view to report the progress to the user """
+    data = 'Fail'
+    if request.is_ajax():
+        progress_id = request.GET.get('Progress-Id')
+        data = {
+            progress: get_progress(progress_id)
+        }
+
+        json_data = json.dumps(data)
+        return HttpResponse(json_data, content_type='application/json')
+
+
 def registration_startup(request):
     if request.method == 'POST':
         json_data = json.loads(request.body.decode("utf-8"))
 
         resp = {
-            'correct': '0',
+            'correct': '1',
             'message': 'Internal Server Error.'
         }
 
@@ -147,20 +161,31 @@ def registration_startup(request):
                 'message': 'Data found sufficient.'
             }
 
-            # Upload to ftp
-            FTP_USERNAME = "django_auto@aihackathon.in"
+            progress_id = generate_progress_id()
+            init_progress(progress_id)
+            # # Upload to ftp
+            # FTP_USERNAME = "django_auto@aihackathon.in"
 
             reg_no = generate_reg_no(STARTUP)
 
             print("Uploading to sheets...")
 
+            # update_progress(progress_id, 30)
             # Upload the Data on Spreadsheet and Firebase :p
             update_google_sheets(STARTUP, reg_no, json_data)
+
+            # update_progress(progress_id, 70)
+
             upload_on_firebase(STARTUP, json_data)
+
+            # update_progress(progress_id, 95)
 
             sendmail(json_data['startupName'], reg_no, json_data['startupEmail'])
 
-            return HttpResponse(json.dumps(resp), content_type='application/json')
+            resp['teamName'] = json_data['teamName']
+            resp['teamRegNo'] = reg_no
+
+        return HttpResponse(json.dumps(resp), content_type='application/json')
 
     return render(request, 'webapp/startupregistration.html')
 
@@ -214,3 +239,15 @@ def generate_reg_no(type):
 
     elif type == STARTUP:
         return "S-" + reg
+
+
+def generate_progress_id():
+    import string
+    import random
+    min_char = 8
+    max_char = 10
+
+    allchar = string.ascii_uppercase + string.digits + string.punctuation
+    reg = "".join(random.choice(allchar) for x in range(random.randint(min_char, max_char)))
+
+    return reg

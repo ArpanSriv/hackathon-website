@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>AIHackathon</title>
+    <title>AIHackathon - Individual Registration</title>
     {% load static %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -38,58 +38,7 @@
 
 <body>
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-bg-custom sticky-top">
-        <div class="logoBar">
-            <div class="container-fluid">
-                <div class="row" style="justify-content: space-around; padding-top: 10px;">
-                    <div class="col-4" style="text-align: start;">
-                        <a href="https://www.tatamotors.com/">
-                            <img src="../../static/webapp/imgs/TataMotorsLogo.png" style="height: 50px; margin-right: 20px;">                           
-                        </a>
-                    </div>
-                    <div class="col-4" style="text-align: center;">
-                        <a href="https://www.sitpune.edu.in/">
-                            <img src="../../static/webapp/imgs/logo-3.png" style="height: 50px;">
-                            <img src="../../static/webapp/imgs/SIT_Logo_new.png" style="height: 50px;">
-                        </a>
-                    </div>
-                    <div class="col-4" style="text-align: end;">
-                        <a href="https://www.tata.com/">
-                            <img src="../../static/webapp/imgs/TataLogo.png" style="height: 50px; margin-right: 20px;">
-                        </a>
-                    </div>
-                </div>
-                <div class="row" style="margin-top: 5px;">
-                    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                        <ul class="navbar-nav navbar-custom">
-                          <li class="nav-item nav-item-link">
-                            <a class="nav-link" id="link-color" href="{% url 'index' %}">Home</a>
-                          </li>
-                          <li class="nav-item nav-item-link">
-                            <a class="nav-link" id="link-color" href="{% url 'about_us' %}">About Us</a>
-                          </li>
-                          <li class="nav-item nav-item-link">
-                            <a class="nav-link" id="link-color" href="{% url 'contact_us' %}">Contact Us</a>
-                          </li>
-                        </ul>
-                    </div>  
-                </div>
-            </div>
-        </div>
-        <!-- <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-            <ul class="navbar-nav navbar-custom">
-              <li class="nav-item nav-item-link">
-                <a class="nav-link" id="link-color" href="landing.html">Home</a>
-              </li>
-              <li class="nav-item nav-item-link">
-                <a class="nav-link" id="link-color" href="aboutus.html">About Us</a>
-              </li>
-              <li class="nav-item nav-item-link">
-                <a class="nav-link" id="link-color" href="contactus.html">Contact Us</a>
-              </li>
-            </ul>
-        </div>   -->
-</nav>
+{% include "webapp/navbar.html" %}
 
 <div class="registration-box">
     <h1 id="startupRegistrationTitle">Individual Registration</h1>
@@ -111,7 +60,7 @@
                     <p>Please note that users cannot access the AI Hackathon portal without being registered.</p>
                     <p><strong>PLEASE READ THE FOLLOWING TERMS OF USE AND DISCLAIMERS CAREFULLY BEFORE USING THIS WEB SITE</strong> (this &quot;Site&quot;).</p>
                     <p><strong>Agreement between User And Tata Motors Limited.</strong></p>
-                    <p>By accessing or using this Site, you [or “User”] agree to these terms of use, conditions and all applicable laws. If you do not agree to these terms you may not use this Site; in such case, please click “NO” below.<strong> </strong>This Site <u><a href="http://www.aihackathon.in" target="_blank">www.aihackathon.in</a></u> operated by SIT<strong>,</strong> Pune is offered to you based on your unconditional acceptance of all its Terms and Conditions as set out below.            </p>
+                    <p>By accessing or using this Site, you [or “User”] agree to these terms of use, conditions and all applicable laws. If you do not agree to these terms you may not use this Site; in such case, please click “NO” below.<strong> </strong>This Site <u><a href="http://www.aihackathon.in" target="_blank">www.aihackathon.in</a></u> operated by Symbiosis Institute of Technology<strong>,</strong> Pune is offered to you based on your unconditional acceptance of all its Terms and Conditions as set out below.            </p>
                     <p><strong>You will have indicated your unconditional acceptance by</strong>:   </p>
                     <ol><li>Accessing or using this Site or a part thereof</li>
                     <li>Your acting upon any invitation or scheme provided in the Web Site, in which case the special terms and conditions [“Additional Conditions”] attached to such invitation or scheme would apply in addition to these Terms and Conditions. In the event that any of the terms and conditions, contained herein conflict with the additional conditions contained within any particular scheme or invitation, then the additional conditions shall control</li></ol>
@@ -184,7 +133,7 @@
                             
                             <li>You undertake that all content (including any files or other documents) that you upload on the [<u><a href="http://www.aihackathon.in" target="_blank">www.aihackathon.in</a></u>] website shall be free of viruses or other harmful content and no information/material/document which is provided by you on this website or otherwise to Symbiosis Institute of Technology or any of its affiliate in relation to a challenge posted on this Site, shall: (i) breach any third party right including intellectual property rights and/or confidentiality obligation; and (ii) breach export control laws of any relevant jurisdiction. You also undertake that you will not provide any information which you are prohibited/restricted from disclosing (whether under law, contract or otherwise) and the all information provided by you will be capable of being used by Symbiosis Institute of Technology and Tata Motors Limited pursuant to /under the challenge posted on the Site</li>
 
-                            <li>Symbiosis Institute of Technology will not be under any obligation to inform the Users if their proposal is not accepted or to disclose the reasons for rejection. The decision of Tata Motors Limited on all aspects concerning the relevant challenge shall be final and binding on the User. The User hereby agrees not to make any claims against Symbiosis Institute of Technology in relation to any grievances or complaints with regard to the decisions of SIT</li>
+                            <li>Symbiosis Institute of Technology will not be under any obligation to inform the Users if their proposal is not accepted or to disclose the reasons for rejection. The decision of Tata Motors Limited on all aspects concerning the relevant challenge shall be final and binding on the User. The User hereby agrees not to make any claims against Symbiosis Institute of Technology in relation to any grievances or complaints with regard to the decisions of Symbiosis Institute of Technology</li>
                         </ol>
                     <p><strong>Indemnification.</strong></p>
                     <p>You agree to indemnify, defend, and hold harmless Tata Motors Limited and Symbiosis Institute of Technology ,  its officers, directors, employees, agents, licensors and suppliers, other users of the [<u><a href="http://www.aihackathon.in" target="_blank">www.aihackathon.in</a></u>] website (collectively the &quot;Indemnified persons&quot;) from and against all losses, expenses, damages and costs, that may be suffered by the indemnified persons, including reasonable attorneys&#39; fees, resulting from any violation of these terms and conditions or any activity related to your Internet account (including negligent or wrongful conduct) or any third party claim/action/proceedings including but not limited to those relating to breach of intellectual property rights or confidentiality, by You or any other person accessing the Site using your Internet account.</p>
@@ -390,50 +339,7 @@
     <div id="clock" style="color: #000;"></div>
 </div>
 
-<div class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-4">
-                    <div class="follow">
-                        <p>Help Desk</p>
-                        <p id="code">Still got some queries? Mail us at <a href="mailto:aihackathon@sitpune.edu.in?Subject=Hackathon%20Query" target="_top">aihackathon@sitpune.edu.in</a></p>                      
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="follow text-center">
-                        <p>Follow Us On</p>
-                        <!-- <img src="../../static/webapp/imgs/facebook.svg" style="height: 40px; margin-right: 10px;">
-                        <img src="../../static/webapp/imgs/instagram.svg" style="height: 40px; margin-right: 10px;">
-                        <img src="../../static/webapp/imgs/linkedin.svg" style="height: 40px; margin-right: 10px;">
-                        <img src="../../static/webapp/imgs/google-plus.svg" style="height: 40px; margin-right: 10px;"> -->
-                        <i class="lni-facebook" style="font-size: 25px; margin-right: 10px;"></i>
-                        <i class="lni-instagram" style="font-size: 25px; margin-right: 10px;"></i>
-                        <i class="lni-twitter" style="font-size: 25px; margin-right: 10px;"></i>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="follow text-center">
-                        <p>Quick Links</p>
-                        <ul class="footer-link">
-                            <li><a href="{% url 'index' %}">Home</a></li>
-                            <li><a href="{% url 'about_us' %}">About Us</a></li>
-                            <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
-                            <li><a href="{% url 'registration' %}">Register</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-2">
-                    <p style="margin-bottom: 0;"><a href="{% url 'privacy_policy' %}" id="privacy">Privacy policy</a></p>
-                </div>
-            </div>
-            <hr>
-            <div class="row" id="footer-note">
-                <p>©2019. Designed by SIT Final Year CS Students Arpan Srivastava & Ryan Miranda.</p>
-            </div>
-        </div>
-</div>
+{% include "webapp/footer.html" %}
 
 <!-- COUNTDOWN JS -->
 <script type="text/javascript" src="../../static/webapp/js/countdown.js"></script>

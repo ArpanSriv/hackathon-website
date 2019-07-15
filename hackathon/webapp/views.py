@@ -217,6 +217,7 @@ def about_us(request):
 def contact_us(request):
     return render(request, 'webapp/contactus.html')
 
-
+def thank_you(request):
+    return render(request, 'webapp/thankyou.html')
 
 

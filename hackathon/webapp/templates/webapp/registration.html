@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>AIHackathon - Registration</title>
+	{% load static %}
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Bootstrap CSS-->
@@ -26,6 +27,7 @@
 <body>
 	<!-- NAVBAR -->
 	{% include "webapp/navbar.html" %}
+
 	<div style="margin-top: 70px;">
 		<h1 id="event-registration-title">Hackathon Registration</h1>
 	</div>
@@ -39,7 +41,7 @@
 			<div class="col-4">
 				<a href="{% url 'registration_individual' %}">
 					<!-- <a href="registration_individual.html"> -->
-					<img src="../../static/webapp/imgs/teamwork.svg" id="eligibilityImage">
+					<img src="{% static 'webapp/imgs/teamwork.svg' %}" id="eligibilityImage">
 					<h4 id="individualTitle">Individuals</h4>
 				</a>
 			</div>
@@ -48,7 +50,7 @@
 			</div>
 			<div class="col-4">
 				<a href="{% url 'registration_startup' %}">
-					<img src="../../static/webapp/imgs/flat.svg" id="eligibilityImage">
+					<img src="{% static 'webapp/imgs/flat.svg' %}" id="eligibilityImage">
 					<h4 id="startupTitle">Startups</h4>
 				</a>
 			</div>

@@ -126,7 +126,7 @@ a:hover{
 	/*font-weight: bold;*/
 	font-size: 24px;
 	line-height: 30px;
-	display: flex;
+	/*display: flex;*/
 	align-items: center;
 	/*text-align: center;*/
 	color: #FFFFFF;
@@ -313,49 +313,55 @@ a:hover{
  	background-image: url("../../static/webapp/imgs/DrKetan.png");
  	height: 360px;
  	background-repeat: no-repeat;
- 	background-size: contain;
+ 	background-size: cover;
+ 	background-position-x: center; 
  }
 
  #pradeepImage{
  	background-image: url("../../static/webapp/imgs/Pradeep2.jpg");
  	height: 360px;
  	background-repeat: no-repeat;
- 	background-size: contain;
+ 	background-size: cover;
+ 	background-position-x: center; 
  }
 
  #sureshImage{
  	background-image: url("../../static/webapp/imgs/psuresh.jpg");
  	height: 360px;
  	background-repeat: no-repeat;
- 	background-size: contain;
+ 	background-size: cover;
+ 	background-position-x: center; 
  }
 
  #balajiImage{
  	background-image: url("../../static/webapp/imgs/pBbalaji.jpg");
  	height: 360px;
  	background-repeat: no-repeat;
- 	background-size: contain;
+ 	background-size: cover;
  }
 
  #aasifImage{
- 	background-image: url("../../static/webapp/imgs/aasif.jpg");
+ 	background-image: url("../../static/webapp/imgs/aasif2.jpg");
  	height: 360px;
  	background-repeat: no-repeat;
- 	background-size: contain;
+ 	background-size: cover;
+ 	background-position-x: center;
  }
 
  #aratiImage{
  	background-image: url("../../static/webapp/imgs/arati.jpg");
  	height: 360px;
  	background-repeat: no-repeat;
- 	background-size: contain;
+ 	background-size: cover;
+ 	background-position-x: center; 
  }
 
  #raheeImage{
  	background-image: url("../../static/webapp/imgs/rahee.jpg");
  	height: 360px;
  	background-repeat: no-repeat;
- 	background-size: contain;
+ 	background-size: cover;
+ 	background-position-x: center;
  }
 
  .judgesImage{

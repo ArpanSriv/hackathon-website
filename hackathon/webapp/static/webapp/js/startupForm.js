@@ -14,6 +14,7 @@ let memberFields = {
     'experienceDesc': 'Experience',
 };
 
+let teamName;
 let startupName;
 let startupEmail;
 let startupDOR;
@@ -25,6 +26,7 @@ function openModal(id) {
     console.log("Open Modal called: ID : " + id);
 
     // Before clearing the form, make sure teamName and teamEmail remain there if filled already.
+    teamName = getInputValue('teamName');
     startupName = getInputValue('startupName');
     startupEmail = getInputValue('startupEmail');
     startupDOR = getInputValue('startupDOR');
@@ -34,6 +36,7 @@ function openModal(id) {
     // Clear the form before opening
     $('#hidden-reset').trigger('click');
 
+    $("[name='teamName']").val(teamName);
     $("[name='startupName']").val(startupName);
     $("[name='startupEmail']").val(startupEmail);
     $("[name='startupDOR']").val(startupDOR);
@@ -121,6 +124,7 @@ function handleFormSave() {
 
 function submitForm() {
 
+    teamName = getInputValue('teamName');
     startupName = getInputValue('startupName');
     startupEmail = getInputValue('startupEmail');
     startupDOR = getInputValue('startupDOR');
@@ -135,6 +139,7 @@ function submitForm() {
     });
 
     let json_to_send = {
+        'teamName': teamName,
         'startupName': startupName,
         'startupEmail': startupEmail,
         'startupDOR' : startupDOR,

@@ -149,7 +149,6 @@ a:hover{
 
 .registerBtn{
 	background-color: #E73001;
-  	border: none;
   	color: white;
   	padding: 15px 32px;
   	text-decoration: none;
@@ -158,16 +157,14 @@ a:hover{
   	width: 400px;
 	height: 70px;
 	font-family: Oxygen Mono;
-	font-style: normal;
-	font-weight: normal;
 	font-size: 19px;
-	line-height: 37px;
 	display: flex;
 	align-items: center;
-	text-align: center;
 	justify-content: center;
 	text-transform: uppercase;
     box-shadow: 16px 16px 4px 0px #0b024d;
+    position: relative;
+    overflow: hidden;
 }
 
 .registerBtn:hover{
@@ -176,8 +173,36 @@ a:hover{
 	background-color: #FF3400;
 	transform: translate(8px, 8px);
 	box-shadow: 8px 8px 4px 0px #0b024d;
+	cursor: pointer;
 }
 
+.registerBtn:hover:before{
+	opacity: 1; 
+	transform: translate(0,0);
+}
+
+.registerBtn:before{
+    content: attr(data-hover);
+    position: absolute;
+    top: 1.1em; 
+    left: 150px;
+    width: 100%;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translate(-100%,0);
+   	transition: all .2s ease-in-out;
+}
+
+.registerBtn:hover span{
+  	opacity: 0; 
+   	transform: translate(50%,0);
+   	transition: all .2s ease-out;
+}
+
+.registerBtn span{
+	transition: all .2s ease-in-out;
+}
+  
 .registration-box{
 	background: transparent;
 	margin: 0 auto;

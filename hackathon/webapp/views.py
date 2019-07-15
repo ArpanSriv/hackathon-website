@@ -203,10 +203,10 @@ def sendmail(team_name, reg_no, email_to_send):
 def generate_reg_no(type):
     import string
     import random
-    min_char = 8
-    max_char = 8
+    min_char = 5
+    max_char = 5
 
-    allchar = string.ascii_letters + string.punctuation + string.digits
+    allchar = string.ascii_uppercase + string.digits
     reg = "".join(random.choice(allchar) for x in range(random.randint(min_char, max_char)))
 
     if type == INDIVIDUAL:

@@ -73,6 +73,18 @@ a:hover{
 	transition: color 500ms;
 }
 
+#TataMotorsLogo{
+	height: 50px; 
+	margin-right: 20px; 
+	filter: brightness(0);
+}
+
+#TataLogo{
+	height: 50px; 
+	margin-right: 20px; 
+	filter: brightness(0);
+}
+
 .jumbotron{
 	background: transparent;
 	margin-bottom: 20px;
@@ -341,7 +353,7 @@ a:hover{
  }
 
  #aasifImage{
- 	background-image: url("../../static/webapp/imgs/aasif2.jpg");
+ 	background-image: url("../../static/webapp/imgs/Aasif-Malbari-Photo.jpg");
  	height: 360px;
  	background-repeat: no-repeat;
  	background-size: cover;

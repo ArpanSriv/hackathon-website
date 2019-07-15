@@ -131,7 +131,7 @@ def get_sheet_index_from_name(sheet_name) -> int:
     return ids[sheet_name]
 
 
-def merge_columns(range_to_merge):  # TODO
+def merge_columns(range_to_merge):
     service = get_spreadsheet_service()
 
     # Range Example: Individuals!A4:A5

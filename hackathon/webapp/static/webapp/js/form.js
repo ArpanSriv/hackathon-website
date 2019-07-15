@@ -145,6 +145,11 @@ function submitForm() {
                     icon: 'information',
                     hideAfter: false
                 });
+
+                window.setTimeout(function () {
+                    let url = $("#thank-you-url").attr("data-url");
+                    window.location = url
+                }, 2000)
             }
         },
         error: function (data) {

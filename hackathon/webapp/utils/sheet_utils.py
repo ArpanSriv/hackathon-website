@@ -6,15 +6,15 @@ from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 
-from .constants import INDIVIDUAL
+from .constants import INDIVIDUAL, STARTUP
 
 spreadsheet_id = "1Moej841MoASt-hqLi_CkumLj2-eQ6x0xrMm19tc9g2k"
 
 credentials = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'credentials.json')
 
 
-def convert_member_json_to_array(reg_no, team_name, member):
-    member_array = [reg_no, team_name]
+def convert_member_json_to_array_individual(reg_no, team_name, team_email, member):
+    member_array = [reg_no, team_name, team_email]
 
     for member_field in member:
         member_array.append(member[member_field])
@@ -22,7 +22,16 @@ def convert_member_json_to_array(reg_no, team_name, member):
     return member_array
 
 
-def update_google_sheets(type, reg_no, team_name, members):
+def convert_member_json_to_array_startup(reg_no, startup_name, startup_email, startup_dor, startup_domain, startup_desc, member):
+    member_array = [reg_no, startup_name, startup_email, startup_dor, startup_domain, startup_desc]
+
+    for member_field in member:
+        member_array.append(member[member_field])
+
+    return member_array
+
+
+def update_google_sheets(type, reg_no, team_data):
     service = get_spreadsheet_service()
 
     # Call the Sheets API
@@ -30,19 +39,21 @@ def update_google_sheets(type, reg_no, team_name, members):
 
     if type == INDIVIDUAL:
 
+        team_name = team_data['teamName']
+        team_email = team_data['teamEmail']
+        members = team_data['memberDetails']
+
         body = {
             'values': []
         }
 
         for member_no in members:
-            member_converted = convert_member_json_to_array(reg_no, team_name, members[member_no])
+            member_converted = convert_member_json_to_array_individual(reg_no, team_name, team_email, members[member_no])
             print(member_converted)
             body['values'].append(member_converted)
 
         result = sheet.values().append(
             spreadsheetId=spreadsheet_id, range="Individuals", body=body, valueInputOption="RAW").execute()
-
-        # print('{0} cells appended.'.format(result.get('updates').get('updatedRange')))
 
         # Merge the cells v1
         updated_range = result.get('updates').get('updatedRange')
@@ -50,13 +61,40 @@ def update_google_sheets(type, reg_no, team_name, members):
         # Replace with team name column name (A -> reg_no)
         reg_no_range = re.sub(r'([A-Z])(\d)', repl='A\\2', string=updated_range)
         team_name_no_range = re.sub(r'([A-Z])(\d)', repl='B\\2', string=updated_range)
-
-        # print("Range to put reg_no in : {0}".format(reg_no_range))
+        team_email_range = re.sub(r'([A-Z])(\d)', repl='C\\2', string=updated_range)
 
         merge_columns(reg_no_range)
         merge_columns(team_name_no_range)
+        merge_columns(team_email_range)
 
+    elif type == STARTUP:
 
+        startup_name = team_data['startupName']
+        startup_email = team_data['startupEmail']
+        startup_dor = team_data['startupDOR']
+        startup_domain = team_data['startupDomain']
+        startup_desc = team_data['startupDesc']
+
+        members = team_data['memberDetails']
+
+        body = {
+            'values': []
+        }
+
+        for member_no in members:
+            member_converted = convert_member_json_to_array_startup(reg_no, startup_name, startup_email, startup_dor, startup_domain, startup_desc, members[member_no])
+            print(member_converted)
+            body['values'].append(member_converted)
+
+        result = sheet.values().append(
+            spreadsheetId=spreadsheet_id, range="Startups", body=body, valueInputOption="RAW").execute()
+
+        # Merge the cells v1
+        updated_range = result.get('updates').get('updatedRange')
+
+        for char in 'ABCDEF':
+            range_to_merge = re.sub(r'([A-Z])(\d)', repl=f'{char}\\2', string=updated_range)
+            merge_columns(range_to_merge)
 
 
 def get_spreadsheet_service():
@@ -86,7 +124,11 @@ def get_spreadsheet_service():
 
 
 def get_sheet_index_from_name(sheet_name) -> int:
-    return ["Individuals", "Startups"].index(sheet_name)
+    ids = {
+        "Individuals": 0,
+        "Startups": 911829110
+    }
+    return ids[sheet_name]
 
 
 def merge_columns(range_to_merge):  # TODO
@@ -122,8 +164,6 @@ def merge_columns(range_to_merge):  # TODO
                 },
             ]
         }).execute()
-
-    print("Merge done.")
 
 
 def alpha2num(alpha):

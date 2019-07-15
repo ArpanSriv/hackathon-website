@@ -18,7 +18,7 @@ let startupName;
 let startupEmail;
 let startupDOR;
 let startupDomain;
-let startupDesc;
+let startupDesc = "DESC";
 
 
 function openModal(id) {
@@ -34,11 +34,11 @@ function openModal(id) {
     // Clear the form before opening
     $('#hidden-reset').trigger('click');
 
-    $("input[name='startupName']").val(startupName);
-    $("input[name='startupEmail']").val(startupEmail);
-    $("input[name='startupDOR']").val(startupDOR);
-    $("input[name='startupDomain']").val(startupDomain);
-    $("input[name='startupDesc']").val(startupDesc);
+    $("[name='startupName']").val(startupName);
+    $("[name='startupEmail']").val(startupEmail);
+    $("[name='startupDOR']").val(startupDOR);
+    $("[name='startupDomain']").val(startupDomain);
+    $("[name='startupDesc']").val(startupDesc);
 
     let $buttonClicked = $("#" + id);
 
@@ -121,6 +121,12 @@ function handleFormSave() {
 
 function submitForm() {
 
+    startupName = getInputValue('startupName');
+    startupEmail = getInputValue('startupEmail');
+    startupDOR = getInputValue('startupDOR');
+    startupDomain = getInputValue('startupDomain');
+    startupDesc = getInputValue('startupDesc');
+
     let progressToast = $.toast({
         heading: "Info",
         text: "<strong>Please wait while we validate your data...</strong>",
@@ -137,6 +143,8 @@ function submitForm() {
         'memberDetails': memberDetails
     };
 
+    console.log(json_to_send);
+
     $.ajax({
         url: 'http://localhost:8000/app/register/startup',
         type: 'post',
@@ -152,7 +160,7 @@ function submitForm() {
                 progressToast.update({
                     heading: 'Success',
                     text: data['message'],
-                    icon: 'information',
+                    icon: 'info',
                     hideAfter: false
                 });
             }
@@ -160,10 +168,10 @@ function submitForm() {
         error: function (data) {
             if (data['correct'] === '0') {
                 progressToast.update({
-                    heading: 'Success',
+                    heading: 'Failure',
                     text: data['message'],
-                    icon: 'information',
-                    hideAfter: false
+                    icon: 'error',
+                    hideAfter: 5000
                 });
             }
         },

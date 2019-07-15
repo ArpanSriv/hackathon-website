@@ -1,73 +1,23 @@
 # from google.cloud import firestore
 import json
-import os
-import re
 
+from django.core.mail import send_mail
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.shortcuts import render
-from django.views.decorators.csrf import csrf_exempt
+from django.template import loader
 
+from .utils.constants import *
 from .utils.firebase_utils import upload_on_firebase
 from .utils.sheet_utils import update_google_sheets
 
-from .utils.constants import *
 
 # Landing Page
 def index(request):
-#     firebase_upload()
-    # write_spreadsheet()
     return render(request, 'webapp/landing.html')
 
 
 def registration(request):
-    # if not request.is_ajax(): #TODO: Change it later
-    if request.method == 'GET': # TODO: Change Later...
-        # TODO: Get all the real info from the request.
-        #raw_json = request.body
-
-        team_name = "YOLO MAN"
-
-        # Array of persons
-        persons = []
-
-        # Person 1
-        person = {
-            "first_name": "Andy",
-            "last_name": "Mason",
-            "dob": "26/09/1998",
-            "email": "sample@abc.com",
-            "phone": "+91123456700",
-            "university": "SIU, Pune",
-            "specialization": "CS",
-            "city": "Mumbai",
-            "state": "Maharashtra",
-            "projects": "Some thing in NLP/CV"
-        }
-
-        person = [
-            "Andy",
-            "Mason",
-            "26/09/1998",
-            "sample@abc.com",
-            "+91123456700",
-            "SIU, Pune",
-            "CS",
-            "Mumbai",
-            "Maharashtra",
-            "Some thing in NLP/CV"
-        ]
-
-        persons.append(person)
-        persons.append(person)
-        persons.append(person)
-        persons.append(person)
-
-        # update_google_sheets(team_name, persons)
-        #
-        # upload_on_firebase('individuals', team_name, persons)
-
-        return render(request, 'webapp/registration.html')
-    # return render(request, 'webapp/registration.html')
+    return render(request, 'webapp/registration.html')
 
 
 def registration_individual(request):
@@ -103,7 +53,8 @@ def registration_individual(request):
             return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
 
         elif 'member1' in json_data['memberDetails'] and 'member2' in json_data['memberDetails']:
-            if json_data['memberDetails']['member1']['firstName'] == '' or json_data['memberDetails']['member2']['firstName'] == '':
+            if json_data['memberDetails']['member1']['firstName'] == '' or json_data['memberDetails']['member2'][
+                'firstName'] == '':
                 print('member 1 and member 2 found empty')
 
                 resp['message'] = 'Members found but empty. Are you sure you entered all details correctly?'
@@ -116,13 +67,15 @@ def registration_individual(request):
                 'message': 'Data found sufficient.'
             }
 
-            reg_no = ''  # TODO
+            reg_no = generate_reg_no(INDIVIDUAL)
 
             print("Uploading to sheets...")
 
             # Upload the Data on Spreadsheet and Firebase :p
             update_google_sheets(INDIVIDUAL, reg_no, json_data)
             upload_on_firebase(INDIVIDUAL, json_data)
+
+            sendmail(json_data['teamName'], reg_no, json_data['teamEmail'])
 
             return HttpResponse(json.dumps(resp), content_type='application/json')
 
@@ -180,7 +133,8 @@ def registration_startup(request):
             return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
 
         elif 'member1' in json_data['memberDetails'] and 'member2' in json_data['memberDetails']:
-            if json_data['memberDetails']['member1']['firstName'] == '' or json_data['memberDetails']['member2']['firstName'] == '':
+            if json_data['memberDetails']['member1']['firstName'] == '' or json_data['memberDetails']['member2'][
+                'firstName'] == '':
                 print('member 1 and member 2 found empty -> Startup')
 
                 resp['message'] = 'Members found but empty. Are you sure you entered all details correctly?'
@@ -193,13 +147,18 @@ def registration_startup(request):
                 'message': 'Data found sufficient.'
             }
 
-            reg_no = ''  # TODO
+            # Upload to ftp
+            FTP_USERNAME = "django_auto@aihackathon.in"
+
+            reg_no = generate_reg_no(STARTUP)
 
             print("Uploading to sheets...")
 
             # Upload the Data on Spreadsheet and Firebase :p
             update_google_sheets(STARTUP, reg_no, json_data)
             upload_on_firebase(STARTUP, json_data)
+
+            sendmail(json_data['startupName'], reg_no, json_data['startupEmail'])
 
             return HttpResponse(json.dumps(resp), content_type='application/json')
 
@@ -217,7 +176,41 @@ def about_us(request):
 def contact_us(request):
     return render(request, 'webapp/contactus.html')
 
+
 def thank_you(request):
     return render(request, 'webapp/thankyou.html')
 
 
+def sendmail(team_name, reg_no, email_to_send):
+    from_email = 'aihackathon@sitpune.edu.in'
+
+    html_message = loader.render_to_string(
+        'webapp/mail/mail.html',
+        {
+            'team_name': team_name,
+            'reg_no': reg_no,
+        }
+    )
+
+    send_mail(subject="AI Hackathon 2019",
+              from_email=from_email,
+              recipient_list=[email_to_send],
+              fail_silently=False,
+              html_message=html_message,
+              message="You have been registered successfully.")
+
+
+def generate_reg_no(type):
+    import string
+    import random
+    min_char = 8
+    max_char = 8
+
+    allchar = string.ascii_letters + string.punctuation + string.digits
+    reg = "".join(random.choice(allchar) for x in range(random.randint(min_char, max_char)))
+
+    if type == INDIVIDUAL:
+        return "I-" + reg
+
+    elif type == STARTUP:
+        return "S-" + reg

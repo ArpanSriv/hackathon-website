@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>AIHackathon</title>
+	<title>AIHackathon - Contact Us</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Bootstrap CSS-->
@@ -34,74 +34,8 @@
 		$.scoped();	
 	</script>
 
-	<!-- <div class="logoBar">
-		<div class="container-fluid">
-			<div class="row" style="justify-content: space-around; padding-top: 10px;">
-				<div class="col-3" style="text-align: start;">
-					<img src="../../static/webapp/imgs/TataMotorsLogo.png" style="height: 50px; margin-right: 20px;">
-				</div>
-				<div class="col-3" style="text-align: center;">
-					<img src="../../static/webapp/imgs/logo-3.png" style="height: 50px; margin-right: 20px;">
-				</div>
-				<div class="col-3" style="text-align: end;">
-					<img src="../../static/webapp/imgs/TataLogo.png" style="height: 50px; margin-right: 20px;">
-				</div>
-			</div>
-		</div>
-	</div> -->
 	<!-- NAVBAR -->
-	<nav class="navbar navbar-expand-lg navbar-bg-custom sticky-top">
-		<div class="logoBar">
-			<div class="container-fluid">
-				<div class="row" style="justify-content: space-around; padding-top: 10px;">
-					<div class="col-4" style="text-align: start;">
-						<a href="https://www.tatamotors.com/">
-							<img src="../../static/webapp/imgs/TataMotorsLogo.png" style="height: 50px; margin-right: 20px;">							
-						</a>
-					</div>
-					<div class="col-4" style="text-align: center;">
-						<a href="https://www.sitpune.edu.in/">
-							<img src="../../static/webapp/imgs/logo-3.png" style="height: 50px;">
-							<img src="../../static/webapp/imgs/SIT_Logo_new.png" style="height: 50px;">
-						</a>
-					</div>
-					<div class="col-4" style="text-align: end;">
-						<a href="https://www.tata.com/">
-							<img src="../../static/webapp/imgs/TataLogo.png" style="height: 50px; margin-right: 20px;">
-						</a>
-					</div>
-				</div>
-				<div class="row" style="margin-top: 5px;">
-					<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-					    <ul class="navbar-nav navbar-custom">
-					      <li class="nav-item nav-item-link">
-					        <a class="nav-link" id="link-color" href="{% url 'index' %}">Home</a>
-					      </li>
-					      <li class="nav-item nav-item-link">
-					        <a class="nav-link" id="link-color" href="{% url 'about_us' %}">About Us</a>
-					      </li>
-					      <li class="nav-item nav-item-link">
-					        <a class="nav-link" id="link-color" href="{% url 'contact_us' %}">Contact Us</a>
-					      </li>
-					    </ul>
-					</div>	
-				</div>
-			</div>
-		</div>
-		<!-- <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-		    <ul class="navbar-nav navbar-custom">
-		      <li class="nav-item nav-item-link">
-		        <a class="nav-link" id="link-color" href="landing.html">Home</a>
-		      </li>
-		      <li class="nav-item nav-item-link">
-		        <a class="nav-link" id="link-color" href="aboutus.html">About Us</a>
-		      </li>
-		      <li class="nav-item nav-item-link">
-		        <a class="nav-link" id="link-color" href="contactus.html">Contact Us</a>
-		      </li>
-		    </ul>
-		</div>	 -->
-	</nav>	
+	{% include "webapp/navbar.html" %}
 
 	<div style="margin-top: 30px; margin-bottom: 20px;">
 		<h1 id="contactus-title">Contact Us</h1>
@@ -141,50 +75,7 @@
 		</div>
 	</div>
 
-	<div class="footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-4">
-					<div class="follow">
-						<p>Help Desk</p>
-						<p id="code">Still got some queries? Mail us at <a href="mailto:aihackathon@sitpune.edu.in?Subject=Hackathon%20Query" target="_top">aihackathon@sitpune.edu.in</a></p>						
-					</div>
-				</div>
-				<div class="col-4">
-					<div class="follow text-center">
-						<p>Follow Us On</p>
-						<!-- <img src="../../static/webapp/imgs/facebook.svg" style="height: 40px; margin-right: 10px;">
-						<img src="../../static/webapp/imgs/instagram.svg" style="height: 40px; margin-right: 10px;">
-						<img src="../../static/webapp/imgs/linkedin.svg" style="height: 40px; margin-right: 10px;">
-						<img src="../../static/webapp/imgs/google-plus.svg" style="height: 40px; margin-right: 10px;"> -->
-						<i class="lni-facebook" style="font-size: 25px; margin-right: 10px;"></i>
-						<i class="lni-instagram" style="font-size: 25px; margin-right: 10px;"></i>
-						<i class="lni-twitter" style="font-size: 25px; margin-right: 10px;"></i>
-					</div>
-				</div>
-				<div class="col-4">
-					<div class="follow text-center">
-						<p>Quick Links</p>
-						<ul class="footer-link">
-							<li><a href="{% url 'index' %}">Home</a></li>
-							<li><a href="{% url 'about_us' %}">About Us</a></li>
-							<li><a href="{% url 'contact_us' %}">Contact Us</a></li>
-							<li><a href="{% url 'registration' %}">Register</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="row justify-content-center">
-				<div class="col-2">
-					<p style="margin-bottom: 0;"><a href="{% url 'privacy_policy' %}" id="privacy">Privacy policy</a></p>
-				</div>
-			</div>
-			<hr>
-			<div class="row" id="footer-note">
-				<p>©2019. Designed by SIT Final Year CS Students Arpan Srivastava & Ryan Miranda.</p>
-			</div>
-		</div>
-	</div>
+	{% include "webapp/footer.html" %}
 
 <!-- Bootstrap JS -->
 <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->

@@ -69,7 +69,7 @@ a:hover{
 }
 
 .colorChange{
-	color: #3301B7 !important;
+	/*color: # !important;*/
 	transition: color 500ms;
 }
 
@@ -239,7 +239,8 @@ a:hover{
 }
 
 .blue-box{
-	background: #21409A;
+	/*background: #21409A;*/
+	background: linear-gradient(304.06deg, #06054B 0%, #3301B7 100.66%);
 	position: relative;
 }
 
@@ -302,7 +303,7 @@ a:hover{
  	font-family: "PT Sans", sans-serif;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 17px;
+	font-size: 16px;
 	line-height: 25px;
 	text-align: justify;
 	color: #000000;
@@ -358,7 +359,7 @@ a:hover{
  }
 
  .judgesImage{
- 	background-image: url("../../static/app/imgs/DrKetan.png");
+ 	background-image: url("../../static/webapp/imgs/DrKetan.png");
  	height: 360px;
  	background-repeat: no-repeat;
  	background-size: contain;
@@ -506,7 +507,6 @@ textarea{
 .footer-link{
 	padding: 10px;
 	margin-bottom: 0;
-	margin-top: 10px;
 	padding-left: 0;
 }
 
@@ -649,6 +649,19 @@ hr{
 	text-align: justify;
 }
 
+.aboutus-links{
+	display: flex;
+	color: #000;
+}
+
+.aboutus-links:hover{
+	color: #000;
+}
+
+.timeline-center{
+	text-align: center !important;
+}
+
 .timeline-custom{
 	font-size: 16px !important;
 	justify-content: center;
@@ -702,4 +715,41 @@ hr{
 
 .hideButton{
 	display: none;
+}
+
+.socialLinks{
+	color: #FFF;
+	padding: 10px;
+}
+
+#fb:hover{
+	background-color: #4267b2;
+	transition: all 0.2s ease-in;
+}
+
+#ig:hover{
+  transition: all 0.2s ease-in;
+  background: #d6249f;
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+}
+
+#twitter:hover{
+	background: #1da1f2;
+	transition: all 0.2s ease-in;
+}
+
+#quickLinks{
+	margin-bottom: 0;
+}
+
+#thankyou{
+	margin-top: 80px;
+	min-height: 220px;
+	text-align: center;
+}
+
+#tick{
+	color: green;
+	font-size: 40px;
+	margin-bottom: 20px;
 }

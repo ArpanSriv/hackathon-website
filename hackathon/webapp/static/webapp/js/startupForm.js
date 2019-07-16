@@ -158,8 +158,10 @@ function submitForm() {
 
         console.log(json_to_send);
 
+        let register_startup_url = $('[name="hidden-startup-register-url"]').attr("data-url")
+
         $.ajax({
-            url: 'http://localhost:8000/app/register/startup',
+            url: register_startup_url,
             type: 'post',
             dataType: 'json',
             contentType: 'application/json',
@@ -244,7 +246,7 @@ function startUpload() {
     let data = new FormData($("#cert-form")[0]);
 
     $.ajax({
-        url: "http://localhost:5000/upload",
+        url: "localhost:5000/upload",
         type: 'POST',
         data: data,
         cache: false,

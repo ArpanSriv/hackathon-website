@@ -1,81 +1,253 @@
 # from google.cloud import firestore
-import os
-import pickle
+import json
 
-import firebase_admin
-from django.http import HttpResponse
+from django.core.mail import send_mail
+from django.http import HttpResponse, HttpResponseBadRequest
 from django.shortcuts import render
-from firebase_admin import credentials, firestore, storage
-from google.auth.transport.requests import Request
-from google_auth_oauthlib.flow import InstalledAppFlow
-from googleapiclient.discovery import build
+from django.template import loader
 
-cred = credentials.Certificate( os.path.join(os.path.dirname(os.path.abspath(__file__)), 'key.json')  )
-firebase_admin.initialize_app(cred)
+from .utils.constants import *
+from .utils.firebase_utils import upload_on_firebase
+from .utils.sheet_utils import update_google_sheets
+from .utils.progress_util import *
 
-spreadsheet_id = "1Moej841MoASt-hqLi_CkumLj2-eQ6x0xrMm19tc9g2k"
-
-spread_cred = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'credentials.json')
 
 # Landing Page
 def index(request):
-#     firebase_upload()
-    write_spreadsheet()
     return render(request, 'webapp/landing.html')
 
-def write_spreadsheet():
-    SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 
-    creds = None
-    # The file token.pickle stores the user's access and refresh tokens, and is
-    # created automatically when the authorization flow completes for the first
-    # time.
-    if os.path.exists('token.pickle'):
-        with open('token.pickle', 'rb') as token:
-            creds = pickle.load(token)
-    # If there are no (valid) credentials available, let the user log in.
-    if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-        else:
-            flow = InstalledAppFlow.from_client_secrets_file(
-                spread_cred, SCOPES)
-            creds = flow.run_local_server()
-        # Save the credentials for the next run
-        with open('token.pickle', 'wb') as token:
-            pickle.dump(creds, token)
-
-    service = build('sheets', 'v4', credentials=creds)
-
-    # Call the Sheets API
-    sheet = service.spreadsheets()
+def registration(request):
+    return render(request, 'webapp/registration.html')
 
 
-    values = [
-    [
-        "Part2", "Part2", "Part2", "Part1", "Part1", "Part1", 
-    ],
-    # Additional rows ...
-    ]
-    body = {
-        'values': values
-    }
-    result = sheet.values().append(
-        spreadsheetId=spreadsheet_id, range="Sheet1", body=body, valueInputOption="RAW").execute()
-    print('{0} cells appended.'.format(result \
-                                        .get('updates') \
-                                        .get('updatedCells')))
+def registration_individual(request):
+    if request.method == 'POST':
+        json_data = json.loads(request.body.decode("utf-8"))
 
-def firebase_upload():
-    bucket = storage.bucket("tata-hackathon.appspot.com")
+        print(json_data)
 
-    destination_blob_name = "ke.yjkon"
-    source_file_name = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'key.json') 
-    
-    blob = bucket.blob(destination_blob_name)
+        resp = {
+            'correct': '0',
+            'message': 'Internal Server Error.'
+        }
 
-    blob.upload_from_filename(source_file_name)
+        # Team Name Empty
+        if json_data['teamName'] == '':
+            resp['message'] = 'A valid team name is required.'
+            return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
 
-    print('File {} uploaded to {}.'.format(
-        source_file_name,
-        destination_blob_name))
+        # Team Email Empty
+        if json_data['teamEmail'] == '':
+            resp['message'] = 'A valid team email is required.'
+            return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
+
+        # Team Members Validation
+        if 'member1' not in json_data['memberDetails'] and 'member2' not in json_data['memberDetails']:
+            print('member 1 and member 2 not found.')
+
+            resp = {
+                'correct': '0',
+                'message': 'Member 1 and Member 2 are required.'
+            }
+
+            return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
+
+        elif 'member1' in json_data['memberDetails'] and 'member2' in json_data['memberDetails']:
+            if json_data['memberDetails']['member1']['firstName'] == '' or json_data['memberDetails']['member2'][
+                'firstName'] == '':
+                print('member 1 and member 2 found empty')
+
+                resp['message'] = 'Members found but empty. Are you sure you entered all details correctly?'
+
+                return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
+
+            # Found members 1 and 2 and also found some data there.
+            resp = {
+                'correct': '1',
+                'message': 'Data found sufficient.'
+            }
+
+            reg_no = generate_reg_no(INDIVIDUAL)
+
+            print("Uploading to sheets...")
+
+            # Upload the Data on Spreadsheet and Firebase :p
+            update_google_sheets(INDIVIDUAL, reg_no, json_data)
+            upload_on_firebase(INDIVIDUAL, json_data)
+
+            sendmail(json_data['teamName'], reg_no, json_data['teamEmail'])
+
+            return HttpResponse(json.dumps(resp), content_type='application/json')
+
+    # Normal GET Request.
+    return render(request, 'webapp/individualregistration.html')
+
+
+def poll_state(request):
+    """ A view to report the progress to the user """
+    data = 'Fail'
+    if request.is_ajax():
+        progress_id = request.GET.get('Progress-Id')
+        data = {
+            progress: get_progress(progress_id)
+        }
+
+        json_data = json.dumps(data)
+        return HttpResponse(json_data, content_type='application/json')
+
+
+def registration_startup(request):
+    if request.method == 'POST':
+        json_data = json.loads(request.body.decode("utf-8"))
+
+        resp = {
+            'correct': '1',
+            'message': 'Internal Server Error.'
+        }
+
+        # Startup Name Empty
+        if 'startupName' in json_data:
+            if json_data['startupName'] == '':
+                resp['message'] = 'A valid Startup Name is required.'
+                return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
+
+        # Team Email Empty
+        if 'startupEmail' in json_data:
+            if json_data['startupEmail'] == '':
+                resp['message'] = 'A valid Startup Email is required.'
+                return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
+
+        # Team DOR Empty
+        if 'startupDOR' in json_data:
+            if json_data['startupDOR'] == '':
+                resp['message'] = 'A valid Startup Email is required.'
+                return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
+
+        # Team Domain Empty
+        if 'startupDomain' in json_data:
+            if json_data['startupDomain'] == '':
+                resp['message'] = 'A valid Startup Technology Domain is required.'
+                return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
+
+        # Team Domain Empty
+        if json_data['startupDesc'] == '':
+            resp['message'] = 'A valid Startup Description is required.'
+            return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
+
+        # Team Members Validation
+        if 'member1' not in json_data['memberDetails'] and 'member2' not in json_data['memberDetails']:
+            print('member 1 and member 2 not found. -> Startup')
+
+            resp = {
+                'correct': '0',
+                'message': 'Member 1 and Member 2 are required.'
+            }
+
+            return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
+
+        elif 'member1' in json_data['memberDetails'] and 'member2' in json_data['memberDetails']:
+            if json_data['memberDetails']['member1']['firstName'] == '' or json_data['memberDetails']['member2'][
+                'firstName'] == '':
+                print('member 1 and member 2 found empty -> Startup')
+
+                resp['message'] = 'Members found but empty. Are you sure you entered all details correctly?'
+
+                return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
+
+            # Found members 1 and 2 and also found some data there.
+            resp = {
+                'correct': '1',
+                'message': 'Data found sufficient.'
+            }
+
+            progress_id = generate_progress_id()
+            init_progress(progress_id)
+            # # Upload to ftp
+            # FTP_USERNAME = "django_auto@aihackathon.in"
+
+            reg_no = generate_reg_no(STARTUP)
+
+            print("Uploading to sheets...")
+
+            # update_progress(progress_id, 30)
+            # Upload the Data on Spreadsheet and Firebase :p
+            update_google_sheets(STARTUP, reg_no, json_data)
+
+            # update_progress(progress_id, 70)
+
+            upload_on_firebase(STARTUP, json_data)
+
+            # update_progress(progress_id, 95)
+
+            sendmail(json_data['startupName'], reg_no, json_data['startupEmail'])
+
+            resp['teamName'] = json_data['teamName']
+            resp['teamRegNo'] = reg_no
+
+        return HttpResponse(json.dumps(resp), content_type='application/json')
+
+    return render(request, 'webapp/startupregistration.html')
+
+
+def privacy_policy(request):
+    return render(request, 'webapp/privacy.html')
+
+
+def about_us(request):
+    return render(request, 'webapp/aboutus.html')
+
+
+def contact_us(request):
+    return render(request, 'webapp/contactus.html')
+
+
+def thank_you(request):
+    return render(request, 'webapp/thankyou.html')
+
+
+def sendmail(team_name, reg_no, email_to_send):
+    from_email = 'aihackathon@sitpune.edu.in'
+
+    html_message = loader.render_to_string(
+        'webapp/mail/mail.html',
+        {
+            'team_name': team_name,
+            'reg_no': reg_no,
+        }
+    )
+
+    send_mail(subject="AI Hackathon 2019",
+              from_email=from_email,
+              recipient_list=[email_to_send],
+              fail_silently=False,
+              html_message=html_message,
+              message="You have been registered successfully.")
+
+
+def generate_reg_no(type):
+    import string
+    import random
+    min_char = 5
+    max_char = 5
+
+    allchar = string.ascii_uppercase + string.digits
+    reg = "".join(random.choice(allchar) for x in range(random.randint(min_char, max_char)))
+
+    if type == INDIVIDUAL:
+        return "I-" + reg
+
+    elif type == STARTUP:
+        return "S-" + reg
+
+
+def generate_progress_id():
+    import string
+    import random
+    min_char = 8
+    max_char = 10
+
+    allchar = string.ascii_uppercase + string.digits + string.punctuation
+    reg = "".join(random.choice(allchar) for x in range(random.randint(min_char, max_char)))
+
+    return reg

@@ -1,182 +1,304 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>AIHackathon</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Bootstrap CSS-->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<!-- Custom CSS -->
-	<link rel="stylesheet" type="text/css" href="../../static/app/styles.css">
-	<!-- Noto Sans Font -->
-	<link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet"> 
-	<!-- PT Mono Font -->
-	<link href="https://fonts.googleapis.com/css?family=PT+Mono&display=swap" rel="stylesheet"> 
-	<!-- Open Sans Font -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet"> 
-	<!-- PT Sans Font -->
-	<link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet"> 
-	<!-- Oxygen Mono Font -->
-	<link href="https://fonts.googleapis.com/css?family=Oxygen+Mono&display=swap" rel="stylesheet">
-	<!-- Overpass Mono Font -->
-	<link href="https://fonts.googleapis.com/css?family=Overpass+Mono&display=swap" rel="stylesheet">
+    <title>AIHackathon - Startup Registration</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'webapp/imgs/artificial-intelligence.png' %}"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS-->
+    {#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"#}
+    {#          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">#}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Jquery Toast CSS -->
+    <link href="{% static 'webapp/jquery.toast.css' %}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="../../static/webapp/styles.css">
+    <!-- Noto Sans Font -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
+    <!-- PT Mono Font -->
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono&display=swap" rel="stylesheet">
+    <!-- Open Sans Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+    <!-- PT Sans Font -->
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+    <!-- Oxygen Mono Font -->
+    <link href="https://fonts.googleapis.com/css?family=Oxygen+Mono&display=swap" rel="stylesheet">
+    <!-- Overpass Mono Font -->
+    <link href="https://fonts.googleapis.com/css?family=Overpass+Mono&display=swap" rel="stylesheet">
+    <link href="https://cdn.lineicons.com/1.0.1/LineIcons.min.css" rel="stylesheet">
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+    {#    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"#}
+    {#            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"#}
+    {#            crossorigin="anonymous"></script>#}
+    {#    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"#}
+    {#            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"#}
+    {#            crossorigin="anonymous"></script>#}
+    {#    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>#}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
 
-	<!-- Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-		crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 
 <body>
-	<!-- NAVBAR -->
-	<nav class="navbar navbar-expand-lg sticky-top navbar-registration">
-		<div class="collapse navbar-collapse justify-content-start" style="margin-left: 20px;">
-			<img src="../../static/app/imgs/logo-3.png" style="height: 50px; margin-right: 20px;">
-			<img src="../../static/app/imgs/TataLogo.png" style="height: 50px; margin-right: 20px;">
-			<img src="../../static/app/imgs/TataMotorsLogo.png" style="height: 50px; margin-right: 20px;">		
-		</div>
-		<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-		    <ul class="navbar-nav navbar-custom">
-		      <li class="nav-item nav-item-link">
-		        <a class="nav-link" id="link-registration" href="#">Home</a>
-		      </li>
-		      <li class="nav-item nav-item-link">
-		        <a class="nav-link" id="link-registration" href="#">About Us</a>
-		      </li>
-		      <li class="nav-item nav-item-link">
-		        <a class="nav-link" id="link-registration" href="#">Contact Us</a>
-		      </li>
-		      <li class="nav-item nav-item-link">
-		        <a class="nav-link" id="link-registration" href="#">Know More</a>
-		      </li>
-		    </ul>
-		</div>
-	</nav>	
+<!-- NAVBAR -->
+{% include "webapp/navbar.html" %}
 
-	<div class="registration-box">
-		<h1 id="startupRegistrationTitle">Startup Registration</h1>
-	</div>
+<div class="registration-box">
+    <h1 id="startupRegistrationTitle">Startup Registration</h1>
+</div>
 
-	<div class="container form-custom">
-		<form>
-			<h4 class="form-title">Startup Details</h3>
-			<div class="form-group">
-			    <input type="text" class="form-control" id="startupName" placeholder="Startup Name">
-			</div>
-			<div class="form-group">
-			    <input type="email" class="form-control" id="startupEmail" placeholder="Startup Email">
-			</div>
-			<div class="form-group">
-		    	<input type="date" class="form-control" id="startupDate" placeholder="Date of Startup Registration">
-		 	</div>
-		 	<div class="form-group">
-		    	<input type="text" class="form-control" id="startupProduct" placeholder="Technology Domain">
-		  	</div>
-			<div class="form-group">
-			    <textarea class="form-control" id="startupDescription" placeholder="Startup Description"></textarea>
-			</div>
-		
-			<h4 class="form-title">Team Details</h3>
+<div class="modal hide fade" data-backdrop="static" id="modalTnC" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel"
+     aria-hidden="true" data-keyboard="false">
+    <div class="modal-dialog TnCform" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Terms and Conditions</h4>
+            </div>
+            <div class="modal-body mx-3" style="text-align: justify;" id="modalTncBody">
+                <div class="md-form mb-5">
+                    {% include 'webapp/terms-and-conditions.htm' %}
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">I have read and agree to the Terms and
+                        Conditions</label>
+                </div>
 
-			<button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)" data-member="1" id="modal1" class="modal">
-				Team Member 1
-			</button>
-			<button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)" data-member="2" id="modal2" class="modal">
-			  	Team Member 2
-			</button>
-			<button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)" data-member="3" id="modal3" class="modal">
-			  	Team Member 3
-			</button>
-			<button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)" data-member="4" id="modal4" class="modal">
-			  	Team Member 4
-			</button>
+                <div style="margin-bottom: 20px;">
+                    <a href="{% url 'index' %}" class="btn btn-danger" id="declineBtn">Decline</a>
+                    <!-- <button type="button" class="btn btn-danger" id="declineBtn" href="landing.html">Decline</button> -->
+                    <button type="button" class="btn btn-success" id="proceedBtn" data-dismiss="modal">Proceed</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-			<!-- Modal -->
-			<div class="modal fade" id="modalLong" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
-			  <div class="modal-dialog" role="document">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <h5 class="modal-title" id="modalTitle">Team Member 1</h5>
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			          <span aria-hidden="true">&times;</span>
-			        </button>
-			      </div>
-			      <div class="modal-body">
-			      	<div class="container form-custom">
-						<form>
-							<h4 class="form-title">Personal Details</h4>
-							<div class="form-group">
-							    <input type="text" class="form-control" id="firstName" placeholder="First Name">
-							</div>
-							<div class="form-group">
-							    <input type="text" class="form-control" id="lastName" placeholder="Last Name">
-							</div>
-							<div class="form-group">
-						    	<input type="date" class="form-control" id="dateOfBirth" placeholder="Date of Birth">
-						 	</div>
-							<div class="form-group">
-							    <input type="email" class="form-control" id="personalEmail" placeholder="Personal Email">
-							</div>
-							<div class="form-group">
-							    <input type="text" class="form-control" id="personalPhone" placeholder="Mobile Number">
-							</div>
-							
-							<div class="form-group">
-								<select class="custom-select" id="citySelect">
-								  <option selected>City</option>
-								  <option value="1">One</option>
-								  <option value="2">Two</option>
-								  <option value="3">Three</option>
-							</select>
-							</div>
+<div class="container form-custom">
+    <form method="POST" id="startupForm">
+        {% csrf_token %}
+        <h4 class="form-title">Startup Details</h4>
+        <div class="form-group">
+            <input type="text" class="form-control" id="teamName" placeholder="Team Name" required name="teamName">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="startupName" placeholder="Startup Name" required
+                   name="startupName">
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control" id="startupEmail" placeholder="Email for correspondence"
+                   required name="startupEmail">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Date Of Startup Registration</span>
+            </div>
+            <input type="date" class="form-control" id="dateOfReg" placeholder="Date of Startup Registration"
+                   required="false" name="startupDOR">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="startupDomain" placeholder="Technology Domain"
+                   required="false" name="startupDomain">
+        </div>
+        <div class="form-group">
+                <textarea class="form-control" id="startupDesc" placeholder="Startup Description" required="false"
+                          name="startupDesc"></textarea>
+        </div>
 
-							<div class="form-group">
-								<select class="custom-select" id="stateSelect">
-								  <option selected>State</option>
-								  <option value="1">One</option>
-								  <option value="2">Two</option>
-								  <option value="3">Three</option>
-								</select>
-							</div>	
-						</form>
-					</div>
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary">Save changes</button>
-			      </div>
-			    </div>
-			  </div>
-			</div>
+        <h4 class="form-title">Team Details</h4>
 
-			<h5 class="form-title" style="margin-top: 25px; margin-bottom: 10px;">Upload Registration Certificate</h5>
-			<div class="custom-file" style="margin-bottom: 16px;">
-				<input type="file" class="custom-file-input" id="customFile">
-				<label class="custom-file-label" for="customFile">Choose file</label>
-			</div>
-			<button type="submit" class="btn btn-primary submitBtn">Submit</button>
-		</form>
-	</div>
+        <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)"
+                data-member="1" id="modal1" class="modal">
+            Team Member 1 (Mentor)
+        </button>
+        <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)"
+                data-member="2" id="modal2" class="modal">
+            Team Member 2
+        </button>
+        <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)"
+                data-member="3" id="modal3" class="modal">
+            Team Member 3
+        </button>
+        <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)"
+                data-member="4" id="modal4" class="modal">
+            Team Member 4
+        </button>
 
-	<div class="registration-box">
-		<h1 id="registration-title" style="color: #000">Registrations close</h1>
-		<div id="clock" style="color: #000"></div>
-	</div>
+        <!-- Modal -->
+        <div class="modal fade" id="modalLong" tabindex="-1" role="dialog" aria-labelledby="modalTitle"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitle">Team Member 1</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container form-custom">
+                            <form>
+                                <h4 class="form-title">Personal Details</h4>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="firstName"
+                                           placeholder="First Name" required="false" name="firstName">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="lastName"
+                                           placeholder="Last Name" required="false" name="lastName">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Date Of Birth</span>
+                                    </div>
+                                    <input type="date" class="form-control" id="dateOfBirth"
+                                           placeholder="Date of Birth" required="false" name="dob">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" id="personalEmail"
+                                           placeholder="Personal Email" required="false" name="personalEmail">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="personalPhone"
+                                           placeholder="Mobile Number" required="false" name="mobileNo">
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="address1"
+                                           placeholder="Address Line 1"
+                                           required="true" name="addressLine1">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="address2"
+                                           placeholder="Address Line 2"
+                                           required="true" name="addressLine2">
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="pincode"
+                                               placeholder="Pincode"
+                                               required="true" name="pincode">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="city" placeholder="City"
+                                               required="true" name="city">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <select class="custom-select" id="statesList" name="state">
+                                        <option value="">Select State</option>
+                                        <option value="Andaman and Nicobar Islands">Andaman and Nicobar
+                                            Islands
+                                        </option>
+                                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                        <option value="Assam">Assam</option>
+                                        <option value="Bihar">Bihar</option>
+                                        <option value="Chandigarh">Chandigarh</option>
+                                        <option value="Chhattisgarh">Chhattisgarh</option>
+                                        <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+                                        <option value="Daman and Diu">Daman and Diu</option>
+                                        <option value="Delhi">Delhi</option>
+                                        <option value="Goa">Goa</option>
+                                        <option value="Gujarat">Gujarat</option>
+                                        <option value="Haryana">Haryana</option>
+                                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                        <option value="Jharkhand">Jharkhand</option>
+                                        <option value="Karnataka">Karnataka</option>
+                                        <option value="Kerala">Kerala</option>
+                                        <option value="Lakshadweep">Lakshadweep</option>
+                                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                        <option value="Maharashtra">Maharashtra</option>
+                                        <option value="Manipur">Manipur</option>
+                                        <option value="Meghalaya">Meghalaya</option>
+                                        <option value="Mizoram">Mizoram</option>
+                                        <option value="Nagaland">Nagaland</option>
+                                        <option value="Orissa">Orissa</option>
+                                        <option value="Pondicherry">Pondicherry</option>
+                                        <option value="Punjab">Punjab</option>
+                                        <option value="Rajasthan">Rajasthan</option>
+                                        <option value="Sikkim">Sikkim</option>
+                                        <option value="Tamil Nadu">Tamil Nadu</option>
+                                        <option value="Tripura">Tripura</option>
+                                        <option value="Uttaranchal">Uttaranchal</option>
+                                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                        <option value="West Bengal">West Bengal</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                            <textarea class="form-control" id="experienceDesc"
+                                                      placeholder="Experience" name="experienceDesc"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="reset" hidden id="hidden-reset">
+                        <button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="handleFormSave()">Save changes
+                        </button>
+                        <!-- data-dismiss="modal" -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h5 class="form-title" style="margin-top: 25px; margin-bottom: 10px;">About the startup</h5>
+
+        <form enctype="multipart/form-data" id="cert-form">
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Startup Registration Certificate</label>
+                <input type="file" class="form-control-file" id="file-button" name="cert" required>
+
+                <input type="hidden" id="team-name-hidden-input" name="team-name-hidden" value="">
+                <input type="hidden" id="team-reg-no-hidden-input" name="team-reg-no-hidden" value="">
+            </div>
+        </form>
+
+        <input type="hidden" id="thank-you-url" data-url="{% url 'thank_you' %}"/>
+        <input type="hidden" id="poll-url" data-url="{% url 'poll_url' %}"/>
+        <input type="hidden" id="hidden-startup-register-url" data-url="{% url 'registration_startup' %}"/>
+
+
+        <button type="submit" class="btn btn-primary submitBtn" onclick="submitForm()">Submit</button>
+    </form>
+</div>
+
+<div class="registration-box">
+    <h1 id="registration-title" style="color: #000;">Registrations close</h1>
+    <div id="clock" style="color: #000;"></div>
+</div>
+
+{% include "webapp/footer.html" %}
+
 
 <!-- COUNTDOWN JS -->
-<script type="text/javascript" src="../../static/app/js/countdown.js"></script>
+<script type="text/javascript" src="../../static/webapp/js/countdown.js"></script>
 <script type="text/javascript">
-	$('#clock').countdown('2019/8/15', function(event) {
-  	var $this = $(this).html(event.strftime(''
-    + '<span>%D</span> days '
-    + '<span>%H</span> hr '
-    + '<span>%M</span> min '
-    + '<span>%S</span> sec'));
-});
+    $('#clock').countdown('2019/8/10', function (event) {
+        var $this = $(this).html(event.strftime(''
+            + '<span>%D</span> days '
+            + '<span>%H</span> hr '
+            + '<span>%M</span> min '
+            + '<span>%S</span> sec'));
+    });
 </script>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	function openModal(id){
 		$('input').val('');
 		$('select').val();
@@ -193,7 +315,39 @@
 		}
 		$("#modalLong").modal();
 	}
+</script> -->
+
+<script src="{% static 'webapp/js/jquery.toast.js' %}" type="text/javascript"></script>
+<script type="text/javascript" src="{% static 'webapp/js/startupForm.js' %}"></script>
+
+<script type="text/javascript">
+    $(window).on('load', function () {
+        var hasAgree = false;
+        $('#modalTnC').modal('show');
+        $('#customCheck1').prop("checked", false);
+        hasAgree = $('#customCheck1').is(":checked");
+        $('#proceedBtn').prop("disabled", true);
+    });
+
+    $('#customCheck1').click(function () {
+        hasAgree = $('#customCheck1').is(":checked");
+        if (hasAgree) {
+            $('#proceedBtn').prop("disabled", false);
+        } else {
+            $('#proceedBtn').prop("disabled", true);
+        }
+        console.log(hasAgree);
+    });
+
+    $('#proceedBtn').click(function () {
+        $('#modalTnC').modal('hide');
+        $('#modalTnC').prop('display', "none !important");
+    });
 </script>
+
+
+{#<script src="{% static 'webapp/js/uploadCert.js' %}" type="text/javascript">#}
+{#</script>#}
 
 </body>
 </html>

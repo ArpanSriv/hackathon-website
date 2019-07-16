@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AIHackathon - Contact Us</title>
+	{% load static %}
+	<link rel="shortcut icon" type="image/png" href="{% static 'webapp/imgs/artificial-intelligence.png' %}"/>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Bootstrap CSS-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<!-- Custom CSS -->
+	<link rel="stylesheet" type="text/css" href="../../static/webapp/styles.css">
+	<script>document.getElementsByTagName("html")[0].className += " js";</script>
+	<!-- Timeline CSS -->
+	<!-- <link rel="stylesheet" type="text/css" href="../../static/app/timeline.css"> -->
+	<!-- Noto Sans Font -->
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet"> 
+	<!-- PT Mono Font -->
+	<link href="https://fonts.googleapis.com/css?family=PT+Mono&display=swap" rel="stylesheet"> 
+	<!-- Open Sans Font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet"> 
+	<!-- PT Sans Font -->
+	<link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet"> 
+	<!-- Oxygen Mono Font -->
+	<link href="https://fonts.googleapis.com/css?family=Oxygen+Mono&display=swap" rel="stylesheet">
+	<!-- Overpass Mono Font -->
+	<link href="https://fonts.googleapis.com/css?family=Overpass+Mono&display=swap" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+		crossorigin="anonymous"></script>
+	<script src="../../static/app/js/jquery.scoped.js"></script>
+	<link href="https://cdn.lineicons.com/1.0.1/LineIcons.min.css" rel="stylesheet">
+</head>
+
+<body>
+	<script type="text/javascript">
+		$.scoped();	
+	</script>
+
+	<!-- NAVBAR -->
+	{% include "webapp/navbar.html" %}
+
+	<div style="margin-top: 30px; margin-bottom: 20px;">
+		<h1 id="contactus-title">Contact Us</h1>
+	</div>
+
+	<div class="container" style="margin-bottom: 20px;">
+		<div class="row" style="font-family: 'Open Sans">
+			<div class="col-6">
+				<div class="mapouter" style="text-align: left;"><div class="gmap_canvas"><iframe width="500" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=symbiosis%20institute%20of%20technology&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div>				
+			</div>
+			<div class="col-6 v-center">
+				<div class="row" style="display: block;">
+					<h2 style="font-weight: 600;">Symbiosis Institute of Technology</h2>
+					<p style="font-size: 14px;">Symbiosis International University
+												<br>Near Lupin Research Park
+												<br>Gram: Lavale
+												<br>Tal: Mulshi
+                                                <br>Pune (412115)
+                                                <br>Maharashtra
+					</p>
+					<!-- <p style="font-size: 14px;">Symbiosis International University</p>
+					<p style="font-size: 14px;">Near Lupin Research Park
+					<p style="font-size: 14px;">Gram: Lavale Tal, Mulshi, Maharashtra 412115</p> -->
+				</div>
+				<div class="row" style="display: block;">
+					<h4 style="font-weight: 600; margin-bottom: 10px;">For any queries: </h4>
+{#					<p style="font-size: 14px;">Hema Karande</p>#}
+					<p style="font-size: 14px;">
+						Phone: +91 9511902710
+						<br>Timings: 9:30 AM - 12:30 PM (Only)
+						<br>Email: <a href="mailto:aihackathon@sitpune.edu.in?Subject=Hackathon%20Query" target="_top">aihackathon@sitpune.edu.in</a>
+					</p>
+					<!-- <p style="font-size: 14px;"><span style="color: #c4c4c4;">Phone:</span> +91 9511902710</p>
+					<p style="font-size: 14px;">T<span style="color: #c4c4c4;">iming:</span> 9:30 AM - 12:30 PM</p>
+					<p style="font-size: 14px;"><span style="color: #c4c4c4;">Email:</span> <a href="mailto:someone@example.com?Subject=Hello%20again" target="_top">aihackathon@sitpune.edu.in</a></p> -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% include "webapp/footer.html" %}
+
+<!-- Bootstrap JS -->
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<!-- JQUERY -->
+<!-- <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+		crossorigin="anonymous"></script> -->
+
+<!-- NAVBAR SCROLL SCRIPT -->
+<script type="text/javascript">
+		$(function(){
+			$(document).scroll(function(){
+				var $nav = $(".navbar");
+				var $link = $(".nav-link");
+				$nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+				// $link.toggleClass("colorChange", $(this).scrollTop() > $nav.height());
+			});
+		});
+</script>
+
+</body>
+</html>

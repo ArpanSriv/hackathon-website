@@ -7,13 +7,22 @@ a:hover{
 	padding-bottom: 60px;
 }
 
+.logoBar{
+	/*background: #FFF;*/
+	background: transparent;
+	width: 100%;
+
+}
+
 .navbar-bg-custom{
-	background: linear-gradient(304.06deg, #06054B 0%, #3301B7 100.66%);
-	height: 80px;
+	/*background: linear-gradient(304.06deg, #06054B 0%, #3301B7 100.66%);*/
+	background: #FFF;
+	/*height: 80px;*/
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .navbar-custom{
-	margin-right: 20px;
+	/*margin-right: 20px;*/
 }
 
 .nav-item-link{
@@ -27,12 +36,12 @@ a:hover{
 }
 
 #link-color:hover{
-	color: white;
+	color: #000;
 	opacity: 1;
 }
 
 #link-color{
-	color: white;
+	color: #000;
 	opacity: 0.65;
 	font-family: 'Noto Sans',sans-serif;
 	text-transform: uppercase;
@@ -60,13 +69,26 @@ a:hover{
 }
 
 .colorChange{
-	color: #3301B7 !important;
+	/*color: # !important;*/
 	transition: color 500ms;
+}
+
+#TataMotorsLogo{
+	height: 50px; 
+	margin-right: 20px; 
+	filter: brightness(0);
+}
+
+#TataLogo{
+	height: 50px; 
+	margin-right: 20px; 
+	filter: brightness(0);
 }
 
 .jumbotron{
 	background: transparent;
-	margin-bottom: 70px;
+	margin-bottom: 20px;
+	padding-top: 50px;
 }
 
 .img-div img{
@@ -111,46 +133,76 @@ a:hover{
 }
 
 #cohost{
-	font-family: 'Overpass Mono', monospace;
+	font-family: 'Open Sans', sans-serif;
 	font-style: normal;
-	font-weight: bold;
-	font-size: 30px;
-	line-height: 46px;
-	display: flex;
+	/*font-weight: bold;*/
+	font-size: 24px;
+	line-height: 30px;
+	/*display: flex;*/
 	align-items: center;
-	text-align: center;
+	/*text-align: center;*/
 	color: #FFFFFF;
 	margin-top: 50px;
+	margin-bottom: 50px;
+	/*text-transform: uppercase;*/
 }
 
 .registerBtn{
 	background-color: #E73001;
-  	border: none;
   	color: white;
   	padding: 15px 32px;
   	text-decoration: none;
   	margin-top: 50px;
   	cursor: pointer;
-  	width: 471px;
-	height: 88px;
+  	width: 400px;
+	height: 70px;
 	font-family: Oxygen Mono;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 28px;
-	line-height: 37px;
+	font-size: 19px;
 	display: flex;
 	align-items: center;
-	text-align: center;
 	justify-content: center;
 	text-transform: uppercase;
+    box-shadow: 16px 16px 4px 0px #0b024d;
+    position: relative;
+    overflow: hidden;
 }
 
 .registerBtn:hover{
 	text-decoration: none;
 	color: #FFF;
-	background-color: #FF3400
+	background-color: #FF3400;
+	transform: translate(8px, 8px);
+	box-shadow: 8px 8px 4px 0px #0b024d;
+	cursor: pointer;
 }
 
+.registerBtn:hover:before{
+	opacity: 1; 
+	transform: translate(0,0);
+}
+
+.registerBtn:before{
+    content: attr(data-hover);
+    position: absolute;
+    top: 1.1em; 
+    left: 150px;
+    width: 100%;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translate(-100%,0);
+   	transition: all .2s ease-in-out;
+}
+
+.registerBtn:hover span{
+  	opacity: 0; 
+   	transform: translate(50%,0);
+   	transition: all .2s ease-out;
+}
+
+.registerBtn span{
+	transition: all .2s ease-in-out;
+}
+  
 .registration-box{
 	background: transparent;
 	margin: 0 auto;
@@ -220,11 +272,12 @@ a:hover{
 	line-height: 40px;
 	display: flex;
 	align-items: center;
-	text-align: justify;
+	text-align: start;
 }
 
 .blue-box{
-	background: #21409A;
+	/*background: #21409A;*/
+	background: linear-gradient(304.06deg, #06054B 0%, #3301B7 100.66%);
 	position: relative;
 }
 
@@ -250,8 +303,9 @@ a:hover{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 38px;
-	line-height: 74px;
+	line-height: 50px;
 	text-align: center;
+	height: 100px;
  }
 
 #participateInfo{
@@ -286,14 +340,69 @@ a:hover{
  	font-family: "PT Sans", sans-serif;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 17px;
+	font-size: 16px;
 	line-height: 25px;
 	text-align: justify;
 	color: #000000;
  }
 
+  #ketanImage{
+ 	background-image: url("../../static/webapp/imgs/DrKetan.png");
+ 	height: 360px;
+ 	background-repeat: no-repeat;
+ 	background-size: cover;
+ 	background-position-x: center; 
+ }
+
+ #pradeepImage{
+ 	background-image: url("../../static/webapp/imgs/Pradeep2.jpg");
+ 	height: 360px;
+ 	background-repeat: no-repeat;
+ 	background-size: cover;
+ 	background-position-x: center; 
+ }
+
+ #sureshImage{
+ 	background-image: url("../../static/webapp/imgs/psuresh.jpg");
+ 	height: 360px;
+ 	background-repeat: no-repeat;
+ 	background-size: cover;
+ 	background-position-x: center; 
+ }
+
+ #balajiImage{
+ 	background-image: url("../../static/webapp/imgs/pBbalaji.jpg");
+ 	height: 360px;
+ 	background-repeat: no-repeat;
+ 	background-size: cover;
+ }
+
+ #aasifImage{
+ 	background-image: url("../../static/webapp/imgs/Aasif-Malbari-Photo.jpg");
+ 	height: 360px;
+ 	background-repeat: no-repeat;
+ 	background-size: cover;
+ 	background-position-x: center;
+ }
+
+ #aratiImage{
+ 	background-image: url("../../static/webapp/imgs/arati.jpg");
+ 	height: 360px;
+ 	background-repeat: no-repeat;
+ 	background-size: cover;
+ 	background-position-x: center; 
+ }
+
+ #raheeImage{
+ 	background-image: url("../../static/webapp/imgs/rahee.jpg");
+ 	height: 360px;
+ 	background-repeat: no-repeat;
+ 	background-size: cover;
+ 	background-position-x: center;
+ }
+
  .judgesImage{
- 	background-image: url("../../static/app/imgs/DrKetan.png");
+ 	background-image: url("../../static/webapp/imgs/DrKetan.png");
  	height: 360px;
  	background-repeat: no-repeat;
  	background-size: contain;
@@ -307,7 +416,7 @@ a:hover{
 .judgeInfoBox{
 	position: absolute;
 	bottom: 0;
-	padding-left: 20px;
+	padding-left: 12px;
 	padding-bottom: 10px;
 }
 
@@ -316,14 +425,16 @@ a:hover{
  	justify-content: start;
  	margin-bottom: 0;
  	line-height: 30px !important;
+ 	font-size: 20px !important;
  }
  
 .judgeInfoDesignation{
  	color: #FFF;
  	justify-content: start;
  	margin-bottom: 0;
+ 	margin-right: 10px;
  	line-height: 30px !important;
- 	font-size: 20px !important;
+ 	font-size: 16px !important;
  }
 
  #event-registration-title{
@@ -439,7 +550,7 @@ textarea{
 .footer-link{
 	padding: 10px;
 	margin-bottom: 0;
-	margin-top: 10px;
+	padding-left: 0;
 }
 
 .footer-link li{
@@ -485,4 +596,203 @@ hr{
 #footer-note{
 	justify-content: center;
 	margin-top: 30px;
+}
+
+.support{
+	padding: 10px;
+	color: #FFF;
+}
+
+/*.support p{
+	margin-top: 10px;
+	margin-bottom: 0px;
+	font-family: 'Noto Sans', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	line-height: 33px;
+	font-variant: small-caps;
+}*/
+
+#code{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+	font-variant: none;
+	color: #FFF;
+}
+
+#code a{
+	color: #FFF;
+	opacity: 0.65;
+}
+
+#code a:hover{
+	opacity: 1;
+}
+
+.links{
+	padding: 10px;
+	color: #FFF;
+}
+
+.links p{
+	margin-top: 10px;
+	margin-bottom: 0px;
+	font-family: 'Noto Sans', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	line-height: 33px;
+	font-variant: small-caps;
+}
+
+#privacy{
+	color: #FFF;
+	opacity: 0.65;
+}
+
+#privacy:hover{
+	opacity: 1;
+}
+
+.accordion i{
+	margin-right: 10px;
+}
+
+.card-header{
+	cursor: pointer;
+}
+
+#privacy-title, #aboutus-title, #contactus-title{
+ 	font-family: 'Open Sans', sans-serif;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 40px;
+	line-height: 74px;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	letter-spacing: 0.055em;
+	text-transform: uppercase;
+	font-variant: small-caps;
+	color: #000000;
+	margin-bottom: 0;
+}
+
+.aboutus-div{
+	margin-bottom: 30px;
+	/*box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25); */
+}
+
+.aboutus-img{
+	text-align: center;
+}
+
+.aboutus-content{
+	text-align: justify;
+}
+
+.aboutus-links{
+	display: flex;
+	color: #000;
+}
+
+.aboutus-links:hover{
+	color: #000;
+}
+
+.timeline-center{
+	text-align: center !important;
+}
+
+.timeline-custom{
+	font-size: 16px !important;
+	justify-content: center;
+}
+
+#map_container{
+  position: relative;
+}
+
+#map{
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 22.25%;
+    padding-top: 30px;
+    position: relative;
+}
+
+.v-center{
+	margin-top: 80px;
+}
+
+#modalTnC{
+	/*display: block !important;*/
+}
+
+.TnCform{
+	margin: 0 auto; 
+	margin-top: 40px;
+	margin-bottom: 40px;
+	max-width: 700px;
+	overflow-y: initial !important
+}
+
+#proceedBtn{
+	display: inline-block;
+	margin-top: 20px;
+	justify-content: center;
+	float: right;
+}
+
+#declineBtn{
+	float: left;
+	margin-top: 20px;
+}
+
+#modalTncBody{
+	height: 600px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.hideButton{
+	display: none;
+}
+
+.socialLinks{
+	color: #FFF;
+	padding: 10px;
+}
+
+#fb:hover{
+	background-color: #4267b2;
+	transition: all 0.2s ease-in;
+}
+
+#ig:hover{
+  transition: all 0.2s ease-in;
+  background: #d6249f;
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+}
+
+#twitter:hover{
+	background: #1da1f2;
+	transition: all 0.2s ease-in;
+}
+
+#quickLinks{
+	margin-bottom: 0;
+}
+
+#thankyou{
+	margin-top: 80px;
+	min-height: 220px;
+	text-align: center;
+}
+
+#tick{
+	color: green;
+	font-size: 40px;
+	margin-bottom: 20px;
 }

@@ -9,8 +9,9 @@ from django.template import loader
 from .utils.constants import *
 from .utils.firebase_utils import upload_on_firebase
 from .utils.sheet_utils import update_google_sheets
-from .utils.progress_util import *
+from .utils.progress_util import ProgressUtils
 
+progress_utils = ProgressUtils.get_instance()
 
 # Landing Page
 def index(request):
@@ -88,9 +89,9 @@ def poll_state(request):
     """ A view to report the progress to the user """
     data = 'Fail'
     if request.is_ajax():
-        progress_id = request.GET.get('Progress-Id')
+        progress_id = request.GET.get('Progress-ID')
         data = {
-            progress: get_progress(progress_id)
+            'progress': progress_utils.get_progress(progress_id)
         }
 
         json_data = json.dumps(data)
@@ -161,8 +162,10 @@ def registration_startup(request):
                 'message': 'Data found sufficient.'
             }
 
-            progress_id = generate_progress_id()
-            init_progress(progress_id)
+            progress_id = json_data['progressID']
+            print("Progress ID = " + progress_id)
+
+            progress_utils.update_progress(progress_id, 10)
             # # Upload to ftp
             # FTP_USERNAME = "django_auto@aihackathon.in"
 
@@ -170,24 +173,33 @@ def registration_startup(request):
 
             print("Uploading to sheets...")
 
-            # update_progress(progress_id, 30)
+            progress_utils.update_progress(progress_id, 30)
             # Upload the Data on Spreadsheet and Firebase :p
-            update_google_sheets(STARTUP, reg_no, json_data)
+            update_google_sheets(STARTUP, reg_no, json_data, progress_id)
 
-            # update_progress(progress_id, 70)
+            progress_utils.update_progress(progress_id, 70)
 
             upload_on_firebase(STARTUP, json_data)
 
-            # update_progress(progress_id, 95)
+            progress_utils.update_progress(progress_id, 75)
 
             sendmail(json_data['startupName'], reg_no, json_data['startupEmail'])
+
+            progress_utils.update_progress(progress_id, 80)
 
             resp['teamName'] = json_data['teamName']
             resp['teamRegNo'] = reg_no
 
         return HttpResponse(json.dumps(resp), content_type='application/json')
 
-    return render(request, 'webapp/startupregistration.html')
+    elif request.method == 'GET':
+        progress_id = generate_progress_id()
+
+        progress_utils.init_progress(progress_id)
+
+        return render(request, 'webapp/startupregistration.html', {
+            'progress_id': progress_id
+        })
 
 
 def privacy_policy(request):
@@ -244,10 +256,10 @@ def generate_reg_no(type):
 def generate_progress_id():
     import string
     import random
-    min_char = 8
-    max_char = 10
+    min_char = 3
+    max_char = 3
 
-    allchar = string.ascii_uppercase + string.digits + string.punctuation
+    allchar = string.ascii_uppercase + string.digits
     reg = "".join(random.choice(allchar) for x in range(random.randint(min_char, max_char)))
 
     return reg

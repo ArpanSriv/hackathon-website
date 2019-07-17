@@ -139,6 +139,10 @@ function submitForm() {
         startupDomain = getInputValue('startupDomain');
         startupDesc = getInputValue('startupDesc');
 
+        // Get the Progress ID to send.
+        let progress_id = $('[name="progress-id-input"]').val();
+
+
         let progressToast = $.toast({
             heading: "Info",
             text: "<strong>Please wait while we validate your data...</strong>",
@@ -153,12 +157,14 @@ function submitForm() {
             'startupDOR': startupDOR,
             'startupDomain': startupDomain,
             'startupDesc': startupDesc,
-            'memberDetails': memberDetails
+            'memberDetails': memberDetails,
+            'progressID': progress_id
         };
 
         console.log(json_to_send);
 
         let register_startup_url = $('[name="hidden-startup-register-url"]').attr("data-url")
+
 
         $.ajax({
             url: register_startup_url,
@@ -207,6 +213,13 @@ function submitForm() {
             },
             data: JSON.stringify(json_to_send)
         });
+
+        updateProgressInfo(progress_id);
+
+        // $(".progress-bar-custom").animate({
+        //     width: '20%',
+        // }, "slow");
+
     } else {
         let errorToast = $.toast({
             heading: "Error",
@@ -223,21 +236,35 @@ function getInputValue(name) {
 
 
 function updateProgressInfo(progress_id) {
-    // var progress_url = $("#poll-url").attr("data-url"); // ajax view serving progress info
-    //
-    // $.getJSON(progress_url, {'Progress-ID': progress_id}, function (data, status) {
-    //     if (data) {
-    //
-    //         progress = parseInt(data['progress']);
-    //
-    //         $(".progress-bar-custom").css('width', progress + "%");
-    //
-    //         // trigger the next one after 1s
-    //         window.setTimeout(function () {
-    //             updateProgressInfo(progress_id)
-    //         }, 1000)
-    //     }
-    // }); TODO
+    console.log("Querying for progress: id = " + progress_id);
+
+    var progress_url = $("#poll-url").attr("data-url"); // ajax view serving progress info
+
+    $.getJSON(progress_url, {'Progress-ID': progress_id}, function (data, status) {
+        if (data) {
+
+            progress = parseInt(data['progress']);
+
+            console.log("Progress recieved: " + progress);
+
+            if (progress !== -1) {
+
+                $(".progress-bar-custom").animate({
+                    width: `${progress}%`,
+                }, "slow");
+
+                // trigger the next  one after 1s
+                window.setTimeout(function () {
+                    updateProgressInfo(progress_id)
+                }, 1000);
+
+            } else {
+                 $(".progress-bar-custom").animate({
+                    width: `0%`,
+                }, "slow");
+            }
+        }
+    }); // TODO
 };
 
 
@@ -246,14 +273,14 @@ function startUpload() {
     let data = new FormData($("#cert-form")[0]);
 
     $.ajax({
-	    url: "http://aihackathon.in:8080/upload",
+        url: "http://localhost:8080/upload",
         type: 'POST',
         data: data,
         cache: false,
         processData: false,
         contentType: false,
         error: function (data) {
-            console.log(data);
+            console.error(data);
             console.log("upload error: " + data)
         },
         success: function (data) {

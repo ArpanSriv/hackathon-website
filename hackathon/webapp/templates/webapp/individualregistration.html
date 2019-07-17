@@ -169,42 +169,66 @@
     </div>
 </div>
 
+<!-- commented width of form -->
 <div class="container form-custom">
-    <form method="POST" id="individualForm">
+    <form method="POST" id="individualForm form-inline">
         {% csrf_token %}
         <h4 class="form-title">Team Details</h4>
 
         <input type="hidden" id="thank-you-url" data-url="{% url 'thank_you' %}" />
 
-        <div class="form-group">
-            <input type="text" class="form-control" id="teamName" placeholder="Team Name" required name="teamName">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-lg-8">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="teamName" placeholder="Team Name" required name="teamName">
+                </div>
+            </div>
         </div>
 
-        <div class="form-group">
-            <input type="email" class="form-control" id="Team Email-Address" placeholder="Email for correspondence"
-                   required name="teamEmail">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-lg-8">
+                <div class="form-group">
+                    <input type="email" class="form-control" id="Team Email-Address" placeholder="Email for correspondence"
+                           required name="teamEmail">
+                </div>                
+            </div>
         </div>
 
         <h4 class="form-title">Member Details</h4>
 
         <div class="form-group">
-
-            <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)"
-                    data-member="1" id="member-btn-1">
-                Team Member 1 (Mentor)
-            </button>
-            <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)"
-                    data-member="2" id="member-btn-2">
-                Team Member 2
-            </button>
-            <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)"
-                    data-member="3" id="member-btn-3">
-                Team Member 3
-            </button>
-            <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)"
-                    data-member="4" id="member-btn-4">
-                Team Member 4
-            </button>
+            <div class="row">
+                <div class="col-12 col-sm-12 col-lg-8">
+                    <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)"
+                            data-member="1" id="member-btn-1">
+                        Team Member 1 (Mentor)
+                    </button>                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-12 col-lg-8">
+                    <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)"
+                            data-member="2" id="member-btn-2">
+                        Team Member 2
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-12 col-lg-8">
+                    <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)"
+                            data-member="3" id="member-btn-3">
+                        Team Member 3
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-12 col-lg-8">
+                    <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)"
+                            data-member="4" id="member-btn-4">
+                        Team Member 4
+                    </button>
+                </div>
+            </div>    
 
         </div>
 

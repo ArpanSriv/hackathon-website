@@ -246,7 +246,7 @@ function startUpload() {
     let data = new FormData($("#cert-form")[0]);
 
     $.ajax({
-	    url: "http://localhost:5000/upload",
+	    url: "http://aihackathon.in:8080/upload",
         type: 'POST',
         data: data,
         cache: false,

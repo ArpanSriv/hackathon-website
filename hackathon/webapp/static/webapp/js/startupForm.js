@@ -21,6 +21,8 @@ let startupDOR;
 let startupDomain;
 let startupDesc = "DESC";
 
+let progress = 0;
+
 
 function openModal(id) {
     console.log("Open Modal called: ID : " + id);
@@ -106,9 +108,7 @@ function handleFormSave() {
             });
 
             return;
-        }
-
-        else {
+        } else {
             console.log(member[field])
         }
     }
@@ -124,66 +124,174 @@ function handleFormSave() {
 
 function submitForm() {
 
-    teamName = getInputValue('teamName');
-    startupName = getInputValue('startupName');
-    startupEmail = getInputValue('startupEmail');
-    startupDOR = getInputValue('startupDOR');
-    startupDomain = getInputValue('startupDomain');
-    startupDesc = getInputValue('startupDesc');
+    let regCert = getInputValue('file-button');
 
-    let progressToast = $.toast({
-        heading: "Info",
-        text: "<strong>Please wait while we validate your data...</strong>",
-        icon: 'information',
-        hideAfter: 300000,
-    });
+    console.log("regCert = " + regCert);
 
-    let json_to_send = {
-        'teamName': teamName,
-        'startupName': startupName,
-        'startupEmail': startupEmail,
-        'startupDOR' : startupDOR,
-        'startupDomain': startupDomain,
-        'startupDesc': startupDesc,
-        'memberDetails': memberDetails
-    };
+    if (regCert !== '') {
 
-    console.log(json_to_send);
+        console.log("Continuing with upload.");
 
-    $.ajax({
-        url: 'http://localhost:8000/app/register/startup',
-        type: 'post',
-        dataType: 'json',
-        contentType: 'application/json',
-        headers: {'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value},
-        success: function (data) {
-            console.log("DATA: " + data);
+        teamName = getInputValue('teamName');
+        startupName = getInputValue('startupName');
+        startupEmail = getInputValue('startupEmail');
+        startupDOR = getInputValue('startupDOR');
+        startupDomain = getInputValue('startupDomain');
+        startupDesc = getInputValue('startupDesc');
 
-            // Precautionary.
-            if (data['correct'] === '1') {
-                // progressToast.text(data['message'])
-                progressToast.update({
-                    heading: 'Success',
-                    text: data['message'],
-                    icon: 'info',
-                    hideAfter: false
-                });
-            }
-        },
-        error: function (data) {
-            if (data['correct'] === '0') {
-                progressToast.update({
-                    heading: 'Failure',
-                    text: data['message'],
-                    icon: 'error',
-                    hideAfter: 5000
-                });
-            }
-        },
-        data: JSON.stringify(json_to_send)
-    });
+        // Get the Progress ID to send.
+        let progress_id = $('[name="progress-id-input"]').val();
+
+
+        let progressToast = $.toast({
+            heading: "Info",
+            text: "<strong>Please wait while we validate your data...</strong>",
+            icon: 'information',
+            hideAfter: 300000,
+        });
+
+        let json_to_send = {
+            'teamName': teamName,
+            'startupName': startupName,
+            'startupEmail': startupEmail,
+            'startupDOR': startupDOR,
+            'startupDomain': startupDomain,
+            'startupDesc': startupDesc,
+            'memberDetails': memberDetails,
+            'progressID': progress_id
+        };
+
+        console.log(json_to_send);
+
+        let register_startup_url = $('[name="hidden-startup-register-url"]').attr("data-url");
+
+
+        $.ajax({
+            url: register_startup_url,
+            type: 'post',
+            dataType: 'json',
+            contentType: 'application/json',
+            headers: {'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value},
+            success: function (data) {
+                console.log("DATA: " + data);
+
+                // Precautionary.
+                if (data['correct'] === '1') {
+
+                    let validationProgress = updateProgressInfo(data['unique_session_id']);
+
+                    // progressToast.text(data['message'])
+                    progressToast.update({
+                        heading: 'Success',
+                        text: data['message'],
+                        icon: 'info',
+                        hideAfter: false
+                    });
+
+                    console.log("Recieved: " + data['teamName']);
+                    console.log("Recieved: " + data['teamRegNo']);
+
+                    // TODO ADD HIDDEN INPUT VALUES.
+                    $('[name="team-name-hidden"]').val(data['teamName']);
+                    $('[name="team-reg-no-hidden"]').val(data['teamRegNo']);
+
+                    console.log("Values set, upload starting...");
+                    startUpload();
+
+                }
+
+            },
+            error: function (data) {
+                if (data['correct'] === '0') {
+                    progressToast.update({
+                        heading: 'Failure',
+                        text: data['message'],
+                        icon: 'error',
+                        hideAfter: 5000
+                    });
+                }
+            },
+            data: JSON.stringify(json_to_send)
+        });
+
+        updateProgressInfo(progress_id);
+
+        // $(".progress-bar-custom").animate({
+        //     width: '20%',
+        // }, "slow");
+
+    } else {
+        let errorToast = $.toast({
+            heading: "Error",
+            text: "<strong>Startup Registration Certificate is mandatory.</strong>",
+            icon: 'error',
+            hideAfter: 3000,
+        });
+    }
 }
 
 function getInputValue(name) {
     return $("[name=" + name + "]").val();
+}
+
+
+function updateProgressInfo(progress_id) {
+    console.log("Querying for progress: id = " + progress_id);
+
+    var progress_url = $("#poll-url").attr("data-url"); // ajax view serving progress info
+
+    $.getJSON(progress_url, {'Progress-ID': progress_id}, function (data, status) {
+        if (data) {
+
+            progress = parseInt(data['progress']);
+
+            console.log("Progress recieved: " + progress);
+
+            if (progress !== -1) {
+
+                $(".progress-bar-custom").animate({
+                    width: `${progress}%`,
+                }, "slow");
+
+                // trigger the next  one after 1s
+                window.setTimeout(function () {
+                    updateProgressInfo(progress_id)
+                }, 1000);
+
+            } else {
+                 $(".progress-bar-custom").animate({
+                    width: `0%`,
+                }, "slow");
+            }
+        }
+    }); // TODO
+};
+
+
+// ---- FILE UPLOAD ----
+function startUpload() {
+    let data = new FormData($("#cert-form")[0]);
+
+    $.ajax({
+        url: "http://localhost:8080/upload",
+        type: 'POST',
+        data: data,
+        cache: false,
+        processData: false,
+        contentType: false,
+        error: function (data) {
+            console.error(data);
+            console.log("upload error: " + data)
+        },
+        success: function (data) {
+            console.log(data);
+            console.log("Upload Successful.");
+
+            window.setTimeout(function () {
+                let url = $("#thank-you-url").attr("data-url");
+                window.location = url
+            }, 1000)
+
+        }
+    })
 }

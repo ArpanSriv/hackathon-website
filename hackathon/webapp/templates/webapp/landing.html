@@ -1,42 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>AIHackathon</title>
+    <title>AIHackathon</title>
     {% load static %}
     <link rel="shortcut icon" type="image/png" href="{% static 'webapp/imgs/artificial-intelligence.png' %}"/>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Bootstrap CSS-->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<!-- Custom CSS -->
-	<link rel="stylesheet" type="text/css" href="{% static 'webapp/styles.css' %}">
-	<script>document.getElementsByTagName("html")[0].className += " js";</script>
-	<!-- Timeline CSS -->
-	<link rel="stylesheet" type="text/css" href="{% static 'webapp/timeline.css' %}">
-	<!-- Noto Sans Font -->
-	<link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet"> 
-	<!-- PT Mono Font -->
-	<link href="https://fonts.googleapis.com/css?family=PT+Mono&display=swap" rel="stylesheet"> 
-	<!-- Open Sans Font -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet"> 
-	<!-- PT Sans Font -->
-	<link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet"> 
-	<!-- Oxygen Mono Font -->
-	<link href="https://fonts.googleapis.com/css?family=Oxygen+Mono&display=swap" rel="stylesheet">
-	<!-- Overpass Mono Font -->
-	<link href="https://fonts.googleapis.com/css?family=Overpass+Mono&display=swap" rel="stylesheet">
-	<!-- Lato Font -->
-	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet"> 
-	<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-		crossorigin="anonymous"></script>
-	<script src="../../static/webapp/js/jquery.scoped.js"></script>
-	<link href="https://cdn.lineicons.com/1.0.1/LineIcons.min.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'webapp/styles.css' %}">
+    <script>document.getElementsByTagName("html")[0].className += " js";</script>
+    <!-- Timeline CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'webapp/timeline.css' %}">
+    <!-- Noto Sans Font -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
+    <!-- PT Mono Font -->
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono&display=swap" rel="stylesheet">
+    <!-- Open Sans Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+    <!-- PT Sans Font -->
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+    <!-- Oxygen Mono Font -->
+    <link href="https://fonts.googleapis.com/css?family=Oxygen+Mono&display=swap" rel="stylesheet">
+    <!-- Overpass Mono Font -->
+    <link href="https://fonts.googleapis.com/css?family=Overpass+Mono&display=swap" rel="stylesheet">
+    <!-- Lato Font -->
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+    <script src="../../static/webapp/js/jquery.scoped.js"></script>
+    <link href="https://cdn.lineicons.com/1.0.1/LineIcons.min.css" rel="stylesheet">
 </head>
 
 <body>
-	<script type="text/javascript">
+	<!--<script type="text/javascript">
 		$.scoped();	
-	</script>
+	</script> -->
 
 	<!-- NAVBAR -->
 	{% include "webapp/navbar.html" %}		
@@ -59,7 +61,7 @@
 						<div>
 							<div id="cohost">
 								<p id="initiative"><strong>An initiative by</strong></p> 
-								<p id="initiativeDesc">Tata Motors and Symbiosis Center for Applied Artificial Intelligence (SCAAI), a constituent of Symbiosis Institute of Technology, Pune</p>
+								<p id="initiativeDesc">Tata Motors, Symbiosis Center for Applied Artificial Intelligence (SCAAI) and Symbiosis Institute of Technology, Pune</p>
 							</div>
 							<a href="{% url 'registration' %}" class="registerBtn" data-hover="ITS FREE!!"><span>Register Now</span></a>
 						</div>
@@ -276,6 +278,19 @@
 							</div>
 						</div>
 					</div>
+          
+          <div class="col-3" style="padding-right: 20px; padding-left: 20px">
+                    <div id="ravindraImage" style="position: relative;">
+                        <div class="judgeGradient">
+                            <div class="judgeInfoBox">
+                                <p class="judgeInfo">Ravindra Kumar GP</p>
+                                <p class="judgeInfoDesignation"> Chief Human Resource Officer
+                                    Tata Motors Limited </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          
 					<div class="col-md-6 col-lg-3" style="padding-right: 20px; padding-left: 20px">
 						<div class="judgesImage" style="background-image: url('../../static/webapp/imgs/Aasif-Malbari-Photo.jpg');">
 							<div class="judgeGradient">
@@ -599,12 +614,14 @@
 	    </section>
 	</div>
 
-	{% include "webapp/footer.html" %}
-
 <!-- Bootstrap JS -->
 <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
 <!-- JQUERY -->
 <!-- <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
@@ -613,44 +630,45 @@
 <!-- COUNTDOWN JS -->
 <script type="text/javascript" src="../../static/webapp/js/countdown.js"></script>
 <script type="text/javascript">
-	$('#clock').countdown('2019/8/10', function(event) {
-  	var $this = $(this).html(event.strftime(''
-    + '<span>%D</span> days '
-    + '<span>%H</span> hr '
-    + '<span>%M</span> min '
-    + '<span>%S</span> sec'));
-});
+    $('#clock').countdown('2019/8/10', function (event) {
+        var $this = $(this).html(event.strftime(''
+            + '<span>%D</span> days '
+            + '<span>%H</span> hr '
+            + '<span>%M</span> min '
+            + '<span>%S</span> sec'));
+    });
 </script>
 
 <!-- NAVBAR SCROLL SCRIPT -->
 <script type="text/javascript">
-		$(function(){
-			$(document).scroll(function(){
-				var $nav = $(".navbar");
-				var $link = $(".nav-link");
-				$nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
-				$link.toggleClass("colorChange", $(this).scrollTop() > $nav.height());
-			});
-		});
+    $(function () {
+        $(document).scroll(function () {
+            var $nav = $(".navbar");
+            var $link = $(".nav-link");
+            $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+            $link.toggleClass("colorChange", $(this).scrollTop() > $nav.height());
+        });
+    });
 </script>
 
 <!-- TYPEWRITER JS -->
 <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
 <script type="text/javascript">
-	var app = document.getElementById('app');
-	var typewriter = new Typewriter(app, {
-	    loop: true
-	});
+    var app = document.getElementById('app');
+    var typewriter = new Typewriter(app, {
+        loop: true
+    });
 
-	typewriter.typeString('#AIforAutomotive')
-	    .pauseFor(2000)
-	    .deleteAll()
-	    .start();
+    typewriter.typeString('#AIforAutomotive')
+        .pauseFor(2000)
+        .deleteAll()
+        .start();
 </script>
 
 <!-- TIMELINE JS -->
 <script src="../../static/webapp/js/util.js"></script> <!-- util functions included in the CodyHouse framework -->
-<script src="../../static/webapp/js/swipe-content.js"></script> <!-- A Vanilla JavaScript plugin to detect touch interactions -->
+<script src="../../static/webapp/js/swipe-content.js"></script>
+<!-- A Vanilla JavaScript plugin to detect touch interactions -->
 <script src="../../static/webapp/js/main.js"></script>
 <!-- <script src="../../static/webapp/js/jquery.scoped.js"></script> -->
 

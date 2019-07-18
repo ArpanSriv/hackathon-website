@@ -25,8 +25,7 @@ SECRET_KEY = '0ngtf5br@lwqjxq0eo9c9^qdvo6plsj+5j3b@&4dr5#w$vd^=t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.0.103", 'localhost', 'aihackathon.in']
-
+ALLOWED_HOSTS = ['aihackathon.in', 'www.aihackathon.in'] 
 
 # Application definition
 
@@ -39,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -68,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'hackathon.wsgi.application'
+# WSGI_APPLICATION = 'hackathon.wsgi.application'
 
 
 # Database
@@ -118,7 +118,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+# STATIC_ROOT = ''
 STATIC_URL = '/static/'
+
+# STATICFILES_DIRS = ( os.path.join('static'), )
 
 # Email settings 
 EMAIL_USE_TLS = True
@@ -126,3 +129,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'aihackathon@sitpune.edu.in'
 EMAIL_HOST_PASSWORD = 'sit@2008'
 EMAIL_PORT = 587
+
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = '/media/'

@@ -96,9 +96,7 @@ function handleFormSave() {
             });
 
             return;
-        }
-
-        else {
+        } else {
             console.log(member[field])
         }
     }
@@ -121,14 +119,20 @@ function submitForm() {
         hideAfter: 300000,
     });
 
+    let progress_id = $('[name="progress-id-input"]').val();
+
     let json_to_send = {
         'teamName': teamName,
         'teamEmail': teamEmail,
-        'memberDetails': memberDetails
+        'memberDetails': memberDetails,
+        'progressID': progress_id
     };
 
+    let register_individual_url = $('[name="hidden-individual-register-url"]').attr("data-url");
+
+
     $.ajax({
-        url: 'http://localhost:8000/app/register/individual',
+        url: register_individual_url,
         type: 'post',
         dataType: 'json',
         contentType: 'application/json',
@@ -155,7 +159,7 @@ function submitForm() {
         error: function (data) {
             if (data['correct'] === '0') {
                 progressToast.update({
-                    heading: 'Success',
+                    heading: 'Error',
                     text: data['message'],
                     icon: 'information',
                     hideAfter: false
@@ -164,8 +168,43 @@ function submitForm() {
         },
         data: JSON.stringify(json_to_send)
     });
+
+    updateProgressInfo(progress_id);
 }
 
 function getInputValue(name) {
     return $("[name=" + name + "]").val();
 }
+
+
+function updateProgressInfo(progress_id) {
+    console.log("Querying for progress: id = " + progress_id);
+
+    var progress_url = $("#poll-url").attr("data-url"); // ajax view serving progress info
+
+    $.getJSON(progress_url, {'Progress-ID': progress_id}, function (data, status) {
+        if (data) {
+
+            progress = parseInt(data['progress']);
+
+            console.log("Progress recieved: " + progress);
+
+            if (progress !== -1) {
+
+                $(".progress-bar-custom").animate({
+                    width: `${progress}%`,
+                }, "slow");
+
+                // trigger the next  one after 1s
+                window.setTimeout(function () {
+                    updateProgressInfo(progress_id)
+                }, 1000);
+
+            } else {
+                $(".progress-bar-custom").animate({
+                    width: `0%`,
+                }, "slow");
+            }
+        }
+    });
+};

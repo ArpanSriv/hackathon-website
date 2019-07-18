@@ -52,6 +52,15 @@
 <!-- NAVBAR -->
 {% include "webapp/navbar.html" %}
 
+<div class="progress-desc-full">
+    <div class="progress-desc-inner">
+        <div class="icon">
+            <img src="{% static 'webapp/imgs/loading_icon.svg' %}" />
+        </div>
+        <div class="progress-text">Loading</div>
+    </div>
+</div>
+
 <div class="registration-box">
     <h1 id="startupRegistrationTitle">Startup Registration</h1>
 </div>
@@ -266,6 +275,7 @@
 
                 <input type="hidden" id="team-name-hidden-input" name="team-name-hidden" value="">
                 <input type="hidden" id="team-reg-no-hidden-input" name="team-reg-no-hidden" value="">
+                <input type="hidden" id="progress-id-input" name="progress-id-input" value="{{ progress_id }}">
             </div>
         </form>
 

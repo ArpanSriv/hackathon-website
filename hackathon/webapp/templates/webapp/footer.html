@@ -1,0 +1,45 @@
+{% load static %}
+<div class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-4">
+					<div class="follow">
+						<p>Help Desk</p>
+						<p id="code">Still got some queries? Mail us at <a href="mailto:aihackathon@sitpune.edu.in?Subject=Hackathon%20Query" target="_top">aihackathon@sitpune.edu.in</a></p>						
+					</div>
+				</div>
+				<div class="col-4">
+					<div class="follow text-center">
+						<p>Follow Us On</p>
+						<!-- <img src="../../static/webapp/imgs/facebook.svg" style="height: 40px; margin-right: 10px;">
+						<img src="../../static/webapp/imgs/instagram.svg" style="height: 40px; margin-right: 10px;">
+						<img src="../../static/webapp/imgs/linkedin.svg" style="height: 40px; margin-right: 10px;">
+						<img src="../../static/webapp/imgs/google-plus.svg" style="height: 40px; margin-right: 10px;"> -->
+						<a href="https://www.facebook.com/SITLavale/"><i class="lni-facebook socialLinks" id="fb" style="font-size: 25px; margin-right: 10px;"></i></a>
+						<a href="https://www.instagram.com/symbiosis_sit/"><i class="lni-instagram socialLinks" id="ig" style="font-size: 25px; margin-right: 10px;"></i></a>
+						<a href="https://twitter.com/sit_symbiosis"><i class="lni-twitter socialLinks" id="twitter" style="font-size: 25px; margin-right: 10px;"></i></a>
+					</div>
+				</div>
+				<div class="col-4">
+					<div class="follow text-center">
+						<p id="quickLinks">Quick Links</p>
+						<ul class="footer-link">
+							<li><a href="{% url 'index' %}">Home</a></li>
+							<li><a href="{% url 'about_us' %}">About Us</a></li>
+							<li><a href="{% url 'contact_us' %}">Contact Us</a></li>
+							<li><a href="{% url 'registration' %}">Register</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-2">
+					<p style="margin-bottom: 0; text-align: center;"><a href="{% url 'privacy_policy' %}" id="privacy">Privacy policy</a></p>
+				</div>
+			</div>
+			<hr>
+			<div class="row" id="footer-note">
+				<p>©2019. Designed by SIT Final Year CS Students Arpan Srivastava & Ryan Miranda.</p>
+			</div>
+		</div>
+</div>

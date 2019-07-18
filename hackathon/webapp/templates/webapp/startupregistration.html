@@ -49,137 +49,162 @@
 </head>
 
 <body>
-<!-- NAVBAR -->
-{% include "webapp/navbar.html" %}
 
-<div class="progress-desc-full">
-    <div class="progress-desc-inner">
-        <div class="icon">
-            <img src="{% static 'webapp/imgs/loading_icon.svg' %}" />
-        </div>
-        <div class="progress-text">Loading</div>
-    </div>
-</div>
+	<!-- NAVBAR -->
+	{% include "webapp/navbar.html" %}
 
-<div class="registration-box">
-    <h1 id="startupRegistrationTitle">Startup Registration</h1>
-</div>
+	<div class="registration-box">
+		<h1 id="startupRegistrationTitle">Startup Registration</h1>
+	</div>
 
-<div class="modal hide fade" data-backdrop="static" id="modalTnC" tabindex="-1" role="dialog"
-     aria-labelledby="myModalLabel"
-     aria-hidden="true" data-keyboard="false">
-    <div class="modal-dialog TnCform" role="document">
-        <div class="modal-content">
-            <div class="modal-header text-center">
-                <h4 class="modal-title w-100 font-weight-bold">Terms and Conditions</h4>
-            </div>
-            <div class="modal-body mx-3" style="text-align: justify;" id="modalTncBody">
-                <div class="md-form mb-5">
-                    {% include 'webapp/terms-and-conditions.htm' %}
-                </div>
+	<div class="modal hide fade" data-backdrop="static" id="modalTnC" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  		aria-hidden="true" data-keyboard="false">
+	    <div class="modal-dialog modal-dialog-centered TnCform" role="document">
+	        <div class="modal-content">
+	            <div class="modal-header text-center">
+	                <h4 class="modal-title w-100 font-weight-bold">Terms and Conditions</h4>
+	            </div>
+	            <div class="modal-body mx-3" style="text-align: justify;" id="modalTncBody">
+	                <div class="md-form mb-5">
+                        {% include 'webapp/terms-and-conditions.htm' %}
+	                </div>
+	               <!--  <div class="custom-control custom-checkbox">
+	                  <input type="checkbox" class="custom-control-input" id="customCheck1">
+	                  <label class="custom-control-label" for="customCheck1">I have read and agree to the Terms and Conditions</label>
+	                </div>
+
+	                <div style="margin-bottom: 20px;">
+	                    <a href="{% url 'index' %}" class="btn btn-danger" id="declineBtn">Decline</a> -->
+	                    <!-- <button type="button" class="btn btn-danger" id="declineBtn" href="landing.html">Decline</button> -->
+	                  <!--  <button type="button" class="btn btn-success" id="proceedBtn" data-dismiss="modal">Proceed</button>
+	                </div> -->
+	            </div>
+	            <div class="modal-footer mx-3 justify-content-center">
                 <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                    <label class="custom-control-label" for="customCheck1">I have read and agree to the Terms and
-                        Conditions</label>
+                  <input type="checkbox" class="custom-control-input" id="customCheck1">
+                  <label class="custom-control-label" for="customCheck1">I have read and agree to the Terms and Conditions</label>
                 </div>
 
-                <div style="margin-bottom: 20px;">
+            </div>
+            <div class="modal-footer">
+                <div style="margin-bottom: 20px; width: 100%;">
                     <a href="{% url 'index' %}" class="btn btn-danger" id="declineBtn">Decline</a>
                     <!-- <button type="button" class="btn btn-danger" id="declineBtn" href="landing.html">Decline</button> -->
                     <button type="button" class="btn btn-success" id="proceedBtn" data-dismiss="modal">Proceed</button>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
-<div class="container form-custom">
-    <form method="POST" id="startupForm">
-        {% csrf_token %}
-        <h4 class="form-title">Startup Details</h4>
-        <div class="form-group">
-            <input type="text" class="form-control" id="teamName" placeholder="Team Name" required name="teamName">
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" id="startupName" placeholder="Startup Name" required
-                   name="startupName">
-        </div>
-        <div class="form-group">
-            <input type="email" class="form-control" id="startupEmail" placeholder="Email for correspondence"
-                   required name="startupEmail">
-        </div>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">Date Of Startup Registration</span>
-            </div>
-            <input type="date" class="form-control" id="dateOfReg" placeholder="Date of Startup Registration"
-                   required="false" name="startupDOR">
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" id="startupDomain" placeholder="Technology Domain"
-                   required="false" name="startupDomain">
-        </div>
-        <div class="form-group">
-                <textarea class="form-control" id="startupDesc" placeholder="Startup Description" required="false"
-                          name="startupDesc"></textarea>
-        </div>
+	      </div>
+	    </div>
+	</div>
 
-        <h4 class="form-title">Team Details</h4>
+	<div class="container form-custom">
+		<form method="POST" id="startupForm">
+			{% csrf_token %}
+			<h4 class="form-title">Startup Details</h3>
 
-        <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)"
-                data-member="1" id="modal1" class="modal">
-            Team Member 1 (Mentor)
-        </button>
-        <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)"
-                data-member="2" id="modal2" class="modal">
-            Team Member 2
-        </button>
-        <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)"
-                data-member="3" id="modal3" class="modal">
-            Team Member 3
-        </button>
-        <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)"
-                data-member="4" id="modal4" class="modal">
-            Team Member 4
-        </button>
+			<div class="row">
+				<div class="col-sm-12 col-lg-12">
+					<div class="form-group">
+					    <input type="text" class="form-control" id="teamName" placeholder="Team Name" required name="teamName">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-lg-12">
+					<div class="form-group">
+					    <input type="text" class="form-control" id="startupName" placeholder="Startup Name" required name="startupName">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-lg-12">
+					<div class="form-group">
+					    <input type="email" class="form-control" id="startupEmail" placeholder="Email for correspondence" required name="startupEmail">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-lg-12">
+					<div class="input-group mb-3">
+		                <div class="input-group-prepend">
+		                    <span class="input-group-text" id="basic-addon1">Date Of Startup Registration</span>
+		                </div>
+		                <input type="date" class="form-control" id="dateOfReg" placeholder="Date of Startup Registration" required="false" name="startupDOR">
+		            </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-lg-12">
+				 	<div class="form-group">
+				    	<input type="text" class="form-control" id="startupDomain" placeholder="Technology Domain" required="false" name="startupDomain">
+				  	</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-lg-12">
+					<div class="form-group">
+					    <textarea class="form-control" id="startupDesc" placeholder="Startup Description" required="false" name="startupDesc"></textarea>
+					</div>
+				</div>
+			</div>
+		
+			<h4 class="form-title">Team Details</h3>
+			<div class="row">
+				<div class="col-sm-12 col-lg-12">
+					<button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)" data-member="1" id="modal1" class="modal">
+						Team Member 1 (Mentor)
+					</button>
+				</div>
+			</div>
+				
+			<div class="row">
+				<div class="col-sm-12 col-lg-12">
+					<button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)" data-member="2" id="modal2" class="modal">
+					  	Team Member 2
+					</button>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 col-lg-12">
+					<button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)" data-member="3" id="modal3" class="modal">
+					  	Team Member 3
+					</button>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 col-lg-12">
+					<button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)" data-member="4" id="modal4" class="modal">
+					  	Team Member 4
+					</button>
+				</div>
+			</div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="modalLong" tabindex="-1" role="dialog" aria-labelledby="modalTitle"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalTitle">Team Member 1</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container form-custom">
-                            <form>
-                                <h4 class="form-title">Personal Details</h4>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="firstName"
-                                           placeholder="First Name" required="false" name="firstName">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="lastName"
-                                           placeholder="Last Name" required="false" name="lastName">
-                                </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">Date Of Birth</span>
-                                    </div>
-                                    <input type="date" class="form-control" id="dateOfBirth"
-                                           placeholder="Date of Birth" required="false" name="dob">
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control" id="personalEmail"
-                                           placeholder="Personal Email" required="false" name="personalEmail">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="personalPhone"
-                                           placeholder="Mobile Number" required="false" name="mobileNo">
+			<!-- Modal -->
+			<div class="modal fade" id="modalLong" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="modalTitle">Team Member 1</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			      	<div class="container inner-form-custom">
+						<form>
+							<h4 class="form-title">Personal Details</h4>
+							<div class="form-group">
+							    <input type="text" class="form-control" id="firstName" placeholder="First Name" required="false" name="firstName">
+							</div>
+							<div class="form-group">
+							    <input type="text" class="form-control" id="lastName" placeholder="Last Name" required="false" name="lastName">
+							</div>
+							<div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Date Of Birth</span>
                                 </div>
 
                                 <div class="form-group">

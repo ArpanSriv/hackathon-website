@@ -31,7 +31,7 @@
 	<link href="https://cdn.lineicons.com/1.0.1/LineIcons.min.css" rel="stylesheet">
 </head>
 
-<body>
+<body style="overflow-x: hidden;">
 	<script type="text/javascript">
 		$.scoped();	
 	</script>
@@ -39,17 +39,17 @@
 	<!-- NAVBAR -->
 	{% include "webapp/navbar.html" %}
 
-	<div style="margin-top: 30px; margin-bottom: 20px;">
+	<div id="contactus-box">
 		<h1 id="contactus-title">Contact Us</h1>
 	</div>
 
 	<div class="container" style="margin-bottom: 20px;">
 		<div class="row" style="font-family: 'Open Sans">
-			<div class="col-6">
+			<div class="col-sm-12 col-md-9 col-lg-7">
 				<div class="mapouter" style="text-align: left;"><div class="gmap_canvas"><iframe width="500" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=symbiosis%20institute%20of%20technology&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div>				
 			</div>
-			<div class="col-6 v-center">
-				<div class="row" style="display: block;">
+			<div class="col-sm-12 col-md-3 col-lg-5 v-center">
+				<div class="row" style="display: block;" id="contactus-info">
 					<h2 style="font-weight: 600;">Symbiosis Institute of Technology</h2>
 					<p style="font-size: 14px;">Symbiosis International University
 												<br>Near Lupin Research Park
@@ -62,7 +62,8 @@
 					<p style="font-size: 14px;">Near Lupin Research Park
 					<p style="font-size: 14px;">Gram: Lavale Tal, Mulshi, Maharashtra 412115</p> -->
 				</div>
-				<div class="row" style="display: block;">
+				<!-- Add text-align:center -->
+				<div class="row" style="display: block;" id="contactus-detail">
 					<h4 style="font-weight: 600; margin-bottom: 10px;">For any queries: </h4>
 {#					<p style="font-size: 14px;">Hema Karande</p>#}
 					<p style="font-size: 14px;">

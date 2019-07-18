@@ -163,7 +163,7 @@ function submitForm() {
 
         console.log(json_to_send);
 
-        let register_startup_url = $('[name="hidden-startup-register-url"]').attr("data-url")
+        let register_startup_url = $('[name="hidden-startup-register-url"]').attr("data-url");
 
 
         $.ajax({
@@ -290,7 +290,7 @@ function startUpload() {
             window.setTimeout(function () {
                 let url = $("#thank-you-url").attr("data-url");
                 window.location = url
-            }, 2000)
+            }, 1000)
 
         }
     })

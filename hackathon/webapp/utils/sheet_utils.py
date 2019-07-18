@@ -66,9 +66,9 @@ def update_google_sheets(type, reg_no, team_data, progress_id):
         team_name_no_range = re.sub(r'([A-Z])(\d)', repl='B\\2', string=updated_range)
         team_email_range = re.sub(r'([A-Z])(\d)', repl='C\\2', string=updated_range)
 
-        merge_columns(reg_no_range)
-        merge_columns(team_name_no_range)
-        merge_columns(team_email_range)
+        # merge_columns(reg_no_range)
+        # merge_columns(team_name_no_range)
+        merge_columns([reg_no_range, team_name_no_range, team_email_range])
 
     elif type == STARTUP:
 

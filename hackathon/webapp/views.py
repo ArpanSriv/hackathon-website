@@ -13,6 +13,7 @@ from .utils.progress_util import ProgressUtils
 
 progress_utils = ProgressUtils.get_instance()
 
+
 # Landing Page
 def index(request):
     return render(request, 'webapp/landing.html')
@@ -63,6 +64,8 @@ def registration_individual(request):
 
                 return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
 
+            progress_id = json_data['progressID']
+
             # Found members 1 and 2 and also found some data there.
             resp = {
                 'correct': '1',
@@ -71,18 +74,36 @@ def registration_individual(request):
 
             reg_no = generate_reg_no(INDIVIDUAL)
 
+            progress_utils.update_progress(progress_id, 20)
+
             print("Uploading to sheets...")
 
             # Upload the Data on Spreadsheet and Firebase :p
-            update_google_sheets(INDIVIDUAL, reg_no, json_data)
+            update_google_sheets(INDIVIDUAL, reg_no, json_data, progress_id)
+
+            progress_utils.update_progress(progress_id, 50)
+
             upload_on_firebase(INDIVIDUAL, json_data)
 
+            progress_utils.update_progress(progress_id, 70)
+
             sendmail(json_data['teamName'], reg_no, json_data['teamEmail'])
+
+            progress_utils.update_progress(progress_id, 100)
+
+            progress_utils.remove_progress(progress_id)
 
             return HttpResponse(json.dumps(resp), content_type='application/json')
 
     # Normal GET Request.
-    return render(request, 'webapp/individualregistration.html')
+    elif request.method == 'GET':
+        progress_id = generate_progress_id()
+
+        progress_utils.init_progress(progress_id)
+
+        return render(request, 'webapp/individualregistration.html', {
+            'progress_id': progress_id
+        })
 
 
 def poll_state(request):

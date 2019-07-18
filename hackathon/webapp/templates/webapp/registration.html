@@ -29,16 +29,16 @@
 	<!-- NAVBAR -->
 	{% include "webapp/navbar.html" %}
 
-	<div style="margin-top: 70px;">
+	<div style="margin-top: 70px;" id="event-registration-titleBox">
 		<h1 id="event-registration-title">Hackathon Registration</h1>
 	</div>
 
-	<div style="margin-top: 70px;">
+	<div style="margin-top: 70px;" id="registerAs-Box">
 		<h3 id="registerAs-title">Register As</h3>
 	</div>
 
 	<div class="container" style="margin-top: 50px;">
-		<div class="row text-center justify-content-center">
+		<div class="row text-center justify-content-center" id="registrationBox">
 			<div class="col-sm-5">
 				<a href="{% url 'registration_individual' %}">
 					<!-- <a href="registration_individual.html"> -->
@@ -46,7 +46,7 @@
 					<h4 id="individualTitle">Individuals</h4>
 				</a>
 			</div>
-			<div class="col-sm-2" style="margin-top: 56px">
+			<div class="col-sm-2" id="divider">
 				<img src="{% static 'webapp/imgs/Line.svg' %}" style="height: 240px;">
 			</div>
 			<div class="col-sm-5">

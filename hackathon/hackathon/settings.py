@@ -25,7 +25,7 @@ SECRET_KEY = '0ngtf5br@lwqjxq0eo9c9^qdvo6plsj+5j3b@&4dr5#w$vd^=t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.0.105", 'localhost', 'aihackathon.in']
+ALLOWED_HOSTS = ["192.168.0.103", 'localhost', 'aihackathon.in']
 
 
 # Application definition

@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="200db721-6452-4a04-9983-02f8a701fca2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hackathon/webapp/templates/webapp/startupregistration.html" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/webapp/templates/webapp/startupregistration.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hackathon/webapp/static/webapp/js/startupForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/webapp/static/webapp/js/startupForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hackathon/webapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/webapp/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,98 +30,115 @@
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hackathon/manage.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="9" column="35" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hackathon/webapp/templates/webapp/landing.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="404" column="53" lean-forward="true" selection-start-line="404" selection-start-column="33" selection-end-line="404" selection-end-column="53" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hackathon/webapp/templates/webapp/navbar.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="1" column="80" selection-start-line="1" selection-start-column="80" selection-end-line="1" selection-end-column="80" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hackathon/hackathon/settings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="27" column="59" selection-start-line="27" selection-start-column="59" selection-end-line="27" selection-end-column="59" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hackathon/webapp/static/webapp/styles.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-511">
-              <caret line="1268" column="24" selection-start-line="1268" selection-start-column="24" selection-end-line="1268" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/hackathon/webapp/templates/webapp/startupregistration.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="368" column="112" selection-start-line="368" selection-start-column="112" selection-end-line="368" selection-end-column="112" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hackathon/webapp/static/webapp/js/startupForm.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3300">
-              <caret line="165" column="94" selection-start-line="165" selection-start-column="94" selection-end-line="165" selection-end-column="94" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hackathon/webapp/templates/webapp/individualregistration.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="621" column="26" lean-forward="true" selection-start-line="518" selection-start-column="19" selection-end-line="621" selection-end-column="26" />
-              <folding>
-                <element signature="n#div#1;n#div#0;n#div#0;n#div#3;n#form#0;n#div#2;n#body#0;n#html#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hackathon/webapp/static/webapp/timeline.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="3624" column="4" selection-start-line="3624" selection-start-column="4" selection-end-line="3624" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/hackathon/webapp/templates/webapp/landing.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="235">
+                  <caret line="404" column="53" lean-forward="true" selection-start-line="404" selection-start-column="33" selection-end-line="404" selection-end-column="53" />
+                  <folding>
+                    <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/hackathon/webapp/templates/webapp/navbar.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="20">
+                  <caret line="1" column="80" selection-start-line="1" selection-start-column="80" selection-end-line="1" selection-end-column="80" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/hackathon/hackathon/settings.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="112">
+                  <caret line="27" column="59" selection-start-line="27" selection-start-column="59" selection-end-line="27" selection-end-column="59" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/hackathon/webapp/static/webapp/styles.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="329">
+                  <caret line="1277" column="35" lean-forward="true" selection-start-line="1277" selection-start-column="35" selection-end-line="1277" selection-end-column="35" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/hackathon/webapp/views.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="359">
+                  <caret line="173" column="59" selection-start-line="173" selection-start-column="59" selection-end-line="173" selection-end-column="59" />
+                  <folding>
+                    <element signature="e#37#48#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/hackathon/webapp/static/webapp/js/startupForm.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="170">
+                  <caret line="253" column="42" lean-forward="true" selection-start-line="253" selection-start-column="42" selection-end-line="253" selection-end-column="42" />
+                  <folding>
+                    <marker date="1563537500985" expanded="true" signature="5861:6082" ph="..." />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/hackathon/webapp/templates/webapp/individualregistration.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="206">
+                  <caret line="621" column="26" lean-forward="true" selection-start-line="518" selection-start-column="19" selection-end-line="621" selection-end-column="26" />
+                  <folding>
+                    <element signature="n#div#1;n#div#0;n#div#0;n#div#3;n#form#0;n#div#2;n#body#0;n#html#0;n#!!top" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/hackathon/webapp/static/webapp/timeline.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="255">
+                  <caret line="3624" column="4" selection-start-line="3624" selection-start-column="4" selection-end-line="3624" selection-end-column="4" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/hackathon/webapp/static/webapp/js/startupForm.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="119">
+                  <caret line="128" column="37" selection-start-line="128" selection-start-column="37" selection-end-line="128" selection-end-column="37" />
+                  <folding>
+                    <marker date="1563537500985" expanded="true" signature="5861:6082" ph="..." />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -133,18 +151,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ProgressUtils</find>
-      <find>poll_</find>
-      <find>Progress-ID</find>
-      <find>aihacka</find>
-      <find>hidden</find>
-      <find>session</find>
-      <find>url:</find>
-      <find>hidden-s</find>
-      <find>url</find>
-      <find>unique</find>
-      <find>progress_id</find>
-      <find>progress_id =</find>
       <find>app/regi</find>
       <find>already</find>
       <find>init_</find>
@@ -160,9 +166,21 @@
       <find>timeline__na</find>
       <find>app/</find>
       <find>display: none</find>
-      <find>timeline__event</find>
       <find>&lt;h4</find>
       <find>pincode</find>
+      <find>member 1 and member 2</find>
+      <find>member 1 and</find>
+      <find>timeline__event</find>
+      <find>HttpResonse(</find>
+      <find>error:</find>
+      <find>error</find>
+      <find>localhost</find>
+      <find>bad reques</find>
+      <find>responseJSON</find>
+      <find>url</find>
+      <find>bad_re</find>
+      <find>return dd</find>
+      <find>error:</find>
     </findStrings>
     <replaceStrings>
       <replace>webapp/</replace>
@@ -210,17 +228,17 @@
         <option value="$PROJECT_DIR$/hackathon/hackathon/urls.py" />
         <option value="$PROJECT_DIR$/hackathon/webapp/static/webapp/imgs/loading_icon.svg" />
         <option value="$PROJECT_DIR$/hackathon/webapp/utils/progress_util.py" />
-        <option value="$PROJECT_DIR$/hackathon/webapp/static/webapp/js/startupForm.js" />
         <option value="$PROJECT_DIR$/hackathon/webapp/templates/webapp/individualregistration.html" />
-        <option value="$PROJECT_DIR$/hackathon/webapp/static/webapp/js/form.js" />
         <option value="$PROJECT_DIR$/hackathon/webapp/utils/sheet_utils.py" />
-        <option value="$PROJECT_DIR$/hackathon/webapp/views.py" />
         <option value="$PROJECT_DIR$/hackathon/hackathon/settings.py" />
         <option value="$PROJECT_DIR$/hackathon/webapp/templates/webapp/navbar.html" />
         <option value="$PROJECT_DIR$/hackathon/webapp/templates/webapp/landing.html" />
         <option value="$PROJECT_DIR$/hackathon/webapp/static/webapp/timeline.css" />
-        <option value="$PROJECT_DIR$/hackathon/webapp/static/webapp/styles.css" />
         <option value="$PROJECT_DIR$/hackathon/webapp/templates/webapp/startupregistration.html" />
+        <option value="$PROJECT_DIR$/hackathon/webapp/static/webapp/js/form.js" />
+        <option value="$PROJECT_DIR$/hackathon/webapp/static/webapp/styles.css" />
+        <option value="$PROJECT_DIR$/hackathon/webapp/views.py" />
+        <option value="$PROJECT_DIR$/hackathon/webapp/static/webapp/js/startupForm.js" />
       </list>
     </option>
   </component>
@@ -402,7 +420,7 @@
       <workItem from="1563253794659" duration="3969000" />
       <workItem from="1563374186396" duration="20474000" />
       <workItem from="1563399955127" duration="14553000" />
-      <workItem from="1563471404217" duration="15129000" />
+      <workItem from="1563471404217" duration="20375000" />
     </task>
     <task id="LOCAL-00001" summary="requirements.txt added">
       <created>1563055565333</created>
@@ -572,11 +590,25 @@
       <option name="project" value="LOCAL" />
       <updated>1563529077404</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Fixed form in startup registration">
+      <created>1563532254908</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1563532254908</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Updated error handling in startup registration and font size in thankyou page">
+      <created>1563536676706</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1563536676706</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="148808000" />
+    <option name="totallyTimeSpent" value="154054000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -599,14 +631,14 @@
       <window_info anchor="bottom" id="Debug" order="2" weight="0.39821884" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="5" weight="0.32928476" />
+      <window_info anchor="bottom" id="TODO" order="5" weight="0.32824427" />
       <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" weight="0.32951653" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.31424937" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32928476" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4993395" weight="0.3956743" />
-      <window_info anchor="bottom" x="375" y="541" width="1159" height="277" id="Run" order="12" sideWeight="0.50127226" weight="0.35496184" />
+      <window_info active="true" anchor="bottom" x="375" y="541" width="1159" height="277" id="Run" order="12" sideWeight="0.50127226" visible="true" weight="0.36513996" />
       <window_info anchor="bottom" id="Statistic" order="13" weight="0.32951653" />
       <window_info anchor="bottom" id="manage.py@hackathon-website" order="14" weight="0.32951653" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -684,7 +716,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="requirements.txt added" />
     <MESSAGE value="Updated directory structure" />
     <MESSAGE value="individual and landing" />
     <MESSAGE value="Fixed form js" />
@@ -708,7 +739,9 @@
     <MESSAGE value="Project Configuration INTELLIJ" />
     <MESSAGE value="Added responsiveness in timeline" />
     <MESSAGE value="Fixed footer in startup registration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed footer in startup registration" />
+    <MESSAGE value="Fixed form in startup registration" />
+    <MESSAGE value="Updated error handling in startup registration and font size in thankyou page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated error handling in startup registration and font size in thankyou page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1091,23 +1124,6 @@
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/hackathon/requirements.txt" />
-    <entry file="file://$PROJECT_DIR$/hackathon/webapp/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1400">
-          <caret line="80" column="60" selection-start-line="80" selection-start-column="60" selection-end-line="80" selection-end-column="60" />
-          <folding>
-            <element signature="e#37#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hackathon/webapp/static/webapp/js/form.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2520">
-          <caret line="126" column="39" selection-start-line="126" selection-start-column="39" selection-end-line="126" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hackathon/webapp/utils/sheet_utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="520">
@@ -1180,13 +1196,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hackathon/webapp/static/webapp/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-511">
-          <caret line="1268" column="24" selection-start-line="1268" selection-start-column="24" selection-end-line="1268" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hackathon/webapp/templates/webapp/individualregistration.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="206">
@@ -1197,17 +1206,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hackathon/webapp/static/webapp/js/startupForm.js">
+    <entry file="file://$PROJECT_DIR$/hackathon/webapp/templates/webapp/startupregistration.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3300">
-          <caret line="165" column="94" selection-start-line="165" selection-start-column="94" selection-end-line="165" selection-end-column="94" />
+        <state relative-caret-position="142">
+          <caret line="155" column="38" selection-start-line="155" selection-start-column="38" selection-end-line="155" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hackathon/webapp/templates/webapp/startupregistration.html">
+    <entry file="file://$PROJECT_DIR$/hackathon/webapp/static/webapp/js/form.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="368" column="112" selection-start-line="368" selection-start-column="112" selection-end-line="368" selection-end-column="112" />
+        <state relative-caret-position="62">
+          <caret line="144" column="26" selection-start-line="144" selection-start-column="26" selection-end-line="144" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hackathon/webapp/static/webapp/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="1277" column="35" lean-forward="true" selection-start-line="1277" selection-start-column="35" selection-end-line="1277" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hackathon/webapp/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="173" column="59" selection-start-line="173" selection-start-column="59" selection-end-line="173" selection-end-column="59" />
+          <folding>
+            <element signature="e#37#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hackathon/webapp/static/webapp/js/startupForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="128" column="37" selection-start-line="128" selection-start-column="37" selection-end-line="128" selection-end-column="37" />
+          <folding>
+            <marker date="1563537500985" expanded="true" signature="5861:6082" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

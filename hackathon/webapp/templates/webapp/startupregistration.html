@@ -101,7 +101,7 @@
 	<div class="container form-custom">
 		<form method="POST" id="startupForm">
 			{% csrf_token %}
-			<h4 class="form-title">Startup Details</h3>
+			<h4 class="form-title">Startup Details</h4>
 
 			<div class="row">
 				<div class="col-sm-12 col-lg-12">
@@ -149,7 +149,7 @@
 				</div>
 			</div>
 		
-			<h4 class="form-title">Team Details</h3>
+			<h4 class="form-title">Team Details</h4>
 			<div class="row">
 				<div class="col-sm-12 col-lg-12">
 					<button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)" data-member="1" id="modal1" class="modal">
@@ -206,7 +206,6 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">Date Of Birth</span>
                                 </div>
-
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="address1"
                                            placeholder="Address Line 1"
@@ -217,7 +216,6 @@
                                            placeholder="Address Line 2"
                                            required="true" name="addressLine2">
                                 </div>
-
                                 <div class="form-row">
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="pincode"
@@ -229,7 +227,6 @@
                                                required="true" name="city">
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <select class="custom-select" id="statesList" name="state">
                                         <option value="">Select State</option>
@@ -272,11 +269,11 @@
                                         <option value="West Bengal">West Bengal</option>
                                     </select>
                                 </div>
-
                                 <div class="form-group">
                                             <textarea class="form-control" id="experienceDesc"
                                                       placeholder="Experience" name="experienceDesc"></textarea>
                                 </div>
+                            </div>
                             </form>
                         </div>
                     </div>

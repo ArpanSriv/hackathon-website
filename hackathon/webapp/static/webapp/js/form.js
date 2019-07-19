@@ -19,6 +19,9 @@ let memberFields = {
 let teamName;
 let teamEmail;
 
+// Timer to update the progress
+let updateTimerHandle;
+
 
 function openModal(id) {
     console.log("Open Modal called: ID : " + id);
@@ -139,9 +142,11 @@ function submitForm() {
         headers: {'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value},
         success: function (data) {
             console.log("DATA: " + data);
+            alert("success")
 
             // Precautionary.
             if (data['correct'] === '1') {
+
                 // progressToast.text(data['message'])
                 progressToast.update({
                     heading: 'Success',
@@ -156,15 +161,18 @@ function submitForm() {
                 }, 2000)
             }
         },
-        error: function (data) {
-            if (data['correct'] === '0') {
-                progressToast.update({
-                    heading: 'Error',
-                    text: data['message'],
-                    icon: 'information',
-                    hideAfter: false
-                });
-            }
+        error: function (xhr, ajaxOptions, thrownError) {
+
+            // alert(xhr.responseJSON.message)
+
+            progressToast.update({
+                heading: 'Error',
+                text: data['message'],
+                icon: 'Error',
+                hideAfter: false
+            });
+
+            stopUpdatingProgress()
         },
         data: JSON.stringify(json_to_send)
     });
@@ -196,7 +204,7 @@ function updateProgressInfo(progress_id) {
                 }, "slow");
 
                 // trigger the next  one after 1s
-                window.setTimeout(function () {
+                updateTimerHandle = window.setTimeout(function () {
                     updateProgressInfo(progress_id)
                 }, 1000);
 

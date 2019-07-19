@@ -1268,7 +1268,18 @@ hr {
     .col-3 {
         padding-left: 0;
     }
+
+    /*Thank you page*/
+    #thankyou h2 {
+        font-size: 24px
+    }
+
+    #thankyou p {
+        font-size: 16px !important;
+    }
+
 }
+
 
 .timeline-prev-button, .timeline-next-button {
     display: none;

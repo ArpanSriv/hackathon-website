@@ -124,34 +124,45 @@ def registration_startup(request):
         json_data = json.loads(request.body.decode("utf-8"))
 
         message = 'Internal Server Error.'
+        progress_id = json_data['progressID']
 
         # Startup Name Empty
         if 'startupName' in json_data:
             if json_data['startupName'] == '':
                 message = 'A valid Startup Name is required.'
+
+                progress_utils.update_progress(progress_id, -1)
+
                 return bad_request(message)
 
         # Team Email Empty
         if 'startupEmail' in json_data:
             if json_data['startupEmail'] == '':
                 message = 'A valid Startup Email is required.'
+
+                progress_utils.update_progress(progress_id, -1)
                 return bad_request(message)
 
         # Team DOR Empty
         if 'startupDOR' in json_data:
             if json_data['startupDOR'] == '':
                 message = 'A valid Startup Email is required.'
+
+                progress_utils.update_progress(progress_id, -1)
                 return bad_request(message)
 
         # Team Domain Empty
         if 'startupDomain' in json_data:
             if json_data['startupDomain'] == '':
                 message = 'A valid Startup Technology Domain is required.'
+                progress_utils.update_progress(progress_id, -1)
+
                 return bad_request(message)
 
         # Team Domain Empty
         if json_data['startupDesc'] == '':
             message = 'A valid Startup Description is required.'
+            progress_utils.update_progress(progress_id, -1)
             return bad_request(message)
 
         # Team Members Validation
@@ -159,6 +170,8 @@ def registration_startup(request):
             print('member 1 and member 2 not found. -> Startup')
 
             message = 'Member 1 and Member 2 are required.'
+
+            progress_utils.update_progress(progress_id, -1)
 
             return bad_request(message)
 
@@ -177,7 +190,6 @@ def registration_startup(request):
                 'message': 'Data found sufficient.'
             }
 
-            progress_id = json_data['progressID']
             print("Progress ID = " + progress_id)
 
             progress_utils.update_progress(progress_id, 10)

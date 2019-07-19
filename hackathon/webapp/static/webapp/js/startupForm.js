@@ -126,9 +126,7 @@ function handleFormSave() {
 
 function submitForm() {
 
-    let regCert = getInputValue('file-button');
-
-    console.log("regCert = " + regCert);
+    let regCert = getInputValue('cert');
 
     if (regCert !== '') {
 

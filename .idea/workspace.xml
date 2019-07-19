@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="200db721-6452-4a04-9983-02f8a701fca2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Arpan_Srivastava.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/python-terminal.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/hackathon-website.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/hackathon-website.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hackathon/hackathon/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/hackathon/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hackathon/webapp/static/webapp/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/webapp/static/webapp/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hackathon/webapp/static/webapp/timeline.css" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/webapp/static/webapp/timeline.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hackathon/webapp/templates/webapp/landing.html" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/webapp/templates/webapp/landing.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hackathon/webapp/templates/webapp/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/webapp/templates/webapp/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hackathon/webapp/templates/webapp/startupregistration.html" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/webapp/templates/webapp/startupregistration.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -82,11 +72,41 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hackathon/webapp/static/webapp/styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
+            <state relative-caret-position="-511">
               <caret line="1268" column="24" selection-start-line="1268" selection-start-column="24" selection-end-line="1268" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/hackathon/webapp/templates/webapp/startupregistration.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="368" column="112" selection-start-line="368" selection-start-column="112" selection-end-line="368" selection-end-column="112" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hackathon/webapp/static/webapp/js/startupForm.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3300">
+              <caret line="165" column="94" selection-start-line="165" selection-start-column="94" selection-end-line="165" selection-end-column="94" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hackathon/webapp/templates/webapp/individualregistration.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="206">
+              <caret line="621" column="26" lean-forward="true" selection-start-line="518" selection-start-column="19" selection-end-line="621" selection-end-column="26" />
+              <folding>
+                <element signature="n#div#1;n#div#0;n#div#0;n#div#3;n#form#0;n#div#2;n#body#0;n#html#0;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -113,8 +133,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>init_pro</find>
-      <find>submitFOrm</find>
       <find>ProgressUtils</find>
       <find>poll_</find>
       <find>Progress-ID</find>
@@ -143,6 +161,8 @@
       <find>app/</find>
       <find>display: none</find>
       <find>timeline__event</find>
+      <find>&lt;h4</find>
+      <find>pincode</find>
     </findStrings>
     <replaceStrings>
       <replace>webapp/</replace>
@@ -152,6 +172,11 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Arpan Srivastava &lt;arpansri98@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -184,7 +209,6 @@
         <option value="$PROJECT_DIR$/hackathon/webapp/urls.py" />
         <option value="$PROJECT_DIR$/hackathon/hackathon/urls.py" />
         <option value="$PROJECT_DIR$/hackathon/webapp/static/webapp/imgs/loading_icon.svg" />
-        <option value="$PROJECT_DIR$/hackathon/webapp/templates/webapp/startupregistration.html" />
         <option value="$PROJECT_DIR$/hackathon/webapp/utils/progress_util.py" />
         <option value="$PROJECT_DIR$/hackathon/webapp/static/webapp/js/startupForm.js" />
         <option value="$PROJECT_DIR$/hackathon/webapp/templates/webapp/individualregistration.html" />
@@ -196,6 +220,7 @@
         <option value="$PROJECT_DIR$/hackathon/webapp/templates/webapp/landing.html" />
         <option value="$PROJECT_DIR$/hackathon/webapp/static/webapp/timeline.css" />
         <option value="$PROJECT_DIR$/hackathon/webapp/static/webapp/styles.css" />
+        <option value="$PROJECT_DIR$/hackathon/webapp/templates/webapp/startupregistration.html" />
       </list>
     </option>
   </component>
@@ -377,7 +402,7 @@
       <workItem from="1563253794659" duration="3969000" />
       <workItem from="1563374186396" duration="20474000" />
       <workItem from="1563399955127" duration="14553000" />
-      <workItem from="1563471404217" duration="10040000" />
+      <workItem from="1563471404217" duration="15129000" />
     </task>
     <task id="LOCAL-00001" summary="requirements.txt added">
       <created>1563055565333</created>
@@ -533,11 +558,25 @@
       <option name="project" value="LOCAL" />
       <updated>1563449476045</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Added responsiveness in timeline">
+      <created>1563485542152</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1563485542152</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Fixed footer in startup registration">
+      <created>1563529077404</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1563529077404</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143719000" />
+    <option name="totallyTimeSpent" value="148808000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -667,7 +706,9 @@
     <MESSAGE value="Fix arati image" />
     <MESSAGE value="Remove a constituent of" />
     <MESSAGE value="Project Configuration INTELLIJ" />
-    <option name="LAST_COMMIT_MESSAGE" value="Project Configuration INTELLIJ" />
+    <MESSAGE value="Added responsiveness in timeline" />
+    <MESSAGE value="Fixed footer in startup registration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed footer in startup registration" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1050,20 +1091,6 @@
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/hackathon/requirements.txt" />
-    <entry file="file://$PROJECT_DIR$/hackathon/webapp/templates/webapp/startupregistration.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5660">
-          <caret line="283" column="41" selection-start-line="283" selection-start-column="33" selection-end-line="283" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hackathon/webapp/static/webapp/js/startupForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3300">
-          <caret line="165" column="94" selection-start-line="165" selection-start-column="94" selection-end-line="165" selection-end-column="94" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hackathon/webapp/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1400">
@@ -1078,13 +1105,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2520">
           <caret line="126" column="39" selection-start-line="126" selection-start-column="39" selection-end-line="126" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hackathon/webapp/templates/webapp/individualregistration.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8620">
-          <caret line="431" column="121" selection-start-line="431" selection-start-column="121" selection-end-line="431" selection-end-column="121" />
         </state>
       </provider>
     </entry>
@@ -1162,8 +1182,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hackathon/webapp/static/webapp/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
+        <state relative-caret-position="-511">
           <caret line="1268" column="24" selection-start-line="1268" selection-start-column="24" selection-end-line="1268" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hackathon/webapp/templates/webapp/individualregistration.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="621" column="26" lean-forward="true" selection-start-line="518" selection-start-column="19" selection-end-line="621" selection-end-column="26" />
+          <folding>
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#3;n#form#0;n#div#2;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hackathon/webapp/static/webapp/js/startupForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3300">
+          <caret line="165" column="94" selection-start-line="165" selection-start-column="94" selection-end-line="165" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hackathon/webapp/templates/webapp/startupregistration.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="368" column="112" selection-start-line="368" selection-start-column="112" selection-end-line="368" selection-end-column="112" />
         </state>
       </provider>
     </entry>

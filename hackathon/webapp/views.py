@@ -27,6 +27,8 @@ def registration_individual(request):
     if request.method == 'POST':
         json_data = json.loads(request.body.decode("utf-8"))
 
+        progress_id = json_data['progressID']
+
         print(json_data)
 
         resp = {
@@ -36,16 +38,20 @@ def registration_individual(request):
 
         # Team Name Empty
         if json_data['teamName'] == '':
-            resp['message'] = 'A valid team name is required.'
-            return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
+            message = 'A valid team name is required.'
+
+            progress_utils.update_progress(progress_id, -1)
+            return bad_request(message)
 
         # Team Email Empty
         if json_data['teamEmail'] == '':
-            resp['message'] = 'A valid team email is required.'
-            return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
+            message = 'A valid team email is required.'
+
+            progress_utils.update_progress(progress_id, -1)
+            return bad_request(message)
 
         # Team Members Validation
-        if 'member1' not in json_data['memberDetails'] and 'member2' not in json_data['memberDetails']:
+        if 'member1' not in json_data['memberDetails'] or 'member2' not in json_data['memberDetails']:
             print('member 1 and member 2 not found.')
 
             resp = {
@@ -53,18 +59,21 @@ def registration_individual(request):
                 'message': 'Member 1 and Member 2 are required.'
             }
 
-            return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
+            progress_utils.update_progress(progress_id, -1)
+
+            return bad_request(message)
 
         elif 'member1' in json_data['memberDetails'] and 'member2' in json_data['memberDetails']:
-            if json_data['memberDetails']['member1']['firstName'] == '' or json_data['memberDetails']['member2'][
-                'firstName'] == '':
+            if json_data['memberDetails']['member1']['firstName'] == '' \
+                    or json_data['memberDetails']['member2']['firstName'] == '':
+
                 print('member 1 and member 2 found empty')
 
-                resp['message'] = 'Members found but empty. Are you sure you entered all details correctly?'
+                message = 'Members found but empty. Are you sure you entered all details correctly?'
 
-                return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
+                progress_utils.update_progress(progress_id, -1)
 
-            progress_id = json_data['progressID']
+                return bad_request(message)
 
             # Found members 1 and 2 and also found some data there.
             resp = {

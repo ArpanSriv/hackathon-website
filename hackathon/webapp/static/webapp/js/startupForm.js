@@ -35,7 +35,7 @@ function openModal(id) {
     startupEmail = getInputValue('startupEmail');
     startupDOR = getInputValue('startupDOR');
     startupDomain = getInputValue('startupDomain');
-    startupDesc = getInputValue('startupDesc');
+    startupDesc = getInputValue('s  tartupDesc');
 
     // Clear the form before opening
     $('#hidden-reset').trigger('click');

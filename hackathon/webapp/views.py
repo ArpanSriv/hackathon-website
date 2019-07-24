@@ -31,33 +31,42 @@ def registration_individual(request):
 
         print(json_data)
 
-        resp = {
-            'correct': '0',
-            'message': 'Internal Server Error.'
-        }
+        message = 'Internal Server Error.'
+
+        # progress_utils.init_progress(progress_id)
 
         # Team Name Empty
-        if json_data['teamName'] == '':
+        # TODO: Change this to 'in'
+        if json_data.get('teamName') is None or json_data.get('teamName') == '':
             message = 'A valid team name is required.'
 
             progress_utils.update_progress(progress_id, -1)
             return bad_request(message)
 
-        # Team Email Empty
-        if json_data['teamEmail'] == '':
+        if json_data.get('teamEmail') is None or json_data.get('teamEmail') == '':
             message = 'A valid team email is required.'
 
             progress_utils.update_progress(progress_id, -1)
             return bad_request(message)
 
+
+        # if 'teamName' in json_data:
+        #     if json_data['teamName'] == '':
+        #
+        #
+        # # Team Email Empty
+        # if 'teamEmail' in json_data:
+        #     if json_data['teamEmail'] == '':
+        #         message = 'A valid team email is required.'
+        #
+        #         progress_utils.update_progress(progress_id, -1)
+        #         return bad_request(message)
+
         # Team Members Validation
         if 'member1' not in json_data['memberDetails'] or 'member2' not in json_data['memberDetails']:
             print('member 1 and member 2 not found.')
 
-            resp = {
-                'correct': '0',
-                'message': 'Member 1 and Member 2 are required.'
-            }
+            message = 'Member 1 and Member 2 are required.'
 
             progress_utils.update_progress(progress_id, -1)
 
@@ -66,7 +75,6 @@ def registration_individual(request):
         elif 'member1' in json_data['memberDetails'] and 'member2' in json_data['memberDetails']:
             if json_data['memberDetails']['member1']['firstName'] == '' \
                     or json_data['memberDetails']['member2']['firstName'] == '':
-
                 print('member 1 and member 2 found empty')
 
                 message = 'Members found but empty. Are you sure you entered all details correctly?'
@@ -104,6 +112,8 @@ def registration_individual(request):
 
             return HttpResponse(json.dumps(resp), content_type='application/json')
 
+        else:
+            return bad_request(message)
     # Normal GET Request.
     elif request.method == 'GET':
         progress_id = generate_progress_id()

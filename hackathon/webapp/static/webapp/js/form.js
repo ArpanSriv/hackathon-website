@@ -124,6 +124,9 @@ function submitForm() {
 
     let progress_id = $('[name="progress-id-input"]').val();
 
+    teamName = getInputValue('teamName');
+    teamEmail = getInputValue('teamEmail');
+
     let json_to_send = {
         'teamName': teamName,
         'teamEmail': teamEmail,
@@ -141,17 +144,15 @@ function submitForm() {
         contentType: 'application/json',
         headers: {'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value},
         success: function (data) {
-            console.log("DATA: " + data);
-            alert("success")
-
             // Precautionary.
             if (data['correct'] === '1') {
+
 
                 // progressToast.text(data['message'])
                 progressToast.update({
                     heading: 'Success',
                     text: data['message'],
-                    icon: 'information',
+                    icon: 'info',
                     hideAfter: false
                 });
 
@@ -163,12 +164,10 @@ function submitForm() {
         },
         error: function (xhr, ajaxOptions, thrownError) {
 
-            // alert(xhr.responseJSON.message)
-
             progressToast.update({
                 heading: 'Error',
-                text: data['message'],
-                icon: 'Error',
+                text: xhr.responseJSON.message,
+                icon: 'error',
                 hideAfter: false
             });
 
@@ -195,7 +194,7 @@ function updateProgressInfo(progress_id) {
 
             progress = parseInt(data['progress']);
 
-            console.log("Progress recieved: " + progress);
+            console.log("Progress recieved: " + data['progress']);
 
             if (progress !== -1) {
 

@@ -23,6 +23,8 @@ let startupDesc = "DESC";
 
 let progress = 0;
 
+let updateTimerHandle;
+
 
 function openModal(id) {
     console.log("Open Modal called: ID : " + id);
@@ -33,7 +35,7 @@ function openModal(id) {
     startupEmail = getInputValue('startupEmail');
     startupDOR = getInputValue('startupDOR');
     startupDomain = getInputValue('startupDomain');
-    startupDesc = getInputValue('startupDesc');
+    startupDesc = getInputValue('s  tartupDesc');
 
     // Clear the form before opening
     $('#hidden-reset').trigger('click');
@@ -124,9 +126,7 @@ function handleFormSave() {
 
 function submitForm() {
 
-    let regCert = getInputValue('file-button');
-
-    console.log("regCert = " + regCert);
+    let regCert = getInputValue('cert');
 
     if (regCert !== '') {
 
@@ -138,6 +138,10 @@ function submitForm() {
         startupDOR = getInputValue('startupDOR');
         startupDomain = getInputValue('startupDomain');
         startupDesc = getInputValue('startupDesc');
+
+        // Get the Progress ID to send.
+        let progress_id = $('[name="progress-id-input"]').val();
+
 
         let progressToast = $.toast({
             heading: "Info",
@@ -153,12 +157,14 @@ function submitForm() {
             'startupDOR': startupDOR,
             'startupDomain': startupDomain,
             'startupDesc': startupDesc,
-            'memberDetails': memberDetails
+            'memberDetails': memberDetails,
+            'progressID': progress_id
         };
 
         console.log(json_to_send);
 
-        let register_startup_url = $('[name="hidden-startup-register-url"]').attr("data-url")
+        let register_startup_url = $('[name="hidden-startup-register-url"]').attr("data-url");
+
 
         $.ajax({
             url: register_startup_url,
@@ -195,18 +201,26 @@ function submitForm() {
                 }
 
             },
-            error: function (data) {
-                if (data['correct'] === '0') {
-                    progressToast.update({
-                        heading: 'Failure',
-                        text: data['message'],
-                        icon: 'error',
-                        hideAfter: 5000
-                    });
-                }
+            error: function (xhr, ajaxOptions, thrownError) {
+
+                progressToast.update({
+                    heading: 'Error',
+                    text: xhr.responseJSON.message,
+                    icon: 'error',
+                    hideAfter: false
+                });
+
+                stopProgressUpdate()
             },
             data: JSON.stringify(json_to_send)
         });
+
+        updateProgressInfo(progress_id);
+
+        // $(".progress-bar-custom").animate({
+        //     width: '20%',
+        // }, "slow");
+
     } else {
         let errorToast = $.toast({
             heading: "Error",
@@ -223,37 +237,57 @@ function getInputValue(name) {
 
 
 function updateProgressInfo(progress_id) {
-    // var progress_url = $("#poll-url").attr("data-url"); // ajax view serving progress info
-    //
-    // $.getJSON(progress_url, {'Progress-ID': progress_id}, function (data, status) {
-    //     if (data) {
-    //
-    //         progress = parseInt(data['progress']);
-    //
-    //         $(".progress-bar-custom").css('width', progress + "%");
-    //
-    //         // trigger the next one after 1s
-    //         window.setTimeout(function () {
-    //             updateProgressInfo(progress_id)
-    //         }, 1000)
-    //     }
-    // }); TODO
+    console.log("Querying for progress: id = " + progress_id);
+
+    var progress_url = $("#poll-url").attr("data-url"); // ajax view serving progress info
+
+    $.getJSON(progress_url, {'Progress-ID': progress_id}, function (data, status) {
+        if (data) {
+
+            progress = parseInt(data['progress']);
+
+            console.log("Progress recieved: " + progress);
+
+            if (progress !== -1) {
+
+                $(".progress-bar-custom").animate({
+                    width: `${progress}%`,
+                }, "slow");
+
+                // trigger the next  one after 1s
+                updateTimerHandle = window.setTimeout(function () {
+                    updateProgressInfo(progress_id)
+                }, 1000);
+
+            } else {
+                $(".progress-bar-custom").animate({
+                    width: `0%`,
+                }, "slow");
+            }
+        }
+    }); // TODO
 };
 
+function stopProgressUpdate() {
+    if (updateTimerHandle) {
+        clearTimeout(updateTimerHandle);
+        progress = 0;
+    }
+}
 
 // ---- FILE UPLOAD ----
 function startUpload() {
     let data = new FormData($("#cert-form")[0]);
 
     $.ajax({
-	    url: "http://localhost:5000/upload",
+        url: "http://localhost:5000/upload",
         type: 'POST',
         data: data,
         cache: false,
         processData: false,
         contentType: false,
         error: function (data) {
-            console.log(data);
+            console.error(data);
             console.log("upload error: " + data)
         },
         success: function (data) {
@@ -263,7 +297,7 @@ function startUpload() {
             window.setTimeout(function () {
                 let url = $("#thank-you-url").attr("data-url");
                 window.location = url
-            }, 2000)
+            }, 1000)
 
         }
     })

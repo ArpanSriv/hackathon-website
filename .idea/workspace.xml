@@ -6,7 +6,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hackathon/token.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/token.pickle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hackathon/webapp/static/webapp/js/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/webapp/static/webapp/js/form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hackathon/webapp/templates/webapp/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/webapp/templates/webapp/footer.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hackathon/webapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/webapp/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,10 +36,19 @@
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/hackathon/webapp/static/webapp/js/startupForm.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="255">
+                  <caret line="271" column="4" selection-start-line="271" selection-start-column="4" selection-end-line="274" selection-end-column="5" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/hackathon/webapp/static/webapp/js/form.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="403">
-                  <caret line="206" column="51" lean-forward="true" selection-start-line="206" selection-start-column="51" selection-end-line="206" selection-end-column="51" />
+                <state relative-caret-position="819">
+                  <caret line="254" column="27" lean-forward="true" selection-start-line="254" selection-start-column="27" selection-end-line="254" selection-end-column="27" />
                 </state>
               </provider>
             </entry>
@@ -54,101 +62,15 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/hackathon/webapp/templates/webapp/startupregistration.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="7960">
-                  <caret line="398" column="38" selection-start-line="398" selection-start-column="38" selection-end-line="398" selection-end-column="38" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/hackathon/hackathon/urls.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="340">
-                  <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/hackathon/webapp/templates/webapp/landing.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="192">
-                  <caret line="322" column="46" selection-start-line="322" selection-start-column="46" selection-end-line="322" selection-end-column="46" />
-                  <folding>
-                    <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/hackathon/webapp/templates/webapp/footer.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="260">
-                  <caret line="13" column="43" lean-forward="true" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
-                  <folding>
-                    <element signature="n#style#0;n#hr#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#p#0;n#div#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#a#0;n#p#0;n#div#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#a#1;n#p#0;n#div#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/hackathon/webapp/static/webapp/styles.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="7420">
-                  <caret line="371" column="24" selection-start-line="371" selection-start-column="24" selection-end-line="371" selection-end-column="24" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/hackathon/hackathon/wsgi.py">
-              <provider selected="true" editor-type-id="text-editor" />
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/hackathon/webapp/static/webapp/js/startupForm.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="4960">
-                  <caret line="248" column="35" selection-start-line="248" selection-start-column="35" selection-end-line="248" selection-end-column="35" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/hackathon/webapp/templates/webapp/navbar.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="460">
-                  <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
-                </state>
-              </provider>
-            </entry>
-          </file>
         </leaf>
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/hackathon/webapp/static/webapp/js/startupForm.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="110">
-                  <caret line="134" column="21" selection-start-line="134" selection-start-column="21" selection-end-line="134" selection-end-column="21" />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/hackathon/webapp/views.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="200">
-                  <caret line="45" column="58" lean-forward="true" selection-start-line="45" selection-start-column="58" selection-end-line="45" selection-end-column="58" />
+                <state relative-caret-position="-2120">
+                  <caret line="89" column="25" lean-forward="true" selection-start-line="89" selection-start-column="25" selection-end-line="89" selection-end-column="25" />
                   <folding>
                     <element signature="e#37#48#0" expanded="true" />
                   </folding>
@@ -171,13 +93,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>pincode</find>
-      <find>member 1 and member 2</find>
-      <find>member 1 and</find>
-      <find>HttpResonse(</find>
-      <find>error:</find>
-      <find>error</find>
-      <find>localhost</find>
       <find>responseJSON</find>
       <find>url</find>
       <find>bad_re</find>
@@ -201,6 +116,13 @@
       <find>a valid team name</find>
       <find>getINputValue(name</find>
       <find>alert(</find>
+      <find>if (memberdetails['mem</find>
+      <find>stopUp</find>
+      <find>stopProgr</find>
+      <find>progress =</find>
+      <find>validate</find>
+      <find>memberDetails</find>
+      <find>let progress</find>
     </findStrings>
     <replaceStrings>
       <replace>webapp/</replace>
@@ -219,7 +141,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="arpan-ryan-merge" />
       </map>
     </option>
   </component>
@@ -258,13 +180,13 @@
         <option value="$PROJECT_DIR$/hackathon/webapp/static/webapp/styles.css" />
         <option value="$PROJECT_DIR$/hackathon/webapp/templates/webapp/aboutus.html" />
         <option value="$PROJECT_DIR$/hackathon/webapp/templates/webapp/landing.html" />
+        <option value="$PROJECT_DIR$/hackathon/webapp/templates/webapp/footer.html" />
         <option value="$PROJECT_DIR$/hackathon/webapp/views.py" />
         <option value="$PROJECT_DIR$/hackathon/webapp/static/webapp/js/form.js" />
-        <option value="$PROJECT_DIR$/hackathon/webapp/templates/webapp/footer.html" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="x" value="35" />
     <option name="y" value="560" />
     <option name="width" value="1750" />
@@ -272,79 +194,10 @@
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="hackathon-website" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Users\Arpan Srivastava\PycharmProjects\hackathon-website" type="442cc68d:ScopeViewTreeModel$RootNode" />
-            </path>
-            <path>
-              <item name="hackathon-website" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Users\Arpan Srivastava\PycharmProjects\hackathon-website" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="hackathon" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="hackathon-website" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Users\Arpan Srivastava\PycharmProjects\hackathon-website" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="hackathon" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="webapp" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="hackathon-website" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Users\Arpan Srivastava\PycharmProjects\hackathon-website" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="hackathon" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="webapp" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="static" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="hackathon-website" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Users\Arpan Srivastava\PycharmProjects\hackathon-website" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="hackathon" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="webapp" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="static" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="webapp" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="hackathon-website" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Users\Arpan Srivastava\PycharmProjects\hackathon-website" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="hackathon" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="webapp" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="static" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="webapp" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="imgs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="hackathon-website" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hackathon-website" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hackathon-website" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hackathon-website" type="462c0819:PsiDirectoryNode" />
-              <item name="hackathon" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hackathon-website" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hackathon-website" type="462c0819:PsiDirectoryNode" />
-              <item name="hackathon" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -454,7 +307,8 @@
       <workItem from="1563471404217" duration="20735000" />
       <workItem from="1563608621224" duration="9113000" />
       <workItem from="1563956756163" duration="1986000" />
-      <workItem from="1563993404961" duration="6107000" />
+      <workItem from="1563993404961" duration="6741000" />
+      <workItem from="1564410907394" duration="7933000" />
     </task>
     <task id="LOCAL-00001" summary="requirements.txt added">
       <created>1563055565333</created>
@@ -666,11 +520,18 @@
       <option name="project" value="LOCAL" />
       <updated>1563819965445</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Fixed Individual Form Registration issue">
+      <created>1563999702103</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1563999702103</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171678000" />
+    <option name="totallyTimeSpent" value="180245000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -682,7 +543,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1536" height="864" extended-state="6" />
+    <frame x="0" y="0" width="1536" height="864" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49872774" weight="0.26358148" />
@@ -690,7 +551,7 @@
       <window_info id="Structure" order="2" sideWeight="0.50089765" side_tool="true" weight="0.2331572" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32824427" />
-      <window_info active="true" anchor="bottom" id="Debug" order="2" visible="true" weight="0.16284987" />
+      <window_info anchor="bottom" id="Debug" order="2" weight="0.16284987" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="5" weight="0.32824427" />
@@ -780,7 +641,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Added views for privacy policy and about us" />
     <MESSAGE value="Added urls" />
     <MESSAGE value="Updated Individual Registration" />
     <MESSAGE value="Updated Individual Registration to send correct data" />
@@ -805,7 +665,8 @@
     <MESSAGE value="Added form progress in individual also" />
     <MESSAGE value="Update minor text changes" />
     <MESSAGE value="Added balaji compressed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added balaji compressed" />
+    <MESSAGE value="Fixed Individual Form Registration issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Individual Form Registration issue" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -1224,6 +1085,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/hackathon/webapp/templates/webapp/landing.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6440">
+          <caret line="322" column="46" selection-start-line="322" selection-start-column="46" selection-end-line="322" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/hackathon/webapp/static/webapp/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7420">
@@ -1241,6 +1109,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/hackathon/webapp/templates/webapp/footer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="25" column="51" lean-forward="true" selection-start-line="25" selection-start-column="51" selection-end-line="25" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/hackathon/webapp/templates/webapp/individualregistration.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
@@ -1250,15 +1125,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hackathon/webapp/static/webapp/js/startupForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4960">
-          <caret line="248" column="35" selection-start-line="248" selection-start-column="35" selection-end-line="248" selection-end-column="35" />
+        <state relative-caret-position="255">
+          <caret line="271" column="4" selection-start-line="271" selection-start-column="4" selection-end-line="274" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hackathon/webapp/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="45" column="58" lean-forward="true" selection-start-line="45" selection-start-column="58" selection-end-line="45" selection-end-column="58" />
+        <state relative-caret-position="-2120">
+          <caret line="89" column="25" lean-forward="true" selection-start-line="89" selection-start-column="25" selection-end-line="89" selection-end-column="25" />
           <folding>
             <element signature="e#37#48#0" expanded="true" />
           </folding>
@@ -1267,31 +1142,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hackathon/webapp/static/webapp/js/form.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="206" column="51" lean-forward="true" selection-start-line="206" selection-start-column="51" selection-end-line="206" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hackathon/webapp/templates/webapp/landing.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="322" column="46" selection-start-line="322" selection-start-column="46" selection-end-line="322" selection-end-column="46" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hackathon/webapp/templates/webapp/footer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="13" column="43" lean-forward="true" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
-          <folding>
-            <element signature="n#style#0;n#hr#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#p#0;n#div#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#1;n#p#0;n#div#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="819">
+          <caret line="254" column="27" lean-forward="true" selection-start-line="254" selection-start-column="27" selection-end-line="254" selection-end-column="27" />
         </state>
       </provider>
     </entry>

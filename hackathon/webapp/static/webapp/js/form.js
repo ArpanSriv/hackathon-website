@@ -21,6 +21,7 @@ let teamEmail;
 
 // Timer to update the progress
 let updateTimerHandle;
+let progress = 0;
 
 
 function openModal(id) {
@@ -113,45 +114,100 @@ function handleFormSave() {
     $("#modalLong").modal('hide');
 }
 
-function submitForm() {
+function validateEmail(teamEmail) {
+    let re = /\S+@\S+/;
+    return re.test(teamEmail);
+}
 
-    let progressToast = $.toast({
-        heading: "Info",
-        text: "<strong>Please wait while we validate your data...</strong>",
-        icon: 'information',
-        hideAfter: 300000,
-    });
+function validateData() {
+    // Check teamName
+    if (teamName === "" || teamName.length <= 3) {
+        $.toast({
+            heading: 'Error',
+            text: "A valid (more than 3 chars) team name is required.",
+            icon: 'error',
+            hideAfter: 3000
+        });
+
+        return false;
+    }
+
+    if (teamEmail === "" || !validateEmail(teamEmail)) {
+        $.toast({
+            heading: 'Error',
+            text: "A valid team email is required.",
+            icon: 'error',
+            hideAfter: 3000
+        });
+
+        return false;
+    }
+
+    if (memberDetails.hasOwnProperty("member1") && memberDetails.hasOwnProperty("member2")) {
+
+        if (!memberDetails['member1'].hasOwnProperty("firstName") || !memberDetails['member2'].hasOwnProperty("firstName")) {
+            $.toast({
+                heading: 'Error',
+                text: "An error occurred.",
+                icon: 'error',
+                hideAfter: 3000
+            });
+
+            alert("Hmm. This shouldn't have happened. Contact arpansri98@gmail.com with the following information. " + JSON.stringify(memberDetails))
+
+            console.log("memberDetails = " + JSON.stringify(memberDetails));
+        }
+    } else {
+        $.toast({
+            heading: 'Error',
+            text: "Member 1 or Member 2 are missing. Are you sure you entered the details?",
+            icon: 'error',
+            hideAfter: 3000
+        });
+        return false;
+    }
+
+    return true;
+}
+
+function stopUpdatingProgress() {
+    if (updateTimerHandle) {
+        clearTimeout(updateTimerHandle);
+        progress = 0;
+    }
+}
+
+function submitForm() {
 
     let progress_id = $('[name="progress-id-input"]').val();
 
     teamName = getInputValue('teamName');
     teamEmail = getInputValue('teamEmail');
 
-    let json_to_send = {
-        'teamName': teamName,
-        'teamEmail': teamEmail,
-        'memberDetails': memberDetails,
-        'progressID': progress_id
-    };
+    if (validateData()) {
 
-    let register_individual_url = $('[name="hidden-individual-register-url"]').attr("data-url");
+        let json_to_send = {
+            'teamName': teamName,
+            'teamEmail': teamEmail,
+            'memberDetails': memberDetails,
+            'progressID': progress_id
+        };
+
+        let register_individual_url = $('[name="hidden-individual-register-url"]').attr("data-url");
 
 
-    $.ajax({
-        url: register_individual_url,
-        type: 'post',
-        dataType: 'json',
-        contentType: 'application/json',
-        headers: {'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value},
-        success: function (data) {
-            // Precautionary.
-            if (data['correct'] === '1') {
-
+        $.ajax({
+            url: register_individual_url,
+            type: 'post',
+            dataType: 'json',
+            contentType: 'application/json',
+            headers: {'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value},
+            success: function (data) {
 
                 // progressToast.text(data['message'])
-                progressToast.update({
+                $.toast({
                     heading: 'Success',
-                    text: data['message'],
+                    text: "Registration Successful.",
                     icon: 'info',
                     hideAfter: false
                 });
@@ -160,23 +216,25 @@ function submitForm() {
                     let url = $("#thank-you-url").attr("data-url");
                     window.location = url
                 }, 2000)
-            }
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
+            },
+            error: function (xhr, _, _) {
 
-            progressToast.update({
-                heading: 'Error',
-                text: xhr.responseJSON.message,
-                icon: 'error',
-                hideAfter: false
-            });
+                $.toast({
+                    heading: 'Error',
+                    text: xhr.responseJSON.message,
+                    icon: 'error',
+                    hideAfter: false
+                });
 
-            stopUpdatingProgress()
-        },
-        data: JSON.stringify(json_to_send)
-    });
+                stopUpdatingProgress()
+            },
+            data: JSON.stringify(json_to_send)
+        });
 
-    updateProgressInfo(progress_id);
+        updateProgressInfo(progress_id);
+    } else {
+        console.error("Validation error occurred.")
+    }
 }
 
 function getInputValue(name) {
@@ -187,14 +245,14 @@ function getInputValue(name) {
 function updateProgressInfo(progress_id) {
     console.log("Querying for progress: id = " + progress_id);
 
-    var progress_url = $("#poll-url").attr("data-url"); // ajax view serving progress info
+    let progress_url = $("#poll-url").attr("data-url"); // ajax view serving progress info
 
     $.getJSON(progress_url, {'Progress-ID': progress_id}, function (data, status) {
         if (data) {
 
             progress = parseInt(data['progress']);
 
-            console.log("Progress recieved: " + data['progress']);
+            // console.log("Progress received: " + data['progress']);
 
             if (progress !== -1) {
 

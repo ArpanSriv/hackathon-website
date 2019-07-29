@@ -29,48 +29,6 @@ def registration_individual(request):
 
         progress_id = json_data['progressID']
 
-        print(json_data)
-
-        message = 'Internal Server Error.'
-
-        # progress_utils.init_progress(progress_id)
-
-        # Team Name Empty
-        # TODO: Change this to 'in'
-        # if json_data.get('teamName') is None or json_data.get('teamName') == '':
-        #     message = 'A valid team name is required.'
-        #
-        #     progress_utils.update_progress(progress_id, -1)
-        #     return bad_request(message)
-        #
-        # if json_data.get('teamEmail') is None or json_data.get('teamEmail') == '':
-        #     message = 'A valid team email is required.'
-        #
-        #     progress_utils.update_progress(progress_id, -1)
-        #     return bad_request(message)
-        #
-        # # Team Members Validation
-        # if 'member1' not in json_data['memberDetails'] or 'member2' not in json_data['memberDetails']:
-        #     print('member 1 and member 2 not found.')
-        #
-        #     message = 'Member 1 and Member 2 are required.'
-        #
-        #     progress_utils.update_progress(progress_id, -1)
-        #
-        #     return bad_request(message)
-        #
-        # elif 'member1' in json_data['memberDetails'] and 'member2' in json_data['memberDetails']:
-        #     if json_data['memberDetails']['member1']['firstName'] == '' \
-        #             or json_data['memberDetails']['member2']['firstName'] == '':
-        #         print('member 1 and member 2 found empty')
-        #
-        #         message = 'Members found but empty. Are you sure you entered all details correctly?'
-        #
-        #         progress_utils.update_progress(progress_id, -1)
-        #
-        #         return bad_request(message)
-
-        # Found members 1 and 2 and also found some data there.
         try:
             resp = {
                 'message': 'Data found sufficient.'
@@ -78,22 +36,22 @@ def registration_individual(request):
 
             reg_no = generate_reg_no(INDIVIDUAL)
 
-            progress_utils.update_progress(progress_id, 20)
+            # progress_utils.update_progress(progress_id, 20)
 
             print("Uploading to sheets...")
 
             # Upload the Data on Spreadsheet and Firebase :p
             update_google_sheets(INDIVIDUAL, reg_no, json_data, progress_id)
 
-            progress_utils.update_progress(progress_id, 50)
+            # progress_utils.update_progress(progress_id, 50)
 
             upload_on_firebase(INDIVIDUAL, json_data)
 
-            progress_utils.update_progress(progress_id, 70)
+            # progress_utils.update_progress(progress_id, 70)
 
             sendmail(json_data['teamName'], reg_no, json_data['teamEmail'])
 
-            progress_utils.update_progress(progress_id, 100)
+            # progress_utils.update_progress(progress_id, 100)
 
             progress_utils.remove_progress(progress_id)
 
@@ -137,7 +95,7 @@ def registration_startup(request):
             if json_data['startupName'] == '':
                 message = 'A valid Startup Name is required.'
 
-                progress_utils.update_progress(progress_id, -1)
+                # progress_utils.update_progress(progress_id, -1)
 
                 return bad_request(message)
 
@@ -146,7 +104,7 @@ def registration_startup(request):
             if json_data['startupEmail'] == '':
                 message = 'A valid Startup Email is required.'
 
-                progress_utils.update_progress(progress_id, -1)
+                # progress_utils.update_progress(progress_id, -1)
                 return bad_request(message)
 
         # Team DOR Empty
@@ -154,21 +112,21 @@ def registration_startup(request):
             if json_data['startupDOR'] == '':
                 message = 'A valid Startup Email is required.'
 
-                progress_utils.update_progress(progress_id, -1)
+                # progress_utils.update_progress(progress_id, -1)
                 return bad_request(message)
 
         # Team Domain Empty
         if 'startupDomain' in json_data:
             if json_data['startupDomain'] == '':
                 message = 'A valid Startup Technology Domain is required.'
-                progress_utils.update_progress(progress_id, -1)
+                # progress_utils.update_progress(progress_id, -1)
 
                 return bad_request(message)
 
         # Team Domain Empty
         if json_data['startupDesc'] == '':
             message = 'A valid Startup Description is required.'
-            progress_utils.update_progress(progress_id, -1)
+            # progress_utils.update_progress(progress_id, -1)
             return bad_request(message)
 
         # Team Members Validation
@@ -177,7 +135,7 @@ def registration_startup(request):
 
             message = 'Member 1 and Member 2 are required.'
 
-            progress_utils.update_progress(progress_id, -1)
+            # progress_utils.update_progress(progress_id, -1)
 
             return bad_request(message)
 
@@ -198,7 +156,7 @@ def registration_startup(request):
 
             print("Progress ID = " + progress_id)
 
-            progress_utils.update_progress(progress_id, 10)
+            # progress_utils.update_progress(progress_id, 10)
             # # Upload to ftp
             # FTP_USERNAME = "django_auto@aihackathon.in"
 
@@ -206,19 +164,19 @@ def registration_startup(request):
 
             print("Uploading to sheets...")
 
-            progress_utils.update_progress(progress_id, 30)
+            # progress_utils.update_progress(progress_id, 30)
             # Upload the Data on Spreadsheet and Firebase :p
             update_google_sheets(STARTUP, reg_no, json_data, progress_id)
 
-            progress_utils.update_progress(progress_id, 70)
+            # progress_utils.update_progress(progress_id, 70)
 
             upload_on_firebase(STARTUP, json_data)
 
-            progress_utils.update_progress(progress_id, 75)
+            # progress_utils.update_progress(progress_id, 75)
 
             sendmail(json_data['startupName'], reg_no, json_data['startupEmail'])
 
-            progress_utils.update_progress(progress_id, 80)
+            # progress_utils.update_progress(progress_id, 80)
 
             resp['teamName'] = json_data['teamName']
             resp['teamRegNo'] = reg_no

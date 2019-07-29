@@ -186,6 +186,13 @@ function submitForm() {
 
     if (validateData()) {
 
+        $.toast({
+            heading: 'Processing',
+            text: "Your request is being processed. Hold tight!",
+            icon: 'info',
+            hideAfter: false
+        });
+
         let json_to_send = {
             'teamName': teamName,
             'teamEmail': teamEmail,
@@ -208,7 +215,7 @@ function submitForm() {
                 $.toast({
                     heading: 'Success',
                     text: "Registration Successful.",
-                    icon: 'info',
+                    icon: 'success',
                     hideAfter: false
                 });
 
@@ -226,12 +233,12 @@ function submitForm() {
                     hideAfter: false
                 });
 
-                stopUpdatingProgress()
+                // stopUpdatingProgress()
             },
             data: JSON.stringify(json_to_send)
         });
 
-        updateProgressInfo(progress_id);
+        // updateProgressInfo(progress_id);
     } else {
         console.error("Validation error occurred.")
     }

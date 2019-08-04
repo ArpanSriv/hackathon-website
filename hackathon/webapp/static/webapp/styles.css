@@ -7,11 +7,40 @@ a:hover {
     padding-bottom: 60px;
 }
 
+.color {
+    position: absolute;
+    background: linear-gradient(304.06deg, #06054B 0%, #3301B7 100.66%) !important;
+    height: 100%;
+    width: 100%;
+    display: none;
+}
+
+.bg {
+    display: none;
+}
+
+.computer {
+    background: url('../../static/webapp/imgs/LaptopLanding.svg') !important;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+    background-position-x: center !important;
+    background-position-y: center !important;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: none;
+}
+
 .logoBar {
     /*background: #FFF;*/
     background: transparent;
     width: 100%;
 
+}
+
+.navbar-toggler-icon {
+    background-image: url("../../static/webapp/imgs/menu.svg");
+    height: 24px;
 }
 
 .navbar-bg-custom {
@@ -147,6 +176,14 @@ a:hover {
     /*text-transform: uppercase;*/
 }
 
+#initiative {
+    font-size: 30px;
+}
+
+#initiativeDesc {
+    font-size: 22px;
+}
+
 .registerBtn {
     background-color: #E73001;
     color: white;
@@ -156,7 +193,7 @@ a:hover {
     cursor: pointer;
     width: 400px;
     height: 70px;
-    font-family: Oxygen Mono;
+    font-family: 'PT Sans', serif;
     font-size: 19px;
     display: flex;
     align-items: center;
@@ -354,12 +391,18 @@ a:hover {
     background-position-x: center;
 }
 
-#pradeepImage {
-    background-image: url("../../static/webapp/imgs/Pradeep2.jpg");
-    height: 360px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position-x: center;
+.organizerCard {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.organizerImage {
+    height: 80px;
+    margin-bottom: 12px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 300px;
 }
 
 #sureshImage {
@@ -370,50 +413,81 @@ a:hover {
     background-position-x: center;
 }
 
-#balajiImage {
-    background-image: url("../../static/webapp/imgs/pBbalaji.jpg");
-    height: 360px;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-#aasifImage {
-    background-image: url("../../static/webapp/imgs/Aasif-Malbari-Photo.jpg");
-    height: 360px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position-x: center;
-}
-
-#aratiImage {
-    background-image: url("../../static/webapp/imgs/arati.jpg");
-    height: 360px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position-x: center;
-}
-
-#ravindraImage {
-    background-image: url("../../static/webapp/imgs/ravindra.jpg");
-    height: 360px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position-x: center;
-}
-
-#raheeImage {
-    background-image: url("../../static/webapp/imgs/rahee.jpg");
-    height: 360px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position-x: center;
+#card-text-info {
+    margin-top: 15px;
+    font-family: "PT Sans", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 25px;
+    text-align: justify;
+    color: #000000;
 }
 
 .judgesImage {
-    background-image: url("../../static/webapp/imgs/DrKetan.png");
+    /*background-image: url("../../static/webapp/imgs/DrKetan.png");*/
     height: 360px;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
+    background-position-x: center;
+    position: relative;
+}
+
+.judgeGradient {
+    background: linear-gradient(180deg, rgba(196, 196, 196, 0) 0%, #000000 140%);
+    height: 360px;
+}
+
+.judgeInfoBox {
+    position: absolute;
+    bottom: 0;
+    padding-left: 12px;
+    padding-bottom: 10px;
+}
+
+.judgeInfo {
+    color: #FFF;
+    justify-content: start;
+    margin-bottom: 0;
+    line-height: 30px !important;
+    font-size: 20px !important;
+}
+
+.judgeInfoDesignation {
+    color: #FFF;
+    justify-content: start;
+    margin-bottom: 0;
+    margin-right: 10px;
+    line-height: 30px !important;
+    font-size: 16px !important;
+}
+
+#event-registration-title {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 54px;
+    line-height: 74px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+    font-variant: small-caps;
+    color: #000000;
+    margin-bottom: 0;
+}
+
+.form-custom {
+    background: rgba(230, 230, 232, 0.5);
+    padding: 16px;
+    width: 540px;
+}
+
+.inner-form-custom {
+    background: rgba(230, 230, 232, 0.5);
+    padding: 16px;
+    width: 100%;
 }
 
 .judgeGradient {
@@ -667,6 +741,10 @@ hr {
     margin-right: 10px;
 }
 
+.accordion .card-header {
+    background-color: #FFF;
+}
+
 .card-header {
     cursor: pointer;
 }
@@ -687,13 +765,25 @@ hr {
     margin-bottom: 0;
 }
 
+.aboutus-box {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.aboutus-titlebox {
+    margin-top: 40px;
+}
+
 .aboutus-div {
     margin-bottom: 30px;
     /*box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25); */
 }
 
 .aboutus-img {
-    text-align: center;
+    /*text-align: center;*/
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .aboutus-content {
@@ -738,12 +828,14 @@ hr {
     /*display: block !important;*/
 }
 
+
 .TnCform {
-    margin: 0 auto;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    /*margin: 0 auto;
+    margin-top: 0px;
+    margin-bottom: 40px;*/
     max-width: 700px;
     overflow-y: initial !important
+
 }
 
 #proceedBtn {
@@ -758,10 +850,17 @@ hr {
     margin-top: 20px;
 }
 
+
 #modalTncBody {
-    height: 600px;
+    height: 390px;
     overflow-y: auto;
     margin-bottom: 20px;
+}
+
+
+.modal-footer {
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
 
 .hideButton {
@@ -805,44 +904,395 @@ hr {
     margin-bottom: 20px;
 }
 
+#tick {
+    color: green;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+#divider {
+    margin-top: 56px;
+}
+
+#contactus-box {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1600px) {
+    .js .cd-h-timeline__line {
+        width: 2000px !important;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    #divider {
+        /*transform: rotate(90deg);
+        margin-top: 0;*/
+        display: none;
+    }
+
+    .judgesImage {
+        margin-bottom: 20px;
+    }
+
+    .organizerCard {
+        margin-bottom: 20px;
+    }
+
+    .organizerImage {
+        height: 70px;
+    }
+
+    .participateCard {
+        margin-bottom: 40px;
+    }
+
+    #hackathonContainer {
+        margin-bottom: 0 !important;
+    }
+
+    #hackathonTitle {
+        font-size: 40px;
+        margin-bottom: 0;
+        line-height: 70%;
+    }
+
+    #hackathonDescBox {
+        padding-left: 20px !important;
+    }
+
+    #app {
+        font-size: 17px;
+    }
+
+    #cohost {
+        margin-bottom: 0;
+        margin-top: 20px;
+    }
+
+    #initiative {
+        font-size: 25px;
+        margin-bottom: 0;
+    }
+
+    #initiativeDesc {
+        font-size: 14px;
+    }
+
+    .registerBtn {
+        width: 100%;
+        height: 55px;
+        font-size: 15px;
+        box-shadow: none;
+    }
+
+    #registration-title {
+        font-size: 24px;
+        line-height: 10px;
+    }
+
+    #clock {
+        font-size: 20px;
+    }
+
+    .page-titles {
+        left: 32px;
+        top: -29px;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .page-titles h3 {
+        font-size: 20px;
+    }
+
+    .page-info {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+
+    #hackathonAns {
+        font-size: 18px;
+        line-height: 27px;
+    }
+
+    #participateTitle {
+        height: 50px;
+        font-size: 27px;
+    }
+
+    #participateInfo {
+        font-size: 16px;
+    }
+
+    .eligibilityBox {
+        margin-bottom: 40px;
+    }
+
+    #card-text-info {
+        margin-top: 6px;
+        font-size: 14px;
+    }
+
+    .footer .text-left, .text-right {
+        text-align: center !important;
+    }
+
+    .footer-link li {
+        padding-left: 10px;
+        margin-bottom: 10px;
+    }
+
+    .footer-link a {
+        font-size: 16px;
+    }
+
+    .accordion .card-body {
+        font-size: 14px;
+        padding-top: 1rem;
+    }
+
+    .accordion .card-header {
+        font-size: 13px;
+    }
+
+    #event-registration-titleBox {
+        margin-top: 40px !important;
+    }
+
+    #event-registration-title {
+        font-size: 30px;
+        line-height: 50px;
+    }
+
+    #registerAs-Box {
+        display: none;
+    }
+
+    #registerAs-title {
+        font-size: 25px;
+        line-height: 40px;
+    }
+
+    #registrationBox {
+        margin-bottom: 30px;
+    }
+
+    #individualTitle, #startupTitle {
+        font-size: 25px;
+    }
+
+    .v-center {
+        margin-top: 20px;
+        padding-left: 30px;
+    }
+
+    #contactus-box {
+        margin-top: 10px;
+        margin-bottom: 0;
+    }
+
+    #contactus-title {
+        font-size: 25px;
+    }
+
+    .mapouter, .gmap_canvas {
+        width: 350px !important;
+        height: 400px !important;
+    }
+
+    #gmap_canvas {
+        width: 350px;
+        height: 400px;
+    }
+
+    #contactus-info h2 {
+        font-size: 1.25rem;
+        margin-bottom: 2px;
+    }
+
+    #contactus-detail {
+        margin-bottom: 2px;
+        font-size: 1.25rem;
+    }
+
+    #privacy-titleBox {
+        margin-top: 30px !important;
+    }
+
+    #privacy-title, #aboutus-title {
+        font-size: 25px;
+    }
+
+    .privacyBox {
+        padding-left: 20px;
+    }
+
+    .privacyBox ol {
+        padding-left: 32px;
+    }
+
+    .TnCform {
+        margin-top: 0;
+    }
+
+    #modalTncBody {
+        height: 390px;
+    }
+
+    #startupRegistrationTitle {
+        font-size: 25px;
+    }
+
+    .form-custom {
+        width: 100%;
+    }
+
+    .inner-form-custom {
+        width: 100%;
+    }
+
+    .aboutus-titlebox {
+        margin-top: 20px;
+    }
+
+    .aboutus-box {
+        /*margin-bottom: ;*/
+        margin-top: 30px;
+    }
+
+    .aboutus-content {
+        margin-top: 20px;
+    }
+
+    .faq-box {
+        width: 100% !important;
+    }
+
+    .logoBar container-fluid {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .logos {
+        width: 100%;
+    }
+
+    #link-color {
+        font-size: 16px;
+        line-height: 14px;
+        text-align: center;
+    }
+
+    #TataMotorsLogo {
+        /*height: 25px;*/
+        height: 30px;
+    }
+
+    #sitLogo img {
+        /*height: 22px !important;*/
+        height: 25px !important;
+    }
+
+    #tataLogoBox {
+        padding-right: 0;
+        padding-left: 0;
+
+        text-align: end;
+        margin-left: 10px;
+    }
+
+    #TataLogo {
+        /*height: 20px;*/
+        height: 25px;
+        margin-right: 0;
+    }
+
+    .navbar-toggler {
+        padding: 0;
+    }
+
+    .navbar-toggler-icon {
+        height: 18px;
+        vertical-align: top;
+    }
+
+    /*.color, .bg, .computer{*/
+    /*	display: block;*/
+    /*}*/
+    .img-div img {
+        height: 300px;
+        margin-top: 30px;
+    }
+
+    .registration-box {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .registerBtn:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .registerBtn span {
+        font-family: 'PT Sans', serif;
+        font-size: 16px;
+    }
+
+    /*Time Line */
+    .js .cd-h-timeline__container {
+        width: 100% !important;
+    }
+
+    .timeline-prev-button, .timeline-next-button {
+        display: block !important;
+    }
+
+    .js .cd-h-timeline__line {
+        width: 2000px !important;
+    }
+
+    .js .cd-h-timeline__events ol {
+        padding-left: 0;
+    }
+
+    .js h2.cd-h-timeline__event-title {
+        font-size: 20px !important;
+    }
+
+    .js cd-h-timeline__event-date {
+        font-size: 0.9rem !important;
+    }
+
+    .col-3 {
+        padding-left: 0;
+    }
+
+    /*Thank you page*/
+    #thankyou h2 {
+        font-size: 24px
+    }
+
+    #thankyou p {
+        font-size: 16px !important;
+    }
+
+}
 
 
+.timeline-prev-button, .timeline-next-button {
+    display: none;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#ravindraImage {
+    background-image: url("../../static/webapp/imgs/ravindra.jpg");
+    height: 360px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+}
 
 
 .progress-desc-full {

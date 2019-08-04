@@ -7,7 +7,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Jquery Toast CSS -->
     <link href="{% static 'webapp/jquery.toast.css' %}" rel="stylesheet">
     <!-- Custom CSS -->
@@ -29,12 +30,14 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
             crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
             crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
+            crossorigin="anonymous"></script> -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -45,10 +48,10 @@
     <h1 id="startupRegistrationTitle">Individual Registration</h1>
 </div>
 
-<div class="modal hide fade" data-backdrop="static" id="modalTnC" tabindex="-1" role="dialog"
-     aria-labelledby="myModalLabel"
-     aria-hidden="true" data-keyboard="false">
-    <div class="modal-dialog TnCform" role="document">
+<div class="modal hide fade" data-backdrop="static" id="modalTnC" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered TnCform" role="document">
+
         <div class="modal-content">
             <div class="modal-header text-center">
                 <h4 class="modal-title w-100 font-weight-bold">Terms and Conditions</h4>
@@ -405,13 +408,27 @@
                     <p><u><a href="mailto:aihackathon@sitpune.edu.in" target="_blank">aihackathon@sitpune.edu.in</a></u>
                     </p></ol>
                 </div>
+               <!--  <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="customCheck1">
+                  <label class="custom-control-label" for="customCheck1">I have read and agree to the Terms and Conditions</label>
+                </div> -->
+
+                <!-- <div style="margin-bottom: 20px;"> -->
+                    <!-- <a href="{% url 'index' %}" class="btn btn-danger" id="declineBtn">Decline</a> -->
+                    <!-- <button type="button" class="btn btn-danger" id="declineBtn" href="landing.html">Decline</button> -->
+                   <!-- <button type="button" class="btn btn-success" id="proceedBtn" data-dismiss="modal">Proceed</button> -->
+                <!-- </div> -->
+            </div>
+            <div class="modal-footer mx-3 justify-content-center">
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="customCheck1">
                     <label class="custom-control-label" for="customCheck1">I have read and agree to the Terms and
                         Conditions</label>
                 </div>
 
-                <div style="margin-bottom: 20px;">
+            </div>
+            <div class="modal-footer">
+                <div style="margin-bottom: 20px; width: 100%;">
                     <a href="{% url 'index' %}" class="btn btn-danger" id="declineBtn">Decline</a>
                     <!-- <button type="button" class="btn btn-danger" id="declineBtn" href="landing.html">Decline</button> -->
                     <button type="button" class="btn btn-success" id="proceedBtn" data-dismiss="modal">Proceed</button>
@@ -421,8 +438,9 @@
     </div>
 </div>
 
+<!-- commented width of form -->
 <div class="container form-custom">
-    <form method="POST" id="individualForm">
+    <form method="POST" id="individualForm form-inline">
         {% csrf_token %}
         <h4 class="form-title">Team Details</h4>
 
@@ -432,35 +450,58 @@
         <input type="hidden" id="submit-url" name="hidden-individual-register-url" value="{% url 'registration_individual' %}" />
 
 
-        <div class="form-group">
-            <input type="text" class="form-control" id="teamName" placeholder="Team Name" required name="teamName">
+        <div class="row">
+            <div class="col-sm-12 col-lg-12">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="teamName" placeholder="Team Name" required name="teamName">
+                </div>
+            </div>
         </div>
 
-        <div class="form-group">
-            <input type="email" class="form-control" id="Team Email-Address" placeholder="Email for correspondence"
-                   required name="teamEmail">
+        <div class="row">
+            <div class="col-sm-12 col-lg-12">
+                <div class="form-group">
+                    <input type="email" class="form-control" id="Team Email-Address" placeholder="Email for correspondence"
+                           required name="teamEmail">
+                </div>                
+            </div>
         </div>
 
         <h4 class="form-title">Member Details</h4>
 
         <div class="form-group">
-
-            <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)"
-                    data-member="1" id="member-btn-1">
-                Team Member 1 (Mentor)
-            </button>
-            <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)"
-                    data-member="2" id="member-btn-2">
-                Team Member 2
-            </button>
-            <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)"
-                    data-member="3" id="member-btn-3">
-                Team Member 3
-            </button>
-            <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)"
-                    data-member="4" id="member-btn-4">
-                Team Member 4
-            </button>
+            <div class="row">
+                <div class="col-sm-12 col-lg-12">
+                    <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)"
+                            data-member="1" id="member-btn-1">
+                        Team Member 1 (Mentor)
+                    </button>                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-lg-12">
+                    <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)"
+                            data-member="2" id="member-btn-2">
+                        Team Member 2
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-lg-12">
+                    <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)"
+                            data-member="3" id="member-btn-3">
+                        Team Member 3
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-lg-12">
+                    <button type="button" class="btn btn-primary teamBtn btn-block" onclick="openModal(this.id)"
+                            data-member="4" id="member-btn-4">
+                        Team Member 4
+                    </button>
+                </div>
+            </div>    
 
         </div>
 
@@ -476,7 +517,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="container form-custom">
+                        <div class="container inner-form-custom">
                             <form id="modal-member-form">
                                 <h4 class="form-title">Personal Details</h4>
                                 <div class="form-group">

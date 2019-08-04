@@ -23,6 +23,8 @@ let startupDesc = "DESC";
 
 let progress = 0;
 
+let updateTimerHandle;
+
 
 function openModal(id) {
     console.log("Open Modal called: ID : " + id);
@@ -33,7 +35,7 @@ function openModal(id) {
     startupEmail = getInputValue('startupEmail');
     startupDOR = getInputValue('startupDOR');
     startupDomain = getInputValue('startupDomain');
-    startupDesc = getInputValue('startupDesc');
+    startupDesc = getInputValue('s  tartupDesc');
 
     // Clear the form before opening
     $('#hidden-reset').trigger('click');
@@ -124,9 +126,7 @@ function handleFormSave() {
 
 function submitForm() {
 
-    let regCert = getInputValue('file-button');
-
-    console.log("regCert = " + regCert);
+    let regCert = getInputValue('cert');
 
     if (regCert !== '') {
 
@@ -201,15 +201,16 @@ function submitForm() {
                 }
 
             },
-            error: function (data) {
-                if (data['correct'] === '0') {
-                    progressToast.update({
-                        heading: 'Failure',
-                        text: data['message'],
-                        icon: 'error',
-                        hideAfter: 5000
-                    });
-                }
+            error: function (xhr, ajaxOptions, thrownError) {
+
+                progressToast.update({
+                    heading: 'Error',
+                    text: xhr.responseJSON.message,
+                    icon: 'error',
+                    hideAfter: false
+                });
+
+                stopProgressUpdate()
             },
             data: JSON.stringify(json_to_send)
         });
@@ -254,12 +255,12 @@ function updateProgressInfo(progress_id) {
                 }, "slow");
 
                 // trigger the next  one after 1s
-                window.setTimeout(function () {
+                updateTimerHandle = window.setTimeout(function () {
                     updateProgressInfo(progress_id)
                 }, 1000);
 
             } else {
-                 $(".progress-bar-custom").animate({
+                $(".progress-bar-custom").animate({
                     width: `0%`,
                 }, "slow");
             }
@@ -267,13 +268,19 @@ function updateProgressInfo(progress_id) {
     }); // TODO
 };
 
+function stopProgressUpdate() {
+    if (updateTimerHandle) {
+        clearTimeout(updateTimerHandle);
+        progress = 0;
+    }
+}
 
 // ---- FILE UPLOAD ----
 function startUpload() {
     let data = new FormData($("#cert-form")[0]);
 
     $.ajax({
-        url: "http://localhost:8080/upload",
+        url: "http://localhost:5000/upload",
         type: 'POST',
         data: data,
         cache: false,

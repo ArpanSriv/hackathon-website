@@ -2,7 +2,7 @@
 import json
 
 from django.core.mail import send_mail
-from django.http import HttpResponse, HttpResponseBadRequest
+from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseServerError, HttpResponseNotFound
 from django.shortcuts import render
 from django.template import loader
 
@@ -27,74 +27,38 @@ def registration_individual(request):
     if request.method == 'POST':
         json_data = json.loads(request.body.decode("utf-8"))
 
-        print(json_data)
+        progress_id = json_data['progressID']
 
-        resp = {
-            'correct': '0',
-            'message': 'Internal Server Error.'
-        }
-
-        # Team Name Empty
-        if json_data['teamName'] == '':
-            resp['message'] = 'A valid team name is required.'
-            return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
-
-        # Team Email Empty
-        if json_data['teamEmail'] == '':
-            resp['message'] = 'A valid team email is required.'
-            return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
-
-        # Team Members Validation
-        if 'member1' not in json_data['memberDetails'] and 'member2' not in json_data['memberDetails']:
-            print('member 1 and member 2 not found.')
-
+        try:
             resp = {
-                'correct': '0',
-                'message': 'Member 1 and Member 2 are required.'
-            }
-
-            return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
-
-        elif 'member1' in json_data['memberDetails'] and 'member2' in json_data['memberDetails']:
-            if json_data['memberDetails']['member1']['firstName'] == '' or json_data['memberDetails']['member2'][
-                'firstName'] == '':
-                print('member 1 and member 2 found empty')
-
-                resp['message'] = 'Members found but empty. Are you sure you entered all details correctly?'
-
-                return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
-
-            progress_id = json_data['progressID']
-
-            # Found members 1 and 2 and also found some data there.
-            resp = {
-                'correct': '1',
                 'message': 'Data found sufficient.'
             }
 
             reg_no = generate_reg_no(INDIVIDUAL)
 
-            progress_utils.update_progress(progress_id, 20)
+            # progress_utils.update_progress(progress_id, 20)
 
             print("Uploading to sheets...")
 
             # Upload the Data on Spreadsheet and Firebase :p
             update_google_sheets(INDIVIDUAL, reg_no, json_data, progress_id)
 
-            progress_utils.update_progress(progress_id, 50)
+            # progress_utils.update_progress(progress_id, 50)
 
             upload_on_firebase(INDIVIDUAL, json_data)
 
-            progress_utils.update_progress(progress_id, 70)
+            # progress_utils.update_progress(progress_id, 70)
 
             sendmail(json_data['teamName'], reg_no, json_data['teamEmail'])
 
-            progress_utils.update_progress(progress_id, 100)
+            # progress_utils.update_progress(progress_id, 100)
 
             progress_utils.remove_progress(progress_id)
 
             return HttpResponse(json.dumps(resp), content_type='application/json')
 
+        except:
+            return bad_request("An error occurred.")
     # Normal GET Request.
     elif request.method == 'GET':
         progress_id = generate_progress_id()
@@ -123,59 +87,66 @@ def registration_startup(request):
     if request.method == 'POST':
         json_data = json.loads(request.body.decode("utf-8"))
 
-        resp = {
-            'correct': '1',
-            'message': 'Internal Server Error.'
-        }
+        message = 'Internal Server Error.'
+        progress_id = json_data['progressID']
 
         # Startup Name Empty
         if 'startupName' in json_data:
             if json_data['startupName'] == '':
-                resp['message'] = 'A valid Startup Name is required.'
-                return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
+                message = 'A valid Startup Name is required.'
+
+                # progress_utils.update_progress(progress_id, -1)
+
+                return bad_request(message)
 
         # Team Email Empty
         if 'startupEmail' in json_data:
             if json_data['startupEmail'] == '':
-                resp['message'] = 'A valid Startup Email is required.'
-                return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
+                message = 'A valid Startup Email is required.'
+
+                # progress_utils.update_progress(progress_id, -1)
+                return bad_request(message)
 
         # Team DOR Empty
         if 'startupDOR' in json_data:
             if json_data['startupDOR'] == '':
-                resp['message'] = 'A valid Startup Email is required.'
-                return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
+                message = 'A valid Startup Email is required.'
+
+                # progress_utils.update_progress(progress_id, -1)
+                return bad_request(message)
 
         # Team Domain Empty
         if 'startupDomain' in json_data:
             if json_data['startupDomain'] == '':
-                resp['message'] = 'A valid Startup Technology Domain is required.'
-                return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
+                message = 'A valid Startup Technology Domain is required.'
+                # progress_utils.update_progress(progress_id, -1)
+
+                return bad_request(message)
 
         # Team Domain Empty
         if json_data['startupDesc'] == '':
-            resp['message'] = 'A valid Startup Description is required.'
-            return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
+            message = 'A valid Startup Description is required.'
+            # progress_utils.update_progress(progress_id, -1)
+            return bad_request(message)
 
         # Team Members Validation
-        if 'member1' not in json_data['memberDetails'] and 'member2' not in json_data['memberDetails']:
+        if 'member1' not in json_data['memberDetails'] or 'member2' not in json_data['memberDetails']:
             print('member 1 and member 2 not found. -> Startup')
 
-            resp = {
-                'correct': '0',
-                'message': 'Member 1 and Member 2 are required.'
-            }
+            message = 'Member 1 and Member 2 are required.'
 
-            return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
+            # progress_utils.update_progress(progress_id, -1)
+
+            return bad_request(message)
 
         elif 'member1' in json_data['memberDetails'] and 'member2' in json_data['memberDetails']:
-            if json_data['memberDetails']['member1']['firstName'] == '' or json_data['memberDetails']['member2'][
-                'firstName'] == '':
+            if json_data['memberDetails']['member1']['firstName'] == '' or \
+                    json_data['memberDetails']['member2']['firstName'] == '':
                 print('member 1 and member 2 found empty -> Startup')
 
-                resp['message'] = 'Members found but empty. Are you sure you entered all details correctly?'
+                message = 'Members found but empty. Are you sure you entered all details correctly?'
 
-                return HttpResponseBadRequest(json.dumps(resp), content_type='application/json')
+                return bad_request(message)
 
             # Found members 1 and 2 and also found some data there.
             resp = {
@@ -183,10 +154,9 @@ def registration_startup(request):
                 'message': 'Data found sufficient.'
             }
 
-            progress_id = json_data['progressID']
             print("Progress ID = " + progress_id)
 
-            progress_utils.update_progress(progress_id, 10)
+            # progress_utils.update_progress(progress_id, 10)
             # # Upload to ftp
             # FTP_USERNAME = "django_auto@aihackathon.in"
 
@@ -194,24 +164,28 @@ def registration_startup(request):
 
             print("Uploading to sheets...")
 
-            progress_utils.update_progress(progress_id, 30)
+            # progress_utils.update_progress(progress_id, 30)
             # Upload the Data on Spreadsheet and Firebase :p
             update_google_sheets(STARTUP, reg_no, json_data, progress_id)
 
-            progress_utils.update_progress(progress_id, 70)
+            # progress_utils.update_progress(progress_id, 70)
 
             upload_on_firebase(STARTUP, json_data)
 
-            progress_utils.update_progress(progress_id, 75)
+            # progress_utils.update_progress(progress_id, 75)
 
             sendmail(json_data['startupName'], reg_no, json_data['startupEmail'])
 
-            progress_utils.update_progress(progress_id, 80)
+            # progress_utils.update_progress(progress_id, 80)
 
             resp['teamName'] = json_data['teamName']
             resp['teamRegNo'] = reg_no
 
-        return HttpResponse(json.dumps(resp), content_type='application/json')
+            return HttpResponse(json.dumps(resp),
+                                content_type='application/json')
+
+        else:
+            return bad_request(message)
 
     elif request.method == 'GET':
         progress_id = generate_progress_id()
@@ -284,3 +258,10 @@ def generate_progress_id():
     reg = "".join(random.choice(allchar) for x in range(random.randint(min_char, max_char)))
 
     return reg
+
+
+def bad_request(message):
+    response = HttpResponse(json.dumps({'message': message}),
+                            content_type='application/json')
+    response.status_code = 400
+    return response

@@ -1,4 +1,6 @@
 hackenv/
 *__pycache__*
 venv
-token.pickle
+hackathon/token.pickle
+logs
+.vscode/

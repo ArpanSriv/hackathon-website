@@ -22,7 +22,7 @@ class ProgressUtils:
     @staticmethod
     def update_progress(progress_id, new_progress):
         if progress_id not in ProgressUtils.progress:
-            raise Exception("Progress not initialized.")
+            raise Exception("Progress not initialized. Progress ID: {}".format(progress_id))
 
         ProgressUtils.progress[progress_id] = new_progress
 

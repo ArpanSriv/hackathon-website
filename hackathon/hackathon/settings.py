@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '0ngtf5br@lwqjxq0eo9c9^qdvo6plsj+5j3b@&4dr5#w$vd^=t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False 
 
-ALLOWED_HOSTS = ['aihackathon.in', 'www.aihackathon.in', '*']
+ALLOWED_HOSTS = ['aihackathon.in', 'www.aihackathon.in']
 
 # Application definition
 
@@ -123,7 +123,7 @@ STATIC_URL = '/static/'
 
 # STATICFILES_DIRS = ( os.path.join('static'), )
 
-# Email settings 
+# Email settings
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'aihackathon@sitpune.edu.in'
@@ -132,3 +132,29 @@ EMAIL_PORT = 587
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # MEDIA_URL = '/media/'
+
+# LOGGING = {
+#    'version': 1,
+#    'disable_existing_loggers': True,
+#    'formatters': {
+#        'verbose': {
+#            'format': '%(asctime)s %(levelname)s [%(name)s:%(lineno)s] %(module)s %(process)d %(thread)d %(message)s'
+#        }
+#    },
+#    'handlers': {
+#        'gunicorn': {
+#            'level': 'DEBUG',
+#            'class': 'logging.handlers.RotatingFileHandler',
+#            'formatter': 'verbose',
+#            'filename': '/home/ubuntu/django-gunicorn.errors',
+#            'maxBytes': 1024 * 1024 * 100,  # 100 mb
+#        }
+#   },
+#    'loggers': {
+#        'gunicorn.errors': {
+#            'level': 'DEBUG',
+#            'handlers': ['gunicorn'],
+#            'propagate': True,
+#        },
+#    }
+#}

@@ -27,6 +27,17 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['aihackathon.in', 'www.aihackathon.in']
 
+# Parse config
+from configparser import RawConfigParser
+
+config = RawConfigParser()
+config.read('/home/ubuntu/config/settings.ini')
+
+environ = config.get('django', 'environment')
+
+if environ == 'staging':
+    ALLOWED_HOSTS.append("*")
+
 # Application definition
 
 INSTALLED_APPS = [

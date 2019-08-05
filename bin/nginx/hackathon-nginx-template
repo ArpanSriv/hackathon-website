@@ -1,0 +1,17 @@
+server { 
+    server_name %IP_ADDR%;
+    access_log  /home/ubuntu/hackathon-website/logs/nginx-access.log;
+    error_log  /home/ubuntu/hackathon-website/logs/nginx-error.log;
+    location = /favicon.ico { access_log off; log_not_found off; }
+
+    location /static/ {
+        root /home/ubuntu/hackathon-website/hackathon/webapp;
+    }
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/ubuntu/hackathon-website/hackathon/myproject.sock;
+    }
+    
+    listen 80;
+}

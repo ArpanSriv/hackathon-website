@@ -1,0 +1,14 @@
+[Unit]
+Description=Gunicorn instance to serve Certificate Upload Server
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+
+WorkingDirectory=/home/ubuntu/FileUploadServer
+Environment="PATH=/home/ubuntu/FileUploadServer/venv/bin"
+ExecStart=/home/ubuntu/FileUploadServer/venv/bin/gunicorn --access-logfile /home/ubuntu/FileUploadServer/logs/access.log --error-logfile /home/ubuntu/FileUploadServer/logs/error.log --workers 3 --bind unix:cert_upload_server.sock -m 007 server_wsgi:app
+
+[Install]
+WantedBy=multi-user.target

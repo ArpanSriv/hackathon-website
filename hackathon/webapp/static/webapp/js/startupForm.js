@@ -35,7 +35,7 @@ function openModal(id) {
     startupEmail = getInputValue('startupEmail');
     startupDOR = getInputValue('startupDOR');
     startupDomain = getInputValue('startupDomain');
-    startupDesc = getInputValue('s  tartupDesc');
+    startupDesc = getInputValue('startupDesc');
 
     // Clear the form before opening
     $('#hidden-reset').trigger('click');
@@ -280,7 +280,7 @@ function startUpload() {
     let data = new FormData($("#cert-form")[0]);
 
     $.ajax({
-        url: "http://localhost:5000/upload",
+        url: "https://aihackathon:8080/upload",
         type: 'POST',
         data: data,
         cache: false,

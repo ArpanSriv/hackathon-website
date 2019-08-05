@@ -431,6 +431,7 @@ a:hover {
     background-size: cover;
     background-position-x: center;
     position: relative;
+    margin-bottom: 30px;
 }
 
 .judgeGradient {

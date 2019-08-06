@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '0ngtf5br@lwqjxq0eo9c9^qdvo6plsj+5j3b@&4dr5#w$vd^=t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False 
+DEBUG = True 
 
 ALLOWED_HOSTS = ['aihackathon.in', 'www.aihackathon.in']
 
@@ -42,6 +42,7 @@ if environ == 'staging':
 
 INSTALLED_APPS = [
     'webapp.apps.WebappConfig',
+    'solutions.apps.SolutionsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

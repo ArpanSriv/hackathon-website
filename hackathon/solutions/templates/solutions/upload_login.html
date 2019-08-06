@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>Login to upload solution</title>
+    </head>
+
+    <body>
+        
+        <form action="{% url 'upload_solution' %}" method="post">
+            {% csrf_token %}
+            <input name="upload_key" />
+            <button type="submit">Submit</button>
+        </form>
+
+    </body>
+</html>

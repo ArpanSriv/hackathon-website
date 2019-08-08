@@ -7,7 +7,8 @@
         
         <form action="{% url 'upload_solution' %}" method="post">
             {% csrf_token %}
-            <input name="upload_key" />
+            <input name="email" />
+            <input name="password" />
             <button type="submit">Submit</button>
         </form>
 

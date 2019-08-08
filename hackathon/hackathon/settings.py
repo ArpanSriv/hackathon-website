@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import platform
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -28,15 +30,20 @@ DEBUG = False
 ALLOWED_HOSTS = ['aihackathon.in', 'www.aihackathon.in']
 
 # Parse config
-from configparser import RawConfigParser
+if platform.system() == 'Linux':
+    from configparser import RawConfigParser
 
-config = RawConfigParser()
-config.read('/etc/config/hackathon-settings.ini')
+    config = RawConfigParser()
+    config.read('/etc/config/hackathon-settings.ini')
 
-environ = config.get('django', 'environment')
+    environ = config.get('django', 'environment')
 
-if environ == 'staging':
-    ALLOWED_HOSTS.append("*")
+    if environ == 'staging':
+        ALLOWED_HOSTS.append("*")
+        DEBUG = True
+
+else:
+    ALLOWED_HOSTS.append('*')
     DEBUG = True
 
 # Application definition

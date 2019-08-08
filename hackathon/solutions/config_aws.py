@@ -1,0 +1,6 @@
+AWS_UPLOAD_BUCKET = "ai-hackathon-upload"
+AWS_UPLOAD_USERNAME = "hackathon-user-django"
+AWS_UPLOAD_GROUP = "hackathon-iam-group"
+AWS_UPLOAD_REGION = 'ap-south-1'
+AWS_UPLOAD_ACCESS_KEY_ID = "AKIAVJIRZRDZ6G3UAN67"
+AWS_UPLOAD_SECRET_KEY = "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"

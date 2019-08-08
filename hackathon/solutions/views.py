@@ -88,38 +88,6 @@ class FilePolicyAPI(APIView):
             file_obj.path = final_upload_path
             file_obj.save()
 
-        ################################################################
-        policy_document_context = {
-            "expire": policy_expires,
-            "bucket_name": AWS_UPLOAD_BUCKET,
-            "key_name": "",
-            "acl_name": "private",
-            "content_name": "",
-            "content_length": 524288000,
-            "upload_start_path": upload_start_path,
-
-        }
-
-        policy_document = """
-               {"expiration": "2020-01-01T00:00:00Z",
-                 "conditions": [ 
-                   {"bucket": "%(bucket_name)s"}, 
-                   ["starts-with", "$key", "%(upload_start_path)s"],
-                   {"acl": "%(acl_name)s"},
-
-                   ["starts-with", "$Content-Type", "%(content_name)s"],
-                   ["starts-with", "$filename", ""],
-                   ["content-length-range", 0, %(content_length)d]
-                 ]
-               }
-               """ % policy_document_context
-
-        session = boto3.session.Session(
-            region_name=AWS_UPLOAD_REGION,
-            aws_access_key_id=AWS_UPLOAD_ACCESS_KEY_ID,
-            aws_secret_access_key=AWS_UPLOAD_SECRET_KEY
-        )
-
         s3 = boto3.client(
             's3',
             aws_access_key_id=AWS_UPLOAD_ACCESS_KEY_ID,
@@ -139,24 +107,6 @@ class FilePolicyAPI(APIView):
         data['file_id'] = file_obj_id
         data['awsAccessKeyId'] = AWS_UPLOAD_ACCESS_KEY_ID
 
-        # aws_secret = str.encode(AWS_UPLOAD_SECRET_KEY)
-        # policy_document_str_encoded = str.encode(policy_document.replace(" ", ""))
-        # url = 'https://{bucket}.s3-{region}.amazonaws.com/'.format(
-        #     bucket=AWS_UPLOAD_BUCKET,
-        #     region=AWS_UPLOAD_REGION
-        # )
-        # policy = base64.b64encode(policy_document_str_encoded)
-        # signature = base64.b64encode(hmac.new(aws_secret, policy, hashlib.sha1).digest())
-        # data = {
-        #     "policy": policy,
-        #     "signature": signature,
-        #     "key": AWS_UPLOAD_ACCESS_KEY_ID,
-        #     "file_bucket_path": upload_start_path,
-        #     "file_id": file_obj_id,
-        #     "filename": filename_final,
-        #     "url": url,
-        #     "username": username_str,
-        # }
         return Response(data, status=status.HTTP_200_OK)
 
 

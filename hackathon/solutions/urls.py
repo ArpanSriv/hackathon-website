@@ -10,4 +10,5 @@ urlpatterns = [
     path('upload/', TemplateView.as_view(template_name='upload.html'), name='upload-home'),
     path('api/files/complete/', FileUploadCompleteHandler.as_view(), name='upload-complete'),
     path('api/files/policy/', FilePolicyAPI.as_view(), name='upload-policy'),
+	#path('login/', TemplateView.as_view(template_name='upload_login.html'), name='upload_login'),    
 ]

@@ -1,20 +1,15 @@
-import json
-
 from django.shortcuts import render
 
-# # Solution Upload
-# def login_solution(request):
-#     return render(request, 'solutions/upload_login.html')
-#
-#
-# def upload_solution(request):
-#     return render(request, 'solutions/upload_solution.html')
-#
-#
 
-import base64
-import hashlib
-import hmac
+# # Solution Upload
+def login_solution(request):
+    return render(request, 'solutions/upload_login.html')
+
+
+def upload_solution(request):
+    return render(request, 'solutions/upload_solution.html')
+
+
 import os
 import time
 from rest_framework import permissions, status, authentication
@@ -54,7 +49,7 @@ class FilePolicyAPI(APIView):
         username_str = str(request.user.username)
         """
         Below we create the Django object. We'll use this
-        in our upload path to AWS. 
+        in our upload path to AWS.
 
         Example:
         To-be-uploaded file's name: Some Random File.mp4
@@ -73,8 +68,8 @@ class FilePolicyAPI(APIView):
 
         )
         """
-        Eventual file_upload_path includes the renamed file to the 
-        Django-stored FileItem instance ID. Renaming the file is 
+        Eventual file_upload_path includes the renamed file to the
+        Django-stored FileItem instance ID. Renaming the file is
         done to prevent issues with user generated formatted names.
         """
         final_upload_path = "{upload_start_path}{filename_final}".format(
@@ -96,9 +91,14 @@ class FilePolicyAPI(APIView):
             config=boto3.session.Config(signature_version='s3v4')
         )
 
+        reg_no = request.data.get('reg_no')
+        team_name = request.data.get('team')
+
+        key = "solutions_test/{}_{}/".format(team_name, "I-4AB5S")
+
         data = s3.generate_presigned_post(
             Bucket=AWS_UPLOAD_BUCKET,
-            Key="upload_django/${filename}",
+            Key=key + "${filename}",
             ExpiresIn=5000
         )
 

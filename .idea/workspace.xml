@@ -2,11 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="200db721-6452-4a04-9983-02f8a701fca2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/hackathon/solutions/config_aws.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hackathon/hackathon/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hackathon/solutions/managers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hackathon/solutions/post_url.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hackathon/solutions/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hackathon/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hackathon/db.sqlite3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/hackathon/hackathon/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/hackathon/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hackathon/solutions/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hackathon/solutions/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hackathon/solutions/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hackathon/solutions/templates/solutions/upload_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/templates/solutions/upload_login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hackathon/solutions/templates/upload.html" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/templates/upload.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hackathon/solutions/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hackathon/solutions/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -175,6 +185,26 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="ServiceViewManager">
+    <option name="allServicesViewState">
+      <serviceView>
+        <treeState>
+          <expand>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@379b1b3f" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@379b1b3f" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@630ccf3c" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+          </expand>
+          <select />
+        </treeState>
+      </serviceView>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -202,7 +232,7 @@
       <workItem from="1565235366313" duration="110000" />
       <workItem from="1565235491526" duration="273000" />
       <workItem from="1565235786150" duration="10227000" />
-      <workItem from="1565261348881" duration="3515000" />
+      <workItem from="1565261348881" duration="28852000" />
     </task>
     <task id="LOCAL-00001" summary="requirements.txt added">
       <created>1563055565333</created>
@@ -435,7 +465,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565263218498</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Updated Settings for windows platform">
+      <created>1565264900739</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1565264900739</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TodoView">
@@ -465,7 +502,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Updated Individual Registration to send correct data" />
     <MESSAGE value="Updated view.py" />
     <MESSAGE value="Form done without upload" />
     <MESSAGE value="Added email feature" />
@@ -490,7 +526,8 @@
     <MESSAGE value="Fixed Individual Form Registration issue" />
     <MESSAGE value="Direct Upload to S3 works fine now" />
     <MESSAGE value="Added Config for AWS" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Config for AWS" />
+    <MESSAGE value="Updated Settings for windows platform" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Settings for windows platform" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/hackathon_website$test.coverage" NAME="test Coverage Results" MODIFIED="1565262789837" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/hackathon/solutions" />

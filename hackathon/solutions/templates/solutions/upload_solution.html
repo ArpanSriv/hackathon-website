@@ -8,7 +8,27 @@
 </head>
 <body>
 
-    
+{% if members %}
+    {% for member in members %}
+        {{ member.email }}
+        {{ member.first_name }}
+        {{ member.last_name }}
+        {{ member.dob }}
+        {{ member.phone }}
+        {{ member.university }}
+        {{ member.specialization }}
+        {{ member.address_line_1 }}
+        {{ member.address_line_2 }}
+        {{ member.pincode }}
+        {{ member.city }}
+        {{ member.state }}
+        {{ member.projects }}
+        {{ member.team }}
+    {% endfor %}
+{% endif %}
+
+
+
 
 </body>
 </html>

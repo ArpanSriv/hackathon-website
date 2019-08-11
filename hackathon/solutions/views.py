@@ -1,28 +1,75 @@
-from django.shortcuts import render
-
-
-# # Solution Upload
-def login_solution(request):
-    return render(request, 'solutions/upload_login.html')
-
-
-def upload_solution(request):
-    return render(request, 'solutions/upload_solution.html')
-
-
+import logging
 import os
 import time
+
+import boto3
+from django.contrib.auth import authenticate
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
 from rest_framework import permissions, status, authentication
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+# # Solution Upload
+from webapp import views as webapp_views
 from .config_aws import (
     AWS_UPLOAD_BUCKET,
     AWS_UPLOAD_REGION,
     AWS_UPLOAD_ACCESS_KEY_ID,
     AWS_UPLOAD_SECRET_KEY
 )
-from .models import FileItem
-import boto3
+from .models import *
+
+
+def login_solution(request):
+    logging.info("Method for login: {}".format(request.method))
+    if request.method == 'POST':
+        # Authenticate user
+        username = request.POST.get('teamEmail')
+        password = request.POST.get('password')
+
+        if username is not None and password is not None:
+            user = authenticate(username=username, password=password)
+
+            if user is not None:
+                return redirect(upload_solution)
+
+            else:
+                # FIXME
+                return render(request, 'solutions/upload_login.html', context={
+                    'message': 'The username and password do not match! Please try again'
+                })
+
+        return redirect("Facebook.com")
+    elif request.method == 'GET':
+        return render(request, 'solutions/upload_login.html')
+
+
+def redirect_with_error(message, url=None):
+    # TODO Push messages in the message framework
+    if url is None:
+        return redirect(webapp_views.index)
+    else:
+        return redirect(url)
+    pass
+
+
+@login_required(login_url='/login')
+def upload_solution(request):
+    # if request.user is not Team:
+    #     raise Exception("Team should be the auth type.")
+    team_id = request.user.id # Team id
+    print("Team id mila re baba: {}".format(team_id))
+
+    if team_id is not None:
+        members = Member.objects.filter(team_id=team_id)
+
+        return render(request, 'solutions/upload_solution.html', context={
+            'members': members
+        })
+
+    else:
+        return redirect_with_error('Team id is none')  # TODO
 
 
 class FilePolicyAPI(APIView):

@@ -48,8 +48,8 @@
         <h1 id="startupRegistrationTitle" class="teamNameTitle">Team Name</h1>
     </div>
 
- 	<div class="container inner-form-custom" style="margin-bottom: 30px;">
- 		<div class="row">
+ 	<div class="container-fluid" style="margin-bottom: 30px;">
+ 		<div class="row justify-content-around">
  			<div class="col-lg-3 col-sm-6">
                             <form>
                             	<fieldset disabled>
@@ -155,7 +155,7 @@
                             </form>
  			</div>
  			<div class="col-lg-3 col-sm-6">
-                            <form>
+ 				 <form>
                             	<fieldset disabled>
                                 <h4 class="form-title">Team Member 2</h4>
                                 <div class="form-group">
@@ -256,10 +256,10 @@
                                               placeholder="Projects(If Any)" name="projects"></textarea>
                                 </div>
                             	</fieldset>
-                            </form>
+                 </form>
  			</div>
  			<div class="col-lg-3 col-sm-6">
-                            <form>
+ 				<form>
                             	<fieldset disabled>
                                 <h4 class="form-title">Team Member 3</h4>
                                 <div class="form-group">
@@ -360,10 +360,10 @@
                                               placeholder="Projects(If Any)" name="projects"></textarea>
                                 </div>
                             	</fieldset>
-                            </form>
+                </form>
  			</div>
  			<div class="col-lg-3 col-sm-6">
-                            <form>
+ 				<form>
                             	<fieldset disabled>
                                 <h4 class="form-title">Team Member 4</h4>
                                 <div class="form-group">
@@ -464,20 +464,23 @@
                                               placeholder="Projects(If Any)" name="projects"></textarea>
                                 </div>
 	                            </fieldset>
-                            </form>
+                </form>
  			</div>
  		</div>
+ 	</div>
 	    
+    <!-- </div> -->
+	
 	    <div class="registration-box">
-	        <h2 id="startupRegistrationTitle" class="uploadText">Upload Solutions</h2>
+	        <h2 id="startupRegistrationTitle" class="uploadText" style="margin-bottom: 12px;">Upload Solutions</h2>
 	        <form>
 		        <p>Docker File <span><input type="file" class="form-control-file" id="docker-file" name="docker-file" required></span></p>
 		        <p>File 2 <span><input type="file" class="form-control-file" id="file2" name="file2" required></span></p>
 		        <p>File 3 <span><input type="file" class="form-control-file" id="file3" name="file3" required></span></p>
+
 	        	<button type="submit" class="btn btn-primary submitBtn" onclick="submitForm()">Submit</button>
 	        </form>
 	    </div>
-    </div>
 
     {% include "webapp/footer.html" %}
 

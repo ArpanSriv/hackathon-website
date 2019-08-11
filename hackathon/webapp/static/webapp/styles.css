@@ -920,6 +920,10 @@ hr {
     margin-bottom: 20px;
 }
 
+#docker-file, #file2, #file3{
+    margin-bottom: 20px;
+}
+
 @media only screen and (min-width: 800px) and (max-width: 1600px) {
     .js .cd-h-timeline__line {
         width: 2000px !important;

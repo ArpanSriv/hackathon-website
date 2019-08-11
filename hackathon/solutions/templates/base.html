@@ -1,15 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <!-- Required meta tags -->
+    <title>AIHackathon - Login to upload solution</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'webapp/imgs/artificial-intelligence.png' %}"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>CFE Upload</title>
+    <!-- Bootstrap CSS-->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Jquery Toast CSS -->
+    <link href="{% static 'webapp/jquery.toast.css' %}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="../../static/webapp/styles.css">
+    <!-- Noto Sans Font -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
+    <!-- PT Mono Font -->
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono&display=swap" rel="stylesheet">
+    <!-- Open Sans Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+    <!-- PT Sans Font -->
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+    <!-- Oxygen Mono Font -->
+    <link href="https://fonts.googleapis.com/css?family=Oxygen+Mono&display=swap" rel="stylesheet">
+    <!-- Overpass Mono Font -->
+    <link href="https://fonts.googleapis.com/css?family=Overpass+Mono&display=swap" rel="stylesheet">
+    <link href="https://cdn.lineicons.com/1.0.1/LineIcons.min.css" rel="stylesheet">
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
 </head>
+
 <body>
-<div class='container main-container'>
-    {% block content %}{% endblock content %}
-</div>
+<!-- NAVBAR -->
+{#{% include "webapp/navbar.html" %}#}
+
+
+{#<!--  <form action="{% url 'upload_solution' %}" method="post">#}
+{#            {% csrf_token %}#}
+{#            <input name="upload_key" />#}
+{#            <button type="submit">Submit</button>#}
+{#        </form> -->#}
+{##}
+{#<div class="registration-box">#}
+{#    <h1 id="startupRegistrationTitle">Login</h1>#}
+{#</div>#}
+{##}
+{#<div class="container form-custom">#}
+{#    <form method="POST" id="loginForm">#}
+{#        {% csrf_token %}#}
+{##}
+{#        <div class="row">#}
+{#            <div class="col-sm-12 col-lg-12">#}
+{#                <div class="form-group">#}
+{#                    <input class="form-control" id="teamEmail" name="teamEmail" placeholder="Team Email" required#}
+{#                           type="text">#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{#        <div class="row">#}
+{#            <div class="col-sm-12 col-lg-12">#}
+{#                <div class="form-group">#}
+{#                    <input type="password" class="form-control" id="password" placeholder="Password" required#}
+{#                           name="password">#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{#        <button type="submit" class="btn btn-primary submitBtn">Submit</button>#}
+{#    </form>#}
+{#</div>#}
+
+{#{% include "webapp/footer.html" %}#}
+{% block content %}
+
+{% endblock %}
+
+<script src="{% static 'webapp/js/jquery.toast.js' %}" type="text/javascript"></script>
+
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
     $(document).ready(function () {
@@ -51,21 +133,34 @@
 // declare an empty array for potential uploaded files
         var fileItemList = [];
 
-// auto-upload on file input change.
-        $(document).on('change', '.cfeproj-upload-file', function (event) {
-            var selectedFiles = $(this).prop('files');
-            formItem = $(this).parent();
-            $.each(selectedFiles, function (index, item) {
-                var myFile = verifyFileIsImageMovieAudio(item);
-                if (myFile) {
-                    uploadFile(myFile)
-                } else {
-                    // alert("Some files are invalid uploads.")
-                }
-            });
-            $(this).val('');
+        $('#ok').on('click', function() {
+            uploadNow()
+        })
 
-        });
+// auto-upload on file input change.
+        function uploadNow() {
+            let dockerfile = $(`input[name='docker_file']`).prop('files')
+
+            console.log("DockerFile: " + dockerfile.name)
+
+            let progfile = $(`input[name='prog_file']`).prop('files')
+
+            console.log("ProgFile: " + progfile.name)
+
+            let infofile = $(`input[name='info_file']`).prop('files')
+
+            console.log("InfoFile: " + infofile.name)
+
+            {#uploadFile(dockerfile)#}
+            {#uploadFile(progfile)#}
+            {#uploadFile(infofile)#}
+
+            window.setTimeout(function() {
+                alert("Uploaded Successfully.")
+            }, 1000)
+            {#alert("Files Uploaded")#}
+        }
+
 
 
         function verifyFileIsImageMovieAudio(file) {
@@ -89,6 +184,7 @@
                     return null
             }
         }
+
         function constructFormPolicyData(policyData, fileItem) {
             var contentType = fileItem.type != '' ? fileItem.type : 'application/octet-stream';
             var url = policyData.url;
@@ -106,21 +202,7 @@
 
             var fd = new FormData();
 
-            {#fd.append("Authorization", authorizationHeader);#}
-            {##}
-            {#fd.append('key', keyPath + filename);#}
-            {#fd.append('acl', 'private');#}
-            {#fd.append('content-type', contentType);#}
-            {#fd.append("AWSAccessKeyId", policyData.awsAccessKeyId)#}
-            {#fd.append('Policy', policyData.fields.policy);#}
-            {#fd.append('filename', filename);#}
-            {#fd.append('Signature', policyData.fields.signature);#}
-            {#fd.append('file', fileItem);#}
-            {##}
-            {#for (let field in policyData.fields) {#}
-            {#    fd.append(field, policyData.fields[field])#}
-
-            $.each(policyData.fields, function(key, value) {
+            $.each(policyData.fields, function (key, value) {
                 fd.append(key, value)
             })
 

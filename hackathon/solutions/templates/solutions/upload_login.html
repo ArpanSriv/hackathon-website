@@ -40,14 +40,7 @@
     </head>
 
     <body>
-        <!-- NAVBAR -->
-        {% include "webapp/navbar.html" %}
-        
-       <!--  <form action="{% url 'upload_solution' %}" method="post">
-            {% csrf_token %}
-            <input name="upload_key" />
-            <button type="submit">Submit</button>
-        </form> -->
+    {% include "webapp/navbar.html" %}
 
         <div class="registration-box">
             <h1 id="startupRegistrationTitle">Login</h1>
@@ -56,36 +49,49 @@
         <div class="container form-custom" style="margin-bottom: 30px;">
             <form method="POST" id="loginForm">
                 {% csrf_token %}
-
-                <!-- <input type="hidden" id="thank-you-url" data-url="{% url 'thank_you' %}" />
                 <input type="hidden" id="poll-url" data-url="{% url 'poll_url' %}" />
                 <input type="hidden" id="progress-id-input" name="progress-id-input" value="{{ progress_id }}" />
                 <input type="hidden" id="submit-url" name="hidden-individual-register-url" value="{% url 'registration_individual' %}" /> -->
 
-                <div class="row">
-                    <div class="col-sm-12 col-lg-12">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="teamEmail" placeholder="Team Email" required name="teamEmail">
-                        </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-lg-12">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="teamEmail" placeholder="Team Email" required
+                               name="teamEmail">
                     </div>
                 </div>
+            </div>
 
-                <div class="row">
-                    <div class="col-sm-12 col-lg-12">
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="password" placeholder="Password" required name="password">
-                        </div>
+            <div class="row">
+                <div class="col-sm-12 col-lg-12">
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="password" placeholder="Password" required
+                               name="password">
                     </div>
                 </div>
+            </div>
 
-                <button type="submit" class="btn btn-primary submitBtn" onclick="submitForm()">Submit</button>
-            </form>
-        </div>
+            <button type="submit" class="btn btn-primary submitBtn" onclick="submitForm()">Submit</button>
+        </form>
+    </div>
 
-        {% include "webapp/footer.html" %}
+</div>
 
-    <script src="{% static 'webapp/js/jquery.toast.js' %}" type="text/javascript"></script>
-    <script type="text/javascript" src="../../static/webapp/js/form.js"></script>
+{% include "webapp/footer.html" %}
 
-    </body>
+<script src="{% static 'webapp/js/jquery.toast.js' %}" type="text/javascript"></script>
+<script>
+    {% if message %}
+        $.toast({
+            heading: 'Error',
+            text: '{{ message }}',
+            icon: 'error',
+            hideAfter: 3000
+        });
+    {% endif %}
+
+</script>
+
+</body>
 </html>

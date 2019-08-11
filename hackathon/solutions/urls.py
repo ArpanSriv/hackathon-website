@@ -5,11 +5,10 @@ from solutions.views import FilePolicyAPI, FileUploadCompleteHandler
 from . import views
 
 urlpatterns = [
-    # path('login', views.login_solution, name='login'),
-    # path('upload_solution', views.upload_solution, name='upload_solution')
+    path('login/', views.login_solution, name='login_hackathon'),
+    path('upload_solution', views.upload_solution, name='upload_solution'),
     path('upload/', TemplateView.as_view(template_name='upload.html'), name='upload-home'),
-    path('api/files/complete/', FileUploadCompleteHandler.as_view(), name='upload-complete'),
     path('api/files/policy/', FilePolicyAPI.as_view(), name='upload-policy'),
-	path('login/', TemplateView.as_view(template_name='solutions/upload_login.html'), name='upload_login'),
-	path('upload_solution/', TemplateView.as_view(template_name='solutions/upload_solution.html'), name='upload_solution'),    
+    path('api/files/complete/', FileUploadCompleteHandler.as_view(), name='upload-complete'),
 ]
+

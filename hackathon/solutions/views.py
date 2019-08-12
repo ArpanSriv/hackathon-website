@@ -58,7 +58,7 @@ def redirect_with_error(message, url=None):
 def upload_solution(request):
     # if request.user is not Team:
     #     raise Exception("Team should be the auth type.")
-    team_id = request.user.id # Team id
+    team_id = request.user.id  # Team id
     print("Team id mila re baba: {}".format(team_id))
 
     if team_id is not None:
@@ -102,32 +102,44 @@ class FilePolicyAPI(APIView):
         To-be-uploaded file's name: Some Random File.mp4
         Eventual Path on S3: <bucket>/username/2312/2312.mp4
         """
-        file_obj = FileItem.objects.create(user=user, name=filename_req)
+        file_obj = FileItem(user=user, name=filename_req)
         file_obj_id = file_obj.id
-        upload_start_path = "{username}/{file_obj_id}/".format(
-            username=username_str,
-            file_obj_id=file_obj_id
-        )
+
+        reg_no = request.user.reg_no
+        team_name = request.user.team_name
+        filetype = request.POST.get('filetype')
+
+        # upload_start_path = "/upload_solutions/{username}/{file_obj_id}/".format(
+        #     username=username_str,
+        # )
         _, file_extension = os.path.splitext(filename_req)
         filename_final = "{file_obj_id}{file_extension}".format(
             file_obj_id=file_obj_id,
             file_extension=file_extension
 
         )
+
+        key = "solutions_test/{}_{}/".format(team_name, reg_no)
+
+        s3_upload_path = key + "{}_{}{}".format(reg_no, filetype, file_extension)
+
+        # if filetype == 'docker':
+        #     s3_upload_path = key + "{}_{}".format(reg_no, filetype)
+
         """
         Eventual file_upload_path includes the renamed file to the
         Django-stored FileItem instance ID. Renaming the file is
         done to prevent issues with user generated formatted names.
         """
-        final_upload_path = "{upload_start_path}{filename_final}".format(
-            upload_start_path=upload_start_path,
-            filename_final=filename_final,
-        )
+        # final_upload_path = "{upload_start_path}{filename_final}".format(
+        #     upload_start_path=upload_start_path,
+        #     filename_final=filename_final,
+        # )
         if filename_req and file_extension:
             """
             Save the eventual path to the Django-stored FileItem instance
             """
-            file_obj.path = final_upload_path
+            file_obj.path = s3_upload_path
             file_obj.save()
 
         s3 = boto3.client(
@@ -138,18 +150,13 @@ class FilePolicyAPI(APIView):
             config=boto3.session.Config(signature_version='s3v4')
         )
 
-        reg_no = request.data.get('reg_no')
-        team_name = request.data.get('team')
-
-        key = "solutions_test/{}_{}/".format(team_name, "I-4AB5S")
-
         data = s3.generate_presigned_post(
             Bucket=AWS_UPLOAD_BUCKET,
-            Key=key + "${filename}",
+            Key=s3_upload_path,
             ExpiresIn=5000
         )
 
-        data['file_bucket_path'] = upload_start_path
+        data['file_bucket_path'] = s3_upload_path
         data['filename'] = filename_final
         data['file_id'] = file_obj_id
         data['awsAccessKeyId'] = AWS_UPLOAD_ACCESS_KEY_ID

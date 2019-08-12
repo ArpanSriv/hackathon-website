@@ -4,9 +4,10 @@
     <list default="true" id="200db721-6452-4a04-9983-02f8a701fca2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hackathon/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hackathon/hackathon/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/hackathon/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hackathon/solutions/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hackathon/solutions/templates/solutions/upload_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/templates/solutions/upload_login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hackathon/solutions/templates/solutions/upload_solution.html" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/templates/solutions/upload_solution.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hackathon/solutions/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hackathon/solutions/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hackathon/webapp/static/webapp/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/webapp/static/webapp/styles.css" afterDir="false" />
     </list>
@@ -72,7 +73,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -224,7 +225,11 @@
       <workItem from="1565235491526" duration="273000" />
       <workItem from="1565235786150" duration="10227000" />
       <workItem from="1565261348881" duration="28852000" />
-      <workItem from="1565508087617" duration="245000" />
+      <workItem from="1565508087617" duration="744000" />
+      <workItem from="1565508852274" duration="1250000" />
+      <workItem from="1565532758010" duration="4537000" />
+      <workItem from="1565553394692" duration="4469000" />
+      <workItem from="1565586931453" duration="4720000" />
     </task>
     <task id="LOCAL-00001" summary="requirements.txt added">
       <created>1563055565333</created>
@@ -478,7 +483,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565435713925</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Commit before Merging ryan-solutions2">
+      <created>1565508549878</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1565508549878</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TodoView">
@@ -508,7 +520,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Added email feature" />
     <MESSAGE value="Updated last min" />
     <MESSAGE value="Release V1" />
     <MESSAGE value="Release V1 (Update URL)" />
@@ -533,7 +544,8 @@
     <MESSAGE value="Updated Settings for windows platform" />
     <MESSAGE value="Django-Admin works for now with user" />
     <MESSAGE value="Added Migrations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Migrations" />
+    <MESSAGE value="Commit before Merging ryan-solutions2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit before Merging ryan-solutions2" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

@@ -98,3 +98,6 @@ class FileItem(models.Model):
     @property
     def title(self):
         return str(self.name)
+
+    def __str__(self):
+        return "{}, {}, {}".format(self.name, self.path, self.user)

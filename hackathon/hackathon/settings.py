@@ -25,26 +25,26 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '0ngtf5br@lwqjxq0eo9c9^qdvo6plsj+5j3b@&4dr5#w$vd^=t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True 
+DEBUG = False
 
-ALLOWED_HOSTS = ['aihackathon.in', 'www.aihackathon.in', '*']
+ALLOWED_HOSTS = ['aihackathon.in', 'www.aihackathon.in']
 
 # Parse config
-# if platform.system() == 'Linux':
-#     from configparser import RawConfigParser
+if platform.system() == 'Linux':
+    from configparser import RawConfigParser
 
-#     config = RawConfigParser()
-#     config.read('/etc/config/hackathon-settings.ini')
+    config = RawConfigParser()
+    config.read('/etc/config/hackathon-settings.ini')
 
-#     environ = config.get('django', 'environment')
+    environ = config.get('django', 'environment')
 
-#     if environ == 'staging':
-#         ALLOWED_HOSTS.append("*")
-#         DEBUG = True
+    if environ == 'staging':
+        ALLOWED_HOSTS.append("*")
+        DEBUG = True
 
-# else:
-#     ALLOWED_HOSTS.append('*')
-#     DEBUG = True
+else:
+    ALLOWED_HOSTS.append('*')
+    DEBUG = True
 
 # Application definition
 
@@ -57,7 +57,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework'
 ]
 
 

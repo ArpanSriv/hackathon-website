@@ -6,507 +6,383 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>AIHackathon - Upload Solution</title>
     {% load static %}
-        <link rel="shortcut icon" type="image/png" href="{% static 'webapp/imgs/artificial-intelligence.png' %}"/>
-        <!-- Bootstrap CSS-->
-        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <!-- Jquery Toast CSS -->
-        <link href="{% static 'webapp/jquery.toast.css' %}" rel="stylesheet">
-        <!-- Custom CSS -->
-        <link rel="stylesheet" type="text/css" href="../../static/webapp/styles.css">
-        <!-- Noto Sans Font -->
-        <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
-        <!-- PT Mono Font -->
-        <link href="https://fonts.googleapis.com/css?family=PT+Mono&display=swap" rel="stylesheet">
-        <!-- Open Sans Font -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
-        <!-- PT Sans Font -->
-        <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
-        <!-- Oxygen Mono Font -->
-        <link href="https://fonts.googleapis.com/css?family=Oxygen+Mono&display=swap" rel="stylesheet">
-        <!-- Overpass Mono Font -->
-        <link href="https://fonts.googleapis.com/css?family=Overpass+Mono&display=swap" rel="stylesheet">
-        <link href="https://cdn.lineicons.com/1.0.1/LineIcons.min.css" rel="stylesheet">
-        <!-- Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.4.1.js"
-                integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-                crossorigin="anonymous"></script>
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-                crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-                crossorigin="anonymous"></script> -->
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" type="image/png" href="{% static 'webapp/imgs/artificial-intelligence.png' %}"/>
+    <!-- Bootstrap CSS-->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Jquery Toast CSS -->
+    <link href="{% static 'webapp/jquery.toast.css' %}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="../../static/webapp/styles.css">
+    <!-- Noto Sans Font -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
+    <!-- PT Mono Font -->
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono&display=swap" rel="stylesheet">
+    <!-- Open Sans Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+    <!-- PT Sans Font -->
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+    <!-- Oxygen Mono Font -->
+    <link href="https://fonts.googleapis.com/css?family=Oxygen+Mono&display=swap" rel="stylesheet">
+    <!-- Overpass Mono Font -->
+    <link href="https://fonts.googleapis.com/css?family=Overpass+Mono&display=swap" rel="stylesheet">
+    <link href="https://cdn.lineicons.com/1.0.1/LineIcons.min.css" rel="stylesheet">
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
 </head>
 <body>
- 	<!-- NAVBAR -->
-    {% include "webapp/navbar.html" %}
-    
-    <div class="registration-box">
-        <h1 id="startupRegistrationTitle" class="teamNameTitle">Team Name</h1>
+<!-- NAVBAR -->
+{% include "webapp/navbar.html" %}
+
+<div class="registration-box">
+    <h1 id="startupRegistrationTitle" class="teamNameTitle">{{ members.first.team.team_name }}</h1>
+</div>
+
+<div class="container-fluid" style="margin-bottom: 30px;">
+    <div class="row justify-content-around" style="justify-content: center !important;">
+        {% for member in members %}
+
+            <div class="col-lg-3 col-sm-6">
+                <form>
+                    <fieldset disabled>
+                        <h3 class="form-title"
+                            style="text-align: center">{{ member.first_name }} {{ member.last_name }}</h3>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Date Of Birth</span>
+                            </div>
+                            <input class="form-control" id="dateOfBirth" placeholder="Date of Birth"
+                                   name="dob" value="{{ member.dob }}">
+                        </div>
+                        <!-- </div> -->
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Email</span>
+                            </div>
+                            <input type="email" class="form-control" id="personalEmail"
+                                   placeholder="Personal Email" name="personalEmail" value="{{ member.email }}">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Phone</span>
+                            </div>
+                            <input type="text" class="form-control" id="personalPhone"
+                                   placeholder="Mobile Number" value="{{ member.phone }}" name="mobileNo">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">University</span>
+                            </div>
+                            <input type="text" class="form-control" id="university" placeholder="University"
+                                   value="{{ member.university }}" name="university">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Specialization</span>
+                            </div>
+                            <input type="text" class="form-control" id="specialization"
+                                   placeholder="Specialization" value="{{ member.specialization }}"
+                                   name="specialization">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Address</span>
+                            </div>
+                            <textarea rows="4" class="form-control" id="address1" placeholder="Address"
+                                      required="true"
+                                      name="addressLine1">{{ member.address_line_1 }} &#13; {{ member.address_line_2 }} &#13; {{ member.city }}, {{ member.state }}
+                            </textarea>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Pincode</span>
+                            </div>
+                            <input type="text" class="form-control" id="pincode" placeholder="Pincode"
+                                   name="pincode" value="{{ member.pincode }}">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Projects</span>
+                            </div>
+                            <textarea rows="5" class="form-control" id="projectsDescription"
+                                      placeholder="Projects(If Any)" name="projects">{{ member.projects }}</textarea>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        {% endfor %}
     </div>
+</div>
 
- 	<div class="container-fluid" style="margin-bottom: 30px;">
- 		<div class="row justify-content-around">
- 			<div class="col-lg-3 col-sm-6">
-                            <form>
-                            	<fieldset disabled>
-                                <h4 class="form-title">Team Member 1 (Mentor)</h4>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="firstName" placeholder="First Name"
-                                           required="false" name="firstName">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="lastName" placeholder="Last Name"
-                                           required="false" name="lastName">
-                                </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">Date Of Birth</span>
-                                    </div>
-                                    <input type="date" class="form-control" id="dateOfBirth" placeholder="Date of Birth"
-                                           required="false" name="dob">
-                                </div>
-                                <!-- </div> -->
-                                <div class="form-group">
-                                    <input type="email" class="form-control" id="personalEmail"
-                                           placeholder="Personal Email" required="false" name="personalEmail">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="personalPhone"
-                                           placeholder="Mobile Number" required="false" name="mobileNo">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="university" placeholder="University"
-                                           required="false" name="university">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="specialization"
-                                           placeholder="Specialization" required="true" name="specialization">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="address1" placeholder="Address Line 1"
-                                           required="true" name="addressLine1">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="address2" placeholder="Address Line 2"
-                                           required="true" name="addressLine2">
-                                </div>
+<!-- </div> -->
 
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="pincode" placeholder="Pincode"
-                                               required="true" name="pincode">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="city" placeholder="City"
-                                               required="true" name="city">
-                                    </div>
-                                </div>
+<div class="registration-box">
+    <h2 id="startupRegistrationTitle" class="uploadText" style="margin-bottom: 12px;">Upload Solutions</h2>
+    <form action="#" id="files-upload-form">
+        <p>File 1<span><input type="file" class="form-control-file" id="docker-file" name="docker_file"
+                              required></span>
+        </p>
+        <p>File 2 <span><input type="file" class="form-control-file" id="file2" name="prog_file" required></span></p>
+        <p>File 3 <span><input type="file" class="form-control-file" id="file3" name="info_file" required></span></p>
 
-                                <div class="form-group">
-                                    <select class="custom-select" id="statesList" name="state">
-                                        <option value="">Select State</option>
-                                        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                                        <option value="Andhra Pradesh">Andhra Pradesh</option>
-                                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                                        <option value="Assam">Assam</option>
-                                        <option value="Bihar">Bihar</option>
-                                        <option value="Chandigarh">Chandigarh</option>
-                                        <option value="Chhattisgarh">Chhattisgarh</option>
-                                        <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
-                                        <option value="Daman and Diu">Daman and Diu</option>
-                                        <option value="Delhi">Delhi</option>
-                                        <option value="Goa">Goa</option>
-                                        <option value="Gujarat">Gujarat</option>
-                                        <option value="Haryana">Haryana</option>
-                                        <option value="Himachal Pradesh">Himachal Pradesh</option>
-                                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                                        <option value="Jharkhand">Jharkhand</option>
-                                        <option value="Karnataka">Karnataka</option>
-                                        <option value="Kerala">Kerala</option>
-                                        <option value="Lakshadweep">Lakshadweep</option>
-                                        <option value="Madhya Pradesh">Madhya Pradesh</option>
-                                        <option value="Maharashtra">Maharashtra</option>
-                                        <option value="Manipur">Manipur</option>
-                                        <option value="Meghalaya">Meghalaya</option>
-                                        <option value="Mizoram">Mizoram</option>
-                                        <option value="Nagaland">Nagaland</option>
-                                        <option value="Orissa">Orissa</option>
-                                        <option value="Pondicherry">Pondicherry</option>
-                                        <option value="Punjab">Punjab</option>
-                                        <option value="Rajasthan">Rajasthan</option>
-                                        <option value="Sikkim">Sikkim</option>
-                                        <option value="Tamil Nadu">Tamil Nadu</option>
-                                        <option value="Tripura">Tripura</option>
-                                        <option value="Uttaranchal">Uttaranchal</option>
-                                        <option value="Uttar Pradesh">Uttar Pradesh</option>
-                                        <option value="West Bengal">West Bengal</option>
-                                    </select>
-                                </div>
+    </form>
+    <button class="btn btn-primary file-upload-btn submitBtn">Submit</button>
+</div>
 
-                                <div class="form-group">
-                                    <textarea class="form-control" id="projectsDescription"
-                                              placeholder="Projects(If Any)" name="projects"></textarea>
-                                </div>
-                            	</fieldset>
-                            </form>
- 			</div>
- 			<div class="col-lg-3 col-sm-6">
- 				 <form>
-                            	<fieldset disabled>
-                                <h4 class="form-title">Team Member 2</h4>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="firstName" placeholder="First Name"
-                                           required="false" name="firstName">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="lastName" placeholder="Last Name"
-                                           required="false" name="lastName">
-                                </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">Date Of Birth</span>
-                                    </div>
-                                    <input type="date" class="form-control" id="dateOfBirth" placeholder="Date of Birth"
-                                           required="false" name="dob">
-                                </div>
-                                <!-- </div> -->
-                                <div class="form-group">
-                                    <input type="email" class="form-control" id="personalEmail"
-                                           placeholder="Personal Email" required="false" name="personalEmail">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="personalPhone"
-                                           placeholder="Mobile Number" required="false" name="mobileNo">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="university" placeholder="University"
-                                           required="false" name="university">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="specialization"
-                                           placeholder="Specialization" required="true" name="specialization">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="address1" placeholder="Address Line 1"
-                                           required="true" name="addressLine1">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="address2" placeholder="Address Line 2"
-                                           required="true" name="addressLine2">
-                                </div>
+{% include "webapp/footer.html" %}
 
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="pincode" placeholder="Pincode"
-                                               required="true" name="pincode">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="city" placeholder="City"
-                                               required="true" name="city">
-                                    </div>
-                                </div>
+<script src="{% static 'webapp/js/jquery.toast.js' %}" type="text/javascript"></script>
+<script>
+    $(document).ready(function () {
 
-                                <div class="form-group">
-                                    <select class="custom-select" id="statesList" name="state">
-                                        <option value="">Select State</option>
-                                        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                                        <option value="Andhra Pradesh">Andhra Pradesh</option>
-                                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                                        <option value="Assam">Assam</option>
-                                        <option value="Bihar">Bihar</option>
-                                        <option value="Chandigarh">Chandigarh</option>
-                                        <option value="Chhattisgarh">Chhattisgarh</option>
-                                        <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
-                                        <option value="Daman and Diu">Daman and Diu</option>
-                                        <option value="Delhi">Delhi</option>
-                                        <option value="Goa">Goa</option>
-                                        <option value="Gujarat">Gujarat</option>
-                                        <option value="Haryana">Haryana</option>
-                                        <option value="Himachal Pradesh">Himachal Pradesh</option>
-                                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                                        <option value="Jharkhand">Jharkhand</option>
-                                        <option value="Karnataka">Karnataka</option>
-                                        <option value="Kerala">Kerala</option>
-                                        <option value="Lakshadweep">Lakshadweep</option>
-                                        <option value="Madhya Pradesh">Madhya Pradesh</option>
-                                        <option value="Maharashtra">Maharashtra</option>
-                                        <option value="Manipur">Manipur</option>
-                                        <option value="Meghalaya">Meghalaya</option>
-                                        <option value="Mizoram">Mizoram</option>
-                                        <option value="Nagaland">Nagaland</option>
-                                        <option value="Orissa">Orissa</option>
-                                        <option value="Pondicherry">Pondicherry</option>
-                                        <option value="Punjab">Punjab</option>
-                                        <option value="Rajasthan">Rajasthan</option>
-                                        <option value="Sikkim">Sikkim</option>
-                                        <option value="Tamil Nadu">Tamil Nadu</option>
-                                        <option value="Tripura">Tripura</option>
-                                        <option value="Uttaranchal">Uttaranchal</option>
-                                        <option value="Uttar Pradesh">Uttar Pradesh</option>
-                                        <option value="West Bengal">West Bengal</option>
-                                    </select>
-                                </div>
+        let disabledUploadButton = true
 
-                                <div class="form-group">
-                                    <textarea class="form-control" id="projectsDescription"
-                                              placeholder="Projects(If Any)" name="projects"></textarea>
-                                </div>
-                            	</fieldset>
-                 </form>
- 			</div>
- 			<div class="col-lg-3 col-sm-6">
- 				<form>
-                            	<fieldset disabled>
-                                <h4 class="form-title">Team Member 3</h4>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="firstName" placeholder="First Name"
-                                           required="false" name="firstName">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="lastName" placeholder="Last Name"
-                                           required="false" name="lastName">
-                                </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">Date Of Birth</span>
-                                    </div>
-                                    <input type="date" class="form-control" id="dateOfBirth" placeholder="Date of Birth"
-                                           required="false" name="dob">
-                                </div>
-                                <!-- </div> -->
-                                <div class="form-group">
-                                    <input type="email" class="form-control" id="personalEmail"
-                                           placeholder="Personal Email" required="false" name="personalEmail">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="personalPhone"
-                                           placeholder="Mobile Number" required="false" name="mobileNo">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="university" placeholder="University"
-                                           required="false" name="university">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="specialization"
-                                           placeholder="Specialization" required="true" name="specialization">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="address1" placeholder="Address Line 1"
-                                           required="true" name="addressLine1">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="address2" placeholder="Address Line 2"
-                                           required="true" name="addressLine2">
-                                </div>
+        {#$('#files-upload-form input').on('change', function(e) {#}
+        {#    for (let fileInput in this) {#}
+        {#        if ($(fileInput).files === undefined) {#}
+        {#            disabledUploadButton = true#}
+        {#            $('.file-upload-btn').attr('disabled', 'disabled');#}
+        {#        } else {#}
+        {#            disabledUploadButton = false#}
+        {#            $('.file-upload-btn').removeAttr('disabled');#}
+        {#        }#}
+        {#    }#}
+        // }
+        // setup session cookie data. This is Django-related
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
 
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="pincode" placeholder="Pincode"
-                                               required="true" name="pincode">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="city" placeholder="City"
-                                               required="true" name="city">
-                                    </div>
-                                </div>
+        var csrftoken = getCookie('csrftoken');
 
-                                <div class="form-group">
-                                    <select class="custom-select" id="statesList" name="state">
-                                        <option value="">Select State</option>
-                                        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                                        <option value="Andhra Pradesh">Andhra Pradesh</option>
-                                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                                        <option value="Assam">Assam</option>
-                                        <option value="Bihar">Bihar</option>
-                                        <option value="Chandigarh">Chandigarh</option>
-                                        <option value="Chhattisgarh">Chhattisgarh</option>
-                                        <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
-                                        <option value="Daman and Diu">Daman and Diu</option>
-                                        <option value="Delhi">Delhi</option>
-                                        <option value="Goa">Goa</option>
-                                        <option value="Gujarat">Gujarat</option>
-                                        <option value="Haryana">Haryana</option>
-                                        <option value="Himachal Pradesh">Himachal Pradesh</option>
-                                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                                        <option value="Jharkhand">Jharkhand</option>
-                                        <option value="Karnataka">Karnataka</option>
-                                        <option value="Kerala">Kerala</option>
-                                        <option value="Lakshadweep">Lakshadweep</option>
-                                        <option value="Madhya Pradesh">Madhya Pradesh</option>
-                                        <option value="Maharashtra">Maharashtra</option>
-                                        <option value="Manipur">Manipur</option>
-                                        <option value="Meghalaya">Meghalaya</option>
-                                        <option value="Mizoram">Mizoram</option>
-                                        <option value="Nagaland">Nagaland</option>
-                                        <option value="Orissa">Orissa</option>
-                                        <option value="Pondicherry">Pondicherry</option>
-                                        <option value="Punjab">Punjab</option>
-                                        <option value="Rajasthan">Rajasthan</option>
-                                        <option value="Sikkim">Sikkim</option>
-                                        <option value="Tamil Nadu">Tamil Nadu</option>
-                                        <option value="Tripura">Tripura</option>
-                                        <option value="Uttaranchal">Uttaranchal</option>
-                                        <option value="Uttar Pradesh">Uttar Pradesh</option>
-                                        <option value="West Bengal">West Bengal</option>
-                                    </select>
-                                </div>
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
 
-                                <div class="form-group">
-                                    <textarea class="form-control" id="projectsDescription"
-                                              placeholder="Projects(If Any)" name="projects"></textarea>
-                                </div>
-                            	</fieldset>
-                </form>
- 			</div>
- 			<div class="col-lg-3 col-sm-6">
- 				<form>
-                            	<fieldset disabled>
-                                <h4 class="form-title">Team Member 4</h4>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="firstName" placeholder="First Name"
-                                           required="false" name="firstName">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="lastName" placeholder="Last Name"
-                                           required="false" name="lastName">
-                                </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">Date Of Birth</span>
-                                    </div>
-                                    <input type="date" class="form-control" id="dateOfBirth" placeholder="Date of Birth"
-                                           required="false" name="dob">
-                                </div>
-                                <!-- </div> -->
-                                <div class="form-group">
-                                    <input type="email" class="form-control" id="personalEmail"
-                                           placeholder="Personal Email" required="false" name="personalEmail">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="personalPhone"
-                                           placeholder="Mobile Number" required="false" name="mobileNo">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="university" placeholder="University"
-                                           required="false" name="university">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="specialization"
-                                           placeholder="Specialization" required="true" name="specialization">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="address1" placeholder="Address Line 1"
-                                           required="true" name="addressLine1">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="address2" placeholder="Address Line 2"
-                                           required="true" name="addressLine2">
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="pincode" placeholder="Pincode"
-                                               required="true" name="pincode">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="city" placeholder="City"
-                                               required="true" name="city">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <select class="custom-select" id="statesList" name="state">
-                                        <option value="">Select State</option>
-                                        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                                        <option value="Andhra Pradesh">Andhra Pradesh</option>
-                                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                                        <option value="Assam">Assam</option>
-                                        <option value="Bihar">Bihar</option>
-                                        <option value="Chandigarh">Chandigarh</option>
-                                        <option value="Chhattisgarh">Chhattisgarh</option>
-                                        <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
-                                        <option value="Daman and Diu">Daman and Diu</option>
-                                        <option value="Delhi">Delhi</option>
-                                        <option value="Goa">Goa</option>
-                                        <option value="Gujarat">Gujarat</option>
-                                        <option value="Haryana">Haryana</option>
-                                        <option value="Himachal Pradesh">Himachal Pradesh</option>
-                                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                                        <option value="Jharkhand">Jharkhand</option>
-                                        <option value="Karnataka">Karnataka</option>
-                                        <option value="Kerala">Kerala</option>
-                                        <option value="Lakshadweep">Lakshadweep</option>
-                                        <option value="Madhya Pradesh">Madhya Pradesh</option>
-                                        <option value="Maharashtra">Maharashtra</option>
-                                        <option value="Manipur">Manipur</option>
-                                        <option value="Meghalaya">Meghalaya</option>
-                                        <option value="Mizoram">Mizoram</option>
-                                        <option value="Nagaland">Nagaland</option>
-                                        <option value="Orissa">Orissa</option>
-                                        <option value="Pondicherry">Pondicherry</option>
-                                        <option value="Punjab">Punjab</option>
-                                        <option value="Rajasthan">Rajasthan</option>
-                                        <option value="Sikkim">Sikkim</option>
-                                        <option value="Tamil Nadu">Tamil Nadu</option>
-                                        <option value="Tripura">Tripura</option>
-                                        <option value="Uttaranchal">Uttaranchal</option>
-                                        <option value="Uttar Pradesh">Uttar Pradesh</option>
-                                        <option value="West Bengal">West Bengal</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <textarea class="form-control" id="projectsDescription"
-                                              placeholder="Projects(If Any)" name="projects"></textarea>
-                                </div>
-	                            </fieldset>
-                </form>
- 			</div>
- 		</div>
- 	</div>
-	    
-    <!-- </div> -->
-	
-	    <div class="registration-box">
-	        <h2 id="startupRegistrationTitle" class="uploadText" style="margin-bottom: 12px;">Upload Solutions</h2>
-	        <form>
-		        <p>Docker File <span><input type="file" class="form-control-file" id="docker-file" name="docker-file" required></span></p>
-		        <p>File 2 <span><input type="file" class="form-control-file" id="file2" name="file2" required></span></p>
-		        <p>File 3 <span><input type="file" class="form-control-file" id="file3" name="file3" required></span></p>
-
-	        	<button type="submit" class="btn btn-primary submitBtn" onclick="submitForm()">Submit</button>
-	        </form>
-	    </div>
-
-    {% include "webapp/footer.html" %}
-
-  #TODO FIXME
-
-{% if members %}
-    {% for member in members %}
-        {{ member.email }}
-        {{ member.first_name }}
-        {{ member.last_name }}
-        {{ member.dob }}
-        {{ member.phone }}
-        {{ member.university }}
-        {{ member.specialization }}
-        {{ member.address_line_1 }}
-        {{ member.address_line_2 }}
-        {{ member.pincode }}
-        {{ member.city }}
-        {{ member.state }}
-        {{ member.projects }}
-        {{ member.team }}
-    {% endfor %}
-{% endif %}
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+        // end session cookie data setup.
 
 
+// declare an empty array for potential uploaded files
+        var fileItemList = [];
 
+        function showError(erorrMsg) {
+            $.toast({
+                heading: 'Error',
+                text: erorrMsg,
+                icon: 'error',
+                hideAfter: 3000
+            });
+        }
+
+        // Do on button press
+        $('.file-upload-btn').on('click', function (event) {
+
+            let dockerFile = $(`input[name='docker_file']`).prop('files')[0];
+            let progFile = $(`input[name='prog_file']`).prop('files')[0];
+            let infoFile = $(`input[name='info_file']`).prop('files')[0];
+
+            if (dockerFile.name !== 'Dockerfile') {
+                showError('Selected Dockerfile is invalid. The name of the file should be "Dockerfile".');
+                return;
+            }
+
+
+            if (verifyValidType(infoFile, 'txt') === false && verifyValidType(infoFile, 'doc') === false && verifyValidType(infoFile, 'pdf') === false) {
+                showError('Info file invalid.');
+                return;
+            }
+
+            uploadFile(dockerFile, 'docker');
+            uploadFile(progFile, 'program');
+            uploadFile(infoFile, 'information');
+
+            window.setTimeout(function () {
+                alert("Uploaded Successfully.")
+            }, 1000);
+
+            event.stopPropagation()
+        });
+
+        function verifyValidType(file, type) {
+            // verifies the file extension is one we support.
+            var extension = file.name.split('.').pop().toLowerCase(); //file.substr( (file.lastIndexOf('.') +1) );
+
+            return !!extension.localeCompare(type.toLowerCase());
+        }
+
+        function constructFormPolicyData(policyData, fileItem) {
+            var contentType = fileItem.type != '' ? fileItem.type : 'application/octet-stream';
+            var url = policyData.url;
+            var filename = policyData.filename;
+            var repsonseUser = policyData.fields.user;
+            // var keyPath = 'www/' + repsonseUser + '/' + filename
+            var keyPath = policyData.file_bucket_path;
+
+            let credential = policyData['fields']['x-amz-credential'];
+            let algorithm = policyData['fields']['x-amz-algorithm'];
+            let date = policyData['fields']['x-amz-date'];
+            let signature = policyData['fields']['x-amz-signature'];
+
+            let authorizationHeader = `${algorithm} Credential=${credential}, SignedHeaders=${contentType};host;${date}, Signature=${signature}`;
+
+            var fd = new FormData();
+
+            $.each(policyData.fields, function (key, value) {
+                fd.append(key, value)
+            });
+
+            fd.append('file', fileItem);
+
+            return fd
+        }
+
+        function fileUploadComplete(fileItem, policyData) {
+            data = {
+                uploaded: true,
+                fileSize: fileItem.size,
+                file: policyData.file_id,
+
+            };
+            $.ajax({
+                method: "POST",
+                data: data,
+                url: "/api/files/complete/",
+                success: function (data) {
+                    displayItems(fileItemList)
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log("Status: " + textStatus);
+                    console.log("Error: " + errorThrown);
+                    alert("An error occured, please refresh the page.")
+                }
+            })
+        }
+
+        function displayItems(fileItemList) {
+            var itemList = $('.item-loading-queue');
+            itemList.html("");
+            $.each(fileItemList, function (index, obj) {
+                var item = obj.file;
+                var id_ = obj.id;
+                var order_ = obj.order;
+                var html_ = "<div class=\"progress\">" +
+                    "<div class=\"progress-bar\" role=\"progressbar\" style='width:" + item.progress + "%' aria-valuenow='" + item.progress + "' aria-valuemin=\"0\" aria-valuemax=\"100\"></div></div>";
+                itemList.append("<div>" + order_ + ") " + item.name + "<a href='#' class='srvup-item-upload float-right' data-id='" + id_ + ")'>X</a> <br/>" + html_ + "</div><hr/>")
+
+            })
+        }
+
+
+        function uploadFile(fileItem, filetype) {
+            var policyData;
+            var newLoadingItem;
+            // get AWS upload policy for each file uploaded through the POST method
+            // Remember we're creating an instance in the backend so using POST is
+            // needed.
+            $.ajax({
+                method: "POST",
+                data: {
+                    filename: fileItem.name,
+                    filetype: filetype
+                },
+                url: "/api/files/policy/",
+                success: function (data) {
+                    policyData = data
+                },
+                error: function (data) {
+                    alert("An error occurred, please try again later");
+                    console.log("Data: " + JSON.stringify(data))
+                }
+            }).done(function () {
+                // construct the needed data using the policy for AWS
+                var fd = constructFormPolicyData(policyData, fileItem);
+
+                // use XML http Request to Send to AWS.
+                var xhr = new XMLHttpRequest();
+
+                // construct callback for when uploading starts
+                xhr.upload.onloadstart = function (event) {
+                    var inLoadingIndex = $.inArray(fileItem, fileItemList);
+                    if (inLoadingIndex == -1) {
+                        // Item is not loading, add to inProgress queue
+                        newLoadingItem = {
+                            file: fileItem,
+                            id: policyData.file_id,
+                            order: fileItemList.length + 1
+                        };
+                        fileItemList.push(newLoadingItem)
+                    }
+                    fileItem.xhr = xhr
+                };
+
+                // Monitor upload progress and attach to fileItem.
+                xhr.upload.addEventListener("progress", function (event) {
+                    if (event.lengthComputable) {
+                        var progress = Math.round(event.loaded / event.total * 100);
+                        fileItem.progress = progress;
+                        displayItems(fileItemList)
+                    }
+                });
+
+                xhr.upload.addEventListener("load", function (event) {
+                    console.log("Complete, event: " + JSON.stringify(event));
+                    // handle FileItem Upload being complete.
+                    fileUploadComplete(fileItem, policyData)
+
+                });
+
+                xhr.upload.addEventListener("error", function (event) {
+                    console.log("Error");
+
+                    console.log(event.toString())
+                });
+
+                xhr.open('POST', policyData.url, true);
+                xhr.send(fd);
+
+                console.log(xhr.responseText);
+            })
+        }
+    });
+
+</script>
 
 </body>
 </html>

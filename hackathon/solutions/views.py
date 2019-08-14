@@ -3,7 +3,7 @@ import os
 import time
 
 import boto3
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, logout, login
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from rest_framework import permissions, status, authentication
@@ -21,6 +21,12 @@ from .config_aws import (
 from .models import *
 
 
+@login_required()
+def logout_hackathon(request):
+    logout(request)
+    return redirect('/')
+
+
 def login_solution(request):
     logging.info("Method for login: {}".format(request.method))
     if request.method == 'POST':
@@ -32,7 +38,9 @@ def login_solution(request):
             user = authenticate(username=username, password=password)
 
             if user is not None:
-                return redirect(upload_solution)
+
+                login(request, user)
+                return redirect('/upload_solution')
 
             else:
                 # FIXME
@@ -54,6 +62,30 @@ def redirect_with_error(message, url=None):
     pass
 
 
+def get_file_uploaded_statues(team_id):
+    team = Team.objects.get(id=team_id)
+
+    files = FileItem.objects.filter(user=team)
+
+    files_status = {
+        'docker': 'Not Uploaded',
+        'program': 'Not Uploaded',
+        'information': 'Not Uploaded',
+    }
+
+    if files.exists():
+        if FileItem.objects.get(user=team, file_type='docker'):
+            files_status['docker'] = 'Uploaded'
+
+        if FileItem.objects.get(user=team, file_type='program'):
+            files_status['program'] = 'Uploaded'
+
+        if FileItem.objects.get(user=team, file_type='information'):
+            files_status['information'] = 'Uploaded'
+
+    return files_status
+
+
 @login_required(login_url='/login')
 def upload_solution(request):
     # if request.user is not Team:
@@ -62,10 +94,14 @@ def upload_solution(request):
     print("Team id mila re baba: {}".format(team_id))
 
     if team_id is not None:
-        members = Member.objects.filter(team_id=team_id)
+        team = Team.objects.get(id=team_id)
+        members = Member.objects.filter(team=team)
+
+        files_uploaded = get_file_uploaded_statues(team_id)
 
         return render(request, 'solutions/upload_solution.html', context={
-            'members': members
+            'members': members,
+            'file_status': files_uploaded
         })
 
     else:
@@ -135,11 +171,13 @@ class FilePolicyAPI(APIView):
         #     upload_start_path=upload_start_path,
         #     filename_final=filename_final,
         # )
-        if filename_req and file_extension:
+        if filename_req:
             """
             Save the eventual path to the Django-stored FileItem instance
             """
             file_obj.path = s3_upload_path
+
+            file_obj.file_type = filetype
             file_obj.save()
 
         s3 = boto3.client(

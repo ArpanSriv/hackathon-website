@@ -244,7 +244,7 @@ a:hover {
     background: transparent;
     margin: 0 auto;
     margin-top: 100px;
-    margin-bottom: 100px;
+    /*margin-bottom: 100px;*/
     text-align: center;
 }
 
@@ -921,9 +921,9 @@ hr {
     margin-bottom: 20px;
 }
 
-#docker-file, #file2, #file3{
-    margin-bottom: 20px;
-}
+/*#docker-file, #file2, #file3{*/
+/*    margin-bottom: 20px;*/
+/*}*/
 
 @media only screen and (min-width: 800px) and (max-width: 1600px) {
     .js .cd-h-timeline__line {
@@ -1327,4 +1327,31 @@ hr {
     align-content: center;
     align-items: center;
     font-size: 34px;
+}
+
+/* File drag and drop */
+.box__dragndrop,
+.box__uploading,
+.box__success,
+.box__error {
+  display: none;
+}
+
+.input-field-form-div {
+    display: inline-block;
+    border: 2px solid #e6e6e6;
+    padding: 10px;
+}
+
+.file-info {
+    text-align: left;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.file-input-wrapper {
+}
+
+.file-uploaded-status {
+    display: none;
 }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="../../../webapp/static/webapp/styles.css"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -50,7 +51,7 @@
 {% include "webapp/navbar.html" %}
 
 <div class="registration-box">
-    <h1 id="startupRegistrationTitle" class="teamNameTitle">{{ members.first.team.team_name }}</h1>
+    <h1 id="startupRegistrationTitle" class="teamNameTitle">Team: {{ members.first.team.team_name }}</h1>
 </div>
 
 <div class="container-fluid" style="margin-bottom: 30px;">
@@ -133,19 +134,60 @@
 
 <!-- </div> -->
 
-<div class="registration-box">
-    <h2 id="startupRegistrationTitle" class="uploadText" style="margin-bottom: 12px;">Upload Solutions</h2>
-    <form action="#" id="files-upload-form">
-        <p>File 1<span><input type="file" class="form-control-file" id="docker-file" name="docker_file"
-                              required></span>
-        </p>
-        <p>File 2 <span><input type="file" class="form-control-file" id="file2" name="prog_file" required></span></p>
-        <p>File 3 <span><input type="file" class="form-control-file" id="file3" name="info_file" required></span></p>
+<div class="container">
+    <div class="registration-box" style="margin-bottom: 100px">
+        <h2 id="startupRegistrationTitle" class="uploadText" style="margin-bottom: 30px;">Upload Solutions</h2>
+        <form action="#" id="files-upload-form">
+            <div class="input-field-form-div">
+                <div class="file-info">Dockerfile (Status: {{ file_status.docker }})</div>
+                <div class="file-input-wrapper">
+                    <input type="file" class="form-control-file" id="docker-file" name="docker_file"
+                           required>
+                </div>
+                <div class="file-uploaded-status">
+                    Status: {{ file_status.docker }}
+                </div>
+            </div>
+            <div class="input-field-form-div">
+                <div class="file-info">Program File (Status: {{ file_status.program }})</div>
+                <div class="file-input-wrapper">
+                    <input type="file" class="form-control-file" id="file2" name="prog_file" required>
+                </div>
+                <div class="file-uploaded-status">
+                    Status: {{ file_status.program }}
+                </div>
+            </div>
+            <div class="input-field-form-div">
+                <div class="file-info">Information File (Status: {{ file_status.information }})</div>
+                <div class="file-input-wrapper">
 
-    </form>
-    <button class="btn btn-primary file-upload-btn submitBtn">Submit</button>
+                    <input type="file" class="form-control-file" id="file3" name="info_file" required>
+                </div>
+                <div class="file-uploaded-status">
+                    Status: {{ file_status.information }}
+                </div>
+            </div>
+
+            {#            <div class="custom-file">#}
+            {#                <input type="file" class="custom-file-input" id="validatedCustomFile" required>#}
+            {#                <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>#}
+            {#                <div class="invalid-feedback">Example invalid custom file feedback</div>#}
+            {#            </div>#}
+            <!-- new type input -->
+            {#        <div class="box__input">#}
+            {#            <input class="box__file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected"#}
+            {#                   multiple/>#}
+            {#            <label for="file"><strong>Choose a file</strong><span#}
+            {#                    class="box__dragndrop"> or drag it here</span>.</label>#}
+            {#            <button class="box__button" type="submit">Upload</button>#}
+            {#        </div>#}
+            {#        <div class="box__uploading">Uploading&hellip;</div>#}
+            {#        <div class="box__success">Done!</div>#}
+            {#        <div class="box__error">Error! <span></span>.</div>#}
+        </form>
+        <button class="btn btn-primary file-upload-btn submitBtn">Submit</button>
+    </div>
 </div>
-
 {% include "webapp/footer.html" %}
 
 <script src="{% static 'webapp/js/jquery.toast.js' %}" type="text/javascript"></script>

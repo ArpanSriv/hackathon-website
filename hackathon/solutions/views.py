@@ -71,17 +71,21 @@ def get_file_uploaded_statues(team_id):
         'docker': 'Not Uploaded',
         'program': 'Not Uploaded',
         'information': 'Not Uploaded',
+        'ppt': 'Not Uploaded',
     }
 
     if files.exists():
-        if FileItem.objects.get(user=team, file_type='docker'):
+        if FileItem.objects.filter(user=team, file_type='docker').first():
             files_status['docker'] = 'Uploaded'
 
-        if FileItem.objects.get(user=team, file_type='program'):
+        if FileItem.objects.filter(user=team, file_type='program').first():
             files_status['program'] = 'Uploaded'
 
-        if FileItem.objects.get(user=team, file_type='information'):
+        if FileItem.objects.filter(user=team, file_type='information').first():
             files_status['information'] = 'Uploaded'
+
+        if FileItem.objects.filter(user=team, file_type='ppt').first():
+            files_status['ppt'] = 'Uploaded'
 
     return files_status
 

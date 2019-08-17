@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="../../static/solutions/portalStyles.css"/>
     <link rel="stylesheet" type="text/css" href="../../../webapp/static/webapp/styles.css"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +16,8 @@
     <!-- Jquery Toast CSS -->
     <link href="{% static 'webapp/jquery.toast.css' %}" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="../../static/webapp/styles.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'webapp/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'solutions/portalStyles.css' %}">
     <!-- Noto Sans Font -->
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
     <!-- PT Mono Font -->
@@ -28,7 +30,7 @@
     <link href="https://fonts.googleapis.com/css?family=Oxygen+Mono&display=swap" rel="stylesheet">
     <!-- Overpass Mono Font -->
     <link href="https://fonts.googleapis.com/css?family=Overpass+Mono&display=swap" rel="stylesheet">
-    <link href="https://cdn.lineicons.com/1.0.1/LineIcons.min.css" rel="stylesheet">
+    <link href="{% static 'solutions/LineIcons.min.css' %}" rel="stylesheet">
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.js"
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
@@ -50,391 +52,796 @@
 <!-- NAVBAR -->
 {% include "webapp/navbar.html" %}
 
-<div class="registration-box">
-    <h1 id="startupRegistrationTitle" class="teamNameTitle">Team: {{ members.first.team.team_name }}</h1>
-</div>
-
-<div class="container-fluid" style="margin-bottom: 30px;">
-    <div class="row justify-content-around" style="justify-content: center !important;">
-        {% for member in members %}
-
-            <div class="col-lg-3 col-sm-6">
-                <form>
-                    <fieldset disabled>
-                        <h3 class="form-title"
-                            style="text-align: center">{{ member.first_name }} {{ member.last_name }}</h3>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">Date Of Birth</span>
-                            </div>
-                            <input class="form-control" id="dateOfBirth" placeholder="Date of Birth"
-                                   name="dob" value="{{ member.dob }}">
-                        </div>
-                        <!-- </div> -->
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">Email</span>
-                            </div>
-                            <input type="email" class="form-control" id="personalEmail"
-                                   placeholder="Personal Email" name="personalEmail" value="{{ member.email }}">
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">Phone</span>
-                            </div>
-                            <input type="text" class="form-control" id="personalPhone"
-                                   placeholder="Mobile Number" value="{{ member.phone }}" name="mobileNo">
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">University</span>
-                            </div>
-                            <input type="text" class="form-control" id="university" placeholder="University"
-                                   value="{{ member.university }}" name="university">
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">Specialization</span>
-                            </div>
-                            <input type="text" class="form-control" id="specialization"
-                                   placeholder="Specialization" value="{{ member.specialization }}"
-                                   name="specialization">
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">Address</span>
-                            </div>
-                            <textarea rows="4" class="form-control" id="address1" placeholder="Address"
-                                      required="true"
-                                      name="addressLine1">{{ member.address_line_1 }} &#13; {{ member.address_line_2 }} &#13; {{ member.city }}, {{ member.state }}
-                            </textarea>
-                        </div>
-
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">Pincode</span>
-                            </div>
-                            <input type="text" class="form-control" id="pincode" placeholder="Pincode"
-                                   name="pincode" value="{{ member.pincode }}">
-                        </div>
-
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">Projects</span>
-                            </div>
-                            <textarea rows="5" class="form-control" id="projectsDescription"
-                                      placeholder="Projects(If Any)" name="projects">{{ member.projects }}</textarea>
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
-        {% endfor %}
-    </div>
-</div>
-
-<!-- </div> -->
+<input type="hidden" name="survey-filled" value="{{ survey_status }}"/>
 
 <div class="container-fluid">
-    <div class="registration-box" style="margin-bottom: 100px">
-        <h2 id="startupRegistrationTitle" class="uploadText" style="margin-bottom: 30px;">Upload Solutions</h2>
-        <form action="#" id="files-upload-form">
-            <div class="input-field-form-div">
-                <div class="file-info">Dockerfile (Status: {{ file_status.docker }})</div>
-                <div class="file-input-wrapper">
-                    <input type="file" class="form-control-file" id="docker-file" name="docker_file"
-                           required>
-                </div>
-                <div class="file-uploaded-status">
-                    Status: {{ file_status.docker }}
-                </div>
+    <div class="row">
+        <div class="container-fluid section">
+            <!--        <div class="col section-team">-->
+            <div class="row section-heading">
+                Team Details
             </div>
-            <div class="input-field-form-div">
-                <div class="file-info">Program File (Status: {{ file_status.program }})</div>
-                <div class="file-input-wrapper">
-                    <input type="file" class="form-control-file" id="file2" name="prog_file" required>
-                </div>
-                <div class="file-uploaded-status">
-                    Status: {{ file_status.program }}
-                </div>
-            </div>
-            <div class="input-field-form-div">
-                <div class="file-info">Information File (Status: {{ file_status.information }})</div>
-                <div class="file-input-wrapper">
+            <div class="row">
+                <div class="container-fluid">
+                    <!--                    <div class="col">-->
+                    <div class="row team-card-wrapper">
+                        {% for member in members %}
+                            <div class="col team-card">
+                                <div class="team-card-header">
+                                    Member {{ forloop.counter }}
+                                    {% if forloop.counter == 1 %}
+                                        (Mentor)
+                                    {% endif %}
+                                </div>
+                                <div class="member-name">
+                                    {{ member.first_name }} {{ member.last_name }} ({{ member.dob }})
+                                </div>
+                                <div class="member-college">
+                                    {{ member.university }}
+                                </div>
+                                <div class="member-specialization">
+                                    Specialization: {{ member.specialization }}
+                                </div>
+                                <div class="member-email">
+                                    {{ member.email }} <br/>
+                                    {{ member.phone }}
+                                </div>
+                            </div>
+                        {% endfor %}
 
-                    <input type="file" class="form-control-file" id="file3" name="info_file" required>
-                </div>
-                <div class="file-uploaded-status">
-                    Status: {{ file_status.information }}
+                    </div>
+                    <!--                    </div>-->
                 </div>
             </div>
-            <div class="input-field-form-div">
-                <div class="file-info">Presentation File (Status: {{ file_status.ppt }})</div>
-                <div class="file-input-wrapper">
+            <!--        </div>-->
+        </div>
+    </div>
+    <div class="row">
+        <div class="container-fluid section" style="padding-top: 0">
+            <div class="row">
+                <div class="container-fluid section-heading">Upload</div>
+            </div>
+            <div class="row">
+                <div class="container-fluid">
+                    <div class="row upload-card-wrapper">
+                        <div class="upload-card">
+                            <span style="font-weight: bold">Important Information:</span>
+                            <br/><br/>
+                            <ol>
+                                <li>You are required to upload three files, namely:
+                                    <ol style='margin-top: 4px; list-style: lower-alpha'>
+                                        <li>Dockerfile: The information of which is shared over the email sent to you.
+                                        </li>
+                                        <li>Program File: The source code of the program you made. (Can be in any
+                                            language you prefer)
+                                        </li>
+                                        <li>Presentation: A ppt about your how to thought your way through the problem
+                                            and what steps you took to solve it.
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li>You can upload solutions for both the problem sets. Make sure you choose the problem
+                                    number while uploading the solution.
+                                </li>
+                                <li>To upload a newer version of the solution, you can re-upload all the files of a
+                                    particular problem statement. Your solution will automatically be over-written.
+                                </li>
+                            </ol>
 
-                    <input type="file" class="form-control-file" id="file3" name="ppt_file" required>
-                </div>
-                <div class="file-uploaded-status">
-                    Status: {{ file_status.ppt }}
+                            <div class="card-bottom">
+                                <div class="once-ready">Once you're ready,&nbsp;</div>
+                                <button type="button" class="btn btn-dark" data-toggle="modal"
+                                        data-target="#upload-modal"
+                                        style="border-radius: 0; padding: 10px; background-color: #4a90e2; border: none;">
+                                    Upload Solution &nbsp;<i class="lni-upload"></i></button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            {#            <div class="custom-file">#}
-            {#                <input type="file" class="custom-file-input" id="validatedCustomFile" required>#}
-            {#                <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>#}
-            {#                <div class="invalid-feedback">Example invalid custom file feedback</div>#}
-            {#            </div>#}
-            <!-- new type input -->
-            {#        <div class="box__input">#}
-            {#            <input class="box__file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected"#}
-            {#                   multiple/>#}
-            {#            <label for="file"><strong>Choose a file</strong><span#}
-            {#                    class="box__dragndrop"> or drag it here</span>.</label>#}
-            {#            <button class="box__button" type="submit">Upload</button>#}
-            {#        </div>#}
-            {#        <div class="box__uploading">Uploading&hellip;</div>#}
-            {#        <div class="box__success">Done!</div>#}
-            {#        <div class="box__error">Error! <span></span>.</div>#}
-        </form>
-        <button class="btn btn-primary file-upload-btn submitBtn">Submit</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container-fluid section" style="padding-top: 0">
+            <div class="row">
+                <div class="container-fluid section-heading">FAQs</div>
+            </div>
+            <div class="row">
+                <div class="container-fluid">
+                    <div class="row upload-card-wrapper">
+                        <div class="upload-card">
+                            <ol class="faq-ol">
+                                <li>
+                                    <div class="faq">
+                                        <div class="faq-question">How many problem statements are there?</div>
+                                        <div class="faq-answer">There are 2 problem statements provided.</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="faq">
+                                        <div class="faq-question">Can a team work on more than 1 problem statement?
+                                        </div>
+                                        <div class="faq-answer">Yes.</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="faq">
+                                        <div class="faq-question">What is a valid submission?</div>
+                                        <div class="faq-answer">Your project submission is valid and considered for
+                                            evaluation only if the
+                                            documents are meeting the submission guidelines. Do carefully read through
+                                            the
+                                            guidelines before making the submission.
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="faq">
+                                        <div class="faq-question">When can we start submitting?</div>
+                                        <div class="faq-answer">You can make the submissions as soon as you finish your
+                                            project and upload all
+                                            the files as per the submission guidelines on or before the cut-off date.
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="faq">
+                                        <div class="faq-question">What is the last date of solution submission?</div>
+                                        <div class="faq-answer">8th Sept, 2019 is the last date for submission of
+                                            solution.
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="faq">
+                                        <div class="faq-question">What else we need to provide other than solution?
+                                        </div>
+                                        <div class="faq-answer">A presentation has to be submitted along with the
+                                            solution for each problem statement. A format is provided for the reference
+                                            which should cover approached used, solution architecture, training
+                                            methodology, testing methodology used and accuracy attained during testing
+                                            by the team.
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="faq">
+                                        <div class="faq-question">Can we update the solution?</div>
+                                        <div class="faq-answer">Yes, you can update the solution till the last date of
+                                            submission just by replacing the previous solution you have provided.
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="faq">
+                                        <div class="faq-question">What type of datasets we should use or refer to?</div>
+                                        <div class="faq-answer">You can refer to some of the libraries or datasets from
+                                            internet which will help for intent identification from conversations. Some
+                                            sample audio clips for different categories are provided in the
+                                            <a href="#" style="color: red">link</a> can be used as reference to
+                                            understand the data required. However, you can use any other technology or
+                                            methodology for creating dataset.
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="faq">
+                                        <div class="faq-question">Can we create our own dataset?</div>
+                                        <div class="faq-answer">
+                                            Yes, you can create your own datasets too.
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="faq">
+                                        <div class="faq-question">Is there a skype round?</div>
+                                        <div class="faq-answer">Yes, there will be a skype round for shortlisted teams.
+                                            The duration of each team will be for 10 min. Teams selected after the slype
+                                            round shall be invited for Round 02.
+                                        </div>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<!--    Upload Modal-->
+<div class="modal fade" id="upload-modal" tabindex="-1" role="dialog" aria-labelledby="upload-modal-label"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content" style="border-radius: 0">
+            <div class="modal-header" style="border-bottom: 0;">
+                <h5 class="modal-title" id="upload-modal-label">Upload Solution</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link pointy active" id="nav-problem-1-tab" data-toggle="tab"
+                           href="#nav-problem-1" role="tab" aria-controls="nav-problem-1" aria-selected="true">Problem
+                            1</a>
+                        <a class="nav-item nav-link pointy " id="nav-problem-2-tab" data-toggle="tab"
+                           href="#nav-problem-2" role="tab" aria-controls="nav-problem-2" aria-selected="false">Problem
+                            2</a>
+                        <a class="nav-item nav-link pointy " id="nav-quiz-tab" data-toggle="tab" href="#nav-quiz"
+                           role="tab" aria-controls="nav-quiz" aria-selected="false">Survey</a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-problem-1" role="tabpanel"
+                         aria-labelledby="nav-problem-1-tab">
+                        <div class="container file-status-wrapper">
+                            <div class="row">
+                                <div class="col file-status-box .custom-card">
+                                    <div class="status">Dockerfile: {{ file_status.1.docker }}</div>
+                                    {% if file_status.1.docker == 'Not Uploaded' %}
+                                        <div class="red-bullet"></div>
+                                    {% else %}
+                                        <div class="green-bullet"></div>
+                                    {% endif %}
+                                </div>
+                                <div class="col file-status-box .custom-card">
+                                    <div class="status">Program: {{ file_status.1.program }}</div>
+                                    {% if file_status.1.program == 'Not Uploaded' %}
+                                        <div class="red-bullet"></div>
+                                    {% else %}
+                                        <div class="green-bullet"></div>
+                                    {% endif %}
+                                </div>
+                                <div class="col file-status-box .custom-card" style="margin-right: 0">
+                                    <div class="status">PPT: {{ file_status.1.ppt }}</div>
+                                    {% if file_status.1.ppt == 'Not Uploaded' %}
+                                        <div class="red-bullet"></div>
+                                    {% else %}
+                                        <div class="green-bullet"></div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="upload-zone" class="problem-01">
+                            {#                                {{ file_status.1.docker }}#}
+                            {#                                {{ file_status.1.ppt }}#}
+                            {#                                {{ file_status.1.program }}#}
+
+
+                            <!-- Uploader Dropzone -->
+                            <form action="upload.php" id="zdrop" class="fileuploader center-align">
+                                <i class="lni-cloud-upload size-lg" id="upload-label"></i>
+                                <div class="tittle">Click the button or drop anywhere to upload the files.</div>
+                            </form>
+
+                            <!-- Preview collection of uploaded documents -->
+                            <div class="preview-container">
+                                <div class="collection" id="previews">
+                                    <div class="collection-item clearhack custom-card item-template"
+                                         id="zdrop-template">
+                                        <div class="progress"></div>
+                                        <div class="left pv zdrop-info" data-dz-thumbnail>
+                                            <div class='file-upload-preview-name'>
+                                                <span data-dz-name></span>&nbsp;(<span data-dz-size></span>)
+                                            </div>
+                                            <a href="#!" data-dz-remove><i class="lni-trash size-sm" style="color: #FF5722;"></i></a>
+                                        </div>
+                                        <!--                                                <div class="dz-error-message">Error: <span data-dz-errormessage></span></div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container" style="text-align: right">
+                            <button class="btn btn-dark file-upload-btn">Upload</button>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-problem-2" role="tabpanel" aria-labelledby="nav-problem-2-tab">
+                        <div class="container file-status-wrapper">
+                            <div class="row">
+                                <div class="col file-status-box .custom-card">
+                                    <div class="status">Dockerfile: {{ file_status.2.docker }}</div>
+                                    {% if file_status.2.docker == 'Not Uploaded' %}
+                                        <div class="red-bullet"></div>
+                                    {% else %}
+                                        <div class="green-bullet"></div>
+                                    {% endif %}
+                                </div>
+                                <div class="col file-status-box .custom-card">
+                                    <div class="status">Program: {{ file_status.2.program }}</div>
+                                    {% if file_status.2.program == 'Not Uploaded' %}
+                                        <div class="red-bullet"></div>
+                                    {% else %}
+                                        <div class="green-bullet"></div>
+                                    {% endif %}
+                                </div>
+                                <div class="col file-status-box .custom-card" style="margin-right: 0">
+                                    <div class="status">PPT: {{ file_status.2.ppt }}</div>
+                                    {% if file_status.2.ppt == 'Not Uploaded' %}
+                                        <div class="red-bullet"></div>
+                                    {% else %}
+                                        <div class="green-bullet"></div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="upload-zone" class="problem-02">
+                            <!-- Uploader Dropzone -->
+                            <form action="upload.php" id="zdrop" class="fileuploader center-align">
+                                <i class="lni-cloud-upload size-lg" id="upload-label"></i>
+                                <div class="tittle">Click the button or drop anywhere to upload the files.</div>
+                            </form>
+
+                            <!-- Preview collection of uploaded documents -->
+                            <div class="preview-container">
+                                <div class="collection" id="previews">
+                                    <div class="collection-item clearhack custom-card item-template"
+                                         id="zdrop-template">
+                                        <div class="progress"></div>
+                                        <div class="left pv zdrop-info" data-dz-thumbnail>
+                                            <div class='file-upload-preview-name'>
+                                                <span data-dz-name></span>&nbsp;(<span data-dz-size></span>)
+                                            </div>
+                                            <a href="#!" data-dz-remove><i class="lni-trash size-sm"></i></a>
+                                        </div>
+                                        <!--                                                <div class="dz-error-message">Error: <span data-dz-errormessage></span></div>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container" style="text-align: right">
+                                <button class="btn btn-dark file-upload-btn">Upload</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-quiz" role="tabpanel" aria-labelledby="nav-quiz-tab">
+                        <div class="container">
+                            <form action="{% url 'survey' %}" method="post" id="quiz">
+                                {% csrf_token %}
+                                <div class="form-group row" style="margin-top: 20px">
+                                    <div class="col-sm-1">1.</div>
+                                    <div class="col-sm-10">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="gridCheck1" name="response_1">
+                                            <label class="form-check-label" for="gridCheck1">
+                                                Would you be interested on working with the Symbiosis Centre for Applied
+                                                AI (SCAAI)?
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row" style="margin-top: 20px">
+                                    <div class="col-sm-1">2.</div>
+                                    <div class="col-sm-10">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="gridCheck2" name="response_2">
+                                            <label class="form-check-label" for="gridCheck2">
+                                                Would you be interested to work with SCAAI in collaboration with Tata
+                                                Motors Ltd. to further develop the NLP based projects?
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row" style="margin-top: 20px">
+                                    <div class="col-sm-1">3.</div>
+                                    <div class="col-sm-10">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="gridCheck3" name="response_3">
+                                            <label class="form-check-label" for="gridCheck3">
+                                                Would you be interested in converting your idea (this or otherwise) into
+                                                a startup?
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row" style="margin-top: 20px">
+                                    <div class="col-sm-1">4.</div>
+                                    <div class="col-sm-10">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="gridCheck4" name="response_4">
+                                            <label class="form-check-label" for="gridCheck4">
+                                                Would you be interested in registering your startup with Symbiosis
+                                                Centre of Entrepreneurship and Innovation Startup Incubator?
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row" style="text-align: right">
+                                    <div class="col-sm-12">
+                                        <button type="submit" class="btn btn-dark">Save Responses</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            {#            <div class="modal-footer">#}
+            {#                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>#}
+            {#                <button type="button" class="btn btn-primary">Save changes</button>#}
+            {#            </div>#}
+        </div>
+    </div>
+</div>
+
+
 {% include "webapp/footer.html" %}
 
+<script src="{% static 'solutions/dropzone.js' %}"></script>
 <script src="{% static 'webapp/js/jquery.toast.js' %}" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
 
-        let disabledUploadButton = true
+            var activeTab = '1';
 
-        {#$('#files-upload-form input').on('change', function(e) {#}
-        {#    for (let fileInput in this) {#}
-        {#        if ($(fileInput).files === undefined) {#}
-        {#            disabledUploadButton = true#}
-        {#            $('.file-upload-btn').attr('disabled', 'disabled');#}
-        {#        } else {#}
-        {#            disabledUploadButton = false#}
-        {#            $('.file-upload-btn').removeAttr('disabled');#}
-        {#        }#}
-        {#    }#}
-        // }
-        // setup session cookie data. This is Django-related
-        function getCookie(name) {
-            var cookieValue = null;
-            if (document.cookie && document.cookie !== '') {
-                var cookies = document.cookie.split(';');
-                for (var i = 0; i < cookies.length; i++) {
-                    var cookie = jQuery.trim(cookies[i]);
-                    // Does this cookie string begin with the name we want?
-                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
+            initFileUploader(".problem-01 #zdrop");
+            initFileUploader(".problem-02 #zdrop");
+
+            $('#nav-tab a[data-toggle="tab"]').on('click', function (e) {
+                activeTab = e.target.toString().split('#').pop().split('-').pop()
+                {#activeTab = e.target;#}
+                console.log("Voila " + activeTab)
+            });
+
+            let filesToUpload = {
+                1: {},
+                2: {},
+            };
+
+            let disabledUploadButton = true
+
+            function getFileType(file) {
+                var extension = file.name.split('.').pop().toLowerCase(); //file.substr( (file.lastIndexOf('.') +1) );
+
+                {#return !!extension.localeCompare(type.toLowerCase());#}
+                if (file.name === 'Dockerfile') {
+                    return 'docker'
+                }
+
+                switch (extension) {
+                    case 'py':
+                        return 'prog'
+                    case 'R':
+                        return 'prog'
+                    case 'ppt':
+                        return 'ppt'
+                    case 'pptx':
+                        return 'ppt'
+                    case 'pdf':
+                        return 'ppt'
+                    default:
+                        return 'invalid'
+                }
+            }
+
+            function initFileUploader(target) {
+                let currentProblemId = target.split(" ")[0]
+
+                var previewNode = document.querySelector(`${currentProblemId} #zdrop-template`);
+                previewNode.id = "";
+                var previewTemplate = previewNode.parentNode.innerHTML;
+                previewNode.parentNode.removeChild(previewNode);
+
+
+                var zdrop = new Dropzone(target, {
+                    url: 'upload.php',
+                    maxFiles: 3,
+                    {#maxFilesize: 30,#}
+                    previewTemplate: previewTemplate,
+                    previewsContainer: `${currentProblemId} #previews`,
+                    clickable: `${currentProblemId} #upload-label`,
+                    accept: function (file, done) {
+                        let fileType = getFileType(file)
+
+                        if (fileType === 'invalid') {
+                            this.removeFile(file)
+                            showError('Invalid file type. ' + fileType)
+                        } else {
+                            if (activeTab != null) {
+                                if (fileType === 'prog') {
+                                    filesToUpload[`${activeTab}`]['prog'] = file
+                                } else if (fileType === 'docker') {
+                                    filesToUpload[`${activeTab}`]['docker'] = file
+                                } else if (fileType === 'ppt') {
+                                    filesToUpload[`${activeTab}`]['ppt'] = file
+                                } else {
+                                    showError("This file can not be uploaded. Valid: py/r/Dockerfile/ppt/pptx")
+                                }
+                            }
+                        }
+                    }
+                });
+
+                zdrop.on("addedfile", function (file) {
+                    $(`${currentProblemId} .preview-container`).css('visibility', 'visible');
+
+                    if (this.files.length) {
+                        var _i, _len;
+                        for (_i = 0, _len = this.files.length; _i < _len - 1; _i++) // -1 to exclude current file
+                        {
+                            if (this.files[_i].name === file.name && this.files[_i].size === file.size && this.files[_i].lastModifiedDate.toString() === file.lastModifiedDate.toString()) {
+                                this.removeFile(file);
+                            }
+                        }
+                    }
+                });
+
+                zdrop.on("totaluploadprogress", function (progress) {
+                    var progr = document.querySelector(".progress .determinate");
+                    if (progr === undefined || progr === null)
+                        return;
+
+                    progr.style.width = progress + "%";
+                });
+
+                zdrop.on('dragenter', function () {
+                    $(`${currentProblemId} .fileuploader`).addClass("active");
+                });
+
+                zdrop.on('dragleave', function () {
+                    $(`${currentProblemId} .fileuploader`).removeClass("active");
+                });
+
+                zdrop.on('drop', function () {
+                    $(`${currentProblemId} .fileuploader`).removeClass("active");
+                });
+            }
+
+            // setup session cookie data. This is Django-related
+            function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = jQuery.trim(cookies[i]);
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
                     }
                 }
+                return cookieValue;
             }
-            return cookieValue;
-        }
 
-        var csrftoken = getCookie('csrftoken');
+            var csrftoken = getCookie('csrftoken');
 
-        function csrfSafeMethod(method) {
-            // these HTTP methods do not require CSRF protection
-            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-        }
+            function csrfSafeMethod(method) {
+                // these HTTP methods do not require CSRF protection
+                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+            }
 
-        $.ajaxSetup({
-            beforeSend: function (xhr, settings) {
-                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            $.ajaxSetup({
+                beforeSend: function (xhr, settings) {
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    }
                 }
-            }
-        });
-        // end session cookie data setup.
+            });
+            // end session cookie data setup.
 
 
 // declare an empty array for potential uploaded files
-        var fileItemList = [];
+            var fileItemList = [];
 
-        function showError(erorrMsg) {
-            $.toast({
-                heading: 'Error',
-                text: erorrMsg,
-                icon: 'error',
-                hideAfter: 3000
-            });
-        }
-
-        // Do on button press
-        $('.file-upload-btn').on('click', function (event) {
-
-            let dockerFile = $(`input[name='docker_file']`).prop('files')[0];
-            let progFile = $(`input[name='prog_file']`).prop('files')[0];
-            let infoFile = $(`input[name='info_file']`).prop('files')[0];
-            let pptFile = $(`input[name='ppt_file']`).prop('files')[0];
-
-            if (dockerFile.name !== 'Dockerfile') {
-                showError('Selected Dockerfile is invalid. The name of the file should be "Dockerfile".');
-                return;
+            function showError(erorrMsg) {
+                $.toast({
+                    heading: 'Error',
+                    text: erorrMsg,
+                    icon: 'error',
+                    hideAfter: 3000
+                });
             }
 
+            function checkForSurvey() {
+                let surveyStatus = $(`input[name='survey-filled']`).val();
 
-            if (verifyValidType(infoFile, 'txt') === false && verifyValidType(infoFile, 'doc') === false && verifyValidType(infoFile, 'pdf') === false) {
-                showError('Info file invalid.');
-                return;
+                if (surveyStatus == 'False') {
+                    showError("<big>Please fill the survey first.</big>");
+                    return false;
+                }
+                else return true;
             }
 
-            uploadFile(dockerFile, 'docker');
-            uploadFile(progFile, 'program');
-            uploadFile(infoFile, 'information');
-            uploadFile(pptFile, 'ppt');
+            // Do on button press
+            $('.file-upload-btn').on('click', function (event) {
 
-            window.setTimeout(function () {
-                alert("Uploaded Successfully.")
-            }, 1000);
+                // Consider active Tab as well
+                if (!checkForSurvey()) return;
 
-            event.stopPropagation()
-        });
+                let currentTabFiles = filesToUpload[`${activeTab}`];
 
-        function verifyValidType(file, type) {
-            // verifies the file extension is one we support.
-            var extension = file.name.split('.').pop().toLowerCase(); //file.substr( (file.lastIndexOf('.') +1) );
+                let fileTypes = ['docker', 'prog', 'ppt']
 
-            return !!extension.localeCompare(type.toLowerCase());
-        }
-
-        function constructFormPolicyData(policyData, fileItem) {
-            var contentType = fileItem.type != '' ? fileItem.type : 'application/octet-stream';
-            var url = policyData.url;
-            var filename = policyData.filename;
-            var repsonseUser = policyData.fields.user;
-            // var keyPath = 'www/' + repsonseUser + '/' + filename
-            var keyPath = policyData.file_bucket_path;
-
-            let credential = policyData['fields']['x-amz-credential'];
-            let algorithm = policyData['fields']['x-amz-algorithm'];
-            let date = policyData['fields']['x-amz-date'];
-            let signature = policyData['fields']['x-amz-signature'];
-
-            let authorizationHeader = `${algorithm} Credential=${credential}, SignedHeaders=${contentType};host;${date}, Signature=${signature}`;
-
-            var fd = new FormData();
-
-            $.each(policyData.fields, function (key, value) {
-                fd.append(key, value)
-            });
-
-            fd.append('file', fileItem);
-
-            return fd
-        }
-
-        function fileUploadComplete(fileItem, policyData) {
-            data = {
-                uploaded: true,
-                fileSize: fileItem.size,
-                file: policyData.file_id,
-
-            };
-            $.ajax({
-                method: "POST",
-                data: data,
-                url: "/api/files/complete/",
-                success: function (data) {
-                    displayItems(fileItemList)
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log("Status: " + textStatus);
-                    console.log("Error: " + errorThrown);
-                    alert("An error occured, please refresh the page.")
+                let fileTypesFull = {
+                    'docker': 'Dockerfile',
+                    'prog': 'Program File',
+                    'ppt': 'Presentation File'
                 }
-            })
-        }
 
-        function displayItems(fileItemList) {
-            var itemList = $('.item-loading-queue');
-            itemList.html("");
-            $.each(fileItemList, function (index, obj) {
-                var item = obj.file;
-                var id_ = obj.id;
-                var order_ = obj.order;
-                var html_ = "<div class=\"progress\">" +
-                    "<div class=\"progress-bar\" role=\"progressbar\" style='width:" + item.progress + "%' aria-valuenow='" + item.progress + "' aria-valuemin=\"0\" aria-valuemax=\"100\"></div></div>";
-                itemList.append("<div>" + order_ + ") " + item.name + "<a href='#' class='srvup-item-upload float-right' data-id='" + id_ + ")'>X</a> <br/>" + html_ + "</div><hr/>")
+                let stopFunction = false;
 
-            })
-        }
-
-
-        function uploadFile(fileItem, filetype) {
-            var policyData;
-            var newLoadingItem;
-            // get AWS upload policy for each file uploaded through the POST method
-            // Remember we're creating an instance in the backend so using POST is
-            // needed.
-            $.ajax({
-                method: "POST",
-                data: {
-                    filename: fileItem.name,
-                    filetype: filetype
-                },
-                url: "/api/files/policy/",
-                success: function (data) {
-                    policyData = data
-                },
-                error: function (data) {
-                    alert("An error occurred, please try again later");
-                    console.log("Data: " + JSON.stringify(data))
-                }
-            }).done(function () {
-                // construct the needed data using the policy for AWS
-                var fd = constructFormPolicyData(policyData, fileItem);
-
-                // use XML http Request to Send to AWS.
-                var xhr = new XMLHttpRequest();
-
-                // construct callback for when uploading starts
-                xhr.upload.onloadstart = function (event) {
-                    var inLoadingIndex = $.inArray(fileItem, fileItemList);
-                    if (inLoadingIndex == -1) {
-                        // Item is not loading, add to inProgress queue
-                        newLoadingItem = {
-                            file: fileItem,
-                            id: policyData.file_id,
-                            order: fileItemList.length + 1
-                        };
-                        fileItemList.push(newLoadingItem)
+                fileTypes.every((fileType, index) => {
+                    if (!(fileType in currentTabFiles)) {
+                        showError(fileTypesFull[fileType] + " is missing.");
+                        stopFunction = true;
+                        return false;
+                    } else {
+                        return true;
                     }
-                    fileItem.xhr = xhr
+                });
+
+                if (stopFunction) return;
+
+                let dockerFile = filesToUpload[`${activeTab}`].docker;
+                let progFile = filesToUpload[`${activeTab}`].prog;
+                let pptFile = filesToUpload[`${activeTab}`].ppt;
+
+                uploadFile(dockerFile, 'docker');
+                uploadFile(progFile, 'program');
+                uploadFile(pptFile, 'ppt');
+
+                window.setTimeout(function () {
+                    alert("Uploaded Successfully.")
+                    // TODO Refresh the page
+                }, 1000);
+
+                event.stopPropagation()
+            });
+
+            function verifyValidType(file, type) {
+                // verifies the file extension is one we support.
+                var extension = file.name.split('.').pop().toLowerCase(); //file.substr( (file.lastIndexOf('.') +1) );
+
+                return !!extension.localeCompare(type.toLowerCase());
+            }
+
+            function constructFormPolicyData(policyData, fileItem) {
+                var contentType = fileItem.type != '' ? fileItem.type : 'application/octet-stream';
+                var url = policyData.url;
+                var filename = policyData.filename;
+                var repsonseUser = policyData.fields.user;
+                // var keyPath = 'www/' + repsonseUser + '/' + filename
+                var keyPath = policyData.file_bucket_path;
+
+                let credential = policyData['fields']['x-amz-credential'];
+                let algorithm = policyData['fields']['x-amz-algorithm'];
+                let date = policyData['fields']['x-amz-date'];
+                let signature = policyData['fields']['x-amz-signature'];
+
+                let authorizationHeader = `${algorithm} Credential=${credential}, SignedHeaders=${contentType};host;${date}, Signature=${signature}`;
+
+                var fd = new FormData();
+
+                $.each(policyData.fields, function (key, value) {
+                    fd.append(key, value)
+                });
+
+                fd.append('file', fileItem);
+
+                return fd
+            }
+
+            function fileUploadComplete(fileItem, policyData) {
+                data = {
+                    uploaded: true,
+                    fileSize: fileItem.size,
+                    file: policyData.file_id,
+
                 };
-
-                // Monitor upload progress and attach to fileItem.
-                xhr.upload.addEventListener("progress", function (event) {
-                    if (event.lengthComputable) {
-                        var progress = Math.round(event.loaded / event.total * 100);
-                        fileItem.progress = progress;
+                $.ajax({
+                    method: "POST",
+                    data: data,
+                    url: "/api/files/complete/",
+                    success: function (data) {
                         displayItems(fileItemList)
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log("Status: " + textStatus);
+                        console.log("Error: " + errorThrown);
+                        alert("An error occured, please refresh the page.")
                     }
-                });
+                })
+            }
 
-                xhr.upload.addEventListener("load", function (event) {
-                    console.log("Complete, event: " + JSON.stringify(event));
-                    // handle FileItem Upload being complete.
-                    fileUploadComplete(fileItem, policyData)
+            function displayItems(fileItemList) {
+                var itemList = $('.item-loading-queue');
+                itemList.html("");
+                $.each(fileItemList, function (index, obj) {
+                    var item = obj.file;
+                    var id_ = obj.id;
+                    var order_ = obj.order;
+                    var html_ = "<div class=\"progress\">" +
+                        "<div class=\"progress-bar\" role=\"progressbar\" style='width:" + item.progress + "%' aria-valuenow='" + item.progress + "' aria-valuemin=\"0\" aria-valuemax=\"100\"></div></div>";
+                    itemList.append("<div>" + order_ + ") " + item.name + "<a href='#' class='srvup-item-upload float-right' data-id='" + id_ + ")'>X</a> <br/>" + html_ + "</div><hr/>")
 
-                });
+                })
+            }
 
-                xhr.upload.addEventListener("error", function (event) {
-                    console.log("Error");
 
-                    console.log(event.toString())
-                });
+            function uploadFile(fileItem, filetype) {
+                var policyData;
+                var newLoadingItem;
+                // get AWS upload policy for each file uploaded through the POST method
+                // Remember we're creating an instance in the backend so using POST is
+                // needed.
+                if (activeTab == null) {
+                    showError("Active Tab couldn't be found. Please try switching to other tab and then opening this again.")
+                    return;
+                }
 
-                xhr.open('POST', policyData.url, true);
-                xhr.send(fd);
+                $.ajax({
+                    method: "POST",
+                    data: {
+                        filename: fileItem.name,
+                        filetype: filetype,
+                        problem: activeTab
+                    },
+                    url: "/api/files/policy/",
+                    success: function (data) {
+                        policyData = data
+                    },
+                    error: function (data) {
+                        showError("An error occurred, please try again later");
+                        showError("Data: " + JSON.stringify(data))
+                    }
+                }).done(function () {
+                    // construct the needed data using the policy for AWS
+                    var fd = constructFormPolicyData(policyData, fileItem);
 
-                console.log(xhr.responseText);
-            })
+                    // use XML http Request to Send to AWS.
+                    var xhr = new XMLHttpRequest();
+
+                    // construct callback for when uploading starts
+                    xhr.upload.onloadstart = function (event) {
+                        var inLoadingIndex = $.inArray(fileItem, fileItemList);
+                        if (inLoadingIndex == -1) {
+                            // Item is not loading, add to inProgress queue
+                            newLoadingItem = {
+                                file: fileItem,
+                                id: policyData.file_id,
+                                order: fileItemList.length + 1
+                            };
+                            fileItemList.push(newLoadingItem)
+                        }
+                        fileItem.xhr = xhr
+                    };
+
+                    // Monitor upload progress and attach to fileItem.
+                    xhr.upload.addEventListener("progress", function (event) {
+                        if (event.lengthComputable) {
+                            var progress = Math.round(event.loaded / event.total * 100);
+                            fileItem.progress = progress;
+                            displayItems(fileItemList)
+                        }
+                    });
+
+                    xhr.upload.addEventListener("load", function (event) {
+                        console.log("Complete, event: " + JSON.stringify(event));
+                        // handle FileItem Upload being complete.
+                        fileUploadComplete(fileItem, policyData)
+
+                    });
+
+                    xhr.upload.addEventListener("error", function (event) {
+                        console.log("Error");
+
+                        console.log(event.toString())
+                    });
+
+                    xhr.open('POST', policyData.url, true);
+                    xhr.send(fd);
+
+                    console.log(xhr.responseText);
+                })
+            }
         }
-    });
+    );
 
 </script>
 

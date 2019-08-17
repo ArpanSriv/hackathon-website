@@ -5,6 +5,7 @@ import time
 import boto3
 from django.contrib.auth import authenticate, logout, login
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from rest_framework import permissions, status, authentication
 from rest_framework.response import Response
@@ -68,24 +69,37 @@ def get_file_uploaded_statues(team_id):
     files = FileItem.objects.filter(user=team)
 
     files_status = {
-        'docker': 'Not Uploaded',
-        'program': 'Not Uploaded',
-        'information': 'Not Uploaded',
-        'ppt': 'Not Uploaded',
+        '1': {
+            'docker': 'Not Uploaded',
+            'program': 'Not Uploaded',
+            'ppt': 'Not Uploaded',
+        },
+        '2': {
+            'docker': 'Not Uploaded',
+            'program': 'Not Uploaded',
+            'ppt': 'Not Uploaded',
+        }
     }
 
     if files.exists():
-        if FileItem.objects.filter(user=team, file_type='docker').first():
-            files_status['docker'] = 'Uploaded'
+        for problem_no in files_status:
+            for file_type in files_status[problem_no]:
+                if FileItem.objects.filter(user=team, file_type=file_type, problem=problem_no).first():
+                    files_status[problem_no][file_type] = 'Uploaded'
 
-        if FileItem.objects.filter(user=team, file_type='program').first():
-            files_status['program'] = 'Uploaded'
-
-        if FileItem.objects.filter(user=team, file_type='information').first():
-            files_status['information'] = 'Uploaded'
-
-        if FileItem.objects.filter(user=team, file_type='ppt').first():
-            files_status['ppt'] = 'Uploaded'
+    print(files_status)
+    # if files.exists():
+    #     if FileItem.objects.filter(user=team, file_type='docker').first():
+    #         files_status['docker'] = 'Uploaded'
+    #
+    #     if FileItem.objects.filter(user=team, file_type='program').first():
+    #         files_status['program'] = 'Uploaded'
+    #
+    #     # if FileItem.objects.filter(user=team, file_type='information').first():
+    #     #     files_status['information'] = 'Uploaded'
+    #
+    #     if FileItem.objects.filter(user=team, file_type='ppt').first():
+    #         files_status['ppt'] = 'Uploaded'
 
     return files_status
 
@@ -103,9 +117,17 @@ def upload_solution(request):
 
         files_uploaded = get_file_uploaded_statues(team_id)
 
+        survey_status = False
+
+        survey = SurveyResponses.objects.filter(user=team)
+
+        if survey.exists():
+            survey_status = True
+
         return render(request, 'solutions/upload_solution.html', context={
             'members': members,
-            'file_status': files_uploaded
+            'file_status': files_uploaded,
+            'survey_status': survey_status
         })
 
     else:
@@ -148,7 +170,9 @@ class FilePolicyAPI(APIView):
         reg_no = request.user.reg_no
         team_name = request.user.team_name
         filetype = request.POST.get('filetype')
+        problem_no = request.POST.get('problem')
 
+        problem = "problem_{}".format(problem_no)
         # upload_start_path = "/upload_solutions/{username}/{file_obj_id}/".format(
         #     username=username_str,
         # )
@@ -159,7 +183,7 @@ class FilePolicyAPI(APIView):
 
         )
 
-        key = "solutions_test/{}_{}/".format(team_name, reg_no)
+        key = "solutions_test/{}_{}/{}/".format(team_name, reg_no, problem)
 
         s3_upload_path = key + "{}_{}{}".format(reg_no, filetype, file_extension)
 
@@ -182,6 +206,7 @@ class FilePolicyAPI(APIView):
             file_obj.path = s3_upload_path
 
             file_obj.file_type = filetype
+            file_obj.problem = problem_no
             file_obj.save()
 
         s3 = boto3.client(
@@ -224,3 +249,35 @@ class FileUploadCompleteHandler(APIView):
             data['id'] = obj.id
             data['saved'] = True
         return Response(data, status=status.HTTP_200_OK)
+
+
+@login_required(login_url='/login')
+def process_survey(request):
+    if request.method == 'POST':
+        response_1 = request.POST.get('response_1')
+        response_2 = request.POST.get('response_2')
+        response_3 = request.POST.get('response_3')
+        response_4 = request.POST.get('response_4')
+
+        answer_1 = False
+        answer_2 = False
+        answer_3 = False
+        answer_4 = False
+
+        if response_1 == 'on':
+            answer_1 = True
+        if response_2 == 'on':
+            answer_2 = True
+        if response_3 == 'on':
+            answer_3 = True
+        if response_4 == 'on':
+            answer_4 = True
+
+        survey_response = SurveyResponses(user=request.user, answer_1=answer_1, answer_2=answer_2, answer_3=answer_3,
+                                          answer_4=answer_4)
+
+        survey_response.save()
+
+        return redirect(upload_solution)
+    else:
+        return HttpResponse(status=403)

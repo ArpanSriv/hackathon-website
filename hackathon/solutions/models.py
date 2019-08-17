@@ -85,7 +85,7 @@ class Member(models.Model):
 
 
 class FileItem(models.Model):
-    user = models.CharField(get_user_model(), max_length=20)
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     name = models.CharField(max_length=120, null=True, blank=True)
     path = models.TextField(blank=True, null=True)
     size = models.BigIntegerField(default=0)
@@ -94,6 +94,7 @@ class FileItem(models.Model):
     updated = models.DateTimeField(auto_now=True)
     uploaded = models.BooleanField(default=False)
     active = models.BooleanField(default=True)
+    problem = models.CharField(max_length=1, default='1')
 
     @property
     def title(self):
@@ -101,3 +102,12 @@ class FileItem(models.Model):
 
     def __str__(self):
         return "{}, {}, {}".format(self.name, self.path, self.user)
+
+
+class SurveyResponses(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    answer_1 = models.BooleanField(default=False)
+    answer_2 = models.BooleanField(default=False)
+    answer_3 = models.BooleanField(default=False)
+    answer_4 = models.BooleanField(default=False)
+    timestamp = models.DateTimeField(auto_now=True)

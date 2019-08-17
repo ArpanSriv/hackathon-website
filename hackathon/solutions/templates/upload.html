@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class='row'>
+    <div class='col-6 offset-3'>
+        <div class='item-loading-queue'>
+
+        </div>
+        <form class='cfeproj-upload-form'>
+            <label for="team_name">Team Name</label>
+            <input class='team-name-input form-control' name="team_name" />
+
+            <label for="docker_file">Docker File</label>
+            <input class='cfeproj-upload-file form-control' type='file' name="docker_file" />
+
+            <label for="prog_file">Prog File</label>
+            <input class='cfeproj-upload-file-prog form-control' type='file' name="prog_file" />
+
+            <label for="info_file">Info (.txt, .doc, .pdf)</label>
+            <input class='cfeproj-upload-file-info form-control' type='file' name="info_file" />
+
+        </form>
+        <button id="ok">Upload</button>
+    </div>
+</div>
+{% endblock content %}

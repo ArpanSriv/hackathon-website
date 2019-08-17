@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import platform
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -23,27 +25,32 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '0ngtf5br@lwqjxq0eo9c9^qdvo6plsj+5j3b@&4dr5#w$vd^=t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False 
+DEBUG = False
 
 ALLOWED_HOSTS = ['aihackathon.in', 'www.aihackathon.in']
 
 # Parse config
-from configparser import RawConfigParser
+if platform.system() == 'Linux':
+    from configparser import RawConfigParser
 
-config = RawConfigParser()
-config.read('/etc/config/hackathon-settings.ini')
+    config = RawConfigParser()
+    config.read('/etc/config/hackathon-settings.ini')
 
-environ = config.get('django', 'environment')
+    environ = config.get('django', 'environment')
 
-if environ == 'staging':
-    ALLOWED_HOSTS.append("*")
-    global DEBUG
+    if environ == 'staging':
+        ALLOWED_HOSTS.append("*")
+        DEBUG = True
+
+else:
+    ALLOWED_HOSTS.append('*')
     DEBUG = True
 
 # Application definition
 
 INSTALLED_APPS = [
     'webapp.apps.WebappConfig',
+    'solutions.apps.SolutionsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -143,31 +150,4 @@ EMAIL_HOST_USER = 'aihackathon@sitpune.edu.in'
 EMAIL_HOST_PASSWORD = 'sit@2008'
 EMAIL_PORT = 587
 
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# MEDIA_URL = '/media/'
-
-# LOGGING = {
-#    'version': 1,
-#    'disable_existing_loggers': True,
-#    'formatters': {
-#        'verbose': {
-#            'format': '%(asctime)s %(levelname)s [%(name)s:%(lineno)s] %(module)s %(process)d %(thread)d %(message)s'
-#        }
-#    },
-#    'handlers': {
-#        'gunicorn': {
-#            'level': 'DEBUG',
-#            'class': 'logging.handlers.RotatingFileHandler',
-#            'formatter': 'verbose',
-#            'filename': '/home/ubuntu/django-gunicorn.errors',
-#            'maxBytes': 1024 * 1024 * 100,  # 100 mb
-#        }
-#   },
-#    'loggers': {
-#        'gunicorn.errors': {
-#            'level': 'DEBUG',
-#            'handlers': ['gunicorn'],
-#            'propagate': True,
-#        },
-#    }
-#}
+AUTH_USER_MODEL = 'solutions.Team'

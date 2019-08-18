@@ -14,5 +14,6 @@ urlpatterns = [
     path('survey/', views.process_survey, name='survey'),
     path('create_users/', views.insert_users),
     path('check_users/', views.check_entries),
+    path('send_mail/', views.sendmails),
 ]
 

@@ -1,3 +1,4 @@
+import csv
 import logging
 import os
 import secrets
@@ -7,9 +8,11 @@ import time
 import boto3
 from django.contrib.auth import authenticate, logout, login
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 from django.db import IntegrityError
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.template import loader
 from rest_framework import permissions, status, authentication
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -186,7 +189,7 @@ class FilePolicyAPI(APIView):
 
         )
 
-        key = "solutions_test/{}_{}/{}/".format(team_name, reg_no, problem)
+        key = "hackathon_solutions/{}_{}/{}/".format(team_name, reg_no, problem)
 
         s3_upload_path = key + "{}_{}{}".format(reg_no, filetype, file_extension)
 
@@ -394,13 +397,36 @@ def check_entries(request):
     return HttpResponse("Teams_found: {}, email_count: {}".format(teams_found, email_count), status=200)
 
 
-# def sendmails(request):
-#
-#     wt
+def sendmails(request):
+    from_email = 'aihackathon@sitpune.edu.in'
 
+    with open('solutions/csv/test_email_pass.csv', 'r') as f:
+        data = csv.reader(f)
 
+        with open('solutions/csv/test_email_log.csv', 'a') as o:
+            writer = csv.writer(o, delimiter=',')
 
+            for raw in data:
+                email_to_send = raw[0]
+                password = raw[1]
 
+                html_message = loader.render_to_string(
+                    'webapp/mail/mail.html',
+                    {
+                        'email': email_to_send,
+                        'password': password,
+                    }
+                )
 
+                send_mail(subject="AI Hackathon 2019 (Login Credentials)",
+                          from_email=from_email,
+                          recipient_list=[email_to_send],
+                          fail_silently=False,
+                          html_message=html_message,
+                          message="Login Credentials")
 
+                writer.writerow([email_to_send, password, 1])
 
+                print("Mail sent to: {}".format(email_to_send))
+
+    return HttpResponse('mail sent', 200)

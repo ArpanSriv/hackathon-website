@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="200db721-6452-4a04-9983-02f8a701fca2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/csv_test/hackathon_data.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hackathon/db.sqlite3_old" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hackathon/solutions/emails.tsv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hackathon/solutions/hackathon.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hackathon/solutions/csv/test_email_pass.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hackathon/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hackathon/solutions/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hackathon/solutions/templates/solutions/upload_solution.html" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/templates/solutions/upload_solution.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hackathon/solutions/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hackathon/solutions/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hackathon/webapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/webapp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hackathon/webapp/templates/webapp/mail/mail.html" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/webapp/templates/webapp/mail/mail.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -286,7 +281,7 @@
       <workItem from="1565909029342" duration="24776000" />
       <workItem from="1566013441312" duration="4802000" />
       <workItem from="1566112720092" duration="170000" />
-      <workItem from="1566112908908" duration="15567000" />
+      <workItem from="1566112908908" duration="18511000" />
     </task>
     <task id="LOCAL-00001" summary="requirements.txt added">
       <created>1563055565333</created>
@@ -582,7 +577,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566013791088</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Passwords Generated.">
+      <created>1566165879611</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1566165879611</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TodoView">
@@ -612,7 +614,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Added progress for individuals too" />
     <MESSAGE value="Changed order of balaji and ravi" />
     <MESSAGE value="Fix arati image" />
     <MESSAGE value="Remove a constituent of" />
@@ -637,7 +638,8 @@
     <MESSAGE value="Final Save before whole new makeover" />
     <MESSAGE value="Updated survey taking" />
     <MESSAGE value="Closed registrations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Closed registrations" />
+    <MESSAGE value="Passwords Generated." />
+    <option name="LAST_COMMIT_MESSAGE" value="Passwords Generated." />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

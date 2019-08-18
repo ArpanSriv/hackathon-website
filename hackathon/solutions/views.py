@@ -1,12 +1,18 @@
+import csv
 import logging
 import os
+import secrets
+import string
 import time
 
 import boto3
 from django.contrib.auth import authenticate, logout, login
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.db import IntegrityError
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.template import loader
 from rest_framework import permissions, status, authentication
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -183,7 +189,7 @@ class FilePolicyAPI(APIView):
 
         )
 
-        key = "solutions_test/{}_{}/{}/".format(team_name, reg_no, problem)
+        key = "hackathon_solutions/{}_{}/{}/".format(team_name, reg_no, problem)
 
         s3_upload_path = key + "{}_{}{}".format(reg_no, filetype, file_extension)
 
@@ -281,3 +287,146 @@ def process_survey(request):
         return redirect(upload_solution)
     else:
         return HttpResponse(status=403)
+
+
+def generate_password():
+    alphabet = string.ascii_letters + string.digits
+    password = ''.join(secrets.choice(alphabet) for i in range(8))
+
+    return password
+
+
+def insert_users(request):
+    import csv
+    with open('solutions/hackathon.csv', 'r') as f:
+        with open('solutions/team_data.csv', mode='a') as output_csv_file:
+            data = csv.DictReader(f)
+
+            writer = csv.writer(output_csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+
+            row_count = 0
+            teams_created = 0
+            duplicate_teams_inserted = 0
+
+            for raw in data:
+                # user = Member.objects.get_or_create(
+                #     email=raw.get('email_address'),
+                #     first_name=raw.get('first_name'),
+                #     last_name=raw.get('last_name'),
+                #     dob=raw.get('dob'),
+                #     phone=raw.get('phone'),
+                #     university=raw.get('university'),
+                #     specialization=raw.get('specialization'),
+                #     address_line_1=raw.get('address_line_1'),
+                #     address_line_2=raw.get('address_line_2'),
+                #     pincode=raw.get('pincode'),
+                #     city=raw.get('city'),
+                #     state=raw.get('state'),
+                #     projects=raw.get('projects'),
+                # )
+
+                team_email = raw.get('team_email')
+
+                team = Team.objects.filter(email__contains=team_email)
+
+                if row_count == 90:
+                    print("This is the one...")
+
+                if not team.exists():
+                    password = generate_password()
+
+                    team_name = raw.get('team_name')
+                    reg_no = raw.get('reg_no')
+
+                    duplicate_team_present = False
+                    team_name_change_allowed = False
+
+                    duplicate_team = Team.objects.filter(team_name=team_name)
+
+                    if duplicate_team.exists():
+                        duplicate_team_present = True
+                        team_name_change_allowed = True
+
+                    try:
+                        Team.objects.create_user(email=team_email,
+                                                 password=password,
+                                                 team_name=team_name,
+                                                 reg_no=reg_no,
+                                                 duplicate_team=duplicate_team_present,
+                                                 team_name_change_allowed=team_name_change_allowed)
+                    except IntegrityError as e:
+                        print("Integrity Error: {}".format(e))
+                        print("Team Details: team_name={}, team_email={}, reg_no={}".format(team_name, team_email,
+                                                                                            reg_no))
+                        break
+
+                    writer.writerow([team_email, password])
+
+                    print("User created: " + team_email + " " + password)
+
+                    teams_created += 1
+
+                    if duplicate_team_present:
+                        duplicate_teams_inserted += 1
+
+                row_count += 1
+
+                print("Total Rows: {}, Inserted: {}, Duplicates: {}".format(row_count, teams_created,
+                                                                            duplicate_teams_inserted))
+
+    return HttpResponse(status=200)
+
+
+def check_entries(request):
+    with open('solutions/emails.tsv') as file:
+        email_count = 0
+        teams_found = 0
+
+        for email in file:
+
+            try:
+                Team.objects.get(email=email.rstrip())
+                teams_found += 1
+            except:
+                print("Team Not Found: {}".format(email))
+
+            email_count += 1
+
+        print("Teams_found: {}, email_count: {}".format(teams_found, email_count))
+
+    return HttpResponse("Teams_found: {}, email_count: {}".format(teams_found, email_count), status=200)
+
+
+def sendmails(request):
+    from_email = 'aihackathon@sitpune.edu.in'
+
+    with open('solutions/csv/test_email_pass.csv', 'r') as f:
+        data = csv.reader(f)
+
+        with open('solutions/csv/test_email_log.csv', 'a') as o:
+            writer = csv.writer(o, delimiter=',')
+
+            for raw in data:
+                email_to_send = raw[0]
+                password = raw[1]
+
+                html_message = loader.render_to_string(
+                    'webapp/mail/mail.html',
+                    {
+                        'email': email_to_send,
+                        'password': password,
+                    }
+                )
+
+                send_mail(subject="AI Hackathon 2019 (Login Credentials)",
+                          from_email=from_email,
+                          recipient_list=[email_to_send],
+                          fail_silently=False,
+                          html_message=html_message,
+                          message="Login Credentials")
+
+                writer.writerow([email_to_send, password, 1])
+
+                print("Mail sent to: {}".format(email_to_send))
+
+    return HttpResponse('mail sent', 200)

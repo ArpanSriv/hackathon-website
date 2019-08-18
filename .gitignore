@@ -4,3 +4,4 @@ venv
 hackathon/token.pickle
 logs
 .vscode/
+migrations/

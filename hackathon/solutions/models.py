@@ -46,7 +46,9 @@ class Team(AbstractUser):
     reg_no = models.CharField(_('registration number'), unique=True, max_length=7)
     email = models.CharField(_('email'), max_length=50, unique=True)
     username = models.CharField(blank=True, null=True, max_length=10)
-    team_name = models.CharField(_('team name'), unique=True, max_length=30)
+    team_name = models.CharField(_('team name'), max_length=30)
+    duplicate_team = models.BooleanField(_('duplicate team name'), default=False)
+    team_name_change_allowed = models.BooleanField(_('team name change allowed'), default=False)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['team_name', 'reg_no']

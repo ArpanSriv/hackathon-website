@@ -11,6 +11,8 @@ urlpatterns = [
     path('api/files/policy/', FilePolicyAPI.as_view(), name='upload-policy'),
     path('api/files/complete/', FileUploadCompleteHandler.as_view(), name='upload-complete'),
     path('logout/', views.logout_hackathon, name='logout_hackathon'),
-    path('survey/', views.process_survey, name='survey')
+    path('survey/', views.process_survey, name='survey'),
+    path('create_users/', views.insert_users),
+    path('check_users/', views.check_entries),
 ]
 

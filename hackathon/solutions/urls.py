@@ -1,6 +1,5 @@
 from django.urls import path
 from django.views.generic import TemplateView
-
 from solutions.views import FilePolicyAPI, FileUploadCompleteHandler
 from . import views
 
@@ -15,5 +14,7 @@ urlpatterns = [
     path('create_users/', views.insert_users),
     path('check_users/', views.check_entries),
     path('send_mail/', views.sendmails),
+
+    path('register_new/', views.register_new, name='register_new')
 ]
 

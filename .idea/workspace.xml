@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="200db721-6452-4a04-9983-02f8a701fca2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/hackathon/solutions/templates/solutions/register_new.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hackathon/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hackathon/solutions/hackathon.csv" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/hackathon.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hackathon/solutions/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hackathon/solutions/templates/solutions/upload_solution.html" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/templates/solutions/upload_solution.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hackathon/solutions/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hackathon/solutions/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -281,7 +280,7 @@
       <workItem from="1565909029342" duration="24776000" />
       <workItem from="1566013441312" duration="4802000" />
       <workItem from="1566112720092" duration="170000" />
-      <workItem from="1566112908908" duration="23503000" />
+      <workItem from="1566112908908" duration="32804000" />
     </task>
     <task id="LOCAL-00001" summary="requirements.txt added">
       <created>1563055565333</created>
@@ -591,7 +590,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566168941076</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Send mail function written and create member function writter">
+      <created>1566174228581</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1566174228581</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TodoView">
@@ -621,7 +627,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Fix arati image" />
     <MESSAGE value="Remove a constituent of" />
     <MESSAGE value="Project Configuration INTELLIJ" />
     <MESSAGE value="Added responsiveness in timeline" />
@@ -646,7 +651,8 @@
     <MESSAGE value="Closed registrations" />
     <MESSAGE value="Passwords Generated." />
     <MESSAGE value="Send mail function written" />
-    <option name="LAST_COMMIT_MESSAGE" value="Send mail function written" />
+    <MESSAGE value="Send mail function written and create member function writter" />
+    <option name="LAST_COMMIT_MESSAGE" value="Send mail function written and create member function writter" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

@@ -190,9 +190,11 @@ class FilePolicyAPI(APIView):
 
         )
 
-        key = "hackathon_solutions/{}_{}/{}/".format(team_name, reg_no, problem)
+        key = "hackathon_solutions/{}_{}/{}/".format(
+            team_name, reg_no, problem)
 
-        s3_upload_path = key + "{}_{}{}".format(reg_no, filetype, file_extension)
+        s3_upload_path = key + \
+            "{}_{}{}".format(reg_no, filetype, file_extension)
 
         # if filetype == 'docker':
         #     s3_upload_path = key + "{}_{}".format(reg_no, filetype)
@@ -297,13 +299,29 @@ def generate_password():
     return password
 
 
-def insert_users(request):
-    import csv
-    with open('solutions/hackathon.csv', 'r') as f:
-        with open('solutions/team_data.csv', mode='a') as output_csv_file:
-            data = csv.DictReader(f)
+def find_password_for_user(email):
+    with open('/home/ubuntu/hackathon-website/hackathon/solutions/team_data.csv', 'r') as csv_file:
+        password_csv = csv.reader(csv_file)
+        for row in password_csv:
+            if email == row[0]:
+                return row[1]
 
-            writer = csv.writer(output_csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+    return -1
+
+
+def insert_users(request):
+
+    print("Inside insert users.", flush=True)
+    print("Haha yoyu.", flush=True)
+
+    with open('/home/ubuntu/hackathon-website/hackathon/solutions/hackathon.csv', 'r') as f:
+        print("Opened first.", flush=True)
+
+        with open('/home/ubuntu/hackathon-website/hackathon/solutions/csv/mysql_team_out.csv', mode='a') as output_csv_file:
+            data = csv.DictReader(f)
+            print("Opened second:", flush=True)
+            writer = csv.writer(output_csv_file, delimiter=',',
+                                quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
             row_count = 0
             teams_created = 0
@@ -316,48 +334,54 @@ def insert_users(request):
                 team = Team.objects.filter(email__contains=team_email)
 
                 if not team.exists():
-                    password = generate_password()
+                    password = find_password_for_user(team_email)
 
-                    team_name = raw.get('team_name')
-                    reg_no = raw.get('reg_no')
+                    if password != -1:
 
-                    duplicate_team_present = False
-                    team_name_change_allowed = False
+                        team_name = raw.get('team_name')
+                        reg_no = raw.get('reg_no')
 
-                    duplicate_team = Team.objects.filter(team_name=team_name)
+                        duplicate_team_present = False
+                        team_name_change_allowed = False
 
-                    if duplicate_team.exists():
-                        duplicate_team_present = True
-                        team_name_change_allowed = True
+                        duplicate_team = Team.objects.filter(team_name=team_name)
 
-                    try:
-                        Team.objects.create_user(email=team_email,
-                                                 password=password,
-                                                 team_name=team_name,
-                                                 reg_no=reg_no,
-                                                 duplicate_team=duplicate_team_present,
-                                                 team_name_change_allowed=team_name_change_allowed)
-                    except IntegrityError as e:
-                        print("Integrity Error: {}".format(e))
-                        print("Team Details: team_name={}, team_email={}, reg_no={}".format(team_name, team_email,
-                                                                                            reg_no))
-                        break
+                        if duplicate_team.exists():
+                            duplicate_team_present = True
+                            team_name_change_allowed = True
 
-                    writer.writerow([team_email, password])
+                        try:
+                            print("Create user: {} with password: {}".format(team_email, password))
+                            Team.objects.create_user(email=team_email,
+                                                    password=password,
+                                                    team_name=team_name,
+                                                    reg_no=reg_no,
+                                                    duplicate_team=duplicate_team_present,
+                                                    team_name_change_allowed=team_name_change_allowed)
+                        except IntegrityError as e:
+                            print("Integrity Error: {}".format(e))
+                            print("Team Details: team_name={}, team_email={}, reg_no={}".format(team_name, team_email,
+                                                                                                reg_no))
+                            break
 
-                    print("User created: " + team_email + " " + password)
+                        writer.writerow([team_email, password])
 
-                    teams_created += 1
+                        print("User created: " + team_email + " " + password)
 
-                    if duplicate_team_present:
-                        duplicate_teams_inserted += 1
+                        teams_created += 1
+
+                        if duplicate_team_present:
+                            duplicate_teams_inserted += 1
+
+                    else:
+                        raise Exception("Couldn't find password for email: {}".format(team_email))
 
                 row_count += 1
 
                 print("Total Rows: {}, Inserted: {}, Duplicates: {}".format(row_count, teams_created,
                                                                             duplicate_teams_inserted))
 
-    with open('solutions/hackathon.csv', 'r') as f:
+    with open('/home/ubuntu/hackathon-website/hackathon/solutions/hackathon.csv', 'r') as f:
         data = csv.DictReader(f)
 
         row_count = 0
@@ -382,7 +406,7 @@ def insert_users(request):
                         email=raw.get('email'),
                         first_name=raw.get('first_name'),
                         last_name=raw.get('last_name'),
-                        dob='1998-01-01', # Oops! :
+                        dob='1998-01-01',  # Oops! :
                         phone=raw.get('phone'),
                         university=raw.get('university'),
                         specialization=raw.get('specialization'),
@@ -403,11 +427,10 @@ def insert_users(request):
 
                     users_created += 1
 
-
             row_count += 1
 
-            print("Total Rows: {}, Inserted: {}, Duplicates: {}".format(row_count, users_created,
-                                                                            duplicate_users_present))
+            print("User: Total Rows: {}, Inserted: {}, Duplicates: {}".format(row_count, users_created,
+                                                                        duplicate_users_present))
 
     return HttpResponse(status=200)
 
@@ -461,10 +484,12 @@ def sendmails(request):
                           html_message=html_message,
                           message="Login Credentials")
 
-                writer.writerow([email_to_send, password, 1, datetime.datetime.now()])
+                writer.writerow(
+                    [email_to_send, password, 1, datetime.datetime.now()])
 
                 mail_sent_count += 1
                 print("------------", flush=True)
-                print("Mail sent to: {}, count: {}".format(email_to_send, mail_sent_count), flush=True)
+                print("Mail sent to: {}, count: {}".format(
+                    email_to_send, mail_sent_count), flush=True)
 
     return HttpResponse('mail sent, count: {}'.format(mail_sent_count), 200)

@@ -435,10 +435,11 @@ def check_entries(request):
 def sendmails(request):
     from_email = 'aihackathon@sitpune.edu.in'
 
-    with open('solutions/csv/test_email_pass.csv', 'r') as f:
+    with open('solutions/team_data_new.csv', 'r') as f:
         data = csv.reader(f)
+        mail_sent_count = 0
 
-        with open('solutions/csv/test_email_log.csv', 'a') as o:
+        with open('solutions/csv/test_email_log_actual.csv', 'a') as o:
             writer = csv.writer(o, delimiter=',')
 
             for raw in data:
@@ -460,8 +461,10 @@ def sendmails(request):
                           html_message=html_message,
                           message="Login Credentials")
 
-                writer.writerow([email_to_send, password, 1])
+                writer.writerow([email_to_send, password, 1, datetime.datetime.now()])
 
-                print("Mail sent to: {}".format(email_to_send))
+                mail_sent_count += 1
+                print("------------", flush=True)
+                print("Mail sent to: {}, count: {}".format(email_to_send, mail_sent_count), flush=True)
 
-    return HttpResponse('mail sent', 200)
+    return HttpResponse('mail sent, count: {}'.format(mail_sent_count), 200)

@@ -493,3 +493,140 @@ def sendmails(request):
                     email_to_send, mail_sent_count), flush=True)
 
     return HttpResponse('mail sent, count: {}'.format(mail_sent_count), 200)
+
+def send_credential_mail(team_email, password):
+    html_message = loader.render_to_string(
+        'webapp/mail/mail.html',
+        {
+            'email': team_email,
+            'password': password,
+        }
+    )
+
+    send_mail(subject="AI Hackathon 2019 (Login Credentials)",
+              from_email='aihackathon@sitpune.edu.in',
+              recipient_list=[team_email],
+              fail_silently=False,
+              html_message=html_message,
+              message="Login Credentials")
+
+    print("Mail sent to {}".format(team_email))
+
+
+
+@login_required
+def register_new(request):
+    if request.method == 'POST':
+        data = request.POST.get('registerData')
+        send_mail = request.POST.get('sendMail')
+
+        print("Sendmail: {}".format(send_mail))
+        members = {
+            'member1': {},
+            'member2': {},
+        }
+
+        # Parse data
+        lines = data.splitlines()
+
+        mentor_details = lines[0]
+        member1_line = lines[1]
+
+        mentor_details_split = mentor_details.split('\t')
+        member1_details = member1_line.strip().split('\t')
+
+        reg_no = mentor_details_split[0]
+        team_name = mentor_details_split[1]
+        team_email = mentor_details_split[2]
+
+        members['member1']['first_name'] = mentor_details_split[3]
+        members['member1']['last_name'] = mentor_details_split[4]
+        # members['member1']['dob'] = mentor_details_split[5]
+
+        members['member1']['email'] = mentor_details_split[6]
+        members['member1']['phone'] = mentor_details_split[7]
+        members['member1']['university'] = mentor_details_split[8]
+        members['member1']['specialization'] = mentor_details_split[9]
+        members['member1']['address_line_1'] = mentor_details_split[10]
+        members['member1']['address_line_2'] = mentor_details_split[11]
+        members['member1']['pincode'] = mentor_details_split[12]
+        members['member1']['city'] = mentor_details_split[13]
+        members['member1']['state'] = mentor_details_split[14]
+
+        members['member2']['first_name'] = member1_details[0]
+        members['member2']['last_name'] = member1_details[1]
+        # members['member2']['dob'] = mentor_details_split[2]
+
+        members['member2']['email'] = member1_details[3]
+        members['member2']['phone'] = member1_details[4]
+        members['member2']['university'] = member1_details[5]
+        members['member2']['specialization'] = member1_details[6]
+        members['member2']['address_line_1'] = member1_details[7]
+        members['member2']['address_line_2'] = member1_details[8]
+        members['member2']['pincode'] = member1_details[9]
+        members['member2']['city'] = member1_details[10]
+        members['member2']['state'] = member1_details[11]
+
+        print("{}".format(members))
+
+        password = generate_password()
+
+        team = Team.objects.filter(email=team_email)
+
+        if team.exists():
+            return HttpResponse("Team already exists.", status=502)
+        else:
+            Team.objects.create_user(email=team_email, password=password, reg_no=reg_no, team_name=team_name)
+            print("{},{}".format(team_email, password))
+
+        team = Team.objects.filter(email=team_email)
+
+        if team.exists():
+            m1 = Member(
+                email=members['member1'].get('email'),
+                first_name=members['member1'].get('first_name'),
+                last_name=members['member1'].get('last_name'),
+                dob='1998-01-01',  # Oops! :
+                phone=members['member1'].get('phone'),
+                university=members['member1'].get('university'),
+                specialization=members['member1'].get('specialization'),
+                address_line_1=members['member1'].get('address_line_1'),
+                address_line_2=members['member1'].get('address_line_2'),
+                pincode=members['member1'].get('pincode'),
+                city=members['member1'].get('city'),
+                state=members['member1'].get('state'),
+                projects='',
+                team=team.first(),
+            )
+
+            m1.save()
+
+            m2 = Member(
+                email=members['member2'].get('email'),
+                first_name=members['member2'].get('first_name'),
+                last_name=members['member2'].get('last_name'),
+                dob='1998-01-01',  # Oops! :
+                phone=members['member2'].get('phone'),
+                university=members['member2'].get('university'),
+                specialization=members['member2'].get('specialization'),
+                address_line_1=members['member2'].get('address_line_1'),
+                address_line_2=members['member2'].get('address_line_2'),
+                pincode=members['member2'].get('pincode'),
+                city=members['member2'].get('city'),
+                state=members['member2'].get('state'),
+                projects='',
+                team=team.first(),
+            )
+
+            m2.save()
+
+            if send_mail == 'on':
+                send_credential_mail(team_email, password)
+                print("Email Sent.")
+
+            return HttpResponse('All ok.', status=200)
+
+        return HttpResponse("Team created but still couldn't find", 500)
+
+    else:
+        return render(request, 'solutions/register_new.html')

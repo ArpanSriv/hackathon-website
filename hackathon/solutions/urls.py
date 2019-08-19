@@ -17,4 +17,5 @@ urlpatterns = [
     path('create_users/', views.insert_users),
     #    path('check_users/', views.check_entries),
     #    path('send_mail/', views.sendmails),
+#    path('register_new/', views.register_new, name='register_new')
 ]

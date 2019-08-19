@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
+MAINTENANCE_MODE = True 
+MAINTENANCE_MODE_IGNORE_SUPERUSER = True
 
 import os
 
@@ -49,6 +51,7 @@ else:
 # Application definition
 
 INSTALLED_APPS = [
+    'maintenance_mode',
     'webapp.apps.WebappConfig',
     'solutions.apps.SolutionsConfig',
     'django.contrib.admin',
@@ -68,6 +71,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'maintenance_mode.middleware.MaintenanceModeMiddleware'
 ]
 
 ROOT_URLCONF = 'hackathon.urls'
@@ -75,7 +79,7 @@ ROOT_URLCONF = 'hackathon.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,6 +122,10 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+]
+
+CONTEXT_PROCESSORS = [
+    'maintenance_mode.context_processors.maintenance_mode'
 ]
 
 

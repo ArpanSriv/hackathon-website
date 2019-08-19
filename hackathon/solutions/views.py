@@ -1,4 +1,5 @@
 import csv
+import datetime
 import logging
 import os
 import secrets
@@ -309,28 +310,10 @@ def insert_users(request):
             duplicate_teams_inserted = 0
 
             for raw in data:
-                # user = Member.objects.get_or_create(
-                #     email=raw.get('email_address'),
-                #     first_name=raw.get('first_name'),
-                #     last_name=raw.get('last_name'),
-                #     dob=raw.get('dob'),
-                #     phone=raw.get('phone'),
-                #     university=raw.get('university'),
-                #     specialization=raw.get('specialization'),
-                #     address_line_1=raw.get('address_line_1'),
-                #     address_line_2=raw.get('address_line_2'),
-                #     pincode=raw.get('pincode'),
-                #     city=raw.get('city'),
-                #     state=raw.get('state'),
-                #     projects=raw.get('projects'),
-                # )
 
                 team_email = raw.get('team_email')
 
                 team = Team.objects.filter(email__contains=team_email)
-
-                if row_count == 90:
-                    print("This is the one...")
 
                 if not team.exists():
                     password = generate_password()
@@ -373,6 +356,58 @@ def insert_users(request):
 
                 print("Total Rows: {}, Inserted: {}, Duplicates: {}".format(row_count, teams_created,
                                                                             duplicate_teams_inserted))
+
+    with open('solutions/hackathon.csv', 'r') as f:
+        data = csv.DictReader(f)
+
+        row_count = 0
+        users_created = 0
+        duplicate_users_present = 0
+
+        for raw in data:
+            member_email = raw.get('email')
+
+            if Member.objects.filter(email=member_email).exists():
+                duplicate_users_present += 1
+
+            else:
+                team_email = raw.get('team_email')
+
+                team = Team.objects.filter(email__contains=team_email)
+
+                if team.exists():
+                    # dob_proper = datetime.datetime.strptime(raw.get('dob'), '%d/%m/%Y').strftime('%Y-%m-%d')
+
+                    user = Member(
+                        email=raw.get('email'),
+                        first_name=raw.get('first_name'),
+                        last_name=raw.get('last_name'),
+                        dob='1998-01-01', # Oops! :
+                        phone=raw.get('phone'),
+                        university=raw.get('university'),
+                        specialization=raw.get('specialization'),
+                        address_line_1=raw.get('address_line_1'),
+                        address_line_2=raw.get('address_line_2'),
+                        pincode=raw.get('pincode'),
+                        city=raw.get('city'),
+                        state=raw.get('state'),
+                        projects='',
+                        team=team.first(),
+                    )
+
+                    user.save()
+
+                    # writer.writerow([team_email, password])
+
+                    print("User created: {}, {}".format(member_email, team))
+
+                    users_created += 1
+
+
+            row_count += 1
+
+            print("Total Rows: {}, Inserted: {}, Duplicates: {}".format(row_count, users_created,
+                                                                            duplicate_users_present))
 
     return HttpResponse(status=200)
 

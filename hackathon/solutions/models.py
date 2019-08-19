@@ -67,7 +67,7 @@ class Team(AbstractUser):
 
 
 class Member(models.Model):
-    email = models.EmailField(_('email address'), unique=True)
+    email = models.EmailField(_('email address'), unique=False)
     first_name = models.CharField(_('first name'), max_length=30)
     last_name = models.CharField(_('last name'), max_length=30)
     dob = models.DateField(_('date of birth'))

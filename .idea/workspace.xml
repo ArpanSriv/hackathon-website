@@ -587,7 +587,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566168941076</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Updated bs changes.">
+      <created>1566364732741</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1566364732741</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TodoView">
@@ -617,7 +624,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Fix arati image" />
     <MESSAGE value="Remove a constituent of" />
     <MESSAGE value="Project Configuration INTELLIJ" />
     <MESSAGE value="Added responsiveness in timeline" />
@@ -642,7 +648,8 @@
     <MESSAGE value="Closed registrations" />
     <MESSAGE value="Passwords Generated." />
     <MESSAGE value="Send mail function written" />
-    <option name="LAST_COMMIT_MESSAGE" value="Send mail function written" />
+    <MESSAGE value="Updated bs changes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated bs changes." />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

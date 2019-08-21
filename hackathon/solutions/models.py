@@ -107,9 +107,12 @@ class FileItem(models.Model):
 
 
 class SurveyResponses(models.Model):
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, unique=True)
     answer_1 = models.BooleanField(default=False)
     answer_2 = models.BooleanField(default=False)
     answer_3 = models.BooleanField(default=False)
     answer_4 = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return "{}, {}, {}, {}".format(self.answer_1, self.answer_2, self.answer_3, self.answer_4)

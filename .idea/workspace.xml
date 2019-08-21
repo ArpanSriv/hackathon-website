@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="200db721-6452-4a04-9983-02f8a701fca2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hackathon/solutions/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hackathon/solutions/templates/solutions/upload_solution.html" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/templates/solutions/upload_solution.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -594,7 +595,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566364732741</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Added zip to prog file types">
+      <created>1566365335680</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1566365335680</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TodoView">
@@ -624,7 +632,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Remove a constituent of" />
     <MESSAGE value="Project Configuration INTELLIJ" />
     <MESSAGE value="Added responsiveness in timeline" />
     <MESSAGE value="Fixed footer in startup registration" />
@@ -649,7 +656,8 @@
     <MESSAGE value="Passwords Generated." />
     <MESSAGE value="Send mail function written" />
     <MESSAGE value="Updated bs changes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated bs changes." />
+    <MESSAGE value="Added zip to prog file types" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added zip to prog file types" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

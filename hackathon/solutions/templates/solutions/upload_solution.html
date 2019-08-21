@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--suppress ALL -->
 <html lang="en">
 <head>
     <link rel="stylesheet" type="text/css" href="../../static/solutions/portalStyles.css"/>
@@ -284,7 +285,7 @@
                          aria-labelledby="nav-problem-1-tab">
                         <div class="container file-status-wrapper">
                             <div class="row">
-                                <div class="col file-status-box .custom-card">
+                                <div class="col file-status-box .custom-card dockerfile">
                                     <div class="status">Dockerfile: {{ file_status.1.docker }}</div>
                                     {% if file_status.1.docker == 'Not Uploaded' %}
                                         <div class="red-bullet"></div>
@@ -292,7 +293,7 @@
                                         <div class="green-bullet"></div>
                                     {% endif %}
                                 </div>
-                                <div class="col file-status-box .custom-card">
+                                <div class="col file-status-box .custom-card prog-file">
                                     <div class="status">Program: {{ file_status.1.program }}</div>
                                     {% if file_status.1.program == 'Not Uploaded' %}
                                         <div class="red-bullet"></div>
@@ -300,7 +301,7 @@
                                         <div class="green-bullet"></div>
                                     {% endif %}
                                 </div>
-                                <div class="col file-status-box .custom-card" style="margin-right: 0">
+                                <div class="col file-status-box .custom-card ppt-file" style="margin-right: 0">
                                     <div class="status">PPT: {{ file_status.1.ppt }}</div>
                                     {% if file_status.1.ppt == 'Not Uploaded' %}
                                         <div class="red-bullet"></div>
@@ -312,15 +313,14 @@
                         </div>
 
                         <div id="upload-zone" class="problem-01">
-                            {#                                {{ file_status.1.docker }}#}
-                            {#                                {{ file_status.1.ppt }}#}
-                            {#                                {{ file_status.1.program }}#}
-
 
                             <!-- Uploader Dropzone -->
                             <form action="upload.php" id="zdrop" class="fileuploader center-align">
                                 <i class="lni-cloud-upload size-lg" id="upload-label"></i>
-                                <div class="tittle">Click the button or drop anywhere to upload the files.</div>
+                                <div class="tittle">Click the corresponding button above or drop anywhere on them to
+                                    upload
+                                    the files.
+                                </div>
                             </form>
 
                             <!-- Preview collection of uploaded documents -->
@@ -331,7 +331,8 @@
                                         <div class="progress"></div>
                                         <div class="left pv zdrop-info" data-dz-thumbnail>
                                             <div class='file-upload-preview-name'>
-                                                <span data-dz-name></span>&nbsp;(<span data-dz-size></span>)
+                                                <span class="file-upload-name-span" data-dz-name></span>&nbsp;(<span
+                                                    data-dz-size></span>)
                                             </div>
                                             <a href="#!" data-dz-remove><i class="lni-trash size-sm"
                                                                            style="color: #FF5722;"></i></a>
@@ -348,15 +349,17 @@
                     <div class="tab-pane fade" id="nav-problem-2" role="tabpanel" aria-labelledby="nav-problem-2-tab">
                         <div class="container file-status-wrapper">
                             <div class="row">
-                                <div class="col file-status-box .custom-card">
-                                    <div class="status">Dockerfile: {{ file_status.2.docker }}</div>
+                                <div class="col file-status-box .custom-card dockerfile">
+                                    <div class="status dockerfile-input-div">
+                                        Dockerfile: {{ file_status.2.docker }}</div>
                                     {% if file_status.2.docker == 'Not Uploaded' %}
                                         <div class="red-bullet"></div>
                                     {% else %}
                                         <div class="green-bullet"></div>
                                     {% endif %}
+                                    {#                                    <div id="dropper-ind"></div>#}
                                 </div>
-                                <div class="col file-status-box .custom-card">
+                                <div class="col file-status-box .custom-card prog-file">
                                     <div class="status">Program: {{ file_status.2.program }}</div>
                                     {% if file_status.2.program == 'Not Uploaded' %}
                                         <div class="red-bullet"></div>
@@ -364,7 +367,7 @@
                                         <div class="green-bullet"></div>
                                     {% endif %}
                                 </div>
-                                <div class="col file-status-box .custom-card" style="margin-right: 0">
+                                <div class="col file-status-box .custom-card ppt-file" style="margin-right: 0">
                                     <div class="status">PPT: {{ file_status.2.ppt }}</div>
                                     {% if file_status.2.ppt == 'Not Uploaded' %}
                                         <div class="red-bullet"></div>
@@ -379,7 +382,10 @@
                             <!-- Uploader Dropzone -->
                             <form action="#" id="zdrop" class="fileuploader center-align">
                                 <i class="lni-cloud-upload size-lg" id="upload-label"></i>
-                                <div class="tittle">Click the button or drop anywhere to upload the files.</div>
+                                <div class="tittle">Click the corresponding button above or drop anywhere on them to
+                                    upload
+                                    the files.
+                                </div>
                             </form>
 
                             <!-- Preview collection of uploaded documents -->
@@ -398,7 +404,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="container" style="text-align: right">
+                            <div class="container-fluid" style="text-align: right">
                                 <button class="btn btn-dark file-upload-btn">Upload</button>
                             </div>
                         </div>
@@ -419,11 +425,13 @@
                                     <div class="col-sm-2">
                                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                             <label class="btn btn-secondary">
-                                                <input type="radio" name="response_1" id="option2" value="on" autocomplete="off">
+                                                <input type="radio" name="response_1" id="option2" value="on"
+                                                       autocomplete="off">
                                                 Yes
                                             </label>
                                             <label class="btn btn-secondary">
-                                                <input type="radio" name="response_1" id="option3" value="off" autocomplete="off">
+                                                <input type="radio" name="response_1" id="option3" value="off"
+                                                       autocomplete="off">
                                                 No
                                             </label>
                                         </div>
@@ -442,11 +450,13 @@
                                     <div class="col-sm-2">
                                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                             <label class="btn btn-secondary">
-                                                <input type="radio" name="response_2" id="option2" value="on" autocomplete="off">
+                                                <input type="radio" name="response_2" id="option2" value="on"
+                                                       autocomplete="off">
                                                 Yes
                                             </label>
                                             <label class="btn btn-secondary">
-                                                <input type="radio" name="response_2" id="option3" value="off" autocomplete="off">
+                                                <input type="radio" name="response_2" id="option3" value="off"
+                                                       autocomplete="off">
                                                 No
                                             </label>
                                         </div>
@@ -464,11 +474,13 @@
                                     <div class="col-sm-2">
                                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                             <label class="btn btn-secondary">
-                                                <input type="radio" name="response_3" id="option2" value="on" autocomplete="off">
+                                                <input type="radio" name="response_3" id="option2" value="on"
+                                                       autocomplete="off">
                                                 Yes
                                             </label>
                                             <label class="btn btn-secondary">
-                                                <input type="radio" name="response_3" id="option3" value="off" autocomplete="off">
+                                                <input type="radio" name="response_3" id="option3" value="off"
+                                                       autocomplete="off">
                                                 No
                                             </label>
                                         </div>
@@ -486,11 +498,13 @@
                                     <div class="col-sm-2">
                                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                             <label class="btn btn-secondary">
-                                                <input type="radio" name="response_4" id="option2" value="on" autocomplete="off">
+                                                <input type="radio" name="response_4" id="option2" value="on"
+                                                       autocomplete="off">
                                                 Yes
                                             </label>
                                             <label class="btn btn-secondary">
-                                                <input type="radio" name="response_4" id="option3" value="off" autocomplete="off">
+                                                <input type="radio" name="response_4" id="option3" value="off"
+                                                       autocomplete="off">
                                                 No
                                             </label>
                                         </div>
@@ -512,20 +526,59 @@
 </div>
 
 {% include "webapp/footer.html" %}
-
-<script src="{% static 'solutions/dropzone.js' %}"></script>
-<script src="{% static 'webapp/js/jquery.toast.js' %}" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
+
+            const FILE_TYPE_INVALID = -1
+            const DOCKERFILE = 0
+            const PROGRAM_FILE = 1
+            const PPT = 2
+
+            const PROBLEM_01 = 1
+            const PROBLEM_02 = 2
+
+            const FILE_TYPES = [DOCKERFILE, PROGRAM_FILE, PPT];
+
+            const FILE_TYPE_DESC = {
+                [DOCKERFILE]: 'Dockerfile',
+                [PROGRAM_FILE]: 'Program File/Zip File',
+                [PPT]: 'Presentation File',
+            }
+
+            const CLICKABLE_INTERMEDIARY = {
+                [DOCKERFILE]: '.dockerfile',
+                [PROGRAM_FILE]: '.prog-file',
+                [PPT]: '.ppt-file',
+            }
+
+            const PROBLEM_IDS = {
+                [PROBLEM_01]: '#nav-problem-1',
+                [PROBLEM_02]: '#nav-problem-2',
+            }
+
+            function getKeyFromVal(object, val) {
+                for (var key in object) {
+                    if (object[key] == val) return key;
+                }
+
+                return undefined;
+            }
+
+            const FILE_TYPE_CLASSES = {
+                [DOCKERFILE]: 'Dockerfile',
+                [PROGRAM_FILE]: 'Python/Zip File',
+                [PPT]: 'PPT/PPTX File',
+
 	   // Disable survey if already taken.
-	    if (checkForSurvey()) {
-		$('#survey-button').attr('disabled', 'disabled');
+	          if (checkForSurvey()) {
+                $('#survey-button').attr('disabled', 'disabled');
             }
 
             var activeTab = '1';
 
-            initFileUploader(".problem-01 #zdrop");
-            initFileUploader(".problem-02 #zdrop");
+            initDroppableZones()
+
+            removeDummyPreviews()
 
             $('#nav-tab a[data-toggle="tab"]').on('click', function (e) {
                 activeTab = e.target.toString().split('#').pop().split('-').pop()
@@ -533,41 +586,138 @@
                 console.log("Voila " + activeTab)
             });
 
+            let uploadWatcher = {
+                set: function (object, prop, value) {
+                    {#console.log(`${object} ${prop} ${value}`)#}
+                    object[prop] = value
+                }
+            }
+
+
             let filesToUpload = {
-                1: {},
-                2: {},
-            };
+                [PROBLEM_01]: {},
+                [PROBLEM_02]: {},
+            }
+
 
             let disabledUploadButton = true
+
+            function removeDummyPreviews() {
+                for (let problem in PROBLEM_IDS) {
+                    let currentProblemId = PROBLEM_IDS[problem]
+
+                    let previewNode = document.querySelector(`${currentProblemId} #zdrop-template`);
+                    let previewTemplate = previewNode.parentNode.innerHTML;
+                    previewNode.parentNode.removeChild(previewNode);
+                }
+            }
+
+            function initDroppableZones() {
+                let dropZone = `<div id='dropper-ind'></div>`
+
+                for (let problem in PROBLEM_IDS) {
+                    for (let target in CLICKABLE_INTERMEDIARY) {
+                        $(`${PROBLEM_IDS[problem]} ${CLICKABLE_INTERMEDIARY[target]}`).append(dropZone)
+
+                        let className = CLICKABLE_INTERMEDIARY[target];
+
+                        console.log(`${PROBLEM_IDS[problem]} ${CLICKABLE_INTERMEDIARY[target]}`)
+                        initIndividualUploaders(`${PROBLEM_IDS[problem]} ${CLICKABLE_INTERMEDIARY[target]} #dropper-ind`, target, CLICKABLE_INTERMEDIARY[target])
+
+                        console.info("Done")
+                    }
+                }
+            }
 
             function getFileType(file) {
                 var extension = file.name.split('.').pop().toLowerCase(); //file.substr( (file.lastIndexOf('.') +1) );
 
-                {#return !!extension.localeCompare(type.toLowerCase());#}
                 if (file.name === 'Dockerfile') {
-                    return 'docker'
+                    return DOCKERFILE
                 }
 
                 switch (extension) {
                     case 'py':
-                        return 'prog'
+                        return PROGRAM_FILE
                     case 'R':
-                        return 'prog'
+                        return PROGRAM_FILE
                     case 'ppt':
-                        return 'ppt'
+                        return PPT
                     case 'pptx':
-                        return 'ppt'
+                        return PPT
                     case 'pdf':
-                        return 'ppt'
+                        return PPT
                     case 'zip':
-                        return 'prog'
+                        return PROGRAM_FILE
                     default:
-                        return 'invalid'
+                        return FILE_TYPE_INVALID
                 }
             }
 
+            function initIndividualUploaders(target, fileType, clickableIntermediary) {
+
+                let currentProblemId = target.split(" ")[0];
+                let previewNode = document.querySelector(`${currentProblemId} #zdrop-template`);
+                {#previewNode.id = "";#}
+                let previewTemplate = previewNode.parentNode.innerHTML;
+
+                let zdrop = new Dropzone(target, {
+                    url: 'some_url_here',
+                    maxFiles: 1,
+                    {#maxFilesize: 30,#}
+                    previewTemplate: previewTemplate,
+                    previewsContainer: `${currentProblemId} #previews`,
+                    clickable: `${currentProblemId} ${clickableIntermediary} #dropper-ind`,
+                    accept: function (file, done) {
+                        let currentFileType = getFileType(file)
+
+                        if (currentFileType == fileType) {
+                            if (activeTab != null) {
+                                filesToUpload[`${activeTab}`][fileType] = file
+                            }
+                        } else {
+                            this.removeFile(file)
+                            showError(`Please upload a valid ${FILE_TYPE_CLASSES[fileType]}.`)
+                        }
+                    }
+                });
+
+                zdrop.on("addedfile", function (file) {
+                    $(`${currentProblemId} .preview-container`).css('visibility', 'visible');
+
+                    if (this.files[1] != null) {
+                        this.removeFile(this.files[0]);
+                    }
+                });
+
+                zdrop.on("totaluploadprogress", function (progress) {
+                    var progr = document.querySelector(".progress .determinate");
+                    if (progr === undefined || progr === null)
+                        return;
+
+                    progr.style.width = progress + "%";
+                });
+
+                zdrop.on('dragenter', function () {
+                    $(target).addClass("active");
+                });
+
+                zdrop.on('dragleave', function () {
+                    $(target).removeClass("active");
+                });
+
+                zdrop.on('drop', function () {
+                    $(target).removeClass("active");
+                });
+
+                zdrop.on('removedfile', function (file) {
+                    delete filesToUpload[activeTab][fileType]
+                });
+
+            }
+
             function initFileUploader(target) {
-                let currentProblemId = target.split(" ")[0]
+                let currentProblemId = target.split(" ")[0];
 
                 var previewNode = document.querySelector(`${currentProblemId} #zdrop-template`);
                 previewNode.id = "";
@@ -590,14 +740,14 @@
                             showError('Invalid file type. ' + fileType)
                         } else {
                             if (activeTab != null) {
-                                if (fileType === 'prog') {
+                                if (fileType === PROGRAM_FILE) {
                                     filesToUpload[`${activeTab}`]['prog'] = file
-                                } else if (fileType === 'docker') {
+                                } else if (fileType === DOCKERFILE) {
                                     filesToUpload[`${activeTab}`]['docker'] = file
-                                } else if (fileType === 'ppt') {
+                                } else if (fileType === PPT) {
                                     filesToUpload[`${activeTab}`]['ppt'] = file
                                 } else {
-                                    showError("This file can not be uploaded. Valid: py/r/Dockerfile/ppt/pptx")
+                                    showError("This file can not be uploaded. Valid: py/r/zip/Dockerfile/ppt/pptx")
                                 }
                             }
                         }
@@ -673,7 +823,7 @@
             // end session cookie data setup.
 
 
-// declare an empty array for potential uploaded files
+            // declare an empty array for potential uploaded files
             var fileItemList = [];
 
             function showError(erorrMsg) {
@@ -681,7 +831,7 @@
                     heading: 'Error',
                     text: erorrMsg,
                     icon: 'error',
-                    hideAfter: 3000
+                    hideAfter: 5000
                 });
             }
 
@@ -697,48 +847,39 @@
             // Do on button press
             $('.file-upload-btn').on('click', function (event) {
 
-                // Consider active Tab as well
-                if (!checkForSurvey()) return;
+                    // Consider active Tab as well
+                    if (!checkForSurvey()) return;
 
-                let currentTabFiles = filesToUpload[`${activeTab}`];
+                    let currentTabFiles = filesToUpload[`${activeTab}`];
 
-                let fileTypes = ['docker', 'prog', 'ppt']
+                    let stopFunction = false;
 
-                let fileTypesFull = {
-                    'docker': 'Dockerfile',
-                    'prog': 'Program File',
-                    'ppt': 'Presentation File'
+                    FILE_TYPES.every((fileType, index) => {
+                        if (!(fileType in currentTabFiles)) {
+                            showError(FILE_TYPE_DESC[fileType] + " is missing.");
+                            stopFunction = true;
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    });
+
+                    if (stopFunction) return;
+
+                    FILE_TYPES.forEach((val, index, arr) => {
+                        uploadFile(filesToUpload[activeTab][val], ['docker', 'program', 'ppt'][index])
+                    })
+
+                    window.setTimeout(function () {
+                        alert("Uploaded Successfully.")
+                        // TODO Refresh the page
+                    }, 1000);
+
+                    event.stopPropagation()
+
+                    // TODO: RERESH THE PAGE
                 }
-
-                let stopFunction = false;
-
-                fileTypes.every((fileType, index) => {
-                    if (!(fileType in currentTabFiles)) {
-                        showError(fileTypesFull[fileType] + " is missing.");
-                        stopFunction = true;
-                        return false;
-                    } else {
-                        return true;
-                    }
-                });
-
-                if (stopFunction) return;
-
-                let dockerFile = filesToUpload[`${activeTab}`].docker;
-                let progFile = filesToUpload[`${activeTab}`].prog;
-                let pptFile = filesToUpload[`${activeTab}`].ppt;
-
-                uploadFile(dockerFile, 'docker');
-                uploadFile(progFile, 'program');
-                uploadFile(pptFile, 'ppt');
-
-                window.setTimeout(function () {
-                    alert("Uploaded Successfully.")
-                    // TODO Refresh the page
-                }, 1000);
-
-                event.stopPropagation()
-            });
+            );
 
             function verifyValidType(file, type) {
                 // verifies the file extension is one we support.
@@ -802,15 +943,13 @@
                     var item = obj.file;
                     var id_ = obj.id;
                     var order_ = obj.order;
-                    var html_ = "<div class=\"progress\">" +
-                        "<div class=\"progress-bar\" role=\"progressbar\" style='width:" + item.progress + "%' aria-valuenow='" + item.progress + "' aria-valuemin=\"0\" aria-valuemax=\"100\"></div></div>";
+                    var html_ = `<div class="progress"><div class="progress-bar" role="progressbar" style='width:${item.progress}%' aria-valuenow='${item.progress}' aria-valuemin="0" aria-valuemax="100"></div></div>`;
                     itemList.append("<div>" + order_ + ") " + item.name + "<a href='#' class='srvup-item-upload float-right' data-id='" + id_ + ")'>X</a> <br/>" + html_ + "</div><hr/>")
-
                 })
             }
 
 
-            function uploadFile(fileItem, filetype) {
+            function uploadFile(fileItem, filetype, progressTarget) {
                 var policyData;
                 var newLoadingItem;
                 // get AWS upload policy for each file uploaded through the POST method
@@ -877,7 +1016,7 @@
                     xhr.upload.addEventListener("error", function (event) {
                         console.log("Error");
 
-                        console.log(event.toString())
+                        showError(event.toString())
                     });
 
                     xhr.open('POST', policyData.url, true);
@@ -887,9 +1026,13 @@
                 })
             }
         }
-    );
+    )
+    ;
 
 </script>
+
+<script src="{% static 'solutions/dropzone.js' %}"></script>
+<script src="{% static 'webapp/js/jquery.toast.js' %}" type="text/javascript"></script>
 
 </body>
 </html>

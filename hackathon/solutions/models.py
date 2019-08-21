@@ -107,7 +107,7 @@ class FileItem(models.Model):
 
 
 class SurveyResponses(models.Model):
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, unique=True)
+    user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE, unique=True)
     answer_1 = models.BooleanField(default=False)
     answer_2 = models.BooleanField(default=False)
     answer_3 = models.BooleanField(default=False)

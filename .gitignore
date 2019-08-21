@@ -5,3 +5,4 @@ hackathon/token.pickle
 logs
 .vscode/
 migrations/
+/.idea/

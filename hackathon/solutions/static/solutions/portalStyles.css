@@ -338,3 +338,21 @@ a:hover {
         opacity: 1;
     }
 }
+
+#dropper-ind {
+    position: absolute;
+    background: transparent;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+#dropper-ind {
+    cursor: pointer;
+}
+
+.file-status-box .active {
+    background: red;
+    transition: all 0.5s ease-in;
+}

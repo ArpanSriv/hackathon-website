@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="200db721-6452-4a04-9983-02f8a701fca2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hackathon/solutions/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hackathon/solutions/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hackathon/solutions/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hackathon/webapp/templates/webapp/contactus.html" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/webapp/templates/webapp/contactus.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hackathon/webapp/templates/webapp/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/webapp/templates/webapp/footer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hackathon/webapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/webapp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hackathon/solutions/static/solutions/portalStyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/static/solutions/portalStyles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hackathon/solutions/templates/solutions/upload_solution.html" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/templates/solutions/upload_solution.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +85,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.last.introduce.type" value="LET" />
     <property name="last.edited.regexp" value="AA22" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/hackathon" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/hackathon/solutions/static/solutions/portalStyles.css" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -614,7 +609,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566379120639</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Updated urls and removed registrations">
+      <created>1566390153704</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1566390153704</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TodoView">
@@ -644,7 +646,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Added responsiveness in timeline" />
     <MESSAGE value="Fixed footer in startup registration" />
     <MESSAGE value="Fixed form in startup registration" />
     <MESSAGE value="Updated error handling in startup registration and font size in thankyou page" />
@@ -669,7 +670,8 @@
     <MESSAGE value="Updated bs changes." />
     <MESSAGE value="Added zip to prog file types" />
     <MESSAGE value="Updated Survey" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Survey" />
+    <MESSAGE value="Updated urls and removed registrations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated urls and removed registrations" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

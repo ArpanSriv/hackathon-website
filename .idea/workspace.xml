@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="200db721-6452-4a04-9983-02f8a701fca2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hackathon/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hackathon/solutions/hackathon.csv" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/hackathon.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hackathon/solutions/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hackathon/solutions/templates/solutions/upload_solution.html" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/templates/solutions/upload_solution.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hackathon/solutions/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

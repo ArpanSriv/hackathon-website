@@ -449,7 +449,7 @@
                                 </div>
                                 <div class="form-group row" style="text-align: right">
                                     <div class="col-sm-12">
-                                        <button type="submit" class="btn btn-dark">Save Responses</button>
+                                        <button type="submit" class="btn btn-dark" id="survey-button">Save Responses</button>
                                     </div>
                                 </div>
                             </form>
@@ -468,6 +468,10 @@
 <script src="{% static 'webapp/js/jquery.toast.js' %}" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
+	   // Disable survey if already taken.
+	    if (checkForSurvey()) {
+		$('#survey-button').attr('disabled', 'disabled');
+            }
 
             var activeTab = '1';
 
@@ -634,7 +638,7 @@
                 let surveyStatus = $(`input[name='survey-filled']`).val();
 
                 if (surveyStatus == 'False') {
-                    showError("<big>Please fill the survey first.</big>");
+                    showError("<big>Please take a minute to fill the survey first. (Upload Solution > Survey)</big>");
                     return false;
                 }
                 else return true;

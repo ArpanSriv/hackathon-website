@@ -285,7 +285,10 @@ def process_survey(request):
         survey_response = SurveyResponses(user=request.user, answer_1=answer_1, answer_2=answer_2, answer_3=answer_3,
                                           answer_4=answer_4)
 
-        survey_response.save()
+        try:
+            survey_response.save()
+        except IntegrityError:
+            return redirect_with_error("You have already filled the form.", upload_solution)
 
         return redirect(upload_solution)
     else:

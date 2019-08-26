@@ -122,6 +122,9 @@ def upload_solution(request):
         team = Team.objects.get(id=team_id)
         members = Member.objects.filter(team=team)
 
+        team_name = getattr(team, 'team_name')
+        reg_no = getattr(team, 'reg_no')
+
         files_uploaded = get_file_uploaded_statues(team_id)
 
         survey_status = False
@@ -134,7 +137,9 @@ def upload_solution(request):
         return render(request, 'solutions/upload_solution.html', context={
             'members': members,
             'file_status': files_uploaded,
-            'survey_status': survey_status
+            'survey_status': survey_status,
+            'team_name': team_name,
+            'reg_no': reg_no,
         })
 
     else:

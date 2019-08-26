@@ -570,8 +570,11 @@
                 [PROGRAM_FILE]: 'Python/Zip File',
                 [PPT]: 'PPT/PPTX File',
             }
-            // Disable survey if already taken.
-            if (checkForSurvey()) {
+            // Disable survey if already taken
+
+	   // Disable survey if already taken.
+	          if (checkForSurvey()) {
+
                 $('#survey-button').attr('disabled', 'disabled');
             }
 
@@ -937,6 +940,8 @@
                         alert("An error occured, please refresh the page.")
                     }
                 })
+		
+		alert(`${fileItem.name} uploaded.`);
             }
 
             function displayItems(fileItemList) {

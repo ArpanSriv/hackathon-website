@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="200db721-6452-4a04-9983-02f8a701fca2" name="Default Changelist" comment="">
+    <list default="true" id="200db721-6452-4a04-9983-02f8a701fca2" name="Default Changelist" comment="Updated solutions upload">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hackathon/solutions/static/solutions/portalStyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/static/solutions/portalStyles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hackathon/solutions/templates/solutions/upload_solution.html" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/templates/solutions/upload_solution.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hackathon/solutions/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/hackathon/solutions/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -279,6 +279,7 @@
       <workItem from="1566013441312" duration="4802000" />
       <workItem from="1566112720092" duration="170000" />
       <workItem from="1566112908908" duration="23503000" />
+      <workItem from="1566827784318" duration="2648000" />
     </task>
     <task id="LOCAL-00001" summary="requirements.txt added">
       <created>1563055565333</created>
@@ -616,7 +617,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566390153704</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Updated solutions upload">
+      <created>1566420129158</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1566420129158</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TodoView">
@@ -646,7 +654,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Fixed footer in startup registration" />
     <MESSAGE value="Fixed form in startup registration" />
     <MESSAGE value="Updated error handling in startup registration and font size in thankyou page" />
     <MESSAGE value="Updated form validation for startup registration (cert)" />
@@ -671,7 +678,8 @@
     <MESSAGE value="Added zip to prog file types" />
     <MESSAGE value="Updated Survey" />
     <MESSAGE value="Updated urls and removed registrations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated urls and removed registrations" />
+    <MESSAGE value="Updated solutions upload" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated solutions upload" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

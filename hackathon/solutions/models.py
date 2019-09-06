@@ -115,4 +115,4 @@ class SurveyResponses(models.Model):
     timestamp = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return "{}, {}, {}, {}".format(self.answer_1, self.answer_2, self.answer_3, self.answer_4)
+        return "{}, {}, {}, {}, {}".format(self.user, self.answer_1, self.answer_2, self.answer_3, self.answer_4)

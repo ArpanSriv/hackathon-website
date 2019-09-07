@@ -60,40 +60,40 @@
         <div class="container-fluid section">
             <!--        <div class="col section-team">-->
             <div class="row section-heading">
-                <strong>{{ team_name}}</strong> &nbsp;({{ reg_no }}).
+                <strong>{{ team_name }}</strong> &nbsp;({{ reg_no }}).
             </div>
-{#            <div class="row">#}
-{#                <div class="container-fluid">#}
-{#                    <!--                    <div class="col">-->#}
-{#                    <div class="row team-card-wrapper">#}
-{#                        {% for member in members %}#}
-{#                            <div class="col team-card">#}
-{#                                <div class="team-card-header">#}
-{#                                    Member {{ forloop.counter }}#}
-{#                                    {% if forloop.counter == 1 %}#}
-{#                                        (Mentor)#}
-{#                                    {% endif %}#}
-{#                                </div>#}
-{#                                <div class="member-name">#}
-{#                                    {{ member.first_name }} {{ member.last_name }}#}
-{#                                </div>#}
-{#                                <div class="member-college">#}
-{#                                    {{ member.university }}#}
-{#                                </div>#}
-{#                                <div class="member-specialization">#}
-{#                                    Specialization: {{ member.specialization }}#}
-{#                                </div>#}
-{#                                <div class="member-email">#}
-{#                                    {{ member.email }} <br/>#}
-{#                                    {{ member.phone }}#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        {% endfor %}#}
-{##}
-{#                    </div>#}
-{#                    <!--                    </div>-->#}
-{#                </div>#}
-{#            </div>#}
+            {#            <div class="row">#}
+            {#                <div class="container-fluid">#}
+            {#                    <!--                    <div class="col">-->#}
+            {#                    <div class="row team-card-wrapper">#}
+            {#                        {% for member in members %}#}
+            {#                            <div class="col team-card">#}
+            {#                                <div class="team-card-header">#}
+            {#                                    Member {{ forloop.counter }}#}
+            {#                                    {% if forloop.counter == 1 %}#}
+            {#                                        (Mentor)#}
+            {#                                    {% endif %}#}
+            {#                                </div>#}
+            {#                                <div class="member-name">#}
+            {#                                    {{ member.first_name }} {{ member.last_name }}#}
+            {#                                </div>#}
+            {#                                <div class="member-college">#}
+            {#                                    {{ member.university }}#}
+            {#                                </div>#}
+            {#                                <div class="member-specialization">#}
+            {#                                    Specialization: {{ member.specialization }}#}
+            {#                                </div>#}
+            {#                                <div class="member-email">#}
+            {#                                    {{ member.email }} <br/>#}
+            {#                                    {{ member.phone }}#}
+            {#                                </div>#}
+            {#                            </div>#}
+            {#                        {% endfor %}#}
+            {##}
+            {#                    </div>#}
+            {#                    <!--                    </div>-->#}
+            {#                </div>#}
+            {#            </div>#}
             <!--        </div>-->
         </div>
     </div>
@@ -328,7 +328,7 @@
                                 <div class="collection" id="previews">
                                     <div class="collection-item clearhack custom-card item-template"
                                          id="zdrop-template">
-                                        <div class="progress"></div>
+                                        <div class="progress-custom"></div>
                                         <div class="left pv zdrop-info" data-dz-thumbnail>
                                             <div class='file-upload-preview-name'>
                                                 <span class="file-upload-name-span" data-dz-name></span>&nbsp;(<span
@@ -393,7 +393,7 @@
                                 <div class="collection" id="previews">
                                     <div class="collection-item clearhack custom-card item-template"
                                          id="zdrop-template">
-                                        <div class="progress"></div>
+                                        <div class="progress-custom"></div>
                                         <div class="left pv zdrop-info" data-dz-thumbnail>
                                             <div class='file-upload-preview-name'>
                                                 <span data-dz-name></span>&nbsp;(<span data-dz-size></span>)
@@ -530,512 +530,451 @@
 <script>
     $(document).ready(function () {
 
-            const FILE_TYPE_INVALID = -1
-            const DOCKERFILE = 0
-            const PROGRAM_FILE = 1
-            const PPT = 2
-
-            const PROBLEM_01 = 1
-            const PROBLEM_02 = 2
-
-            const FILE_TYPES = [DOCKERFILE, PROGRAM_FILE, PPT];
-
-            const FILE_TYPE_DESC = {
-                [DOCKERFILE]: 'Dockerfile',
-                [PROGRAM_FILE]: 'Program File/Zip File',
-                [PPT]: 'Presentation File',
-            }
-
-            const CLICKABLE_INTERMEDIARY = {
-                [DOCKERFILE]: '.dockerfile',
-                [PROGRAM_FILE]: '.prog-file',
-                [PPT]: '.ppt-file',
-            }
-
-            const PROBLEM_IDS = {
-                [PROBLEM_01]: '#nav-problem-1',
-                [PROBLEM_02]: '#nav-problem-2',
-            }
-
-            function getKeyFromVal(object, val) {
-                for (var key in object) {
-                    if (object[key] == val) return key;
-                }
-
-                return undefined;
-            }
-
-            const FILE_TYPE_CLASSES = {
-                [DOCKERFILE]: 'Dockerfile',
-                [PROGRAM_FILE]: 'Python/Zip File',
-                [PPT]: 'PPT/PPTX File',
-            }
-            // Disable survey if already taken
-
-	   // Disable survey if already taken.
-	          if (checkForSurvey()) {
-
-                $('#survey-button').attr('disabled', 'disabled');
-            }
-
-            var activeTab = '1';
-
-            initDroppableZones()
-
-            removeDummyPreviews()
-
-            $('#nav-tab a[data-toggle="tab"]').on('click', function (e) {
-                activeTab = e.target.toString().split('#').pop().split('-').pop()
-                {#activeTab = e.target;#}
-                console.log("Voila " + activeTab)
-            });
-
-            let uploadWatcher = {
-                set: function (object, prop, value) {
-                    {#console.log(`${object} ${prop} ${value}`)#}
-                    object[prop] = value
-                }
-            }
-
-
-            let filesToUpload = {
-                [PROBLEM_01]: {},
-                [PROBLEM_02]: {},
-            }
-
-
-            let disabledUploadButton = true
-
-            function removeDummyPreviews() {
-                for (let problem in PROBLEM_IDS) {
-                    let currentProblemId = PROBLEM_IDS[problem]
-
-                    let previewNode = document.querySelector(`${currentProblemId} #zdrop-template`);
-                    let previewTemplate = previewNode.parentNode.innerHTML;
-                    previewNode.parentNode.removeChild(previewNode);
-                }
-            }
-
-            function initDroppableZones() {
-                let dropZone = `<div id='dropper-ind'></div>`
-
-                for (let problem in PROBLEM_IDS) {
-                    for (let target in CLICKABLE_INTERMEDIARY) {
-                        $(`${PROBLEM_IDS[problem]} ${CLICKABLE_INTERMEDIARY[target]}`).append(dropZone)
-
-                        let className = CLICKABLE_INTERMEDIARY[target];
-
-                        console.log(`${PROBLEM_IDS[problem]} ${CLICKABLE_INTERMEDIARY[target]}`)
-                        initIndividualUploaders(`${PROBLEM_IDS[problem]} ${CLICKABLE_INTERMEDIARY[target]} #dropper-ind`, target, CLICKABLE_INTERMEDIARY[target])
-
-                        console.info("Done")
+        // setup session cookie data. This is Django-related
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
                     }
                 }
             }
+            return cookieValue;
+        }
 
-            function getFileType(file) {
-                var extension = file.name.split('.').pop().toLowerCase(); //file.substr( (file.lastIndexOf('.') +1) );
+        var csrftoken = getCookie('csrftoken');
 
-                if (file.name === 'Dockerfile') {
-                    return DOCKERFILE
-                }
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
 
-                switch (extension) {
-                    case 'dockerfile':
-                        return DOCKERFILE
-                    case 'py':
-                        return PROGRAM_FILE
-                    case 'R':
-                        return PROGRAM_FILE
-                    case 'ppt':
-                        return PPT
-                    case 'pptx':
-                        return PPT
-                    case 'pdf':
-                        return PPT
-                    case 'zip':
-                        return PROGRAM_FILE
-                    default:
-                        return FILE_TYPE_INVALID
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
                 }
             }
+        });
+        // end session cookie data setup.
 
-            function initIndividualUploaders(target, fileType, clickableIntermediary) {
+        const FILE_TYPE_INVALID = -1
+        const DOCKERFILE = 0
+        const PROGRAM_FILE = 1
+        const PPT = 2
 
-                let currentProblemId = target.split(" ")[0];
-                let previewNode = document.querySelector(`${currentProblemId} #zdrop-template`);
-                {#previewNode.id = "";#}
-                let previewTemplate = previewNode.parentNode.innerHTML;
+        const PROBLEM_01 = 1
+        const PROBLEM_02 = 2
 
-                let zdrop = new Dropzone(target, {
-                    url: 'some_url_here',
-                    maxFiles: 1,
-                    maxFilesize: 9999999999999,
-                    previewTemplate: previewTemplate,
-                    previewsContainer: `${currentProblemId} #previews`,
-                    clickable: `${currentProblemId} ${clickableIntermediary} #dropper-ind`,
-                    accept: function (file, done) {
-                        let currentFileType = getFileType(file)
+        const FILE_TYPES = [DOCKERFILE, PROGRAM_FILE, PPT];
 
-                        if (currentFileType == fileType) {
-                            if (activeTab != null) {
-                                filesToUpload[`${activeTab}`][fileType] = file
-                            }
-                        } else {
-                            this.removeFile(file)
-                            showError(`Please upload a valid ${FILE_TYPE_CLASSES[fileType]}.`)
-                        }
-                    }
-                });
+        const FILE_TYPE_DESC = {
+            [DOCKERFILE]: 'Dockerfile',
+            [PROGRAM_FILE]: 'Program File/Zip File',
+            [PPT]: 'Presentation File',
+        }
 
-                zdrop.on("addedfile", function (file) {
-                    $(`${currentProblemId} .preview-container`).css('visibility', 'visible');
+        const CLICKABLE_INTERMEDIARY = {
+            [DOCKERFILE]: '.dockerfile',
+            [PROGRAM_FILE]: '.prog-file',
+            [PPT]: '.ppt-file',
+        }
 
-                    if (this.files[1] != null) {
-                        this.removeFile(this.files[0]);
-                    }
-                });
+        const PROBLEM_IDS = {
+            [PROBLEM_01]: '#nav-problem-1',
+            [PROBLEM_02]: '#nav-problem-2',
+        }
 
-                zdrop.on("totaluploadprogress", function (progress) {
-                    var progr = document.querySelector(".progress .determinate");
-                    if (progr === undefined || progr === null)
-                        return;
+        const FILE_TYPE_CLASSES = {
+            [DOCKERFILE]: 'Dockerfile',
+            [PROGRAM_FILE]: 'Python/Zip File',
+            [PPT]: 'PPT/PPTX File',
+        }
 
-                    progr.style.width = progress + "%";
-                });
+        let filesToUpload = {
+            [PROBLEM_01]: {},
+            [PROBLEM_02]: {},
+        }
 
-                zdrop.on('dragenter', function () {
-                    $(target).addClass("active");
-                });
+        let disabledUploadButton = true
 
-                zdrop.on('dragleave', function () {
-                    $(target).removeClass("active");
-                });
+        var activeTab = '1';
 
-                zdrop.on('drop', function () {
-                    $(target).removeClass("active");
-                });
+        let totalUploadCount = 0
 
-                zdrop.on('removedfile', function (file) {
-                    delete filesToUpload[activeTab][fileType]
-                });
+        let progressBar = $(`<div class="progress">
+          <div class="progress-bar file-1 bg-dark" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="progress-bar file-2 bg-dark" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="progress-bar file-3 bg-dark" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>`);
 
-            }
+        // Disable survey if already taken.
+        if (checkForSurvey()) $('#survey-button').attr('disabled', 'disabled');
 
-            function initFileUploader(target) {
-                let currentProblemId = target.split(" ")[0];
+        initDroppableZones();
 
-                var previewNode = document.querySelector(`${currentProblemId} #zdrop-template`);
-                previewNode.id = "";
-                var previewTemplate = previewNode.parentNode.innerHTML;
-                previewNode.parentNode.removeChild(previewNode);
+        removeDummyPreviews();
+
+        // Change activeTab variable on tab change
+        $('#nav-tab a[data-toggle="tab"]').on('click', e => activeTab = e.target.toString().split('#').pop().split('-').pop());
+
+        // declare an empty array for potential uploaded files
+        var fileItemList = [];
 
 
-                var zdrop = new Dropzone(target, {
-                    url: 'upload.php',
-                    maxFiles: 3,
-                    {#maxFilesize: 30,#}
-                    previewTemplate: previewTemplate,
-                    previewsContainer: `${currentProblemId} #previews`,
-                    clickable: `${currentProblemId} #upload-label`,
-                    accept: function (file, done) {
-                        let fileType = getFileType(file)
+        // Bind handleUpload method to click on .file-upload-btn
+        $('.file-upload-btn').on('click', handleUpload);
 
-                        if (fileType === 'invalid') {
-                            this.removeFile(file)
-                            showError('Invalid file type. ' + fileType)
-                        } else {
-                            if (activeTab != null) {
-                                if (fileType === PROGRAM_FILE) {
-                                    filesToUpload[`${activeTab}`]['prog'] = file
-                                } else if (fileType === DOCKERFILE) {
-                                    filesToUpload[`${activeTab}`]['docker'] = file
-                                } else if (fileType === PPT) {
-                                    filesToUpload[`${activeTab}`]['ppt'] = file
-                                } else {
-                                    showError("This file can not be uploaded. Valid: py/r/zip/Dockerfile/ppt/pptx")
-                                }
-                            }
-                        }
-                    }
-                });
+        // Main Functions
+        function initDroppableZones() {
+            let dropZone = `<div id='dropper-ind'></div>`
 
-                zdrop.on("addedfile", function (file) {
-                    $(`${currentProblemId} .preview-container`).css('visibility', 'visible');
+            for (let problem in PROBLEM_IDS) {
+                for (let target in CLICKABLE_INTERMEDIARY) {
+                    $(`${PROBLEM_IDS[problem]} ${CLICKABLE_INTERMEDIARY[target]}`).append(dropZone)
 
-                    if (this.files.length) {
-                        var _i, _len;
-                        for (_i = 0, _len = this.files.length; _i < _len - 1; _i++) // -1 to exclude current file
-                        {
-                            if (this.files[_i].name === file.name && this.files[_i].size === file.size && this.files[_i].lastModifiedDate.toString() === file.lastModifiedDate.toString()) {
-                                this.removeFile(file);
-                            }
-                        }
-                    }
-                });
+                    let className = CLICKABLE_INTERMEDIARY[target];
 
-                zdrop.on("totaluploadprogress", function (progress) {
-                    var progr = document.querySelector(".progress .determinate");
-                    if (progr === undefined || progr === null)
-                        return;
+                    console.log(`${PROBLEM_IDS[problem]} ${CLICKABLE_INTERMEDIARY[target]}`)
+                    initIndividualUploaders(`${PROBLEM_IDS[problem]} ${CLICKABLE_INTERMEDIARY[target]} #dropper-ind`, target, CLICKABLE_INTERMEDIARY[target])
 
-                    progr.style.width = progress + "%";
-                });
-
-                zdrop.on('dragenter', function () {
-                    $(`${currentProblemId} .fileuploader`).addClass("active");
-                });
-
-                zdrop.on('dragleave', function () {
-                    $(`${currentProblemId} .fileuploader`).removeClass("active");
-                });
-
-                zdrop.on('drop', function () {
-                    $(`${currentProblemId} .fileuploader`).removeClass("active");
-                });
-            }
-
-            // setup session cookie data. This is Django-related
-            function getCookie(name) {
-                var cookieValue = null;
-                if (document.cookie && document.cookie !== '') {
-                    var cookies = document.cookie.split(';');
-                    for (var i = 0; i < cookies.length; i++) {
-                        var cookie = jQuery.trim(cookies[i]);
-                        // Does this cookie string begin with the name we want?
-                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                            break;
-                        }
-                    }
+                    console.info("Done")
                 }
-                return cookieValue;
-            }
-
-            var csrftoken = getCookie('csrftoken');
-
-            function csrfSafeMethod(method) {
-                // these HTTP methods do not require CSRF protection
-                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-            }
-
-            $.ajaxSetup({
-                beforeSend: function (xhr, settings) {
-                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
-                    }
-                }
-            });
-            // end session cookie data setup.
-
-
-            // declare an empty array for potential uploaded files
-            var fileItemList = [];
-
-            function showError(erorrMsg) {
-                $.toast({
-                    heading: 'Error',
-                    text: erorrMsg,
-                    icon: 'error',
-                    hideAfter: 5000
-                });
-            }
-
-            function checkForSurvey() {
-                let surveyStatus = $(`input[name='survey-filled']`).val();
-
-                if (surveyStatus == 'False') {
-                    showError("<big>Please take a minute to fill the survey first. (Upload Solution > Survey)</big>");
-                    return false;
-                } else return true;
-            }
-
-            // Do on button press
-            $('.file-upload-btn').on('click', function (event) {
-
-                    // Consider active Tab as well
-                    if (!checkForSurvey()) return;
-
-                    let currentTabFiles = filesToUpload[`${activeTab}`];
-
-                    let stopFunction = false;
-
-                    FILE_TYPES.every((fileType, index) => {
-                        if (!(fileType in currentTabFiles)) {
-                            showError(FILE_TYPE_DESC[fileType] + " is missing.");
-                            stopFunction = true;
-                            return false;
-                        } else {
-                            return true;
-                        }
-                    });
-
-                    if (stopFunction) return;
-
-                    FILE_TYPES.forEach((val, index, arr) => {
-                        uploadFile(filesToUpload[activeTab][val], ['docker', 'program', 'ppt'][index])
-                    })
-
-                    window.setTimeout(function () {
-                        alert("Uploaded Successfully.")
-                        // TODO Refresh the page
-                    }, 1000);
-
-                    event.stopPropagation()
-
-                    // TODO: RERESH THE PAGE
-                }
-            );
-
-            function verifyValidType(file, type) {
-                // verifies the file extension is one we support.
-                var extension = file.name.split('.').pop().toLowerCase(); //file.substr( (file.lastIndexOf('.') +1) );
-
-                return !!extension.localeCompare(type.toLowerCase());
-            }
-
-            function constructFormPolicyData(policyData, fileItem) {
-                var contentType = fileItem.type != '' ? fileItem.type : 'application/octet-stream';
-                var url = policyData.url;
-                var filename = policyData.filename;
-                var repsonseUser = policyData.fields.user;
-                // var keyPath = 'www/' + repsonseUser + '/' + filename
-                var keyPath = policyData.file_bucket_path;
-
-                let credential = policyData['fields']['x-amz-credential'];
-                let algorithm = policyData['fields']['x-amz-algorithm'];
-                let date = policyData['fields']['x-amz-date'];
-                let signature = policyData['fields']['x-amz-signature'];
-
-                let authorizationHeader = `${algorithm} Credential=${credential}, SignedHeaders=${contentType};host;${date}, Signature=${signature}`;
-
-                var fd = new FormData();
-
-                $.each(policyData.fields, function (key, value) {
-                    fd.append(key, value)
-                });
-
-                fd.append('file', fileItem);
-
-                return fd
-            }
-
-            function fileUploadComplete(fileItem, policyData) {
-                data = {
-                    uploaded: true,
-                    fileSize: fileItem.size,
-                    file: policyData.file_id,
-
-                };
-                $.ajax({
-                    method: "POST",
-                    data: data,
-                    url: "/api/files/complete/",
-                    success: function (data) {
-                        displayItems(fileItemList)
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        console.log("Status: " + textStatus);
-                        console.log("Error: " + errorThrown);
-                        alert("An error occured, please refresh the page.")
-                    }
-                })
-		
-		alert(`${fileItem.name} uploaded.`);
-            }
-
-            function displayItems(fileItemList) {
-                var itemList = $('.item-loading-queue');
-                itemList.html("");
-                $.each(fileItemList, function (index, obj) {
-                    var item = obj.file;
-                    var id_ = obj.id;
-                    var order_ = obj.order;
-                    var html_ = `<div class="progress"><div class="progress-bar" role="progressbar" style='width:${item.progress}%' aria-valuenow='${item.progress}' aria-valuemin="0" aria-valuemax="100"></div></div>`;
-                    itemList.append("<div>" + order_ + ") " + item.name + "<a href='#' class='srvup-item-upload float-right' data-id='" + id_ + ")'>X</a> <br/>" + html_ + "</div><hr/>")
-                })
-            }
-
-
-            function uploadFile(fileItem, filetype, progressTarget) {
-                var policyData;
-                var newLoadingItem;
-                // get AWS upload policy for each file uploaded through the POST method
-                // Remember we're creating an instance in the backend so using POST is
-                // needed.
-                if (activeTab == null) {
-                    showError("Active Tab couldn't be found. Please try switching to other tab and then opening this again.")
-                    return;
-                }
-
-                $.ajax({
-                    method: "POST",
-                    data: {
-                        filename: fileItem.name,
-                        filetype: filetype,
-                        problem: activeTab
-                    },
-                    url: "/api/files/policy/",
-                    success: function (data) {
-                        policyData = data
-                    },
-                    error: function (data) {
-                        showError("An error occurred, please try again later");
-                        showError("Data: " + JSON.stringify(data))
-                    }
-                }).done(function () {
-                    // construct the needed data using the policy for AWS
-                    var fd = constructFormPolicyData(policyData, fileItem);
-
-                    // use XML http Request to Send to AWS.
-                    var xhr = new XMLHttpRequest();
-
-                    // construct callback for when uploading starts
-                    xhr.upload.onloadstart = function (event) {
-                        var inLoadingIndex = $.inArray(fileItem, fileItemList);
-                        if (inLoadingIndex == -1) {
-                            // Item is not loading, add to inProgress queue
-                            newLoadingItem = {
-                                file: fileItem,
-                                id: policyData.file_id,
-                                order: fileItemList.length + 1
-                            };
-                            fileItemList.push(newLoadingItem)
-                        }
-                        fileItem.xhr = xhr
-                    };
-
-                    // Monitor upload progress and attach to fileItem.
-                    xhr.upload.addEventListener("progress", function (event) {
-                        if (event.lengthComputable) {
-                            var progress = Math.round(event.loaded / event.total * 100);
-                            fileItem.progress = progress;
-                            displayItems(fileItemList)
-                        }
-                    });
-
-                    xhr.upload.addEventListener("load", function (event) {
-                        console.log("Complete, event: " + JSON.stringify(event));
-                        // handle FileItem Upload being complete.
-                        fileUploadComplete(fileItem, policyData)
-
-                    });
-
-                    xhr.upload.addEventListener("error", function (event) {
-                        console.log("Error");
-
-                        showError(event.toString())
-                    });
-
-                    xhr.open('POST', policyData.url, true);
-                    xhr.send(fd);
-
-                    console.log(xhr.responseText);
-                })
             }
         }
-    )
-    ;
+
+        function initIndividualUploaders(target, fileType, clickableIntermediary) {
+
+            let currentProblemId = target.split(" ")[0];
+            let previewNode = document.querySelector(`${currentProblemId} #zdrop-template`);
+            {#previewNode.id = "";#}
+            let previewTemplate = previewNode.parentNode.innerHTML;
+
+            let zdrop = new Dropzone(target, {
+                url: 'some_url_here',
+                maxFiles: 1,
+                maxFilesize: 9999999999999,
+                previewTemplate: previewTemplate,
+                previewsContainer: `${currentProblemId} #previews`,
+                clickable: `${currentProblemId} ${clickableIntermediary} #dropper-ind`,
+                accept: function (file, done) {
+                    let currentFileType = getFileType(file)
+
+                    if (currentFileType == fileType) {
+                        if (activeTab != null) {
+                            filesToUpload[`${activeTab}`][fileType] = file
+                        }
+                    } else {
+                        this.removeFile(file)
+                        showError(`Please upload a valid ${FILE_TYPE_CLASSES[fileType]}.`)
+                    }
+                }
+            });
+
+            zdrop.on("addedfile", function (file) {
+                $(`${currentProblemId} .preview-container`).css('visibility', 'visible');
+
+                if (this.files[1] != null) {
+                    this.removeFile(this.files[0]);
+                }
+            });
+
+            zdrop.on("totaluploadprogress", function (progress) {
+                var progr = document.querySelector(".progress .determinate");
+                if (progr === undefined || progr === null)
+                    return;
+
+                progr.style.width = progress + "%";
+            });
+
+            zdrop.on('dragenter', function () {
+                $(target).addClass("active");
+            });
+
+            zdrop.on('dragleave', function () {
+                $(target).removeClass("active");
+            });
+
+            zdrop.on('drop', function () {
+                $(target).removeClass("active");
+            });
+
+            zdrop.on('removedfile', function (file) {
+                delete filesToUpload[activeTab][fileType]
+            });
+
+        }
+
+        function handleUpload(event) {
+
+            // Consider active Tab as well
+            if (!checkForSurvey()) return;
+
+            let currentTabFiles = filesToUpload[`${activeTab}`];
+
+            let stopFunction = false;
+
+            FILE_TYPES.every((fileType, index) => {
+                if (!(fileType in currentTabFiles)) {
+                    showError(FILE_TYPE_DESC[fileType] + " is missing.");
+                    stopFunction = true;
+                    return false;
+                } else {
+                    return true;
+                }
+            });
+
+            if (stopFunction) return;
+
+            let currentProblemId = `.problem-0${activeTab} .preview-container .collection`; // In the form problem-01/problem-02
+
+            $(currentProblemId).append(progressBar);
+
+            FILE_TYPES.forEach((val, index, arr) => {
+                uploadFile(filesToUpload[activeTab][val], ['docker', 'program', 'ppt'][index], index)
+            })
+
+            // Disable the Upload Button
+            $('.file-upload-btn').attr('disabled', 'disabled');
+
+            event.stopPropagation()
+
+            // TODO: RERESH THE PAGE
+        }
+
+        function constructFormPolicyData(policyData, fileItem) {
+            var contentType = fileItem.type != '' ? fileItem.type : 'application/octet-stream';
+            var url = policyData.url;
+            var filename = policyData.filename;
+            var repsonseUser = policyData.fields.user;
+            // var keyPath = 'www/' + repsonseUser + '/' + filename
+            var keyPath = policyData.file_bucket_path;
+
+            let credential = policyData['fields']['x-amz-credential'];
+            let algorithm = policyData['fields']['x-amz-algorithm'];
+            let date = policyData['fields']['x-amz-date'];
+            let signature = policyData['fields']['x-amz-signature'];
+
+            let authorizationHeader = `${algorithm} Credential=${credential}, SignedHeaders=${contentType};host;${date}, Signature=${signature}`;
+
+            var fd = new FormData();
+
+            $.each(policyData.fields, function (key, value) {
+                fd.append(key, value)
+            });
+
+            fd.append('file', fileItem);
+
+            return fd
+        }
+
+        function fileUploadComplete(fileItem, policyData) {
+            data = {
+                uploaded: true,
+                fileSize: fileItem.size,
+                file: policyData.file_id,
+
+            };
+            $.ajax({
+                method: "POST",
+                data: data,
+                url: "/api/files/complete/",
+                success: function (data) {
+                    //FIXME: Convert to showSuccess
+                    showSuccess(`${fileItem.name} uploaded.`);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log("Status: " + textStatus);
+                    console.log("Error: " + errorThrown);
+                    alert("An error occured, please refresh the page.")
+                }
+            });
+        }
+
+        function uploadFile(fileItem, filetype, fileNumber) {
+            var policyData;
+            var newLoadingItem;
+            let totalProgress = 0;
+
+            // get AWS upload policy for each file uploaded through the POST method
+            // Remember we're creating an instance in the backend so using POST is
+            // needed.
+            if (activeTab == null) {
+                showError("Active Tab couldn't be found. Please try switching to other tab and then opening this again.")
+                return;
+            }
+
+            let targetProgressBar = $(`.problem-0${activeTab} .progress .file-${fileNumber + 1}`)
+
+            $.ajax({
+                method: "POST",
+                data: {
+                    filename: fileItem.name,
+                    filetype: filetype,
+                    problem: activeTab
+                },
+                url: "/api/files/policy/",
+                success: function (data) {
+                    policyData = data
+                },
+                error: function (data) {
+                    showError("An error occurred, please try again later");
+                    showError("Data: " + JSON.stringify(data))
+                }
+            }).done(function () {
+                // construct the needed data using the policy for AWS
+                var fd = constructFormPolicyData(policyData, fileItem);
+
+                // use XML http Request to Send to AWS.
+                var xhr = new XMLHttpRequest();
+
+                // construct callback for when uploading starts
+                xhr.upload.onloadstart = function (event) {
+                    var inLoadingIndex = $.inArray(fileItem, fileItemList);
+                    if (inLoadingIndex == -1) {
+                        // Item is not loading, add to inProgress queue
+                        newLoadingItem = {
+                            file: fileItem,
+                            id: policyData.file_id,
+                            order: fileItemList.length + 1
+                        };
+                        fileItemList.push(newLoadingItem)
+                    }
+                    fileItem.xhr = xhr
+                };
+
+                // Monitor upload progress and attach to fileItem.
+                xhr.upload.addEventListener("progress", function (event) {
+                    if (event.lengthComputable) {
+                        var progress = Math.round(event.loaded / event.total * 100);
+                        fileItem.progress = progress;
+
+                        progress = progress / 3;
+
+                        {#let newProgress = Math.round(totalProgress + progress);#}
+
+                        targetProgressBar.css('width', progress + '%').attr('aria-valuenow', progress);
+                    }
+                });
+
+                xhr.upload.addEventListener("load", function (event) {
+                    console.log("Complete, event: " + JSON.stringify(event));
+                    // handle FileItem Upload being complete.
+                    fileUploadComplete(fileItem, policyData)
+
+
+                    let progress = 33
+                    if (fileNumber == 0) progress = 34
+                    targetProgressBar.css('width', progress + '%').attr('aria-valuenow', progress);
+
+                    totalUploadCount++;
+
+                    if (totalUploadCount == 3) {
+                        window.setTimeout(function () {
+                            location.reload(true);
+                        }, 3000);
+                    }
+                });
+
+                xhr.upload.addEventListener("error", function (event) {
+                    console.log("Error");
+
+                    showError(event.toString())
+                });
+
+                xhr.open('POST', policyData.url, true);
+                xhr.send(fd);
+
+                console.log(xhr.responseText);
+            })
+        }
+
+        // Helper Functions
+        function getKeyFromVal(object, val) {
+            for (var key in object) {
+                if (object[key] == val) return key;
+            }
+
+            return undefined;
+        }
+
+        function showError(erorrMsg) {
+            $.toast({
+                heading: 'Error',
+                text: erorrMsg,
+                icon: 'error',
+                hideAfter: 5000
+            });
+        }
+
+        function showSuccess(successMsg) {
+            $.toast({
+                heading: 'Success',
+                text: successMsg,
+                icon: 'info',
+                hideAfter: 5000
+            });
+        }
+
+        function checkForSurvey() {
+            let surveyStatus = $(`input[name='survey-filled']`).val();
+
+            if (surveyStatus == 'False') {
+                showError("<big>Please take a minute to fill the survey first. (Upload Solution > Survey)</big>");
+                return false;
+            } else return true;
+        }
+
+        function getFileType(file) {
+            var extension = file.name.split('.').pop().toLowerCase(); //file.substr( (file.lastIndexOf('.') +1) );
+
+            if (file.name === 'Dockerfile') {
+                return DOCKERFILE
+            }
+
+            switch (extension) {
+                case 'dockerfile':
+                    return DOCKERFILE
+                case 'py':
+                    return PROGRAM_FILE
+                case 'R':
+                    return PROGRAM_FILE
+                case 'ppt':
+                    return PPT
+                case 'pptx':
+                    return PPT
+                case 'pdf':
+                    return PPT
+                case 'zip':
+                    return PROGRAM_FILE
+                default:
+                    return FILE_TYPE_INVALID
+            }
+        }
+
+        function verifyValidType(file, type) {
+            // verifies the file extension is one we support.
+            var extension = file.name.split('.').pop().toLowerCase(); //file.substr( (file.lastIndexOf('.') +1) );
+
+            return !!extension.localeCompare(type.toLowerCase());
+        }
+
+        function removeDummyPreviews() {
+            for (let problem in PROBLEM_IDS) {
+                let currentProblemId = PROBLEM_IDS[problem]
+
+                let previewNode = document.querySelector(`${currentProblemId} #zdrop-template`);
+                let previewTemplate = previewNode.parentNode.innerHTML;
+                previewNode.parentNode.removeChild(previewNode);
+            }
+        }
+
+    });
 
 </script>
 

@@ -250,7 +250,7 @@ a:hover {
     z-index: 0;
 }
 
-.progress {
+.progress-custom {
     width: 0;
     height: 100%;
     position: absolute;
@@ -355,4 +355,8 @@ a:hover {
 .file-status-box .active {
     background: red;
     transition: all 0.5s ease-in;
+}
+
+.progress {
+    margin-bottom: 20px;
 }
